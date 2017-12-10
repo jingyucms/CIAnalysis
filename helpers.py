@@ -160,7 +160,8 @@ class Process:
 		self.histo.SetLineColor(self.theLineColor)
 		self.histo.GetXaxis().SetTitle(plot.xaxis) 
 		self.histo.GetYaxis().SetTitle(plot.yaxis)	
-				
+		if "CI" in self.label:
+			self.histo.Scale(1.3)				
 		return self.histo
 	def loadHistogramProjected(self,plot,binNumber):
 		histo = None

@@ -152,9 +152,7 @@ def plotDataMC(args,plot):
 		plotPad.SetLogy()
 
 	datahist = data.loadHistogram(plot)	
-	print datahist.GetEntries()
 	lumi = 36300
-	print "-----"
 	stack = TheStack(processes,plot)
 
 	if args.data:
@@ -167,7 +165,6 @@ def plotDataMC(args,plot):
 		yMin = 0.1
 		xMax = stack.theHistogram.GetXaxis().GetXmax()
 		xMin = stack.theHistogram.GetXaxis().GetXmin()	
-	print yMax, yMin, xMax, xMin
 	if plot.yMax == None:
 		if logScale:
 			yMax = yMax*1000
@@ -175,14 +172,12 @@ def plotDataMC(args,plot):
 			yMax = yMax*1.5
 	
 	else: yMax = plot.yMax
-	print plot.xMin, plot.xMax
 	if not plot.yMin == None:
 		yMin = plot.yMin
 	if not plot.xMin == None:
 		xMin = plot.xMin
 	if not plot.xMax == None:
 		xMax = plot.xMax
-	print yMax, yMin, xMax, xMin
 	plotPad.DrawFrame(xMin,yMin,xMax,yMax,"; %s ; %s" %(plot.xaxis,plot.yaxis))
 	
 	
@@ -201,7 +196,7 @@ def plotDataMC(args,plot):
 		for Signal in signals:
 			signalhist = Signal.loadHistogram(plot)
 			signalhist.SetLineWidth(2)
-			signalBackgrounds = backgrounds
+			signalBackgrounds = deepcopy(backgrounds)
 			signalBackgrounds.remove("DrellYan")
 			signalProcesses = []
 			for background in signalBackgrounds:
@@ -250,7 +245,6 @@ def plotDataMC(args,plot):
 		ratioPad.RedrawAxis()
 	if not os.path.exists("plots"):
 		os.makedirs("plots")	
-	print plot.fileName
 	hCanvas.Print("plots/"+plot.fileName+".pdf")
 
 					

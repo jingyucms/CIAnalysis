@@ -758,4 +758,5 @@ class plots:
 	massPlotSmeared = Plot("CSSmearedMassBinned","DimuonMassSmeared",xLabel="dimuon mass [GeV]",log=True,xRange=[120,3000],nBins = 1, rebin=20,yLabel="Events / 20 GeV",useJets=True)
 	massPlotUp = Plot("CSMassUpBinned","DimuonMassScaleUp",xLabel="dimuon mass [GeV]",log=True,xRange=[120,3000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
 	massPlotDown = Plot("CSMassDownBinned","DimuonMassScaleDown",xLabel="dimuon mass [GeV]",log=True,xRange=[120,3000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
-	chiPlot = Plot("ChiDilepton","ChiDilepton",xLabel="#chi",log=True,xRange=[0,10],nBins = 25, rebin=0,yLabel="Events / 0.025")
+
+
