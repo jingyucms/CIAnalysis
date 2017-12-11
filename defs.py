@@ -758,5 +758,19 @@ class plots:
 	massPlotSmeared = Plot("CSSmearedMassBinned","DimuonMassSmeared",xLabel="dimuon mass [GeV]",log=True,xRange=[120,3000],nBins = 1, rebin=20,yLabel="Events / 20 GeV",useJets=True)
 	massPlotUp = Plot("CSMassUpBinned","DimuonMassScaleUp",xLabel="dimuon mass [GeV]",log=True,xRange=[120,3000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
 	massPlotDown = Plot("CSMassDownBinned","DimuonMassScaleDown",xLabel="dimuon mass [GeV]",log=True,xRange=[120,3000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
+	
+	csPlotM60To120 = Plot("CosAngleCollinSoperCorrect60Mass120","CosThetaStar_M60To120",xLabel="dimuon mass [GeV]",log=True,xRange=[-1,1],nBins = 100, rebin=1,yLabel="Events / 0.2")
+	csPlotM120To300 = Plot("CosAngleCollinSoperCorrect120Mass300","CosThetaStar_M120To300",xLabel="dimuon mass [GeV]",log=True,xRange=[-1,1],nBins = 100, rebin=1,yLabel="Events / 0.2")
+	csPlotM300To700 = Plot("CosAngleCollinSoperCorrect300Mass700","CosThetaStar_M300To700",xLabel="dimuon mass [GeV]",log=True,xRange=[-1,1],nBins = 100, rebin=1,yLabel="Events / 0.2")
+	csPlotM700To3000 = Plot("CosAngleCollinSoperCorrect700Mass3000","CosThetaStar_M700To3000",xLabel="dimuon mass [GeV]",log=True,xRange=[-1,1],nBins = 100, rebin=1,yLabel="Events / 0.2")
+	
+	
+	resPlot1 = Plot("MassResultionEBEB1","resPlot_M0To250",xLabel="(reco mass - gen mass)/gen mass",log=False,xRange=[0.5,0.5],nBins = 100, rebin=1,yLabel="Events / 0.01")
+	resPlot2 = Plot("MassResultionEBEB2","resPlot_M250To750",xLabel="(reco mass - gen mass)/gen mass",log=False,xRange=[0.5,0.5],nBins = 100, rebin=1,yLabel="Events / 0.01")
+	resPlot3 = Plot("MassResultionEBEB3","resPlot_M750To1250",xLabel="(reco mass - gen mass)/gen mass",log=False,xRange=[0.5,0.5],nBins = 100, rebin=1,yLabel="Events / 0.01")
+	resPlot4 = Plot("MassResultionEBEB4","resPlot_M1250To1750",xLabel="(reco mass - gen mass)/gen mass",log=False,xRange=[0.5,0.5],nBins = 100, rebin=1,yLabel="Events / 0.01")
+	resPlot5 = Plot("MassResultionEBEB5","resPlot_M1750To2250",xLabel="(reco mass - gen mass)/gen mass",log=False,xRange=[0.5,0.5],nBins = 100, rebin=1,yLabel="Events / 0.01")
+	resPlot6 = Plot("MassResultionEBEB6","resPlot_M2000To4000",xLabel="(reco mass - gen mass)/gen mass",log=False,xRange=[0.5,0.5],nBins = 100, rebin=1,yLabel="Events / 0.01")
+	resPlot7 = Plot("MassResultionEBEB7","resPlot_M4000To6000",xLabel="(reco mass - gen mass)/gen mass",log=False,xRange=[0.5,0.5],nBins = 100, rebin=1,yLabel="Events / 0.01")
 
 
