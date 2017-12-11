@@ -22,7 +22,6 @@ def totalNumberOfGeneratedEvents(path):
 	#~ print path
 
 	for sampleName, filePath in getFilePathsAndSampleNames(path).iteritems():
-			print sampleName
 			rootFile = TFile(filePath, "read")
 			result[sampleName] = rootFile.FindObjectAny("Events").GetBinContent(1)				
 	return result
@@ -55,7 +54,6 @@ def loadHistoFromFileProjected(fileName,histName,rebin,binNumber):
 	name = "%x"%(randint(0, maxint))	
 	from ROOT import TFile, TH1F
 	rootFile = TFile(path+fileName, "read")
-	print histName, fileName
 	result = rootFile.Get(histName).ProjectionX(name,binNumber,binNumber)
 	#~ print rootFile.Get(histName).GetYaxis().GetBinLabel(binNumber)
 	#~ result.Rebin(rebin)
