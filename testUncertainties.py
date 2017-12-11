@@ -43,10 +43,10 @@ def main():
 			dyHistScaleDown.Add(deepcopy(drellyan.loadHistogramProjected(massPlotDown, 10)))
 			dyHistWeighted.Add(deepcopy(drellyan.loadHistogramProjected(massPlotWeighted, 10)))
 			
-		dyHist.Rebin(160)
-		dyHistSmear.Rebin(160)
-		dyHistScaleDown.Rebin(160)
-		dyHistWeighted.Rebin(160)
+		dyHist.Rebin(320)
+		dyHistSmear.Rebin(320)
+		dyHistScaleDown.Rebin(320)
+		dyHistWeighted.Rebin(320)
 		hCanvas = TCanvas("hCanvas", "Distribution", 800,800)
 	
 		plotPad = ROOT.TPad("plotPad","plotPad",0,0.3,1,1)
@@ -85,7 +85,7 @@ def main():
 		ratioPad.cd()
 		xMin = 400
 		xMax = 3500
-		ratioGraphs =  ratios.RatioGraph(dyHist,dyHistSmear, xMin=xMin, xMax=xMax,title="Default / Uncert",yMin=0.8,yMax=1.3,ndivisions=10,color=kRed,adaptiveBinning=10000)
+		ratioGraphs =  ratios.RatioGraph(dyHist,dyHistSmear, xMin=xMin, xMax=xMax,title="Default / Uncert",yMin=0.9,yMax=1.1,ndivisions=10,color=kRed,adaptiveBinning=10000)
 		ratioGraphs.draw(ROOT.gPad,True,False,True,chi2Pos=0.8)		
 		ratioGraphs2 =  ratios.RatioGraph(dyHist,dyHistScaleDown, xMin=xMin, xMax=xMax,title="Default / Uncert",yMin=0.8,yMax=1.3,ndivisions=10,color=kBlue,adaptiveBinning=10000)
 		ratioGraphs2.draw(ROOT.gPad,False,False,True,chi2Pos=0.8)
