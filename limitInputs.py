@@ -12,7 +12,7 @@ def main():
 
 	
 	histos = ["BB","BE"]
-	labels = ["dimuon_Moriond2017_BB","dimuon_Moriond2017_BE"]
+	labels = ["dimuon_BB","dimuon_BE"]
 	
 	lambdas = [10,16,22,28,34]
 	models = ["ConLL","ConLR","ConRR","DesLL","DesLR","DesRR"]
@@ -80,7 +80,6 @@ def main():
 				hist.SetName("dataHist_%s" %label)
 
 				dyHist = deepcopy(drellyan.loadHistogramProjected(massPlot, bins[i]))
-				print dyHist.Integral()
 				dyHistSmear = deepcopy(drellyan.loadHistogramProjected(massPlotSmeared, bins[i]))
 				dyHistScaleUp = deepcopy(drellyan.loadHistogramProjected(massPlotUp, bins[i]))
 				dyHistScaleDown = deepcopy(drellyan.loadHistogramProjected(massPlotDown, bins[i]))

@@ -1,7 +1,7 @@
 from ROOT import * 
 from numpy import array as ar
 from array import array
-from setTDRStyle import setTDRStyle
+#from setTDRStyle import setTDRStyle
 from copy import deepcopy
 import pickle
 from helpers import *
@@ -40,10 +40,10 @@ def main():
 
 	
 	histos = ["BB","BE"]
-	labels = ["dimuon_Moriond2017_BB","dimuon_Moriond2017_BE"]
+	labels = ["dimuon_BB","dimuon_BE"]
 	
 	lambdas = [10,16,22,28,34]
-	models = ["ConLL","ConLR","ConRR","DesLL","DesLR","DesRR"]
+	models = ["ConLL","ConLR","ConRR"]
 	bins = [4,7]
 
 	massPlot = getPlot("massPlotForLimit")
@@ -115,8 +115,8 @@ def main():
 					hCanvas = TCanvas("hCanvas", "Distribution", 800,800)
 					
 					plotPad = ROOT.TPad("plotPad","plotPad",0,0,1,1)
-					setTDRStyle()		
-					plotPad.UseCurrentStyle()
+#					setTDRStyle()		
+#					plotPad.UseCurrentStyle()
 					plotPad.Draw()	
 					plotPad.cd()
 					sigHist.Rebin(20)
@@ -172,7 +172,7 @@ def main():
 					legend.Draw()
 						
 					
-					hCanvas.Print("fit_%s_%s_%s.pdf"%(name,label,suffix))
+					hCanvas.Print("plots/fit_%s_%s_%s.pdf"%(name,label,suffix))
 
 
 

@@ -12,7 +12,7 @@ def main():
 
 	
 	histos = ["BB","BE"]
-	labels = ["dimuon_Moriond2017_BB","dimuon_Moriond2017_BE"]
+	labels = ["dimuon_BB","dimuon_BE"]
 	
 
 	bins = [4,7]
