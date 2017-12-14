@@ -38,7 +38,7 @@ def main():
 	hCanvas = TCanvas("hCanvas", "Distribution", 800,800)
 
 	plotPad = ROOT.TPad("plotPad","plotPad",0,0,1,1)
-	setTDRStyle()		
+#	setTDRStyle()		
 	plotPad.UseCurrentStyle()
 	plotPad.Draw()	
 	plotPad.cd()

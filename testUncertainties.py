@@ -31,7 +31,6 @@ def main():
 		drellyan = Process(getattr(Backgrounds,"DrellYan"))
 
 		dyHist = deepcopy(drellyan.loadHistogramProjected(massPlot, bins[i]))
-		print dyHist.Integral()
 		dyHistSmear = deepcopy(drellyan.loadHistogramProjected(massPlotSmeared, bins[i]))
 		dyHistScaleUp = deepcopy(drellyan.loadHistogramProjected(massPlotUp, bins[i]))
 		dyHistScaleDown = deepcopy(drellyan.loadHistogramProjected(massPlotDown, bins[i]))
@@ -51,7 +50,7 @@ def main():
 	
 		plotPad = ROOT.TPad("plotPad","plotPad",0,0.3,1,1)
 		ratioPad = ROOT.TPad("ratioPad","ratioPad",0,0.,1,0.3)
-		setTDRStyle()		
+		#setTDRStyle()		
 		plotPad.UseCurrentStyle()
 		ratioPad.UseCurrentStyle()
 		plotPad.Draw()	
