@@ -39,12 +39,14 @@ def main():
 	gROOT.SetBatch(True)
 
 	
-	histos = ["BB","BE"]
-	labels = ["dimuon_BB","dimuon_BE"]
+	histos = ["BBCosPos","BBCSNeg","BECSPos","BECSNeg"]
+	#labels = ["dimuon_BB","dimuon_BE"]
+	labels = ["dimuon_BBCSPos","dimuon_BBCSNeg","dimuon_BECSPos","dimuon_BECSNeg"]
 	
 	lambdas = [10,16,22,28,34]
 	models = ["ConLL","ConLR","ConRR"]
-	bins = [4,7]
+	#bins = [4,7]
+	bins = [6,5,9,8]
 
 	massPlot = getPlot("massPlotForLimit")
 	massPlotSmeared = getPlot("massPlotSmeared")
@@ -79,14 +81,18 @@ def main():
 					signalDY = Process(getattr(Signals,nameDY))
 					
 					sigHist = deepcopy(signal.loadHistogramProjected(plot, bins[i]))
-					if "_BE" in label:
-						sigHist.Add(deepcopy(signal.loadHistogramProjected(plot, 9)))
+					if "_BECSPos" in label:
+						sigHist.Add(deepcopy(signal.loadHistogramProjected(plot, 11)))
+					if "_BECSNeg" in label:
+						sigHist.Add(deepcopy(signal.loadHistogramProjected(plot, 10)))
 					
 					
 						
 					sigHistDY = deepcopy(signalDY.loadHistogramProjected(plot, bins[i]))
-					if "_BE" in label:
-						sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(plot, 9)))
+					if "_BECSPos" in label:
+						sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(plot, 11)))
+					if "_BECSNeg" in label:
+						sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(plot, 10)))
 		
 					xMin = 300
 					if "Des" in name:
