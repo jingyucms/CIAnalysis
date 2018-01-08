@@ -82,17 +82,17 @@ def main():
 					
 					sigHist = deepcopy(signal.loadHistogramProjected(plot, bins[i]))
 					if "_BECSPos" in label:
-						sigHist.Add(deepcopy(signal.loadHistogramProjected(plot, 11)))
+						sigHist.Add(deepcopy(signal.loadHistogramProjected(plot, 12)))
 					if "_BECSNeg" in label:
-						sigHist.Add(deepcopy(signal.loadHistogramProjected(plot, 10)))
+						sigHist.Add(deepcopy(signal.loadHistogramProjected(plot, 11)))
 					
 					
 						
 					sigHistDY = deepcopy(signalDY.loadHistogramProjected(plot, bins[i]))
 					if "_BECSPos" in label:
-						sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(plot, 11)))
+						sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(plot, 12)))
 					if "_BECSNeg" in label:
-						sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(plot, 10)))
+						sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(plot, 11)))
 		
 					xMin = 300
 					if "Des" in name:
