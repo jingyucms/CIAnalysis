@@ -11,12 +11,12 @@ def main():
 	### for data
 
 	
-	histos = ["BBCSPos","BBCSNeg","BECSPos","BECSNeg"]
-	labels = ["dimuon_BBCSPos","dimuon_BBCSNeg","dimuon_BECSPos","dimuon_BECSNeg"]
+	histos = ["BB","BE","BBCSPos","BBCSNeg","BECSPos","BECSNeg"]
+	labels = ["dimuon_BB","dimuon_BE","dimuon_BBCSPos","dimuon_BBCSNeg","dimuon_BECSPos","dimuon_BECSNeg"]
 	
 	lambdas = [10,16,22,28,34]
 	models = ["ConLL","ConLR","ConRR","DesLL","DesLR","DesRR"]
-	bins = [6,5,9,8]
+	bins = [4,7,6,5,9,8]
 
 	massPlot = getPlot("massPlotForLimit")
 	massPlotSmeared = getPlot("massPlotSmeared")
@@ -47,6 +47,12 @@ def main():
 				sigHistScaleUp = deepcopy(signal.loadHistogramProjected(massPlotUp, bins[i]))
 				sigHistScaleDown = deepcopy(signal.loadHistogramProjected(massPlotDown, bins[i]))
 				sigHistWeighted = deepcopy(signal.loadHistogramProjected(massPlotWeighted, bins[i]))
+				if histo == "BE":
+					sigHist.Add(deepcopy(signal.loadHistogramProjected(massPlot, 10)))
+					sigHistSmear.Add(deepcopy(signal.loadHistogramProjected(massPlotSmeared, 10)))
+					sigHistScaleUp.Add(deepcopy(signal.loadHistogramProjected(massPlotUp, 10)))
+					sigHistScaleDown.Add(deepcopy(signal.loadHistogramProjected(massPlotDown, 10)))
+					sigHistWeighted.Add(deepcopy(signal.loadHistogramProjected(massPlotWeighted, 10)))
 				if "_BECSPos" in label:
 					sigHist.Add(deepcopy(signal.loadHistogramProjected(massPlot, 12)))
 					sigHistSmear.Add(deepcopy(signal.loadHistogramProjected(massPlotSmeared, 12)))
@@ -67,6 +73,12 @@ def main():
 				sigHistScaleUpDY = deepcopy(signalDY.loadHistogramProjected(massPlotUp, bins[i]))
 				sigHistScaleDownDY = deepcopy(signalDY.loadHistogramProjected(massPlotDown, bins[i]))
 				sigHistWeightedDY = deepcopy(signalDY.loadHistogramProjected(massPlotWeighted, bins[i]))
+				if histo == "BE":
+					sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(massPlot, 10)))
+					sigHistSmearDY.Add(deepcopy(signalDY.loadHistogramProjected(massPlotSmeared, 10)))
+					sigHistScaleUpDY.Add(deepcopy(signalDY.loadHistogramProjected(massPlotUp, 10)))
+					sigHistScaleDownDY.Add(deepcopy(signalDY.loadHistogramProjected(massPlotDown, 10)))
+					sigHistWeightedDY.Add(deepcopy(signalDY.loadHistogramProjected(massPlotWeighted, 10)))
 				if "_BECSPos" in label:
 					sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(massPlot, 12)))
 					sigHistSmearDY.Add(deepcopy(signalDY.loadHistogramProjected(massPlotSmeared, 12)))
@@ -87,6 +99,8 @@ def main():
 				sigHistWeighted.Add(sigHistWeightedDY,-1)
 	
 				hist = data.loadHistogramProjected(massPlot, bins[i])
+				if histo == "BE":
+					hist.Add(deepcopy(data.loadHistogramProjected(massPlot, 10)))				
 				if "_BECSPos" in label:
 					hist.Add(deepcopy(data.loadHistogramProjected(massPlot, 12)))				
 				if "_BECSNeg" in label:
@@ -98,6 +112,12 @@ def main():
 				dyHistScaleUp = deepcopy(drellyan.loadHistogramProjected(massPlotUp, bins[i]))
 				dyHistScaleDown = deepcopy(drellyan.loadHistogramProjected(massPlotDown, bins[i]))
 				dyHistWeighted = deepcopy(drellyan.loadHistogramProjected(massPlotWeighted, bins[i]))
+				if histo == "BE":
+					dyHist.Add(deepcopy(drellyan.loadHistogramProjected(massPlot, 10)))
+					dyHistSmear.Add(deepcopy(drellyan.loadHistogramProjected(massPlotSmeared,10)))
+					dyHistScaleUp.Add(deepcopy(drellyan.loadHistogramProjected(massPlotUp, 10)))
+					dyHistScaleDown.Add(deepcopy(drellyan.loadHistogramProjected(massPlotDown, 10)))
+					dyHistWeighted.Add(deepcopy(drellyan.loadHistogramProjected(massPlotWeighted, 10)))
 				if "_BECSPos" in label:
 					dyHist.Add(deepcopy(drellyan.loadHistogramProjected(massPlot, 12)))
 					dyHistSmear.Add(deepcopy(drellyan.loadHistogramProjected(massPlotSmeared,12)))
@@ -117,6 +137,12 @@ def main():
 				otherHistScaleUp = deepcopy(other.loadHistogramProjected(massPlotUp, bins[i]))
 				otherHistScaleDown = deepcopy(other.loadHistogramProjected(massPlotDown, bins[i]))
 				otherHistWeighted = deepcopy(other.loadHistogramProjected(massPlotWeighted, bins[i]))
+				if histo == "BE":
+					otherHist.Add(deepcopy(other.loadHistogramProjected(massPlot, 10)))
+					otherHistSmear.Add(deepcopy(other.loadHistogramProjected(massPlotSmeared, 10)))
+					otherHistScaleUp.Add(deepcopy(other.loadHistogramProjected(massPlotUp, 10)))
+					otherHistScaleDown.Add(deepcopy(other.loadHistogramProjected(massPlotDown, 10)))
+					otherHistWeighted.Add(deepcopy(other.loadHistogramProjected(massPlotWeighted, 10)))
 				if "_BECSPos" in label:
 					otherHist.Add(deepcopy(other.loadHistogramProjected(massPlot, 12)))
 					otherHistSmear.Add(deepcopy(other.loadHistogramProjected(massPlotSmeared, 12)))
