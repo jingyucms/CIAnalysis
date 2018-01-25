@@ -80,13 +80,12 @@ def main():
 					
 					sigHist = deepcopy(signal.loadHistogramProjected(plot, bins[i]))
 					if "_BE" in label:
-						sigHist.Add(deepcopy(signal.loadHistogramProjected(plot, 9)))
-					
+						sigHist.Add(deepcopy(signal.loadHistogramProjected(plot, 10)))
 					
 						
 					sigHistDY = deepcopy(signalDY.loadHistogramProjected(plot, bins[i]))
 					if "_BE" in label:
-						sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(plot, 9)))
+						sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(plot, 10)))
 		
 					xMin = 300
 					if "Des" in name:
