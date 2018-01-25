@@ -99,7 +99,8 @@ def main():
 				sigHistWeighted.Add(sigHistWeightedDY,-1)
 	
 				hist = data.loadHistogramProjected(massPlot, bins[i])
-				if histo == "label":
+
+				if histo == "BE":
 					hist.Add(deepcopy(data.loadHistogramProjected(massPlot, 10)))				
 				if "_BECSPos" in label:
 					hist.Add(deepcopy(data.loadHistogramProjected(massPlot, 12)))				

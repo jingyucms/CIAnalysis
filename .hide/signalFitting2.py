@@ -40,7 +40,7 @@ def main():
 
 	
 	histos = ["BB","BE","BBCosPos","BBCSNeg","BECSPos","BECSNeg"]
-	#labels = ["dimuon_BB","dimuon_BE"]
+
 	labels = ["dimuon_BB","dimuon_BE","dimuon_BBCSPos","dimuon_BBCSNeg","dimuon_BECSPos","dimuon_BECSNeg"]
 	
 	lambdas = [10,16,22,28,34]
@@ -91,7 +91,11 @@ def main():
 					
 						
 					sigHistDY = deepcopy(signalDY.loadHistogramProjected(plot, bins[i]))
+<<<<<<< HEAD:signalFitting2.py
 					if histo == "BE":
+=======
+					if histo = "BE":
+>>>>>>> 9a0bf20574bc5c552cb8e0ce4fcfc71eed71b9ba:.hide/signalFitting2.py
 						sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(plot, 10)))
 					if "_BECSPos" in label:
 						sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(plot, 12)))

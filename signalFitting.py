@@ -80,8 +80,7 @@ def main():
 					
 					sigHist = deepcopy(signal.loadHistogramProjected(plot, bins[i]))
 					if "_BE" in label:
-						sigHist.Add(deepcopy(signal.loadHistogramProjected(plot, 10)))
-					
+						sigHist.Add(deepcopy(signal.loadHistogramProjected(plot, 10)))					
 						
 					sigHistDY = deepcopy(signalDY.loadHistogramProjected(plot, bins[i]))
 					if "_BE" in label:
