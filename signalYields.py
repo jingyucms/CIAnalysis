@@ -14,11 +14,14 @@ def main():
 	labels = ["dimuon_Moriond2017","dielectron_Moriond2017"]
 	suffixesMu = ["nominal","scaledown","smeared","muonid"]
 	suffixesEle = ["nominal","scaledown","scaleup"]
+	#~ suffixesMu = ["nominal"]
+	#~ suffixesEle = ["nominal"]
 	#~ suffixes = ["smeared"]
 	lambdas = [10,16,22,28,34,40]
 	models = ["ConLL","ConLR","ConRR","DesLL","DesLR","DesRR"]
 
 	massBins = [400,500,700,1100,1900,3500]
+	#~ massBins = [400]
 	signalYields = {}
 	
 	
@@ -43,16 +46,27 @@ def main():
 							signalYields["%s_%s_%s"%(name,label,histo)] = {}
 							for index, massBin in enumerate(massBins):
 								function = fitFile.Get("fn_m%d_%s"%(massBin,model))
+								fitR = fitFile.Get("fitR_m%d_%s"%(massBin,model))
+								pars = fitR.GetParams()
+								errs = fitR.Errors()
+								function.SetParameter(0,pars[0])
+								function.SetParameter(1,pars[1])
+								function.SetParameter(2,pars[2])
+								function.SetParError(0,errs[0])
+								function.SetParError(1,errs[1])
+								function.SetParError(2,errs[2])
 								functionUnc = fitFile.Get("fn_unc_m%d_%s"%(massBin,model))
 								uncert = ((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000)))**0.5								
 								signalYields["%s_%s_%s"%(name,label,histo)][str(index)] = [(function.Eval(l)-function.Eval(100000)),uncert]
-								print signalYields["%s_%s_%s"%(name,label,histo)][str(index)] 
+								print label, histo, model, suffix, l, function.Eval(l)
+								print label, histo, model, suffix, 100000, function.Eval(100000)
+								#~ print signalYields["%s_%s_%s"%(name,label,histo)][str(index)] 
 
 			
 
 
 			print suffix
-			print signalYields
+			#~ print signalYields
 			if "dimuon" in label:
 				fileName = "signalYields"
 			else:

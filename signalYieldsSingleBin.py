@@ -72,6 +72,15 @@ def main():
 							signalYields["%s_%s_%s"%(name,label,histo)] = {}
 							for index, massBin in enumerate(massBins):
 								function = fitFile.Get("fn_m%d_%s"%(massBin,model))
+								fitR = fitFile.Get("fitR_m%d_%s"%(massBin,model))
+								pars = fitR.GetParams()
+								errs = fitR.Errors()
+								function.SetParameter(0,pars[0])
+								function.SetParameter(1,pars[1])
+								function.SetParameter(2,pars[2])
+								function.SetParError(0,errs[0])
+								function.SetParError(1,errs[1])
+								function.SetParError(2,errs[2])
 								functionUnc = fitFile.Get("fn_unc_m%d_%s"%(massBin,model))
 								print function.Eval(l), function.Eval(100000), l, model, massBin
 								uncert = ((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000)))**0.5
