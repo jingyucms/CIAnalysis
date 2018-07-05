@@ -12,13 +12,15 @@ def main():
 	
 	histos = ["BB","BE"]
 	labels = ["dimuon_Moriond2017","dielectron_Moriond2017"]
-	suffixesMu = ["nominal","scaledown","smeared","muonid"]
-	suffixesEle = ["nominal","scaledown","scaleup"]
+	suffixesMu = ["nominal","scaledown","smeared","muonid","pileup","piledown"]
+	suffixesEle = ["nominal","scaledown","scaleup","pileup","piledown"]
 	#~ suffixesMu = ["nominal"]
 	#~ suffixesEle = ["nominal"]
 	#~ suffixes = ["smeared"]
 	lambdas = [10,16,22,28,34,40]
 	models = ["ConLL","ConLR","ConRR","DesLL","DesLR","DesRR"]
+	#~ lambdas = [10]
+	#~ models = ["ConLL"]
 
 	massBins = [400,500,700,1100,1900,3500]
 	#~ massBins = [400]
@@ -37,7 +39,7 @@ def main():
 							name = "cito2mu"
 						else:
 							name = "cito2e"	
-						fitFile = TFile("%s_%s_%s_inc_parametrization_des_fixed.root"%(name,suffix,histo.lower()),"READ")
+						fitFile = TFile("%s_%s_%s_inc_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower()),"READ")
 						for l in lambdas:
 							if "dimuon" in label:
 								name = "CITo2Mu_Lam%dTeV%s"%(l,model)
@@ -58,7 +60,7 @@ def main():
 								functionUnc = fitFile.Get("fn_unc_m%d_%s"%(massBin,model))
 								uncert = ((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000)))**0.5								
 								signalYields["%s_%s_%s"%(name,label,histo)][str(index)] = [(function.Eval(l)-function.Eval(100000)),uncert]
-								print label, histo, model, suffix, l, function.Eval(l)
+								print label, histo, model, suffix, l, function.Eval(l), functionUnc.Eval(l)
 								print label, histo, model, suffix, 100000, function.Eval(100000)
 								#~ print signalYields["%s_%s_%s"%(name,label,histo)][str(index)] 
 
@@ -82,6 +84,10 @@ def main():
 				otherSuffix = "resolution"
 			elif suffix == "muonid":
 				otherSuffix = "ID"
+			elif suffix == "pileup":
+				otherSuffix = "pileup"
+			elif suffix == "piledown":
+				otherSuffix = "piledown"
 			else:
 				print suffix
 			outFilePkl = open("%s_%s.pkl"%(fileName,otherSuffix),"w")
