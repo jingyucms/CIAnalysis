@@ -4,7 +4,7 @@ from array import array
 from ROOT import TCanvas, TPad, TH1F, TH2F, TH1I, THStack, TLegend, TMath
 from ConfigParser import ConfigParser
 from math import sqrt
-from defs import defineMyColors, myColors, fileNames, path
+from defsEle import defineMyColors, myColors, fileNames, path
 from copy import deepcopy
 config = ConfigParser()
 
@@ -32,7 +32,6 @@ def loadHistoFromFile(fileName,histName,rebin):
 	"""
 	from ROOT import TFile, TH1F
 	rootFile = TFile(path+fileName, "read")
-	rootFile.ls()
 	if "jets" in fileName:
 		tmpResult = rootFile.Get("TotalJets")
 		result = TH1F("jets","jets",10000,0,10000)
@@ -44,7 +43,7 @@ def loadHistoFromFile(fileName,histName,rebin):
 	result.Rebin(rebin)
 	result.SetDirectory(0)	
 	return deepcopy(result)
-
+	
 def loadHistoFromFile2D(fileName,histName,rebin):
 	"""
 	returns histogram from file
@@ -124,6 +123,34 @@ def getHistoFromTree(tree,plot,nEvents = -1):
 		result.SetBinError(plot.nBins,0)
 
 	return result
+def getHistoFromTree(tree,plot,nEvents = -1):
+
+	from ROOT import TH1F
+	from random import randint
+	from sys import maxint
+	if nEvents < 0:
+		nEvents = maxint
+	#make a random name you could give something meaningfull here,
+	#but that would make this less readable
+
+	
+
+	name = "%x"%(randint(0, maxint))
+	if plot.binning == []:
+		result = TH1F(name, "", plot.nBins, plot.xMin, plot.xMax)
+	else:
+		result = TH1F(name, "", len(plot.binning)-1, array("f",plot.binning))
+		
+	result.Sumw2()
+	tree.Draw("%s>>%s"%(plot.variable, name), plot.cut, "goff", nEvents)
+	
+	result.SetBinContent(plot.nBins,result.GetBinContent(plot.nBins)+result.GetBinContent(plot.nBins+1))
+	if result.GetBinContent(plot.nBins) >= 0.:
+		result.SetBinError(plot.nBins,sqrt(result.GetBinContent(plot.nBins)))
+	else:
+		result.SetBinError(plot.nBins,0)
+
+	return result
 
 	
 
@@ -159,7 +186,9 @@ class Process:
 
 		
 	def loadHistogram(self,plot):
+		
 		if plot.plot2D:
+			print "bla"
 			for index, sample in enumerate(self.samples):
 				tempHist = loadHistoFromFile2D(fileNames[sample],plot.histName,plot.rebin)
 				###tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]) #histograms are already scaled to lumi
@@ -171,7 +200,7 @@ class Process:
 			self.histo.SetLineColor(self.theLineColor)
 			self.histo.GetXaxis().SetTitle(plot.xaxis) 
 			self.histo.GetYaxis().SetTitle(plot.yaxis)	
-		else:			
+		else:
 			for index, sample in enumerate(self.samples):
 				tempHist = loadHistoFromFile(fileNames[sample],plot.histName,plot.rebin)
 				###tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]) #histograms are already scaled to lumi
@@ -190,14 +219,10 @@ class Process:
 		for index, sample in enumerate(self.samples):
 			tempHist = loadHistoFromFileProjected(fileNames[sample],plot.histName,plot.rebin,binNumber)
 			###tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]) #histograms are already scaled to lumi
-			from random import randint
-			from sys import maxint			
-			name = "%x"%(randint(0, maxint))
-
 			if histo == None:
-				histo = tempHist.Clone(name)
+				histo = tempHist.Clone()
 			else:	
-				histo.Add(tempHist.Clone(name))
+				histo.Add(tempHist.Clone())
 		histo.SetFillColor(self.theColor)
 		histo.SetLineColor(self.theLineColor)
 		histo.GetXaxis().SetTitle(plot.xaxis) 

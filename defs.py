@@ -6,7 +6,7 @@ import copy
 
 
 #path = "root://cmseos.fnal.gov///store/user/jschulte/ZprimeAnalysis/histos/histosZprimeMuMu/"
-path = "files/"
+path = "filesPU/"
 
 fileNames = {
 
@@ -271,7 +271,7 @@ class Signals:
 		label = "CITo2Mu_Lam10TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kBlack
+		linecolor = ROOT.kRed
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -381,7 +381,7 @@ class Signals:
 		label = "CITo2Mu_Lam22TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kBlack
+		linecolor = ROOT.kRed
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -436,7 +436,7 @@ class Signals:
 		label = "CITo2Mu_Lam28TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kBlack
+		linecolor = ROOT.kRed
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -491,7 +491,7 @@ class Signals:
 		label = "CITo2Mu_Lam34TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 34 TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kBlack
+		linecolor = ROOT.kRed
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -723,7 +723,7 @@ class Plot:
 	log = False
 	useJets = False
 	
-	def __init__(self,histName,plotName, yRange = None, xRange = None, nBins = 0, xLabel = "", yLabel = "",log=False,rebin = None, binning = [], useJets=False):
+	def __init__(self,histName,plotName, yRange = None, xRange = None, nBins = 0, xLabel = "", yLabel = "",log=False,rebin = None, binning = [], useJets=False,plot2D=False):
 		self.histName=histName
 		self.xaxis=xLabel
 		self.yaxis=yLabel
@@ -736,6 +736,7 @@ class Plot:
 		self.plotName = plotName
 		self.fileName= plotName
 		self.useJets = useJets
+		self.plot2D = plot2D
 		if rebin != None:
 			self.rebin = rebin
 		if log:
@@ -758,6 +759,11 @@ class plots:
 	massPlotSmeared = Plot("CSSmearedMassBinned","DimuonMassSmeared",xLabel="dimuon mass [GeV]",log=True,xRange=[120,3000],nBins = 1, rebin=20,yLabel="Events / 20 GeV",useJets=True)
 	massPlotUp = Plot("CSMassUpBinned","DimuonMassScaleUp",xLabel="dimuon mass [GeV]",log=True,xRange=[120,3000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
 	massPlotDown = Plot("CSMassDownBinned","DimuonMassScaleDown",xLabel="dimuon mass [GeV]",log=True,xRange=[120,3000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
+	massPlotPUUp = Plot("CSMassPUUpBinned","DimuonPUMassScaleUp",xLabel="dimuon mass [GeV]",log=True,xRange=[120,3000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
+	massPlotPUDown = Plot("CSMassPUDownBinned","DimuonPUMassScaleDown",xLabel="dimuon mass [GeV]",log=True,xRange=[120,3000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
+	
+	etaPtMapGen = Plot("EtaPtMapGen","EtaPtMapGen",xLabel="lepton #eta",log=False,xRange=[-2.4,2.4],nBins = 100, rebin=1,yLabel="Events / 0.6 GeV",plot2D=True)
+	etaPtMapReco = Plot("EtaPtMapReco","EtaPtMapReco",xLabel="lepton #eta",log=False,xRange=[-2.4,2.4],nBins = 100, rebin=1,yLabel="Events / 0.6 GeV",plot2D=True)
 	
 	csPlotM60To120 = Plot("CosAngleCollinSoperCorrect60Mass120","CosThetaStar_M60To120",xLabel="dimuon mass [GeV]",log=True,xRange=[-1,1],nBins = 100, rebin=1,yLabel="Events / 0.2")
 	csPlotM120To300 = Plot("CosAngleCollinSoperCorrect120Mass300","CosThetaStar_M120To300",xLabel="dimuon mass [GeV]",log=True,xRange=[-1,1],nBins = 100, rebin=1,yLabel="Events / 0.2")

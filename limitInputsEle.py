@@ -13,141 +13,117 @@ def main():
 	
 	histos = ["BB","BE"]
 	labels = ["dielectron_Moriond2017_BB","dielectron_Moriond2017_BE"]
-	
-	lambdas = [10,16,22,28,34,40]
-	models = ["ConLL","ConLR","ConRR","DesLL","DesLR","DesRR"]
+
 	bins = [4,7]
 
 	massPlot = getPlot("massPlotForLimit")
 	massPlotSmeared = getPlot("massPlotSmeared")
 	massPlotUp = getPlot("massPlotUp")
 	massPlotDown = getPlot("massPlotDown")
+	massPlotPUUp = getPlot("massPlotPUUp")
+	massPlotPUDown = getPlot("massPlotPUDown")
 
 
 
 	for i, histo in enumerate(histos):
 		label = labels[i]
 
-		for model in models:
-			for l in lambdas:
-				data = Process(Data)
-				drellyan = Process(getattr(Backgrounds,"DrellYan"))
-				other = Process(getattr(Backgrounds,"Other"))				
-				#~ name = "CITo2E_Lam%dTeV%s"%(l,model)
-				#~ signal = Process(getattr(Signals,name))
-			#~ 
-				#~ name = "CITo2E_Lam100kTeV%s"%(model)
-				#~ signalDY = Process(getattr(Signals,name))
+
+		data = Process(Data)
+		drellyan = Process(getattr(Backgrounds,"DrellYan"))
+		other = Process(getattr(Backgrounds,"Other"))				
+	
+		fResult = TFile("inputsCI_%s.root"%(label),"RECREATE")	
+		
+
+		hist = data.loadHistogramProjected(massPlot, bins[i])
 			
-				fResult = TFile("inputsCI_%s_%dTeV_%s.root"%(label,l,model),"RECREATE")	
-				
-				#~ sigHist = deepcopy(signal.loadHistogramProjected(massPlot, bins[i]))
-				#~ sigHistSmear = deepcopy(signal.loadHistogramProjected(massPlotSmeared, bins[i]))
-				#~ sigHistScaleUp = deepcopy(signal.loadHistogramProjected(massPlotUp, bins[i]))
-				#~ sigHistScaleDown = deepcopy(signal.loadHistogramProjected(massPlotDown, bins[i]))
-				#~ if "_BE" in label:
-					#~ sigHist.Add(deepcopy(signal.loadHistogramProjected(massPlot, 10)))
-					#~ sigHistSmear.Add(deepcopy(signal.loadHistogramProjected(massPlotSmeared, 10)))
-					#~ sigHistScaleUp.Add(deepcopy(signal.loadHistogramProjected(massPlotUp, 10)))
-					#~ sigHistScaleDown.Add(deepcopy(signal.loadHistogramProjected(massPlotDown, 10)))
-				
-				
-					
-				#~ sigHistDY = deepcopy(signalDY.loadHistogramProjected(massPlot, bins[i]))
-				#~ sigHistSmearDY = deepcopy(signalDY.loadHistogramProjected(massPlotSmeared, bins[i]))
-				#~ sigHistScaleUpDY = deepcopy(signalDY.loadHistogramProjected(massPlotUp, bins[i]))
-				#~ sigHistScaleDownDY = deepcopy(signalDY.loadHistogramProjected(massPlotDown, bins[i]))
-				#~ if "_BE" in label:
-					#~ sigHistDY.Add(deepcopy(signalDY.loadHistogramProjected(massPlot, 10)))
-					#~ sigHistSmearDY.Add(deepcopy(signalDY.loadHistogramProjected(massPlotSmeared, 10)))
-					#~ sigHistScaleUpDY.Add(deepcopy(signalDY.loadHistogramProjected(massPlotUp, 10)))
-					#~ sigHistScaleDownDY.Add(deepcopy(signalDY.loadHistogramProjected(massPlotDown, 10)))
-	
-				#~ sigHist.Add(sigHistDY,-1)
-				#~ sigHistSmear.Add(sigHistSmearDY,-1)
-				#~ sigHistScaleUp.Add(sigHistScaleUpDY,-1)
-				#~ sigHistScaleDown.Add(sigHistScaleDownDY,-1)
-	
-				hist = data.loadHistogramProjected(massPlot, bins[i])
-				#~ if "_BE" in label:
-					#~ hist.Add(deepcopy(data.loadHistogramProjected(massPlot, 10)))				
-				hist.SetName("dataHist_%s" %label)
+		hist.SetName("dataHist_%s" %label)
 
-				dyHist = deepcopy(drellyan.loadHistogramProjected(massPlot, bins[i]))
-				#~ print dyHist.Integral()
-				dyHistSmear = deepcopy(drellyan.loadHistogramProjected(massPlotSmeared, bins[i]))
-				dyHistScaleUp = deepcopy(drellyan.loadHistogramProjected(massPlotUp, bins[i]))
-				dyHistScaleDown = deepcopy(drellyan.loadHistogramProjected(massPlotDown, bins[i]))
-				#~ if "_BE" in label:
-					#~ dyHist.Add(deepcopy(drellyan.loadHistogramProjected(massPlot, 10)))
-					#~ dyHistSmear.Add(deepcopy(drellyan.loadHistogramProjected(massPlotSmeared, 10)))
-					#~ dyHistScaleUp.Add(deepcopy(drellyan.loadHistogramProjected(massPlotUp, 10)))
-					#~ dyHistScaleDown.Add(deepcopy(drellyan.loadHistogramProjected(massPlotDown, 10)))
-
-				otherHist = deepcopy(other.loadHistogramProjected(massPlot, bins[i]))
-				otherHistSmear = deepcopy(other.loadHistogramProjected(massPlotSmeared, bins[i]))
-				otherHistScaleUp = deepcopy(other.loadHistogramProjected(massPlotUp, bins[i]))
-				otherHistScaleDown = deepcopy(other.loadHistogramProjected(massPlotDown, bins[i]))
-				#~ if "_BE" in label:
-					#~ otherHist.Add(deepcopy(other.loadHistogramProjected(massPlot, 10)))
-					#~ otherHistSmear.Add(deepcopy(other.loadHistogramProjected(massPlotSmeared, 10)))
-					#~ otherHistScaleUp.Add(deepcopy(other.loadHistogramProjected(massPlotUp, 10)))
-					#~ otherHistScaleDown.Add(deepcopy(other.loadHistogramProjected(massPlotDown, 10)))
-	
-				
-				#~ sigHist.SetName("sigHist_%s"%label)
-				#~ sigHistSmear.SetName("sigHistSmeared_%s"%label)
-				#~ sigHistScaleUp.SetName("sigHistScaleUp_%s"%label)
-				#~ sigHistScaleDown.SetName("sigHistScaleDown_%s"%label)
-								
-				dyHist.SetName("bkgHistDY_%s"%label)
-				dyHistSmear.SetName("bkgHistDYSmeared_%s"%label)
-				dyHistScaleUp.SetName("bkgHistDYScaleUp_%s"%label)
-				dyHistScaleDown.SetName("bkgHistDYScaleDown_%s"%label)				
-				otherHist.SetName("bkgHistOther_%s"%label)
-				otherHistSmear.SetName("bkgHistOtherSmeared_%s"%label)
-				otherHistScaleUp.SetName("bkgHistOtherScaleUp_%s"%label)
-				otherHistScaleDown.SetName("bkgHistOtherScaleDown_%s"%label)				
-
-				#~ if "_BB" in label:
-				fJets = TFile("fixFilesEle/hist_jets.root","OPEN")	
-				#~ print fJets.ls()
-				#~ else:	
-					#~ fJets = TFile("fixFilesEle/Heep-FR-Data-total-jets-BarrelEndCaps.root","OPEN")	
-
-				if "BB" in label:
-					jetHist = fJets.Get("h_mee_BB_usual")
-				else:	
-					jetHist = fJets.Get("h_mee_BE_usual")
-				jetHist.SetName("bkgHistJets_%s"%label)				
-				jetHist.SetDirectory(fResult)				
-				
-				print hist.Integral(hist.FindBin(400),hist.FindBin(500-0.01))
-				print dyHist.Integral(dyHist.FindBin(400),dyHist.FindBin(500-0.01)) + otherHist.Integral(otherHist.FindBin(400),otherHist.FindBin(500-0.01)) + jetHist.Integral(jetHist.FindBin(400),jetHist.FindBin(500-0.01))
-				print dyHist.Integral(dyHist.FindBin(400),dyHist.FindBin(500-0.01)) 
-				print otherHist.Integral(otherHist.FindBin(400),otherHist.FindBin(500-0.01)) 
-				print jetHist.Integral(jetHist.FindBin(400),jetHist.FindBin(500-0.01))		
+		dyHist = deepcopy(drellyan.loadHistogramProjected(massPlot, bins[i]))
+		dyHistSmear = deepcopy(drellyan.loadHistogramProjected(massPlotSmeared, bins[i]))
+		dyHistScaleUp = deepcopy(drellyan.loadHistogramProjected(massPlotUp, bins[i]))
+		dyHistScaleDown = deepcopy(drellyan.loadHistogramProjected(massPlotDown, bins[i]))
+		dyHistPUUp = deepcopy(drellyan.loadHistogramProjected(massPlotPUUp, bins[i]))
+		dyHistPUDown = deepcopy(drellyan.loadHistogramProjected(massPlotPUDown, bins[i]))
 
 
+		otherHist = deepcopy(other.loadHistogramProjected(massPlot, bins[i]))
+		otherHistSmear = deepcopy(other.loadHistogramProjected(massPlotSmeared, bins[i]))
+		otherHistScaleUp = deepcopy(other.loadHistogramProjected(massPlotUp, bins[i]))
+		otherHistScaleDown = deepcopy(other.loadHistogramProjected(massPlotDown, bins[i]))
+		otherHistPUUp = deepcopy(other.loadHistogramProjected(massPlotPUUp, bins[i]))
+		otherHistPUDown = deepcopy(other.loadHistogramProjected(massPlotPUDown, bins[i]))
+						
+		dyHist.SetName("bkgHistDY_%s"%label)
+		dyHistSmear.SetName("bkgHistDYSmeared_%s"%label)
+		dyHistScaleUp.SetName("bkgHistDYScaleUp_%s"%label)
+		dyHistScaleDown.SetName("bkgHistDYScaleDown_%s"%label)				
+		dyHistPUUp.SetName("bkgHistDYPUUp_%s"%label)
+		dyHistPUDown.SetName("bkgHistDYPUDown_%s"%label)				
+		otherHist.SetName("bkgHistOther_%s"%label)
+		otherHistSmear.SetName("bkgHistOtherSmeared_%s"%label)
+		otherHistScaleUp.SetName("bkgHistOtherScaleUp_%s"%label)
+		otherHistScaleDown.SetName("bkgHistOtherScaleDown_%s"%label)				
+		otherHistPUUp.SetName("bkgHistOtherPUUp_%s"%label)
+		otherHistPUDown.SetName("bkgHistOtherPUDown_%s"%label)				
+
+		fJets = TFile("filesElePU/hist_jets.root","OPEN")	
+
+		if "BB" in label:
+			jetHist = fJets.Get("h_mee_BB_usual")
+		else:	
+			jetHist = fJets.Get("h_mee_BE_usual")
+		jetHist.SetName("bkgHistJets_%s"%label)				
+		jetHist.SetDirectory(fResult)				
+
+		dyHist.SetDirectory(fResult)
+		dyHistSmear.SetDirectory(fResult)
+		dyHistScaleUp.SetDirectory(fResult)
+		dyHistScaleDown.SetDirectory(fResult)
+		dyHistPUUp.SetDirectory(fResult)
+		dyHistPUDown.SetDirectory(fResult)
+		otherHist.SetDirectory(fResult)
+		otherHistSmear.SetDirectory(fResult)
+		otherHistScaleUp.SetDirectory(fResult)
+		otherHistScaleDown.SetDirectory(fResult)
+		otherHistPUUp.SetDirectory(fResult)
+		otherHistPUDown.SetDirectory(fResult)
+		hist.SetDirectory(fResult)
+
+							
+		fResult.Write()
+		fResult.Close()
+
+
+		
+		### To print uncertainty values
+
+		#~ xMin = 2000
+		#~ xMax = 60000
+		#~ 
 #~ 
-				#~ sigHist.SetDirectory(fResult)
-				#~ sigHistSmear.SetDirectory(fResult)
-				#~ sigHistScaleUp.SetDirectory(fResult)
-				#~ sigHistScaleDown.SetDirectory(fResult)
-				dyHist.SetDirectory(fResult)
-				dyHistSmear.SetDirectory(fResult)
-				dyHistScaleUp.SetDirectory(fResult)
-				dyHistScaleDown.SetDirectory(fResult)
-				otherHist.SetDirectory(fResult)
-				otherHistSmear.SetDirectory(fResult)
-				otherHistScaleUp.SetDirectory(fResult)
-				otherHistScaleDown.SetDirectory(fResult)
-				hist.SetDirectory(fResult)
+		#~ default =  dyHist.Integral(dyHist.FindBin(xMin),dyHist.FindBin(xMax-0.01)) + otherHist.Integral(dyHist.FindBin(xMin),dyHist.FindBin(xMax-0.01)) + jetHist.Integral(jetHist.FindBin(xMin),jetHist.FindBin(xMax-0.01))
+#~ 
+		#~ errDY = ROOT.Double()	
+		#~ errOther = ROOT.Double()	
+		#~ default2 = dyHist.IntegralAndError(hist.FindBin(xMin),hist.FindBin(xMax-0.01),errDY) + otherHist.IntegralAndError(hist.FindBin(xMin),hist.FindBin(xMax-0.01),errOther) + jetHist.Integral(jetHist.FindBin(xMin),jetHist.FindBin(xMax-0.01))
+		#~ err = errDY+errOther
+#~ 
+		#~ jetsDown =  dyHist.Integral(dyHist.FindBin(xMin),dyHist.FindBin(xMax-0.01)) + otherHist.Integral(dyHist.FindBin(xMin),dyHist.FindBin(xMax-0.01)) + jetHist.Integral(jetHist.FindBin(xMin),jetHist.FindBin(xMax-0.01))*0.5
+		#~ jetsUp =  dyHist.Integral(dyHist.FindBin(xMin),dyHist.FindBin(xMax-0.01)) + otherHist.Integral(dyHist.FindBin(xMin),dyHist.FindBin(xMax-0.01)) + jetHist.Integral(jetHist.FindBin(xMin),jetHist.FindBin(xMax-0.01))*1.5
+		#~ scaleUp =  dyHistScaleUp.Integral(dyHistScaleUp.FindBin(xMin),dyHistScaleUp.FindBin(xMax-0.01)) + otherHistScaleUp.Integral(dyHistScaleUp.FindBin(xMin),dyHistScaleUp.FindBin(xMax-0.01)) + jetHist.Integral(jetHist.FindBin(xMin),jetHist.FindBin(xMax-0.01))
+		#~ scaleDown =  dyHistScaleDown.Integral(dyHistScaleDown.FindBin(xMin),dyHistScaleDown.FindBin(xMax-0.01)) + otherHistScaleDown.Integral(dyHistScaleDown.FindBin(xMin),dyHistScaleDown.FindBin(xMax-0.01))	+ jetHist.Integral(jetHist.FindBin(xMin),jetHist.FindBin(xMax-0.01))			
+		#~ scalePUUp =  dyHistPUUp.Integral(dyHistPUUp.FindBin(xMin),dyHistPUUp.FindBin(xMax-0.01)) + otherHistPUUp.Integral(dyHistPUUp.FindBin(xMin),dyHistPUUp.FindBin(xMax-0.01)) + jetHist.Integral(jetHist.FindBin(xMin),jetHist.FindBin(xMax-0.01))
+		#~ scalePUDown =  dyHistPUDown.Integral(dyHistPUDown.FindBin(xMin),dyHistPUDown.FindBin(xMax-0.01)) + otherHistPUDown.Integral(dyHistPUDown.FindBin(xMin),dyHistPUDown.FindBin(xMax-0.01))	+ jetHist.Integral(jetHist.FindBin(xMin),jetHist.FindBin(xMax-0.01))		
+		#~ 
+		#~ print "Mass Scale: ", max(abs(1 - scaleUp/default),abs(1 - scaleDown/default))*100
+		#~ print "PU: ", max(abs(1 - scalePUUp/default),abs(1 - scalePUDown/default))*100
+		#~ print "Kets: ", max(abs(1 - jetsUp/default),abs(1 - jetsDown/default))*100
+		#~ print "MC stats: ", abs(err/default2)*100
+		#~ 
+#~ 
 
-				print hist.Integral(hist.FindBin(400),hist.GetNbinsX()), dyHist.Integral(hist.FindBin(400),hist.GetNbinsX())+otherHist.Integral(hist.FindBin(400),hist.GetNbinsX())+jetHist.Integral(hist.FindBin(400),hist.GetNbinsX())
-									
-				fResult.Write()
-				fResult.Close()
 
 		
 		

@@ -4,26 +4,28 @@ from array import array
 from setTDRStyle import setTDRStyle
 from copy import deepcopy
 import ratios
-from helpers import *
-from defs import getPlot, Backgrounds, Signals, Data
+from helpersEle import *
+from defsEle import getPlot, Backgrounds, Signals, Data
 
 def main():
 	### for data
 
 	
 	histos = ["BB","BE"]
-	labels = ["dimuon_Moriond2017_BB","dimuon_Moriond2017_BE"]
+	labels = ["dielectron_Moriond2017_BB","dielectron_Moriond2017_BE"]
+	#~ labels = ["dielectron_Moriond2017_BE"]
 	
 
 	bins = [4,7]
+	#~ bins = [7]
 
 	massPlot = getPlot("massPlotForLimit")
-	massPlotSmeared = getPlot("massPlotSmeared")
+	#~ massPlotSmeared = getPlot("massPlotSmeared")
 	massPlotUp = getPlot("massPlotUp")
 	massPlotDown = getPlot("massPlotDown")
 	massPlotPUUp = getPlot("massPlotPUUp")
 	massPlotPUDown = getPlot("massPlotPUDown")
-	massPlotWeighted = getPlot("massPlotWeighted")
+	#~ massPlotWeighted = getPlot("massPlotWeighted")
 
 
 
@@ -35,42 +37,24 @@ def main():
 		#~ drellyan = Process(getattr(Signals,"CITo2Mu_Lam34TeVConLL"))
 
 		dyHist = deepcopy(drellyan.loadHistogramProjected(massPlot, bins[i]))
-		dyHistSmear = deepcopy(drellyan.loadHistogramProjected(massPlotSmeared, bins[i]))
 		dyHistScaleUp = deepcopy(drellyan.loadHistogramProjected(massPlotUp, bins[i]))
 		dyHistScaleDown = deepcopy(drellyan.loadHistogramProjected(massPlotDown, bins[i]))
 		dyHistPUUp = deepcopy(drellyan.loadHistogramProjected(massPlotPUUp, bins[i]))
 		dyHistPUDown = deepcopy(drellyan.loadHistogramProjected(massPlotPUDown, bins[i]))
-		dyHistWeighted = deepcopy(drellyan.loadHistogramProjected(massPlotWeighted, bins[i]))
-		if "_BE" in label:
-			dyHist.Add(deepcopy(drellyan.loadHistogramProjected(massPlot, 10)))
-			dyHistSmear.Add(deepcopy(drellyan.loadHistogramProjected(massPlotSmeared, 10)))
-			dyHistScaleUp.Add(deepcopy(drellyan.loadHistogramProjected(massPlotUp, 10)))
-			dyHistScaleDown.Add(deepcopy(drellyan.loadHistogramProjected(massPlotDown, 10)))
-			dyHistPUUp.Add(deepcopy(drellyan.loadHistogramProjected(massPlotPUUp, 10)))
-			dyHistPUDown.Add(deepcopy(drellyan.loadHistogramProjected(massPlotPUDown, 10)))
-			dyHistWeighted.Add(deepcopy(drellyan.loadHistogramProjected(massPlotWeighted, 10)))
+
 		dyHist.Add(deepcopy(other.loadHistogramProjected(massPlot, bins[i])))
-		dyHistSmear.Add(deepcopy(other.loadHistogramProjected(massPlotSmeared, bins[i])))
 		dyHistScaleUp.Add(deepcopy(other.loadHistogramProjected(massPlotUp, bins[i])))
 		dyHistScaleDown.Add(deepcopy(other.loadHistogramProjected(massPlotDown, bins[i])))
 		dyHistPUUp.Add(deepcopy(other.loadHistogramProjected(massPlotPUUp, bins[i])))
 		dyHistPUDown.Add(deepcopy(other.loadHistogramProjected(massPlotPUDown, bins[i])))
-		dyHistWeighted.Add(deepcopy(other.loadHistogramProjected(massPlotWeighted, bins[i])))
-		if "_BE" in label:
-			dyHist.Add(deepcopy(other.loadHistogramProjected(massPlot, 10)))
-			dyHistSmear.Add(deepcopy(other.loadHistogramProjected(massPlotSmeared, 10)))
-			dyHistScaleUp.Add(deepcopy(other.loadHistogramProjected(massPlotUp, 10)))
-			dyHistScaleDown.Add(deepcopy(other.loadHistogramProjected(massPlotDown, 10)))
-			dyHistPUUp.Add(deepcopy(other.loadHistogramProjected(massPlotPUUp, 10)))
-			dyHistPUDown.Add(deepcopy(other.loadHistogramProjected(massPlotPUDown, 10)))
-			dyHistWeighted.Add(deepcopy(other.loadHistogramProjected(massPlotWeighted, 10)))
-		rebin = 500
+
+
+		rebin = 250
 		dyHist.Rebin(rebin)
-		dyHistSmear.Rebin(rebin)
 		dyHistPUUp.Rebin(rebin)
 		dyHistPUDown.Rebin(rebin)
+		dyHistScaleUp.Rebin(rebin)
 		dyHistScaleDown.Rebin(rebin)
-		dyHistWeighted.Rebin(rebin)
 		hCanvas = TCanvas("hCanvas", "Distribution", 800,800)
 	
 		plotPad = ROOT.TPad("plotPad","plotPad",0,0.3,1,1)
@@ -82,52 +66,54 @@ def main():
 		ratioPad.Draw()	
 		plotPad.cd()
 		
-		plotPad.DrawFrame(0,0.0001,5000,500000,"; dimuon mass [GeV]; Events / 500 GeV")
+		plotPad.DrawFrame(0,0.00001,5000,500000000,"; dielectron mass [GeV]; Events / 250 GeV")
 		plotPad.SetLogy()
 		dyHist.Draw("samehist")
 		dyHist.SetFillColor(kWhite)
-		dyHistSmear.SetFillColor(kWhite)
+		dyHistScaleUp.SetFillColor(kWhite)
 		dyHistScaleDown.SetFillColor(kWhite)
-		dyHistWeighted.SetFillColor(kWhite)
 		dyHistPUUp.SetFillColor(kWhite)
 		dyHistPUDown.SetFillColor(kWhite)
-		dyHistSmear.SetLineColor(kRed)
+		dyHistScaleUp.SetLineColor(kBlue)
 		dyHistScaleDown.SetLineColor(kBlue)
-		dyHistWeighted.SetLineColor(kGreen+2)
 		dyHistPUUp.SetLineColor(kOrange+2)
-		dyHistSmear.Draw("samehist")
+		dyHistPUDown.SetLineColor(kOrange+2)
 		dyHistScaleDown.Draw("samehist")
-		dyHistWeighted.Draw("samehist")
+		dyHistScaleUp.Draw("samehist")
 		dyHistPUUp.Draw("samehist")
+		dyHistPUDown.Draw("samehist")
 		
 		legend = TLegend(0.375, 0.6, 0.925, 0.925)
 		legend.SetFillStyle(0)
 		legend.SetBorderSize(0)
 		legend.SetTextFont(42)		
 		legend.AddEntry(dyHist,"Default","l")	
-		legend.AddEntry(dyHistSmear,"Resolution Uncertainty","l")	
 		legend.AddEntry(dyHistScaleDown,"Scale Uncertainty","l")	
-		legend.AddEntry(dyHistWeighted,"ID Uncertainty","l")	
 		legend.AddEntry(dyHistPUUp,"PU Uncertainty","l")	
 		legend.Draw()
 		
 		ratioPad.cd()
 		xMin = 0
 		xMax = 5000
-		yMax = 1.1
-		yMin = 0.9
+		yMax = 1.5
+		yMin = 0.5
 		if "BE" in label:
-			yMax = 1.2
-			yMin = 0.8
-		ratioGraphs =  ratios.RatioGraph(dyHist,dyHistSmear, xMin=xMin, xMax=xMax,title="Default / Uncert",yMin=yMin,yMax=yMax,ndivisions=10,color=kRed,adaptiveBinning=10000)
-		ratioGraphs.draw(ROOT.gPad,True,False,True,chi2Pos=0.8)		
+			yMax = 1.5
+			yMin = 0.5
+		ratioGraphs =  ratios.RatioGraph(dyHist,dyHistScaleUp, xMin=xMin, xMax=xMax,title="Default / Uncert",yMin=yMin,yMax=yMax,ndivisions=10,color=kBlue,adaptiveBinning=10000)
+		ratioGraphs.draw(ROOT.gPad,True,False,True,chi2Pos=0.8)				
 		ratioGraphs2 =  ratios.RatioGraph(dyHist,dyHistScaleDown, xMin=xMin, xMax=xMax,title="Default / Uncert",yMin=0.8,yMax=1.3,ndivisions=10,color=kBlue,adaptiveBinning=10000)
-		ratioGraphs2.draw(ROOT.gPad,False,False,True,chi2Pos=0.8)
-		ratioGraphs3 =  ratios.RatioGraph(dyHist,dyHistWeighted, xMin=xMin, xMax=xMax,title="Default / Uncert",yMin=0.8,yMax=1.3,ndivisions=10,color=kGreen+2,adaptiveBinning=10000)
+		ratioGraphs2.draw(ROOT.gPad,False,False,True,chi2Pos=0.8)		
+		ratioGraphs3 =  ratios.RatioGraph(dyHist,dyHistPUDown, xMin=xMin, xMax=xMax,title="Default / Uncert",yMin=0.8,yMax=1.3,ndivisions=10,color=kOrange+2,adaptiveBinning=10000)
 		ratioGraphs3.draw(ROOT.gPad,False,False,True,chi2Pos=0.8)		
 		ratioGraphs4 =  ratios.RatioGraph(dyHist,dyHistPUUp, xMin=xMin, xMax=xMax,title="Default / Uncert",yMin=0.8,yMax=1.3,ndivisions=10,color=kOrange+2,adaptiveBinning=10000)
 		ratioGraphs4.draw(ROOT.gPad,False,False,True,chi2Pos=0.8)		
+	
+
+				
 		
+		#~ plotF1.Draw("sameL")
+		#~ plotF2.Draw("sameL")
 		hCanvas.Print("uncertainties_%s.pdf"%label)
 		
 main()

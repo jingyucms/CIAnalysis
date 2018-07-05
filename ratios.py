@@ -329,12 +329,12 @@ class RatioGraph:
 		self.oneLine = ROOT.TLine(self.xMin, 1.0, self.xMax, 1.0)
 		self.oneLine.SetLineStyle(2)
 		self.oneLine.Draw()
-		self.oneLine2 = ROOT.TLine(self.xMin, 0.5, self.xMax, 0.5)
-		self.oneLine2.SetLineStyle(2)
-		self.oneLine2.Draw()
-		self.oneLine3 = ROOT.TLine(self.xMin, 1.5, self.xMax, 1.5)
-		self.oneLine3.SetLineStyle(2)
-		self.oneLine3.Draw()
+		#~ self.oneLine2 = ROOT.TLine(self.xMin, 0.5, self.xMax, 0.5)
+		#~ self.oneLine2.SetLineStyle(2)
+		#~ self.oneLine2.Draw()
+		#~ self.oneLine3 = ROOT.TLine(self.xMin, 1.5, self.xMax, 1.5)
+		#~ self.oneLine3.SetLineStyle(2)
+		#~ self.oneLine3.Draw()
 		#~ if redrawAxis:
 		#~ self.hAxis.Draw("SAMEAXIS")
 
