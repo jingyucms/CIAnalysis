@@ -7,9 +7,10 @@ import ratios
 from setTDRStyle import setTDRStyle
 gROOT.SetBatch(True)
 from helpers import *
-from defs import getPlot, Backgrounds, Signals, Data
+from defs import getPlot, Backgrounds, Signals, Data, path, plotList
 import math
 import os
+from copy import copy
 
 
 
@@ -35,31 +36,38 @@ def plotDataMC(args,plot):
 		
 	colors = createMyColors()		
 
-	data = Process(Data)
+	data = Process(Data, normalized=True)
 	
-	backgrounds = args.backgrounds
+	eventCounts = totalNumberOfGeneratedEvents(path,plot.muon)	
+	negWeights = negWeightFractions(path,plot.muon)
+
+	
+	backgrounds = copy(args.backgrounds)
 	if plot.useJets:
+		if "Wjets" in backgrounds:
+			backgrounds.remove("Wjets")
 		backgrounds.insert(0,"Jets")
-	
 	processes = []
-	for background in args.backgrounds:
-		processes.append(Process(getattr(Backgrounds,background)))
-		
+	for background in backgrounds:
+		if background == "Jets":
+			processes.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+		else:	
+			processes.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
 	
 	signals = []
 	for signal in args.signals:
-		signals.append(Process(getattr(Signals,signal)))
+		signals.append(Process(getattr(Signals,signal),eventCounts,negWeights))
 		
-	legend = TLegend(0.375, 0.6, 0.925, 0.925)
+	legend = TLegend(0.55, 0.6, 0.925, 0.925)
 	legend.SetFillStyle(0)
 	legend.SetBorderSize(0)
 	legend.SetTextFont(42)
-	#~ legend.SetNColumns(2)
-	legendEta = TLegend(0.15, 0.75, 0.7, 0.9)
+	
+	legendEta = TLegend(0.35, 0.55, 0.9, 0.9)
 	legendEta.SetFillStyle(0)
 	legendEta.SetBorderSize(0)
 	legendEta.SetTextFont(42)
-
+	legendEta.SetNColumns(2)
 
 
 	latex = ROOT.TLatex()
@@ -84,10 +92,12 @@ def plotDataMC(args,plot):
 		legendEta.AddEntry(legendHistData,"Data","pe")	
 
 	
-
+	
 
 
 	for process in reversed(processes):
+		if not plot.muon and "#mu^{+}#mu^{-}" in process.label:
+			process.label = process.label.replace("#mu^{+}#mu^{-}","e^{+}e^{-}")
 		temphist = ROOT.TH1F()
 		temphist.SetFillColor(process.theColor)
 		legendHists.append(temphist.Clone)
@@ -150,24 +160,34 @@ def plotDataMC(args,plot):
 	
 	if logScale == True:
 		plotPad.SetLogy()
-
-	datahist = data.loadHistogram(plot)	
-	lumi = 36300
-	stack = TheStack(processes,plot)
+	lumi = 41.529*1000
+	if plot.muon:
+		lumi = 42.135*1000
+	if plot.plot2D:	
+		datahist = data.loadHistogramProjected(plot,lumi)	
+		
+		stack = TheStack2D(processes,lumi,plot)
+	else:
+		datahist = data.loadHistogram(plot,lumi)	
+		
+		stack = TheStack(processes,lumi,plot)
 
 	if args.data:
 		yMax = datahist.GetBinContent(datahist.GetMaximumBin())
-		yMin = 0.1
+		if "Mass" in plot.fileName:
+			yMin = 0.00001
+		else:
+			yMin = 0.01
 		xMax = datahist.GetXaxis().GetXmax()
 		xMin = datahist.GetXaxis().GetXmin()
 	else:	
 		yMax = stack.theHistogram.GetBinContent(datahist.GetMaximumBin())
-		yMin = 0.1
+		yMin = 0.01
 		xMax = stack.theHistogram.GetXaxis().GetXmax()
 		xMin = stack.theHistogram.GetXaxis().GetXmin()	
 	if plot.yMax == None:
 		if logScale:
-			yMax = yMax*1000
+			yMax = yMax*10000
 		else:
 			yMax = yMax*1.5
 	
@@ -181,39 +201,67 @@ def plotDataMC(args,plot):
 	plotPad.DrawFrame(xMin,yMin,xMax,yMax,"; %s ; %s" %(plot.xaxis,plot.yaxis))
 	
 	
-
- 
 	drawStack = stack
+ 	#~ print datahist.Integral(datahist.FindBin(60),datahist.FindBin(120))/drawStack.theHistogram.Integral(drawStack.theHistogram.FindBin(60),drawStack.theHistogram.FindBin(120))
+ 	#~ low = 900
+ 	#~ high = 1300
+ 	#~ print datahist.Integral(datahist.FindBin(low),datahist.FindBin(high))
+ 	#~ print drawStack.theHistogram.Integral(datahist.FindBin(low),datahist.FindBin(high))
+
+	
 
 	drawStack.theStack.Draw("samehist")							
+
+
+	
+	if len(args.signals) != 0:
+		signalhists = []
+		for Signal in signals:
+			if plot.plot2D:
+				signalhist = Signal.loadHistogramProjected(plot,lumi)
+				print signalhist.Integral()
+				signalhist.SetLineWidth(2)
+				signalBackgrounds = deepcopy(backgrounds)
+				signalBackgrounds.remove("DrellYan")
+				signalProcesses = []
+				for background in signalBackgrounds:
+					if background == "Jets":
+						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+					else:	
+						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+				signalStack = TheStack2D(signalProcesses,lumi,plot)
+				signalhist.Add(signalStack.theHistogram)
+				signalhist.SetMinimum(0.1)
+				signalhist.Draw("samehist")
+				signalhists.append(signalhist)	
+			else:
+				signalhist = Signal.loadHistogram(plot,lumi)
+				signalhist.SetLineWidth(2)
+				signalBackgrounds = deepcopy(backgrounds)
+				signalBackgrounds.remove("DrellYan")
+				signalProcesses = []
+				for background in signalBackgrounds:
+					if background == "Jets":
+						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+					else:	
+						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+				signalStack = TheStack(signalProcesses,lumi,plot)
+				signalhist.Add(signalStack.theHistogram)
+				signalhist.SetMinimum(0.1)
+				signalhist.Draw("samehist")
+				signalhists.append(signalhist)	
 
 	datahist.SetMinimum(0.1)
 	if args.data:
 		datahist.Draw("samep")	
 
-	if len(args.signals) != 0:
-		signalhists = []
-		for Signal in signals:
-			signalhist = Signal.loadHistogram(plot)
-			signalhist.SetLineWidth(2)
-			signalBackgrounds = deepcopy(backgrounds)
-			signalBackgrounds.remove("DrellYan")
-			signalProcesses = []
-			for background in signalBackgrounds:
-				signalProcesses.append(Process(getattr(Backgrounds,background)))
-			signalStack = TheStack(signalProcesses,plot)
-			signalhist.Add(signalStack.theHistogram)
-			signalhist.SetMinimum(0.1)
-			signalhist.Draw("samehist")
-			signalhists.append(signalhist)	
 
+	if "Eta" in plot.fileName or "CosTheta" in plot.fileName:
+		legendEta.Draw()
+	else:
+		legend.Draw()
 
-
-
-
-	legend.Draw()
-
-
+	plotPad.SetLogx(plot.logX)
 	
 	latex.DrawLatex(0.95, 0.96, "%.1f fb^{-1} (13 TeV)"%(float(lumi)/1000,))
 	yLabelPos = 0.85
@@ -223,10 +271,11 @@ def plotDataMC(args,plot):
 		yLabelPos = 0.82	
 	latexCMS.DrawLatex(0.19,0.89,"CMS")
 	latexCMSExtra.DrawLatex(0.19,yLabelPos,"%s"%(cmsExtra))
-	
+	#~ print datahist.Integral()
 	if args.ratio:
 		try:
 			ratioPad.cd()
+			ratioPad.SetLogx(plot.logX)
 		except AttributeError:
 			print "Plot fails. Look up in errs/failedPlots.txt"
 			outFile =open("errs/failedPlots.txt","a")
@@ -273,15 +322,28 @@ if __name__ == "__main__":
 
 	args = parser.parse_args()
 	if len(args.backgrounds) == 0:
-		args.backgrounds = ["Diboson","Top","DrellYan"]
+		args.backgrounds = ["Wjets","Other","DrellYan"]
+		#~ args.backgrounds = ["Diboson","DrellYan"]
 
 	if len(args.signals) != 0:
 		args.plotSignal = True
 
 	if args.plot == "":
-		args.plot = ["massPlot"]
+		args.plot = plotList
 	
+	signals = args.signals
 	for plot in args.plot:
+		args.signals = signals
 		plotObject = getPlot(plot)
+		if len(args.signals) > 0:
+			#~ if ("To2E" in args.signals[0] and plotObject.muon) or ("To2Mu" in args.signals[0] and not plotObject.muon):
+			args.signals = []
+			if plotObject.muon:
+				for signal in signals:
+					args.signals.append("CITo2Mu_"+signal)
+			else:
+				for signal in signals:
+					args.signals.append("CITo2E_"+signal)
+		#~ print args.plotSignal	
 		plotDataMC(args,plotObject)
 	
