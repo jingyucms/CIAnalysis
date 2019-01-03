@@ -1141,7 +1141,8 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam100kTeVConLR:
-		subprocesses = ["CITo2E_Lam100kTeVConLR_M300to800","CITo2E_Lam100kTeVConLR_M800to1300","CITo2E_Lam100kTeVConLR_M1300to2000"]
+		subprocesses = ["CITo2E_Lam100kTeVConLR_M300to800","CITo2E_Lam100kTeVConLR_M800to1300","CITo2E_Lam100kTeVConLR_M1300to2000","CITo2E_Lam100kTeVConLR_M2000toInf"]
+		# ~ subprocesses = ["CITo2E_Lam100kTeVConLL_M300to800","CITo2E_Lam100kTeVConLL_M800to1300","CITo2E_Lam100kTeVConLL_M1300to2000","CITo2E_Lam100kTeVConLL_M2000toInf"]
 		label = "CITo2E_Lam100kTeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -1150,7 +1151,7 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam100kTeVConRR:
-		subprocesses = ["CITo2E_Lam100kTeVConRR_M300to800","CITo2E_Lam100kTeVConRR_M800to1300","CITo2E_Lam100kTeVConRR_M1300to2000"]
+		subprocesses = ["CITo2E_Lam100kTeVConRR_M300to800","CITo2E_Lam100kTeVConRR_M800to1300","CITo2E_Lam100kTeVConRR_M1300to2000","CITo2E_Lam100kTeVConRR_M2000toInf"]
 		label = "CITo2E_Lam100kTeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -1159,7 +1160,7 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam100kTeVDesLL:
-		subprocesses = ["CITo2E_Lam100kTeVDesLL_M300to800","CITo2E_Lam100kTeVDesLL_M800to1300","CITo2E_Lam100kTeVDesLL_M1300to2000"]
+		subprocesses = ["CITo2E_Lam100kTeVDesLL_M300to800","CITo2E_Lam100kTeVDesLL_M800to1300","CITo2E_Lam100kTeVDesLL_M1300to2000","CITo2E_Lam100kTeVDesLL_M2000toInf"]
 		label = "CITo2E_Lam100kTeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Des LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -1168,7 +1169,8 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam100kTeVDesLR:
-		subprocesses = ["CITo2E_Lam100kTeVConLR_M300to800","CITo2E_Lam100kTeVConLR_M800to1300","CITo2E_Lam100kTeVConLR_M1300to2000"]
+		# ~ subprocesses = ["CITo2E_Lam100kTeVDesLR_M300to800","CITo2E_Lam100kTeVDesLR_M800to1300","CITo2E_Lam100kTeVDesLR_M1300to2000","CITo2E_Lam100kTeVDesLR_M2000toInf"]
+		subprocesses = ["CITo2E_Lam100kTeVDesLL_M300to800","CITo2E_Lam100kTeVDesLL_M800to1300","CITo2E_Lam100kTeVDesLL_M1300to2000","CITo2E_Lam100kTeVDesLL_M2000toInf"]
 		label = "CITo2E_Lam100kTeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -1177,7 +1179,7 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam100kTeVDesRR:
-		subprocesses = ["CITo2E_Lam100kTeVConRR_M300to800","CITo2E_Lam100kTeVConRR_M800to1300","CITo2E_Lam100kTeVConRR_M1300to2000"]
+		subprocesses = ["CITo2E_Lam100kTeVDesRR_M300to800","CITo2E_Lam100kTeVDesRR_M800to1300","CITo2E_Lam100kTeVDesRR_M1300to2000","CITo2E_Lam100kTeVDesRR_M2000toInf"]
 		label = "CITo2E_Lam100kTeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -1408,7 +1410,8 @@ class Signals:
 				
 		
 	class CITo2Mu_Lam100kTeVConLL:
-		subprocesses = ["CITo2Mu_Lam100kTeVConLL_M300to800","CITo2Mu_Lam100kTeVConLL_M800to1300","CITo2Mu_Lam100kTeVConLL_M1300to2000","CITo2Mu_Lam100kTeVConLL_M2000toInf"]
+		# ~ subprocesses = ["CITo2Mu_Lam100kTeVConLL_M300to800","CITo2Mu_Lam100kTeVConLL_M800to1300","CITo2Mu_Lam100kTeVConLL_M1300to2000","CITo2Mu_Lam100kTeVConLL_M2000toInf"]
+		subprocesses = ["CITo2Mu_Lam100kTeVConLR_M300to800","CITo2Mu_Lam100kTeVConLR_M800to1300","CITo2Mu_Lam100kTeVConLR_M1300to2000","CITo2Mu_Lam100kTeVConLR_M2000toInf"]
 		label = "CITo2Mu_Lam100kTeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -1417,7 +1420,7 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2Mu_Lam100kTeVConLR:
-		subprocesses = ["CITo2Mu_Lam100kTeVConLR_M300to800","CITo2Mu_Lam100kTeVConLR_M800to1300","CITo2Mu_Lam100kTeVConLR_M1300to2000"]
+		subprocesses = ["CITo2Mu_Lam100kTeVConLR_M300to800","CITo2Mu_Lam100kTeVConLR_M800to1300","CITo2Mu_Lam100kTeVConLR_M1300to2000","CITo2Mu_Lam100kTeVConLR_M2000toInf"]
 		label = "CITo2Mu_Lam100kTeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -1426,7 +1429,7 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2Mu_Lam100kTeVConRR:
-		subprocesses = ["CITo2Mu_Lam100kTeVConRR_M300to800","CITo2Mu_Lam100kTeVConRR_M800to1300","CITo2Mu_Lam100kTeVConRR_M1300to2000"]
+		subprocesses = ["CITo2Mu_Lam100kTeVConRR_M300to800","CITo2Mu_Lam100kTeVConRR_M800to1300","CITo2Mu_Lam100kTeVConRR_M1300to2000","CITo2Mu_Lam100kTeVConRR_M2000toInf"]
 		label = "CITo2Mu_Lam100kTeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -1435,7 +1438,7 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2Mu_Lam100kTeVDesLL:
-		subprocesses = ["CITo2Mu_Lam100kTeVDesLL_M300to800","CITo2Mu_Lam100kTeVDesLL_M800to1300","CITo2Mu_Lam100kTeVDesLL_M1300to2000"]
+		subprocesses = ["CITo2Mu_Lam100kTeVDesLL_M300to800","CITo2Mu_Lam100kTeVDesLL_M800to1300","CITo2Mu_Lam100kTeVDesLL_M1300to2000","CITo2Mu_Lam100kTeVDesLL_M2000toInf"]
 		label = "CITo2Mu_Lam100kTeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Des LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -1444,7 +1447,7 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2Mu_Lam100kTeVDesLR:
-		subprocesses = ["CITo2Mu_Lam100kTeVConLR_M300to800","CITo2Mu_Lam100kTeVConLR_M800to1300","CITo2Mu_Lam100kTeVConLR_M1300to2000"]
+		subprocesses = ["CITo2Mu_Lam100kTeVDesLR_M300to800","CITo2Mu_Lam100kTeVDesLR_M800to1300","CITo2Mu_Lam100kTeVDesLR_M1300to2000","CITo2Mu_Lam100kTeVDesLR_M2000toInf"]
 		label = "CITo2Mu_Lam100kTeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -1453,7 +1456,7 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2Mu_Lam100kTeVDesRR:
-		subprocesses = ["CITo2Mu_Lam100kTeVConRR_M300to800","CITo2Mu_Lam100kTeVConRR_M800to1300","CITo2Mu_Lam100kTeVConRR_M1300to2000"]
+		subprocesses = ["CITo2Mu_Lam100kTeVDesRR_M300to800","CITo2Mu_Lam100kTeVDesRR_M800to1300","CITo2Mu_Lam100kTeVDesRR_M1300to2000","CITo2Mu_Lam100kTeVDesRR_M2000toInf"]
 		label = "CITo2Mu_Lam100kTeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -1725,6 +1728,50 @@ class plots:
 	massPlotEleBEPUScaleUpNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleUp_be","DielectronMassPUScaleUpBE",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
 	massPlotEleBBPUScaleDownNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleDown_bb","DielectronMassPUScaleDownBB",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
 	massPlotEleBEPUScaleDownNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleDown_be","DielectronMassPUScaleDownBE",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+
+	massPlotBBCSPosNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained_bb_CSPos","DimuonMassBB_CSPos",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBECSPosNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained_be_CSPos","DimuonMassBE_CSPos",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBBScaleUpCSPosNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleUp_bb_CSPos","DimuonMassScaleUpBB_CSPos",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBEScaleUpCSPosNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleUp_be_CSPos","DimuonMassScaleUpBE_CSPos",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBBScaleDownCSPosNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleDown_bb_CSPos","DimuonMassScaleDownBB_CSPos",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBEScaleDownCSPosNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleDown_be_CSPos","DimuonMassScaleDownBE_CSPos",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBBSmearCSPosNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedSmear_bb_CSPos","DimuonMassSmearBB_CSPos",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBESmearCSPosNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedSmear_be_CSPos","DimuonMassSmearBE_CSPos",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBBMuonIDCSPosNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedMuonID_bb_CSPos","DimuonMassMuonIDBB_CSPos",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBEMuonIDCSPosNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedMuonID_be_CSPos","DimuonMassMuonIDBE_CSPos",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+
+	massPlotEleBBCSPosNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMass_bb_CSPos","DielectronMassBB_CSPos",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBECSPosNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMass_be_CSPos","DielectronMassBE_CSPos",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBBScaleUpCSPosNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassScaleUp_bb_CSPos","DielectronMassScaleUpBB_CSPos",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBEScaleUpCSPosNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassScaleUp_be_CSPos","DielectronMassScaleUpBE_CSPos",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBBScaleDownCSPosNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassScaleDown_bb_CSPos","DielectronMassScaleDownBB_CSPos",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBEScaleDownCSPosNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassScaleDown_be_CSPos","DielectronMassScaleDownBE_CSPos",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBBPUScaleUpCSPosNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleUp_bb_CSPos","DielectronMassPUScaleUpBB_CSPos",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBEPUScaleUpCSPosNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleUp_be_CSPos","DielectronMassPUScaleUpBE_CSPos",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBBPUScaleDownCSPosNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleDown_bb_CSPos","DielectronMassPUScaleDownBB_CSPos",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBEPUScaleDownCSPosNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleDown_be_CSPos","DielectronMassPUScaleDownBE_CSPos",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	
+	massPlotBBCSNegNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained_bb_CSNeg","DimuonMassBB_CSNeg",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBECSNegNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained_be_CSNeg","DimuonMassBE_CSNeg",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBBScaleUpCSNegNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleUp_bb_CSNeg","DimuonMassScaleUpBB_CSNeg",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBEScaleUpCSNegNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleUp_be_CSNeg","DimuonMassScaleUpBE_CSNeg",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBBScaleDownCSNegNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleDown_bb_CSNeg","DimuonMassScaleDownBB_CSNeg",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBEScaleDownCSNegNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleDown_be_CSNeg","DimuonMassScaleDownBE_CSNeg",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBBSmearCSNegNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedSmear_bb_CSNeg","DimuonMassSmearBB_CSNeg",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBESmearCSNegNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedSmear_be_CSNeg","DimuonMassSmearBE_CSNeg",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBBMuonIDCSNegNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedMuonID_bb_CSNeg","DimuonMassMuonIDBB_CSNeg",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBEMuonIDCSNegNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedMuonID_be_CSNeg","DimuonMassMuonIDBE_CSNeg",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+
+	massPlotEleBBCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMass_bb_CSNeg","DielectronMassBB_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBECSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMass_be_CSNeg","DielectronMassBE_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBBScaleUpCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassScaleUp_bb_CSNeg","DielectronMassScaleUpBB_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBEScaleUpCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassScaleUp_be_CSNeg","DielectronMassScaleUpBE_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBBScaleDownCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassScaleDown_bb_CSNeg","DielectronMassScaleDownBB_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBEScaleDownCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassScaleDown_be_CSNeg","DielectronMassScaleDownBE_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBBPUScaleUpCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleUp_bb_CSNeg","DielectronMassPUScaleUpBB_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBEPUScaleUpCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleUp_be_CSNeg","DielectronMassPUScaleUpBE_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBBPUScaleDownCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleDown_bb_CSNeg","DielectronMassPUScaleDownBB_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBEPUScaleDownCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleDown_be_CSNeg","DielectronMassPUScaleDownBE_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
 	
 
 #~ plotList = ["nVerticesEle","nVerticesUnweightedEle","nVerticesMu","massPlotEleBB","massPlotEleBE","massPlot","massPlotBB","massPlotBE","cosThetaStarPlotEle","cosThetaStarPlotOppEle","cosThetaStarPlotSameEle","cosThetaStarPlotMu"]

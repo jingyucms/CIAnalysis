@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser()
 #parser.add_argument("-inFile", help="Input file", type=str)
 parser.add_argument("-flav", help="Lepton flavor", type=str)
 parser.add_argument("-unc",  help="Uncertainty: 'nominal'*, 'scaleup', 'scaledown', 'muonid', 'smeared'", type=str, default="nominal")
-parser.add_argument("-cs",   help="CS bin: 'inc'*, 'cs+', 'cs-'", type=str, default="inc")
+parser.add_argument("-cs",   help="CS bin: 'inc', 'cspos', 'csneg'", type=str, default="inc")
 parser.add_argument("-d",    help="debug", action='store_true')
 
 args = parser.parse_args()
@@ -73,6 +73,52 @@ plots = {
 	"Mubesmeared": "massPlotBESmearNoLog",	
 	"Mubbmuonid": "massPlotBBMuonIDNoLog",
 	"Mubemuonid": "massPlotBEMuonIDNoLog",	
+
+	"Mubbnominalcspos": "massPlotBBCSPosNoLog",
+	"Mubenominalcspos": "massPlotBECSPosNoLog",
+	"Elebbnominalcspos": "massPlotEleBBCSPosNoLog",
+	"Elebenominalcspos": "massPlotEleBECSPosNoLog",
+	"Mubbscaleupcspos": "massPlotBBScaleUpCSPosNoLog",
+	"Mubescaleupcspos": "massPlotBEScaleUpCSPosNoLog",
+	"Elebbscaleupcspos": "massPlotEleBBScaleUpCSPosNoLog",
+	"Elebescaleupcspos": "massPlotEleBEScaleUpCSPosNoLog",
+	"Mubbscaledowncspos": "massPlotBBScaleDownCSPosNoLog",
+	"Mubescaledowncspos": "massPlotBEScaleDownCSPosNoLog",
+	"Elebbscaledowncspos": "massPlotEleBBScaleDownCSPosNoLog",
+	"Elebescaledowncspos": "massPlotEleBEScaleDownCSPosNoLog",
+
+	"Elebbpileupcspos": "massPlotEleBBPUScaleUpCSPosNoLog",
+	"Elebepileupcspos": "massPlotEleBEPUScaleUpCSPosNoLog",
+	"Elebbpiledowncspos": "massPlotEleBBPUScaleDownCSPosNoLog",
+	"Elebepiledowncspos": "massPlotEleBEPUScaleDownCSPosNoLog",
+	
+	"Mubbsmearedcspos": "massPlotBBSmearCSPosNoLog",
+	"Mubesmearedcspos": "massPlotBESmearCSPosNoLog",	
+	"Mubbmuonidcspos": "massPlotBBMuonIDCSPosNoLog",
+	"Mubemuonidcspos": "massPlotBEMuonIDCSPosNoLog",	
+	
+	"Mubbnominalcsneg": "massPlotBBCSNegNoLog",
+	"Mubenominalcsneg": "massPlotBECSNegNoLog",
+	"Elebbnominalcsneg": "massPlotEleBBCSNegNoLog",
+	"Elebenominalcsneg": "massPlotEleBECSNegNoLog",
+	"Mubbscaleupcsneg": "massPlotBBScaleUpCSNegNoLog",
+	"Mubescaleupcsneg": "massPlotBEScaleUpCSNegNoLog",
+	"Elebbscaleupcsneg": "massPlotEleBBScaleUpCSNegNoLog",
+	"Elebescaleupcsneg": "massPlotEleBEScaleUpCSNegNoLog",
+	"Mubbscaledowncsneg": "massPlotBBScaleDownCSNegNoLog",
+	"Mubescaledowncsneg": "massPlotBEScaleDownCSNegNoLog",
+	"Elebbscaledowncsneg": "massPlotEleBBScaleDownCSNegNoLog",
+	"Elebescaledowncsneg": "massPlotEleBEScaleDownCSNegNoLog",
+
+	"Elebbpileupcsneg": "massPlotEleBBPUScaleUpCSNegNoLog",
+	"Elebepileupcsneg": "massPlotEleBEPUScaleUpCSNegNoLog",
+	"Elebbpiledowncsneg": "massPlotEleBBPUScaleDownCSNegNoLog",
+	"Elebepiledowncsneg": "massPlotEleBEPUScaleDownCSNegNoLog",
+	
+	"Mubbsmearedcsneg": "massPlotBBSmearCSNegNoLog",
+	"Mubesmearedcsneg": "massPlotBESmearCSNegNoLog",	
+	"Mubbmuonidcsneg": "massPlotBBMuonIDCSNegNoLog",
+	"Mubemuonidcsneg": "massPlotBEMuonIDCSNegNoLog",	
 	
 }
 
@@ -85,7 +131,7 @@ lumis = {
 	
 etabins = ["bb","be"]
 #             0    1    2    3
-csbins = ["inc","cs+","cs-"]
+csbins = ["inc","csneg","cspos"]
 #            0     1     2
 
 csbin  = args.cs
@@ -123,7 +169,7 @@ for etabin in etabins:
 							params["{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)]     = [0. for j in range(len(lvals))]
 							params["{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)] = [0. for j in range(len(lvals))]
 							pass
-						for point in [1000+x for x in range(0,1500,200)]:
+						for point in [1000+x for x in range(0,2500,200)]:
 							params["{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)]     = [0. for j in range(len(lvals))]
 							params["{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)] = [0. for j in range(len(lvals))]
 							pass
@@ -132,14 +178,17 @@ for etabin in etabins:
 							hist = None
 							can   = r.TCanvas("can","",800,800)
 							stack = r.THStack("stack","")
-	 
-							plot = getPlot(plots[antype[2]+etabin+unc])
+							plotName = antype[2]+etabin+unc
+							if not csbin == "inc":
+								plotName = antype[2]+etabin+unc+csbin
+							plot = getPlot(plots[plotName])
 
 	 
 							eventCounts = totalNumberOfGeneratedEvents(path,plot.muon)  
 							negWeights = negWeightFractions(path,plot.muon)                         
 							signal = "CITo2%s_Lam%sTeV%s%s"%(antype[0],lval,intf,heli)  
-							if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam100kTeVConLL" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR":
+							# ~ if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam100kTeVConLL" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR" or signal == "CITo2E_Lam100kTeVDesLR":
+							if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR":
 								continue
 							Signal = Process(getattr(Signals,signal),eventCounts,negWeights)                        
 							
@@ -185,7 +234,7 @@ for etabin in etabins:
 								pass
 
 							# Mass bin scan above 1 TeV
-							for point in [1000+x for x in range(0,1500,200)]:
+							for point in [1000+x for x in range(0,2500,200)]:
 								bval  = signalhist.FindBin(point)
 								upval = signalhist.FindBin(100000000)
 								val   = signalhist.Integral(bval,upval)

@@ -57,7 +57,7 @@ intfs = ["Con","Des"]
 supers      = [400,500,700,1100,1900,3500,10000]
 grbins      = [400,500,700,1100,1900,3500]
 grcols      = [r.kBlack,r.kRed,r.kBlue,r.kYellow,r.kViolet,r.kGreen]
-extragrbins = [1000+x for x in range(0,1500,200)]
+extragrbins = [1000+x for x in range(0,2500,200)]
 
 uncertainties = [
 	"nominal",
@@ -72,7 +72,7 @@ uncertainties = [
 	]
 etabins = ["bb","be"]
 #             0    1    2    3
-csbins = ["inc","cs+","cs-"]
+csbins = ["inc","cspos","csneg"]
 #            0     1     2
 
 csbin  = args.cs

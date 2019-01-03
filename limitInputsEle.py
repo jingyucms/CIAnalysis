@@ -69,6 +69,7 @@ def main():
 			jetHist = fJets.Get("Jets_h_mee_all_BB")
 		else:	
 			jetHist = fJets.Get("Jets_h_mee_all_BE")
+		print (jetHist.Integral(jetHist.FindBin(2200),jetHist.FindBin(10000)))
 		jetHist.SetName("bkgHistJets_%s"%label)				
 		jetHist.SetDirectory(fResult)				
 
