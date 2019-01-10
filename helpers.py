@@ -86,9 +86,6 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
 				tmpResult = rootFile.Get("Jets_h_mee_all_BB")
 			else:
 				tmpResult = rootFile.Get("Jets_h_mee_all_BE")
-		#~ result = TH1F("jets","jets",tmpResult.GetNbinsX(),tmpResult.GetBinCenter(1)-tmpResult.GetBinWidth(1)/2,tmpResult.GetBinCenter(tmpResult.GetNbinsX())+tmpResult.GetBinWidth(tmpResult.GetNbinsX())/2)
-		#~ for i in range(0,tmpResult.GetNbinsX()):
-			#~ result.SetBinContent(i,tmpResult.GetBinContent(i))
 		result = tmpResult.Clone("jets")
 		
 	else:	
@@ -116,7 +113,6 @@ def loadHistoFromFile2D(fileName,histName,rebin):
 	from ROOT import TFile, TH2F
 	rootFile = TFile(path+fileName, "read")
 	result = rootFile.Get(histName)
-	#~ print result.GetEntries()
 	result.SetDirectory(0)	
 	return deepcopy(result)
 
@@ -133,11 +129,7 @@ def loadHistoFromFileProjected(fileName,histName,rebin,binLow,binHigh=-1):
 	if binHigh == -1:	
 		result = result.ProjectionY(name,int(binLow/100),binHigh)
 	else:	
-		print(binLow, binHigh)
-		print (int(binLow/100),int(binHigh/100)-1)
-		#~ result = result.ProjectionY(name,int(binLow/100),int(binHigh/100)-1)
 		result = result.ProjectionY(name,result.GetXaxis().FindBin(binLow),result.GetXaxis().FindBin(binHigh-0.001))
-		print(result.Integral())
 	result.Rebin(rebin)
 	result.SetDirectory(0)	
 
@@ -249,14 +241,12 @@ class Process:
 					tempHist = loadHistoFromFile2D(fileNames[sample],plot.histName,plot.rebin)
 				else:	
 					tempHist = loadHistoFromFile2D(fileNamesEle[sample],plot.histName,plot.rebin)
-				if not self.normalized:
-					#~ print self.negWeightFraction[index]
-					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])**2*zScaleFac) #histograms are already scaled to lumi
+				if not self.normalized:	
+					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])**2*zScaleFac)
 				if histo == None:
 					histo = tempHist.Clone()
 				else:	
 					histo.Add(tempHist.Clone())
-			#~ print self.histo.GetEntries()		
 			histo.SetFillColor(self.theColor)
 			histo.SetLineColor(self.theLineColor)
 			histo.GetXaxis().SetTitle(plot.xaxis) 
@@ -268,7 +258,7 @@ class Process:
 				else:	
 					tempHist = loadHistoFromFile(fileNamesEle[sample],plot.histName,plot.rebin,plot.muon,plot.logX)
 				if not self.normalized:
-					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])**2*zScaleFac) #histograms are already scaled to lumi
+					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])**2*zScaleFac)
 				if histo == None:
 					histo = tempHist.Clone()
 				else:	

@@ -4,7 +4,7 @@ from ROOT import TMath
 import sys
 import copy
 
-path = "../files/"
+path = "files/"
 
 zScale = {
 	"electrons":0.879,
@@ -1771,8 +1771,8 @@ class plots:
 	massPlotEleBBPUScaleUpCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleUp_bb_CSNeg","DielectronMassPUScaleUpBB_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
 	massPlotEleBEPUScaleUpCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleUp_be_CSNeg","DielectronMassPUScaleUpBE_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
 	massPlotEleBBPUScaleDownCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleDown_bb_CSNeg","DielectronMassPUScaleDownBB_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
-	massPlotEleBEPUScaleDownCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleDown_be_CSNeg","DielectronMassPUScaleDownBE_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	
 	
 
-#~ plotList = ["nVerticesEle","nVerticesUnweightedEle","nVerticesMu","massPlotEleBB","massPlotEleBE","massPlot","massPlotBB","massPlotBE","cosThetaStarPlotEle","cosThetaStarPlotOppEle","cosThetaStarPlotSameEle","cosThetaStarPlotMu"]
-plotList = ["cosThetaStarM1000Ele","cosThetaStarBBM1000Ele","cosThetaStarBEM1000Ele","cosThetaStarM1000Mu","cosThetaStarBBM1000Mu","cosThetaStarBEM1000Mu","cosThetaStarM500Ele","cosThetaStarBBM500Ele","cosThetaStarBEM500Ele","cosThetaStarM500Mu","cosThetaStarBBM500Mu","cosThetaStarBEM500Mu","cosThetaStarM1500Ele","cosThetaStarBBM1500Ele","cosThetaStarBEM1500Ele","cosThetaStarM1500Mu","cosThetaStarBBM1500Mu","cosThetaStarBEM1500Mu"]
+plotList = ["nVerticesEle","nVerticesUnweightedEle","nVerticesMu","massPlotEleBB","massPlotEleBE","massPlot","massPlotBB","massPlotBE","cosThetaStarPlotEle","cosThetaStarPlotOppEle","cosThetaStarPlotSameEle","cosThetaStarPlotMu"]
+#plotList = ["cosThetaStarM1000Ele","cosThetaStarBBM1000Ele","cosThetaStarBEM1000Ele","cosThetaStarM1000Mu","cosThetaStarBBM1000Mu","cosThetaStarBEM1000Mu","cosThetaStarM500Ele","cosThetaStarBBM500Ele","cosThetaStarBEM500Ele","cosThetaStarM500Mu","cosThetaStarBBM500Mu","cosThetaStarBEM500Mu","cosThetaStarM1500Ele","cosThetaStarBBM1500Ele","cosThetaStarBEM1500Ele","cosThetaStarM1500Mu","cosThetaStarBBM1500Mu","cosThetaStarBEM1500Mu"]
