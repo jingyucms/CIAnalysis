@@ -3,7 +3,7 @@ import gc
 from array import array
 from ROOT import TCanvas, TPad, TH1F, TH2F, TH1I, THStack, TLegend, TMath
 from math import sqrt
-from defs import defineMyColors, myColors, fileNames, fileNamesEle, path, crossSections, zScale
+from defs import defineMyColors, myColors, fileNames, fileNamesEle, path, crossSections, zScale, zScale2016
 from copy import deepcopy
 import math, uuid
 
@@ -27,7 +27,7 @@ def negWeightFractions(path,muon=True):
 	"""
 	path: path to directory containing all sample files
 
-	returns dict samples names -> fraction of events with negative weights in source sample
+	returns dict samples names -> fraction of events wiBackgrounds2016th negative weights in source sample
 	"""
 	from ROOT import TFile
 	result = {}
@@ -44,16 +44,16 @@ def binning(channel='muon'):
 		m_min = 70.
 		m_max = 4000.
 	if channel == 'electron':
-		return (range(50, 120, 5) +
-				range(120, 150, 5) +
-				range(150, 200, 10) +
-				range(200, 600, 20) +
-				range(600, 900, 30) +
-				range(900, 1250, 50) +
-				range(1250, 1600, 60) +
-				range(1600, 1900, 70) +
-				range(1900, 4000, 80) +
-				range(4000, 5000, 100) +
+		return ([j for j in range(50, 120, 5)] +
+				[j for j in range(120, 150, 5)] +
+				[j for j in range(150, 200, 10)] +
+				[j for j in range(200, 600, 20)]+
+				[j for j in range(600, 900, 30) ]+
+				[j for j in range(900, 1250, 50)] +
+				[j for j in range(1250, 1600, 60) ] +
+				[j for j in range(1600, 1900, 70) ] +
+				[j for j in range(1900, 4000, 80) ] +
+				[j for j in range(4000, 5000, 100) ] +
 				[5000])
 
 	# Calculate logarithmic bins
@@ -71,7 +71,7 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
 	"""
 	from ROOT import TFile, TH1F
 	rootFile = TFile(path+fileName, "read")
-	if "saved_hist_for_combine" in fileName or "jets_muons" in fileName:
+	if "saved_hist_for_combine" in fileName or "jets_muons" in fileName or "hist_jets" in fileName:
 		if muon:
 			if "be" in histName:
 				tmpResult = rootFile.Get("jetsBE")
@@ -80,12 +80,26 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
 			else:
 				tmpResult = rootFile.Get("jets")
 		else:
-			if "bbbe" in histName:
-				tmpResult = rootFile.Get("Jets_h_mee_all")
-			elif "bb" in histName:
-				tmpResult = rootFile.Get("Jets_h_mee_all_BB")
+			if fileName == "hist_jets.root":
+				# ~ if "bbbe" in histName:
+					# ~ tmpResult = rootFile.Get("h_mee_usual")
+				# ~ elif "bb" in histName:
+					# ~ tmpResult = rootFile.Get("h_mee_BB_usual")
+				# ~ else:
+					# ~ tmpResult = rootFile.Get("h_mee_BE_usual")
+				if "bbbe" in histName:
+					tmpResult = rootFile.Get("h_mee_all")
+				elif "bb" in histName:
+					tmpResult = rootFile.Get("h_mee_all_BB")
+				else:
+					tmpResult = rootFile.Get("h_mee_all_BE")
 			else:
-				tmpResult = rootFile.Get("Jets_h_mee_all_BE")
+				if "bbbe" in histName:
+					tmpResult = rootFile.Get("Jets_h_mee_all")
+				elif "bb" in histName:
+					tmpResult = rootFile.Get("Jets_h_mee_all_BB")
+				else:
+					tmpResult = rootFile.Get("Jets_h_mee_all_BE")
 		#~ result = TH1F("jets","jets",tmpResult.GetNbinsX(),tmpResult.GetBinCenter(1)-tmpResult.GetBinWidth(1)/2,tmpResult.GetBinCenter(tmpResult.GetNbinsX())+tmpResult.GetBinWidth(tmpResult.GetNbinsX())/2)
 		#~ for i in range(0,tmpResult.GetNbinsX()):
 			#~ result.SetBinContent(i,tmpResult.GetBinContent(i))
@@ -93,11 +107,14 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
 		
 	else:	
 		result = rootFile.Get(histName)
-	if logBins and( "Mass" in histName or ("jets" in histName and not "saved_hist_for_combine" in fileName)):	
+	# ~ if logBins and( "Mass" in histName or ("jets" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName))):	
+	if logBins and( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName)):	
+		print (fileName)
 		if not muon:
 			bng = binning("electron")
 		else:
 			bng = binning("muon")
+	
 		result = result.Rebin(len(bng) - 1, 'hist_' + uuid.uuid4().hex, array('d', bng))
 		
 		for i in range(0,result.GetNbinsX()):
@@ -125,19 +142,16 @@ def loadHistoFromFileProjected(fileName,histName,rebin,binLow,binHigh=-1):
 	returns histogram from file
 	"""
 	from random import randint
-	from sys import maxint
-	name = "%x"%(randint(0, maxint))	
+	from sys import maxsize
+	name = "%x"%(randint(0, maxsize))	
 	from ROOT import TFile, TH2F
 	rootFile = TFile(path+fileName, "read")
 	result = rootFile.Get(histName)
 	if binHigh == -1:	
 		result = result.ProjectionY(name,int(binLow/100),binHigh)
 	else:	
-		print(binLow, binHigh)
-		print (int(binLow/100),int(binHigh/100)-1)
 		#~ result = result.ProjectionY(name,int(binLow/100),int(binHigh/100)-1)
 		result = result.ProjectionY(name,result.GetXaxis().FindBin(binLow),result.GetXaxis().FindBin(binHigh-0.001))
-		print(result.Integral())
 	result.Rebin(rebin)
 	result.SetDirectory(0)	
 
@@ -162,10 +176,20 @@ def getFilePathsAndSampleNames(path,muon=True):
 		if muon:
 			if "dileptonAna_muons" in filePath and not "SingleMuon" in filePath:
 				sampleName = filePath.split("/")[-1].split("dileptonAna_muons_")[-1].split(".root")[0]
+				if "2016_" in sampleName:
+					if "CI" in sampleName:
+						sampleName = sampleName.replace("2016_","")
+					else:	
+						sampleName = sampleName.replace("2016_","")+"_2016"
 				result[sampleName] = filePath
 		else:
 			if "dileptonAna_electrons" in filePath and not "DoubleElectron" in filePath:
 				sampleName = filePath.split("/")[-1].split("dileptonAna_electrons_")[-1].split(".root")[0]
+				if "2016_" in sampleName:
+					if "CI" in sampleName:
+						sampleName = sampleName.replace("2016_","")
+					else:	
+						sampleName = sampleName.replace("2016_","")+"_2016"
 				result[sampleName] = filePath
 	return result
 
@@ -237,11 +261,8 @@ class Process:
 				self.xsecs.append(crossSections[sample])
 				self.negWeightFraction.append(negWeights[sample])
 				self.nEvents.append(Counts[sample])	
-	def loadHistogram(self,plot,lumi):
+	def loadHistogram(self,plot,lumi,zScaleFac):
 		histo = None
-		zScaleFac = zScale["muons"]
-		if not plot.muon:
-			zScaleFac = zScale["electrons"]
 		if plot.plot2D:
 			for index, sample in enumerate(self.samples):
 				
@@ -251,7 +272,7 @@ class Process:
 					tempHist = loadHistoFromFile2D(fileNamesEle[sample],plot.histName,plot.rebin)
 				if not self.normalized:
 					#~ print self.negWeightFraction[index]
-					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])**2*zScaleFac) #histograms are already scaled to lumi
+					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])**2*zScaleFac)
 				if histo == None:
 					histo = tempHist.Clone()
 				else:	
@@ -268,7 +289,7 @@ class Process:
 				else:	
 					tempHist = loadHistoFromFile(fileNamesEle[sample],plot.histName,plot.rebin,plot.muon,plot.logX)
 				if not self.normalized:
-					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])**2*zScaleFac) #histograms are already scaled to lumi
+					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])**2*zScaleFac)
 				if histo == None:
 					histo = tempHist.Clone()
 				else:	
@@ -304,11 +325,11 @@ class TheStack:
 	from ROOT import THStack
 	theStack = THStack()	
 	theHistogram = None	
-	def  __init__(self,processes,lumi,plot):
+	def  __init__(self,processes,lumi,plot,zScaleFac):
 		self.theStack = THStack()
 			
 		for process in processes:
-			temphist = process.loadHistogram(plot,lumi)
+			temphist = process.loadHistogram(plot,lumi,zScaleFac)
 
 			self.theStack.Add(temphist.Clone())
 			if self.theHistogram == None:

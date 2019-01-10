@@ -8,6 +8,8 @@ parser.add_argument("-flav", help="Lepton flavor", type=str)
 parser.add_argument("-unc",  help="Uncertainty: 'nominal'*, 'scaleup', 'scaledown', 'muonid', 'smeared'", type=str, default="nominal")
 parser.add_argument("-cs",   help="CS bin: 'inc', 'cspos', 'csneg'", type=str, default="inc")
 parser.add_argument("-d",    help="debug", action='store_true')
+parser.add_argument("-do2016", help="do 2016", action='store_true')
+parser.add_argument("-do2018", help="do 2018", action='store_true')
 
 args = parser.parse_args()
 
@@ -16,7 +18,7 @@ import numpy as np
 #~ from nesteddict import nesteddict as ndict
 import json
 
-from defs import getPlot, Backgrounds, Signals, Data, path
+from defs import getPlot, Backgrounds, Signals, Data, path, Signals2016, zScale2016, zScale2018
 from helpers import *
 
 from setTDRStyle import setTDRStyle
@@ -32,6 +34,8 @@ antypes=[
 r.gROOT.SetBatch(True)
 
 lvals=["16", "24", "32", "40", "100k"]
+if args.do2016:
+	lvals=["1", "10", "16", "22", "28", "34", "100k"]
 helis=["LL","LR","RR"]
 intfs=["Con","Des"]
 
@@ -158,9 +162,13 @@ for etabin in etabins:
 			print("Not processing uncertainty '{0:s}' for lepton flavour '{1:s}'".format(unc,antype[2]))
 			continue
 		params = {}
-
-		with open("ciparametrization_2{0:s}_{1:s}_{2:s}_{3:s}.json".format(antype[1],unc,etabin,csbin),"w") as js:
-			with open("cicounts_2{0:s}_{1:s}_{2:s}_{3:s}.txt".format(antype[1],unc,etabin,csbin),"w") as out:
+		addLabel = ""
+		if args.do2016:
+			addLabel="_2016"
+		elif args.do2018:
+			addLabel="_2018"
+		with open("ciparametrization_2{0:s}_{1:s}_{2:s}_{3:s}{4:s}.json".format(antype[1],unc,etabin,csbin,addLabel),"w") as js:
+			with open("cicounts_2{0:s}_{1:s}_{2:s}_{3:s}{4:s}.txt".format(antype[1],unc,etabin,csbin,addLabel),"w") as out:
 				for intf in intfs:
 					for heli in helis:
 						files=[]
@@ -173,7 +181,6 @@ for etabin in etabins:
 							params["{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)]     = [0. for j in range(len(lvals))]
 							params["{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)] = [0. for j in range(len(lvals))]
 							pass
-						print("{0:s}{1:s}".format(intf,heli))
 						for i,lval in enumerate(lvals):
 							hist = None
 							can   = r.TCanvas("can","",800,800)
@@ -185,14 +192,45 @@ for etabin in etabins:
 
 	 
 							eventCounts = totalNumberOfGeneratedEvents(path,plot.muon)  
-							negWeights = negWeightFractions(path,plot.muon)                         
+							negWeights = negWeightFractions(path,plot.muon)               
+							if args.do2016:	
+								lumi = 35.9*1000
+								if plot.muon:
+									lumi = 36.3*1000
+							elif args.do2018:	
+								lumi = 59.97*1000
+								if plot.muon:
+									lumi = 61.608*1000
+							else:
+								lumi = 41.529*1000
+								if plot.muon:
+									lumi = 42.135*1000
+							if args.do2016:		
+								zScaleFac = zScale2016["muons"]
+								if not plot.muon:
+									zScaleFac = zScale2016["electrons"]
+							elif args.do2018:		
+								zScaleFac = zScale2018["muons"]
+								if not plot.muon:
+									zScaleFac = zScale2018["electrons"]
+							else:
+								zScaleFac = zScale["muons"]
+								if not plot.muon:
+									zScaleFac = zScale["electrons"]							          
 							signal = "CITo2%s_Lam%sTeV%s%s"%(antype[0],lval,intf,heli)  
 							# ~ if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam100kTeVConLL" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR" or signal == "CITo2E_Lam100kTeVDesLR":
 							if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR":
+								# list for 2017
 								continue
-							Signal = Process(getattr(Signals,signal),eventCounts,negWeights)                        
+							# ~ if signal == "CITo2Mu_Lam1TeVConLL" or signal == "CITo2Mu_Lam10TeVConLR":
+								# list for 2016
+								# ~ continue
+							if args.do2016:	
+								Signal = Process(getattr(Signals2016,signal),eventCounts,negWeights)                        
+							else:	
+								Signal = Process(getattr(Signals,signal),eventCounts,negWeights)                        
 							
-							signalhist = Signal.loadHistogram(plot,lumis[antype[2]]*1000)                       
+							signalhist = Signal.loadHistogram(plot,lumi,zScaleFac)
 							
 							signalhist.SetMinimum(0.8*signalhist.GetMinimum(0.001))
 							signalhist.SetMaximum(1.25*signalhist.GetMaximum())
@@ -216,7 +254,16 @@ for etabin in etabins:
 							can.Update()
 							# raw_input()
 							for ftype in ["png","C","pdf","eps"]:
-								can.SaveAs("fitPlots/cito2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}.{0:s}".format(ftype,antype[1],
+								if args.do2016:
+									can.SaveAs("fitPlots/cito2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}_2016.{0:s}".format(ftype,antype[1],
+																															  lval,intf,heli,
+																															  unc,etabin,csbin))									
+								elif args.do2018:
+									can.SaveAs("fitPlots/cito2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}_2018.{0:s}".format(ftype,antype[1],
+																															  lval,intf,heli,
+																															  unc,etabin,csbin))									
+								else:	
+									can.SaveAs("fitPlots/cito2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}.{0:s}".format(ftype,antype[1],
 																															  lval,intf,heli,
 																															  unc,etabin,csbin))
 							# raw_input("enter to continue")
@@ -227,7 +274,6 @@ for etabin in etabins:
 								err   = r.Double(0)
 								val   = signalhist.Integral(bval,upval)
 								val2  = signalhist.IntegralAndError(bval,upval,err)
-								print("{0:s} {1:d} {2:d} {3:d} {4:2.4f} {5:2.4f}".format(lval,point,bval,upval,val,err))
 								out.write("{0:s} {1:d} {2:d} {3:d} {4:2.4f} {5:2.4f}\n".format(lval,point,bval,upval,val,err))
 								params["{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)][i] = val
 								params["{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)][i] = err
@@ -241,7 +287,6 @@ for etabin in etabins:
 								err   = r.Double(0)
 								val   = signalhist.Integral(bval,upval)
 								val2  = signalhist.IntegralAndError(bval,upval,err)
-								print("{0:s} {1:d} {2:d} {3:d} {4:2.4f} {5:2.4f}".format(lval,point,bval,upval,val,err))
 								out.write("{0:s} {1:d} {2:d} {3:d} {4:2.4f} {5:2.4f}\n".format(lval,point,bval,upval,val,err))
 								params["{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)][i]     = val
 								params["{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)][i] = err
@@ -249,7 +294,6 @@ for etabin in etabins:
 							pass
 						pass
 					pass
-				print(params)
 				pass
 			json.dump(params,js)
 			pass
