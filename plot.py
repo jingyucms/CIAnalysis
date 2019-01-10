@@ -7,7 +7,7 @@ import ratios
 from setTDRStyle import setTDRStyle
 gROOT.SetBatch(True)
 from helpers import *
-from defs import getPlot, Backgrounds, Signals, Data, path, plotList
+from defs import getPlot, Backgrounds, Backgrounds2016, Signals, Signals2016, Data, Data2016, Data2018, path, plotList, zScale, zScale2016, zScale2018
 import math
 import os
 from copy import copy
@@ -35,12 +35,15 @@ def plotDataMC(args,plot):
 		plotPad.cd()	
 		
 	colors = createMyColors()		
-
-	data = Process(Data, normalized=True)
+	if args.use2016:
+		data = Process(Data2016, normalized=True)
+	elif args.use2018:
+		data = Process(Data2018, normalized=True)
+	else:	
+		data = Process(Data, normalized=True)
 	
 	eventCounts = totalNumberOfGeneratedEvents(path,plot.muon)	
 	negWeights = negWeightFractions(path,plot.muon)
-
 	
 	backgrounds = copy(args.backgrounds)
 	if plot.useJets:
@@ -49,14 +52,23 @@ def plotDataMC(args,plot):
 		backgrounds.insert(0,"Jets")
 	processes = []
 	for background in backgrounds:
-		if background == "Jets":
-			processes.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
-		else:	
-			processes.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+		if args.use2016:
+			if background == "Jets":
+				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
+			else:	
+				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
+		else:
+			if background == "Jets":
+				processes.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+			else:	
+				processes.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
 	
 	signals = []
 	for signal in args.signals:
-		signals.append(Process(getattr(Signals,signal),eventCounts,negWeights))
+		if args.use2016:
+			signals.append(Process(getattr(Signals2016,signal),eventCounts,negWeights))
+		else:	
+			signals.append(Process(getattr(Signals,signal),eventCounts,negWeights))
 		
 	legend = TLegend(0.55, 0.6, 0.925, 0.925)
 	legend.SetFillStyle(0)
@@ -160,17 +172,41 @@ def plotDataMC(args,plot):
 	
 	if logScale == True:
 		plotPad.SetLogy()
-	lumi = 41.529*1000
-	if plot.muon:
-		lumi = 42.135*1000
-	if plot.plot2D:	
-		datahist = data.loadHistogramProjected(plot,lumi)	
-		
-		stack = TheStack2D(processes,lumi,plot)
+	if args.use2016:	
+		lumi = 35.9*1000
+		if plot.muon:
+			lumi = 36.3*1000
+	if args.use2018:	
+		lumi = 59.97*1000
+		if plot.muon:
+			lumi = 61.608*1000
 	else:
-		datahist = data.loadHistogram(plot,lumi)	
+		lumi = 41.529*1000
+		if plot.muon:
+			lumi = 42.135*1000
+	if args.use2016:		
+		zScaleFac = zScale2016["muons"]
+		if not plot.muon:
+			zScaleFac = zScale2016["electrons"]
+	if args.use2018:		
+		zScaleFac = zScale2018["muons"]
+		if not plot.muon:
+			zScaleFac = zScale2018["electrons"]
+	else:
+		zScaleFac = zScale["muons"]
+		if not plot.muon:
+			zScaleFac = zScale["electrons"]
+			
+			
+			
+	if plot.plot2D:	
+		datahist = data.loadHistogramProjected(plot,lumi,zScaleFac)	
 		
-		stack = TheStack(processes,lumi,plot)
+		stack = TheStack2D(processes,lumi,plot,zScaleFac)
+	else:
+		datahist = data.loadHistogram(plot,lumi,zScaleFac)	
+		
+		stack = TheStack(processes,lumi,plot,zScaleFac)
 
 	if args.data:
 		yMax = datahist.GetBinContent(datahist.GetMaximumBin())
@@ -190,8 +226,11 @@ def plotDataMC(args,plot):
 			yMax = yMax*10000
 		else:
 			yMax = yMax*1.5
-	
 	else: yMax = plot.yMax
+	
+	if "Mass" in plot.fileName:
+		yMax = 20000000	
+	
 	if not plot.yMin == None:
 		yMin = plot.yMin
 	if not plot.xMin == None:
@@ -219,7 +258,6 @@ def plotDataMC(args,plot):
 		for Signal in signals:
 			if plot.plot2D:
 				signalhist = Signal.loadHistogramProjected(plot,lumi)
-				print signalhist.Integral()
 				signalhist.SetLineWidth(2)
 				signalBackgrounds = deepcopy(backgrounds)
 				signalBackgrounds.remove("DrellYan")
@@ -235,7 +273,7 @@ def plotDataMC(args,plot):
 				signalhist.Draw("samehist")
 				signalhists.append(signalhist)	
 			else:
-				signalhist = Signal.loadHistogram(plot,lumi)
+				signalhist = Signal.loadHistogram(plot,lumi,zScaleFac)
 				signalhist.SetLineWidth(2)
 				signalBackgrounds = deepcopy(backgrounds)
 				signalBackgrounds.remove("DrellYan")
@@ -245,7 +283,7 @@ def plotDataMC(args,plot):
 						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
 					else:	
 						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
-				signalStack = TheStack(signalProcesses,lumi,plot)
+				signalStack = TheStack(signalProcesses,lumi,plot,zScaleFac)
 				signalhist.Add(signalStack.theHistogram)
 				signalhist.SetMinimum(0.1)
 				signalhist.Draw("samehist")
@@ -277,7 +315,7 @@ def plotDataMC(args,plot):
 			ratioPad.cd()
 			ratioPad.SetLogx(plot.logX)
 		except AttributeError:
-			print "Plot fails. Look up in errs/failedPlots.txt"
+			print ("Plot fails. Look up in errs/failedPlots.txt")
 			outFile =open("errs/failedPlots.txt","a")
 			outFile.write('%s\n'%plot.filename%("_"+run.label+"_"+dilepton))
 			outFile.close()
@@ -294,7 +332,12 @@ def plotDataMC(args,plot):
 		ratioPad.RedrawAxis()
 	if not os.path.exists("plots"):
 		os.makedirs("plots")	
-	hCanvas.Print("plots/"+plot.fileName+".pdf")
+	if args.use2016:
+		hCanvas.Print("plots/"+plot.fileName+"_2016.pdf")
+	if args.use2018:
+		hCanvas.Print("plots/"+plot.fileName+"_2018.pdf")
+	else:	
+		hCanvas.Print("plots/"+plot.fileName+".pdf")
 
 					
 if __name__ == "__main__":
@@ -310,6 +353,10 @@ if __name__ == "__main__":
 						  help="plot to plot.")
 	parser.add_argument("-n", "--norm", action="store_true", dest="norm", default=False,
 						  help="normalize to data.")
+	parser.add_argument("-2016", "--2016", action="store_true", dest="use2016", default=False,
+						  help="use 2016 data and MC.")
+	parser.add_argument("-2018", "--2018", action="store_true", dest="use2018", default=False,
+						  help="use 2018 data with 2017 MC.")
 	parser.add_argument("-r", "--ratio", action="store_true", dest="ratio", default=False,
 						  help="plot ratio plot")
 	parser.add_argument("-l", "--log", action="store_true", dest="log", default=False,

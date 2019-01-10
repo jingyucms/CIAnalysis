@@ -11,21 +11,15 @@ def main():
 
 	
 	histos = ["BB","BE"]
-	labels = ["dimuon_2017","dielectron_2017"]
+	labels = ["dielectron_2016","dimuon_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
 	suffixesMu = ["nominal","scaledown","smeared","muonid"]
 	suffixesEle = ["nominal","scaledown","scaleup","pileup","piledown"]
 	css = ["inc","cspos","csneg"]
-	#~ suffixesMu = ["nominal"]
-	#~ suffixesEle = ["nominal"]
-	#~ suffixes = ["smeared"]
-	lambdas = [10,16,22,28,34,40]
+	lambdas = [10,16,22,28,34,40,46]
 	interferences = ["Con","Des"]
 	hels = ["LL","LR","RR"]
-	#~ lambdas = [10]NoLogCSNeg
-	#~ models = ["ConLL"]
 
 	massBins = [400,500,700,1100,1900,3500]
-	#~ massBins = [400]
 	signalYields = {}
 	
 	
@@ -42,9 +36,13 @@ def main():
 							model = interference+hel
 							if "dimuon" in label:
 								name = "cito2mu"
-							else:
+							else:			#~ print signalYields
+
 								name = "cito2e"	
-							fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
+							if "2016" in label:
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+							else:	
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
 							for l in lambdas:
 								if "dimuon" in label:
 									name = "CITo2Mu_Lam%dTeV%s"%(l,model)
@@ -67,8 +65,7 @@ def main():
 									functionUnc = fitFile.Get("fn_unc_m%d_%s"%(massBin,model))
 									uncert = (abs((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000))))**0.5	
 									signalYields["%s_%s_%s"%(name,label,histo)][str(index)] = [(function.Eval(l)-function.Eval(100000)),uncert]
-									print (label, histo, model, suffix, l, function.Eval(l), functionUnc.Eval(l))
-									print (label, histo, model, suffix, 100000, function.Eval(100000))
+
 						for l in lambdas:			
 							if "dimuon" in label:
 								name = "CITo2Mu_Lam%dTeV%s"%(l,hel)
@@ -84,8 +81,6 @@ def main():
 					
 
 
-			print (suffix)
-			#~ print signalYields
 			if "dimuon" in label:
 				fileName = "signalYields"
 			else:

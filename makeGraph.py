@@ -16,6 +16,8 @@ parser.add_argument("-flav", help="Lepton flavor", type=str)
 parser.add_argument("-unc",  help="Uncertainty", type=str, default="nominal")
 parser.add_argument("-cs",   help="CS bin", type=str, default="inc")
 parser.add_argument("-d","--debug", dest="debug", help="debug", action='store_true')
+parser.add_argument("-do2016","--do2016", dest="do2016", help="do2016", action='store_true')
+parser.add_argument("-do2018","--do2018", dest="do2018", help="do2018", action='store_true')
 ## need options and flags here :)
 # parser.add_argument('--constraint', help="constraint for paramter (par up down)", nargs=3, action='append', type=float)
 parser.add_argument('--constraint', help="constraint for paramter (par up down)", action='append', type=par_list)
@@ -48,8 +50,10 @@ setTDRStyle()
 r.gROOT.SetBatch(True)
 r.gErrorIgnoreLevel = r.kWarning
 
-#lvals = ["1", "10", "16", "22", "28", "34", "100k"]
-lvals = [16, 24, 32, 40, 100000]
+if args.do2016:
+	lvals = [1, 10, 16, 22, 28, 34, 100000]
+else:
+	lvals = [16, 24, 32, 40, 100000]
 lerrs = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 10.]
 bvals = [i for i in range(len(lvals))]
 helis = ["LL","LR","RR"]
@@ -77,8 +81,12 @@ csbins = ["inc","cspos","csneg"]
 
 csbin  = args.cs
 unc    = args.unc
-
-filefmt  = "2{0:s}_{1:s}_{2:s}_{3:s}_{4:s}_{5:s}{6:s}"
+if args.do2016:
+	filefmt  = "2{0:s}_{1:s}_{2:s}_{3:s}_{4:s}_{5:s}{6:s}_2016"
+elif args.do2018:
+	filefmt  = "2{0:s}_{1:s}_{2:s}_{3:s}_{4:s}_{5:s}{6:s}_2018"
+else:	
+	filefmt  = "2{0:s}_{1:s}_{2:s}_{3:s}_{4:s}_{5:s}{6:s}"
 modifier = ""
 if args.fixdes:
 	modifier += "_fixdes"
@@ -118,10 +126,15 @@ for etabin in etabins:
 		xvals=np.array(lvals,dtype='float64')
 		xerrs=np.array(lerrs,dtype='float64')
 		# emutype = "mu"
-		with open("ciparametrization_2{0:s}_{1:s}_{2:s}_{3:s}.json".format(emutype,unc,etabin,csbin),"r") as js:
-			print("cito2{0:s}_{1:s}_{2:s}_{3:s}_parametrization{4:s}.root".format(emutype,unc,etabin,csbin,modifier))
+		addLabel = ""
+		if args.do2016:
+			addLabel = "_2016"
+		elif args.do2018:
+			addLabel = "_2018"
+		with open("ciparametrization_2{0:s}_{1:s}_{2:s}_{3:s}{4:s}.json".format(emutype,unc,etabin,csbin,addLabel),"r") as js:
+			print("cito2{0:s}_{1:s}_{2:s}_{3:s}_parametrization{4:s}{5:s}.root".format(emutype,unc,etabin,csbin,modifier,addLabel))
 			params = json.load(js)
-			outf = r.TFile("cito2{0:s}_{1:s}_{2:s}_{3:s}_parametrization{4:s}.root".format(emutype,unc,etabin,csbin,modifier),
+			outf = r.TFile("cito2{0:s}_{1:s}_{2:s}_{3:s}_parametrization{4:s}{5:s}.root".format(emutype,unc,etabin,csbin,modifier,addLabel),
 						   "recreate")
 			for heli in helis:
 				conFitPar = []
