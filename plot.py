@@ -334,7 +334,7 @@ def plotDataMC(args,plot):
 		os.makedirs("plots")	
 	if args.use2016:
 		hCanvas.Print("plots/"+plot.fileName+"_2016.pdf")
-	if args.use2018:
+	elif args.use2018:
 		hCanvas.Print("plots/"+plot.fileName+"_2018.pdf")
 	else:	
 		hCanvas.Print("plots/"+plot.fileName+".pdf")
