@@ -4,11 +4,12 @@ from array import array
 from copy import deepcopy
 import pickle
 
-
+from sys import argv
 
 def main():
 	gROOT.SetBatch(True)
 
+	suffix = argv[1]
 	
 	histos = ["BB","BE"]
 	labels = ["dimuon_2016","dielectron_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
@@ -28,11 +29,16 @@ def main():
 	#~ names = ["default","resolution","scale","ID"]
 	
 	for label in labels:
-		if "dimuon" in label:
-			suffixes = suffixesMu
-		else:
-			suffixes = suffixesEle
-		for suffix in suffixes:
+			print (label)
+		# ~ if "dimuon" in label:
+			# ~ suffixes = suffixesMu
+		# ~ else:
+			# ~ suffixes = suffixesEle
+		# ~ for suffix in suffixes:
+			if "dimuon" in label and not suffix in suffixesMu:
+				continue
+			if "dielectron" in label and not suffix in suffixesEle:
+				continue
 			for cs in css:			
 				for histo in histos:
 					for hel in hels:
@@ -44,6 +50,8 @@ def main():
 								name = "cito2e"	
 							if "2016" in label:	
 								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+							elif "2018" in label:	
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:	
 								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
 							for l in lambdas:

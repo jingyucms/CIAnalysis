@@ -4,7 +4,7 @@ from ROOT import TMath
 import sys
 import copy
 
-path = "files/"
+path = "../files/"
 
 zScale = {
 	"electrons":0.879,
@@ -3080,6 +3080,7 @@ class plots:
 	massPlotEleBBPUScaleUpCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleUp_bb_CSNeg","DielectronMassPUScaleUpBB_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
 	massPlotEleBEPUScaleUpCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleUp_be_CSNeg","DielectronMassPUScaleUpBE_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
 	massPlotEleBBPUScaleDownCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleDown_bb_CSNeg","DielectronMassPUScaleDownBB_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleBEPUScaleDownCSNegNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleDown_be_CSNeg","DielectronMassPUScaleDownBE_CSNeg",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True,muon=False)
 	
 	
 
