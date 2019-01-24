@@ -286,7 +286,7 @@ class Process:
 			histo.GetYaxis().SetTitle(plot.yaxis)	
 				
 		return histo
-	def loadHistogramProjected(self,plot,lumi):
+	def loadHistogramProjected(self,plot,lumi,zScaleFac):
 		histo = None
 		for index, sample in enumerate(self.samples):
 			if plot.muon:
@@ -295,7 +295,7 @@ class Process:
 				tempHist = loadHistoFromFileProjected(fileNamesEle[sample],plot.histName,plot.rebin,plot.projLow,plot.projHigh)
 				
 			if len(self.xsecs) > 0:
-				tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index]))
+				tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])*zScaleFac)
 			if histo == None:
 				histo = tempHist.Clone()
 			else:	
@@ -327,11 +327,11 @@ class TheStack2D:
 	from ROOT import THStack
 	theStack = THStack()	
 	theHistogram = None	
-	def  __init__(self,processes,lumi,plot):
+	def  __init__(self,processes,lumi,plot,zScale):
 		self.theStack = THStack()
 			
 		for process in processes:
-			temphist = process.loadHistogramProjected(plot,lumi)
+			temphist = process.loadHistogramProjected(plot,lumi,zScale)
 
 			self.theStack.Add(temphist.Clone())
 			if self.theHistogram == None:
