@@ -20,7 +20,9 @@ def main():
 	#~ suffixes = ["smeared"]
 	lambdas = [10,16,22,28,34,40,46]
 	interferences = ["Con","Des"]
-	hels = ["LL","LR","RR"]
+	# ~ hels = ["LL","LR","RR"]
+	# ~ interferences = ["Con"]
+	hels = ["LL"]
 
 	#~ massBins = [1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200,3400]
 	massBins = [1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200,3400]
@@ -90,7 +92,7 @@ def main():
 					
 			
 
-
+			print (signalYields)
 
 			if "dimuon" in label:
 				fileName = "signalYieldsSingleBin"
