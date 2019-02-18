@@ -248,10 +248,13 @@ def plotDataMC(args,plot):
 	
 	# Draw background from stack
 	drawStack.theStack.Draw("samehist")							
-
+	dyhist = processes[2].loadHistogram(plot, lumi, zScaleFac)
+	print processes[2].label
+	print dyhist.Integral(dyhist.FindBin(1400), dyhist.FindBin(10000))/36.3
+	print dyhist.Integral(dyhist.FindBin(1700), dyhist.FindBin(10000))/36.3
 
 	# Draw signal information
-	if len(args.signals) != 0:
+	'''if len(args.signals) != 0:
 		signalhists = []
 		for Signal in signals:
 			if plot.plot2D: # plot collins-soper angle
@@ -337,7 +340,7 @@ def plotDataMC(args,plot):
 		hCanvas.Print("test/"+plot.fileName+"_2018.pdf")
 	else:	
 		hCanvas.Print("test/"+plot.fileName+"_2017.pdf")
-
+'''
 					
 if __name__ == "__main__":
 	

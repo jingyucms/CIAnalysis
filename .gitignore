@@ -2,3 +2,4 @@
 *.root
 *json
 *.txt
+files/*.root

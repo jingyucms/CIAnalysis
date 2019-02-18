@@ -167,6 +167,9 @@ def getFilePathsAndSampleNames(path,muon=True):
 				if "2016_" in sampleName:
 					if "CI" in sampleName:
 						sampleName = sampleName.replace("2016_","")
+					elif "ADD" in sampleName:
+						sampleName = sampleName.replace("2016_", "")
+						sampleName = sampleName.replace("LambdaT", "Lam")
 					else:	
 						sampleName = sampleName.replace("2016_","")+"_2016"
 				result[sampleName] = filePath
@@ -176,6 +179,9 @@ def getFilePathsAndSampleNames(path,muon=True):
 				if "2016_" in sampleName:
 					if "CI" in sampleName:
 						sampleName = sampleName.replace("2016_","")
+					elif "ADD" in sampleName:
+                                                sampleName = sampleName.replace("2016_", "")
+                                                sampleName = sampleName.replace("LambdaT", "Lam")
 					else:	
 						sampleName = sampleName.replace("2016_","")+"_2016"
 				result[sampleName] = filePath
