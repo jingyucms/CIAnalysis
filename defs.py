@@ -4,7 +4,7 @@ from ROOT import TMath
 import sys
 import copy
 
-path = "../files/"
+path = "files/"
 
 zScale = {
 	"electrons":0.879,
@@ -608,6 +608,41 @@ crossSections = {
 'CITo2E_Lam16TeVConRR_M800':0.019170,
 'CITo2E_Lam16TeVConRR_M1300':0.003919,
 
+# Cross sections for ADD model
+# The cross sections [pb] from 2016AN for Lam3.5-10 are:
+# 0.051, 0.017, 0.0069, 0.0030, 0.0014, 0.00069
+# 0.00037, 0.00020, 0.00012, 0.000072, 0.000045
+# 0.000031, 0.000013 for signal only
+# need to add on DY crosssec: 0.001171
+'ADDGravTo2Mu_Lam3500_M1700':0.052171,
+'ADDGravTo2Mu_Lam4000_M1700':0.018171,
+'ADDGravTo2Mu_Lam4500_M1700':0.008071,
+'ADDGravTo2Mu_Lam5000_M1700':0.004171,
+'ADDGravTo2Mu_Lam5500_M1700':0.002571,
+'ADDGravTo2Mu_Lam6000_M1700':0.001861,
+'ADDGravTo2Mu_Lam6500_M1700':0.001541,
+'ADDGravTo2Mu_Lam7000_M1700':0.001371,
+'ADDGravTo2Mu_Lam7500_M1700':0.001291,
+'ADDGravTo2Mu_Lam8000_M1700':0.001243,
+'ADDGravTo2Mu_Lam8500_M1700':0.001216,
+'ADDGravTo2Mu_Lam9000_M1700':0.001202,
+'ADDGravTo2Mu_Lam10000_M1700':0.001184,
+'ADDGravTo2Mu_Lam100k_M1700': 0.001524,
+
+'ADDGravTo2E_Lam3500_M1700':0.052171,
+'ADDGravTo2E_Lam4000_M1700':0.018171,
+'ADDGravTo2E_Lam4500_M1700':0.008071,
+'ADDGravTo2E_Lam5000_M1700':0.004171,
+'ADDGravTo2E_Lam5500_M1700':0.002571,
+'ADDGravTo2E_Lam6000_M1700':0.001861,
+'ADDGravTo2E_Lam6500_M1700':0.001541,
+'ADDGravTo2E_Lam7000_M1700':0.001371,
+'ADDGravTo2E_Lam7500_M1700':0.001291,
+'ADDGravTo2E_Lam8000_M1700':0.001243,
+'ADDGravTo2E_Lam8500_M1700':0.001216,
+'ADDGravTo2E_Lam9000_M1700':0.001202,
+'ADDGravTo2E_Lam10000_M1700':0.001184,
+'ADDGravTo2E_Lam100k_M1700':0.001524,
 
 }
 
@@ -989,6 +1024,21 @@ fileNames = {
 #~ "JetsFromDataBE":"Heep-FR-Data-total-jets-BarrelEndCaps.root",
 "Jets_2016":"jets_muons_2016.root",
 
+# Here for ADD 2016 samples
+"ADDGravTo2Mu_Lam3000_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT3000_M1700.root",
+"ADDGravTo2Mu_Lam3500_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT3500_M1700.root",
+"ADDGravTo2Mu_Lam4000_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT4000_M1700.root",
+"ADDGravTo2Mu_Lam4500_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT4500_M1700.root",
+"ADDGravTo2Mu_Lam5000_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT5000_M1700.root",
+"ADDGravTo2Mu_Lam5500_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT5500_M1700.root",
+"ADDGravTo2Mu_Lam6000_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT6000_M1700.root",
+"ADDGravTo2Mu_Lam6500_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT6500_M1700.root",
+"ADDGravTo2Mu_Lam7000_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT7000_M1700.root",
+"ADDGravTo2Mu_Lam7500_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT7500_M1700.root",
+"ADDGravTo2Mu_Lam8000_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT8000_M1700.root",
+"ADDGravTo2Mu_Lam8500_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT8500_M1700.root",
+"ADDGravTo2Mu_Lam9000_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT9000_M1700.root",
+"ADDGravTo2Mu_Lam10000_M1700": "dileptonAna_muons_2016_ADDGravTo2Mu_LambdaT10000_M1700.root",
 
 
 }
@@ -1369,6 +1419,23 @@ fileNamesEle = {
 
 "Jets_2016":"hist_jets.root",
 
+
+# Here for ADD 2016 samples
+"ADDGravTo2E_Lam3000_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT3000_M1700.root",
+"ADDGravTo2E_Lam3500_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT3500_M1700.root",
+"ADDGravTo2E_Lam4000_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT4000_M1700.root",
+"ADDGravTo2E_Lam4500_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT4500_M1700.root",
+"ADDGravTo2E_Lam5000_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT5000_M1700.root",
+"ADDGravTo2E_Lam5500_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT5500_M1700.root",
+"ADDGravTo2E_Lam6000_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT6000_M1700.root",
+"ADDGravTo2E_Lam6500_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT6500_M1700.root",
+"ADDGravTo2E_Lam7000_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT7000_M1700.root",
+"ADDGravTo2E_Lam7500_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT7500_M1700.root",
+"ADDGravTo2E_Lam8000_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT8000_M1700.root",
+"ADDGravTo2E_Lam8500_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT8500_M1700.root",
+"ADDGravTo2E_Lam9000_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT9000_M1700.root",
+"ADDGravTo2E_Lam10000_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_LambdaT10000_M1700.root",
+#"ADDGravTo2E_Lam100k_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_Lam100k_M1700.root"
 
 }
 	
@@ -2708,10 +2775,301 @@ class Signals2016:
 		additionalSelection = None
 		
 
+class Signals2016ADD:
+			
+	'''class ADDGravTo2E_Lam3000:
+                subprocesses = ["ADDGravTo2E_Lam3000_M1700"]
+                label = "ADDGravTo2E_Lam3000_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kMagenta+1
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+	'''
+        class ADDGravTo2E_Lam3500:
+                subprocesses = ["ADDGravTo2E_Lam3500_M1700"]
+                label = "ADDGravTo2E_Lam3500_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kRed
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
 
-				
-		
-		
+        class ADDGravTo2E_Lam4000:
+                subprocesses = ["ADDGravTo2E_Lam4000_M1700"]
+                label = "ADDGravTo2E_Lam4000_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 4 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kOrange
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2E_Lam4500:
+                subprocesses = ["ADDGravTo2E_Lam4500_M1700"]
+                label = "ADDGravTo2E_Lam4500_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 4.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kYellow
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2E_Lam5000:
+                subprocesses = ["ADDGravTo2E_Lam5000_M1700"]
+                label = "ADDGravTo2E_Lam5000_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kSpring+10
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2E_Lam5500:
+                subprocesses = ["ADDGravTo2E_Lam5500_M1700"]
+                label = "ADDGravTo2E_Lam5500_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 5.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kGreen
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2E_Lam6000:
+                subprocesses = ["ADDGravTo2E_Lam6000_M1700"]
+                label = "ADDGravTo2E_Lam6000_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 6 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kTeal
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2E_Lam6500:
+                subprocesses = ["ADDGravTo2E_Lam6500_M1700"]
+                label = "ADDGravTo2E_Lam6500_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 6.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kCyan
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2E_Lam7000:
+                subprocesses = ["ADDGravTo2E_Lam7000_M1700"]
+                label = "ADDGravTo2E_Lam7000_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 7 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kAzure +6
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2E_Lam7500:
+                subprocesses = ["ADDGravTo2E_Lam7500_M1700"]
+                label = "ADDGravTo2E_Lam7500_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 7.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kBlue
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2E_Lam8000:
+                subprocesses = ["ADDGravTo2E_Lam8000_M1700"]
+                label = "ADDGravTo2E_Lam8000_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 8 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kViolet-6
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2E_Lam8500:
+                subprocesses = ["ADDGravTo2E_Lam8500_M1700"]
+                label = "ADDGravTo2E_Lam8500_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 8.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kMagenta+1
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2E_Lam9000:
+                subprocesses = ["ADDGravTo2E_Lam9000_M1700"]
+                label = "ADDGravTo2E_Lam9000_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 9 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kPink-4
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2E_Lam10000:
+                subprocesses = ["ADDGravTo2E_Lam10000_M1700"]
+                label = "ADDGravTo2E_Lam10000_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 10 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kBlack
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        '''class ADDGravTo2E_Lam100k:
+                subprocesses = ["ADDGravTo2Mu_Lam100k_M1700"]
+                label = "ADDGravTo2Mu_Lam100k_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 100k TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kMagenta+1
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None'''
+	
+        class ADDGravTo2Mu_Lam3500:
+                subprocesses = ["ADDGravTo2Mu_Lam3500_M1700"]
+                label = "ADDGravTo2Mu_Lam3500_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 3.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kRed
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam4000:
+                subprocesses = ["ADDGravTo2Mu_Lam4000_M1700"]
+                label = "ADDGravTo2Mu_Lam4000_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 4 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kOrange
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam4500:
+                subprocesses = ["ADDGravTo2Mu_Lam4500_M1700"]
+                label = "ADDGravTo2Mu_Lam4500_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 4.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kYellow
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam5000:
+                subprocesses = ["ADDGravTo2Mu_Lam5000_M1700"]
+                label = "ADDGravTo2Mu_Lam5000_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kSpring+9
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam5500:
+                subprocesses = ["ADDGravTo2Mu_Lam5500_M1700"]
+                label = "ADDGravTo2Mu_Lam5500_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 5.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kGreen
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam6000:
+                subprocesses = ["ADDGravTo2Mu_Lam6000_M1700"]
+                label = "ADDGravTo2Mu_Lam6000_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 6 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kTeal
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam6500:
+                subprocesses = ["ADDGravTo2Mu_Lam6500_M1700"]
+                label = "ADDGravTo2Mu_Lam6500_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 6.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kCyan+1
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam7000:
+                subprocesses = ["ADDGravTo2Mu_Lam7000_M1700"]
+                label = "ADDGravTo2Mu_Lam7000_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 7 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kAzure+6
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam7500:
+                subprocesses = ["ADDGravTo2Mu_Lam7500_M1700"]
+                label = "ADDGravTo2Mu_Lam7500_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 7.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kBlue
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam8000:
+                subprocesses = ["ADDGravTo2Mu_Lam8000_M1700"]
+                label = "ADDGravTo2Mu_Lam8000_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 8 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kViolet-6
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam8500:
+                subprocesses = ["ADDGravTo2Mu_Lam8500_M1700"]
+                label = "ADDGravTo2Mu_Lam8500_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 8.5 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kMagenta+1
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam9000:
+                subprocesses = ["ADDGravTo2Mu_Lam9000_M1700"]
+                label = "ADDGravTo2Mu_Lam9000_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 9 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kPink+6
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        class ADDGravTo2Mu_Lam10000:
+                subprocesses = ["ADDGravTo2Mu_Lam10000_M1700"]
+                label = "ADDGravTo2Mu_Lam10000_M1700"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 10 TeV"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kBlack
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None
+
+        '''class ADDGravTo2Mu_Lam100k:
+                subprocesses = ["ADDGravTo2Mu_Lam100k_M1700"]
+                label = "ADDGravTo2Mu_Lam100k_M1700"               #"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
+                fillcolor = ROOT.kWhite
+                fillstyle = 0
+                linecolor = ROOT.kBlack
+                uncertainty = 0.0
+                scaleFac     = 1.
+                additionalSelection = None'''
+
+
+
+
 class Data2016:
 		subprocesses = ["Data2016_RunB","Data2016_RunC","Data2016_RunD","Data2016_RunE","Data2016_RunF","Data2016_RunG","Data2016_RunH"]
 		label = "Data 2016"
@@ -3013,6 +3371,14 @@ class plots:
 	cosThetaStarBBM1500Mu = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedVsCS_bb","CosThetaStarBBM1500_Mu",xLabel="cos(#theta^{*})",log=False,logX=False,xRange=[-1,1],projRange=[1500,-1],nBins = 20, rebin=4,yLabel="Events",useJets=False,muon=True,plot2D=True)
 	cosThetaStarBEM1500Mu = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedVsCS_be","CosThetaStarBEM1500_Mu",xLabel="cos(#theta^{*})",log=False,logX=False,xRange=[-1,1],projRange=[1500,-1],nBins = 20, rebin=4,yLabel="Events",useJets=False,muon=True,plot2D=True)
 
+        cosThetaStarM1800Mu = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedVsCS","CosThetaStarM1800_Mu",xLabel="cos(#theta^{*})",log=False,logX=False,xRange=[-1,1],projRange=[1800,-1],nBins = 20, rebin=4,yLabel="Events",useJets=False,muon=True,plot2D=True)
+        cosThetaStarBBM1800Mu = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedVsCS_bb","CosThetaStarBBM1800_Mu",xLabel="cos(#theta^{*})",log=False,logX=False,xRange=[-1,1],projRange=[1800,-1],nBins = 20, rebin=4,yLabel="Events",useJets=False,muon=True,plot2D=True)
+        cosThetaStarBEM1800Mu = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedVsCS_be","CosThetaStarBEM1800_Mu",xLabel="cos(#theta^{*})",log=False,logX=False,xRange=[-1,1],projRange=[1800,-1],nBins = 20, rebin=4,yLabel="Events",useJets=False,muon=True,plot2D=True)
+        cosThetaStarM1800Ele = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassVsCS_bbbe","CosThetaStarM1800_Ele",xLabel="cos(#theta^{*})",log=False,logX=False,xRange=[-1,1],projRange=[1800,-1],nBins = 20, rebin=4,yLabel="Events",useJets=False,muon=False,plot2D=True)
+        cosThetaStarBBM1800Ele = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassVsCS_bb","CosThetaStarBBM1800_Ele",xLabel="cos(#theta^{*})",log=False,logX=False,xRange=[-1,1],projRange=[1800,-1],nBins = 20, rebin=4,yLabel="Events",useJets=False,muon=False,plot2D=True)
+        cosThetaStarBEM1800Ele = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassVsCS_be","CosThetaStarBEM1800_Ele",xLabel="cos(#theta^{*})",log=False,logX=False,xRange=[-1,1],projRange=[1800,-1],nBins = 20, rebin=4,yLabel="Events",useJets=False,muon=False,plot2D=True)
+
+
 	cosThetaStarVsMassMu = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedVsCS","CosThetaStarVsMass_Mu",xLabel = "m(#mu#mu) [GeV]" , yLabel="cos(#theta^{*})",log=False,logX=True,xRange=[300,2000],yRange=[-1,1],nBins = 20, rebin=4,useJets=False,muon=True,plot2D=True)
 
 
@@ -3084,5 +3450,6 @@ class plots:
 	
 	
 
-#plotList = ["nVerticesEle","nVerticesUnweightedEle","nVerticesMu","massPlotEleBB","massPlotEleBE","massPlot","massPlotBB","massPlotBE","cosThetaStarPlotEle","cosThetaStarPlotOppEle","cosThetaStarPlotSameEle","cosThetaStarPlotMu"]
-plotList = ["cosThetaStarM1000Ele","cosThetaStarBBM1000Ele","cosThetaStarBEM1000Ele","cosThetaStarM1000Mu","cosThetaStarBBM1000Mu","cosThetaStarBEM1000Mu","cosThetaStarM500Ele","cosThetaStarBBM500Ele","cosThetaStarBEM500Ele","cosThetaStarM500Mu","cosThetaStarBBM500Mu","cosThetaStarBEM500Mu","cosThetaStarM1500Ele","cosThetaStarBBM1500Ele","cosThetaStarBEM1500Ele","cosThetaStarM1500Mu","cosThetaStarBBM1500Mu","cosThetaStarBEM1500Mu"]
+plotList = ["nVerticesEle","nVerticesUnweightedEle","nVerticesMu","massPlotEleBB","massPlotEleBE","massPlot","massPlotBB","massPlotBE","cosThetaStarPlotEle","cosThetaStarPlotOppEle","cosThetaStarPlotSameEle","cosThetaStarPlotMu"]
+#plotList = ["cosThetaStarM1800Ele","cosThetaStarBBM1800Ele","cosThetaStarBEM1800Ele","cosThetaStarM1800Mu","cosThetaStarBBM1800Mu","cosThetaStarBEM1800Mu"]
+#plotList = ["cosThetaStarM1000Ele","cosThetaStarBBM1000Ele","cosThetaStarBEM1000Ele","cosThetaStarM1000Mu","cosThetaStarBBM1000Mu","cosThetaStarBEM1000Mu","cosThetaStarM500Ele","cosThetaStarBBM500Ele","cosThetaStarBEM500Ele","cosThetaStarM500Mu","cosThetaStarBBM500Mu","cosThetaStarBEM500Mu","cosThetaStarM1500Ele","cosThetaStarBBM1500Ele","cosThetaStarBEM1500Ele","cosThetaStarM1500Mu","cosThetaStarBBM1500Mu","cosThetaStarBEM1500Mu"]

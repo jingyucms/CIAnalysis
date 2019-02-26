@@ -10,6 +10,7 @@ parser.add_argument("-cs",   help="CS bin: 'inc', 'cspos', 'csneg'", type=str, d
 parser.add_argument("-d",    help="debug", action='store_true')
 parser.add_argument("-do2016", help="do 2016", action='store_true')
 parser.add_argument("-do2018", help="do 2018", action='store_true')
+parser.add_argument("-add", help="add", action="store_true")
 
 args = parser.parse_args()
 
@@ -18,7 +19,7 @@ import numpy as np
 #~ from nesteddict import nesteddict as ndict
 import json
 
-from defs import getPlot, Backgrounds, Signals, Data, path, Signals2016, zScale2016, zScale2018
+from defs import getPlot, Backgrounds, Signals, Data, path, Signals2016, Signals2016ADD, zScale2016, zScale2018
 from helpers import *
 
 from setTDRStyle import setTDRStyle
@@ -38,8 +39,16 @@ if args.do2016:
 	lvals=["1", "10", "16", "22", "28", "34", "100k"]
 helis=["LL","LR","RR"]
 intfs=["Con","Des"]
-
 supers = [400,500,700,1100,1900,3500,10000]
+extrabins = [1000+i for i in range(0, 2500, 200)]
+
+if args.add:
+	lvals = ["%.1f"%(3.5+i*0.5) for i in range(12)]
+	lvals.append("10")
+	helis = [""]
+	intfs = [""]
+	supers = [2000, 2200, 2600, 3000, 3400, 10000]
+	extrabins = [1900+i for i in range(0, 1500, 200)]
 
 uncertainties = [
 	"nominal",
@@ -131,7 +140,9 @@ lumis = {
 	"Mu": 42.1,
 	"Ele": 41.5
 
-}    
+} 
+if args.do2016:
+	lumis = {"Mu":36.3, "Ele":35.9}   
 	
 etabins = ["bb","be"]
 #             0    1    2    3
@@ -167,8 +178,10 @@ for etabin in etabins:
 			addLabel="_2016"
 		elif args.do2018:
 			addLabel="_2018"
-		with open("ciparametrization_2{0:s}_{1:s}_{2:s}_{3:s}{4:s}.json".format(antype[1],unc,etabin,csbin,addLabel),"w") as js:
-			with open("cicounts_2{0:s}_{1:s}_{2:s}_{3:s}{4:s}.txt".format(antype[1],unc,etabin,csbin,addLabel),"w") as out:
+		model = "CI"
+		if args.add: model = "ADD"
+		with open("{0:s}parametrization_2{1:s}_{2:s}_{3:s}_{4:s}{5:s}.json".format(model,antype[1],unc,etabin,csbin,addLabel),"w") as js:
+			with open("{0:s}counts_2{1:s}_{2:s}_{3:s}_{4:s}{5:s}.txt".format(model,antype[1],unc,etabin,csbin,addLabel),"w") as out:
 				for intf in intfs:
 					for heli in helis:
 						files=[]
@@ -177,7 +190,7 @@ for etabin in etabins:
 							params["{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)]     = [0. for j in range(len(lvals))]
 							params["{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)] = [0. for j in range(len(lvals))]
 							pass
-						for point in [1000+x for x in range(0,2500,200)]:
+						for point in extrabins:
 							params["{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)]     = [0. for j in range(len(lvals))]
 							params["{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)] = [0. for j in range(len(lvals))]
 							pass
@@ -217,7 +230,9 @@ for etabin in etabins:
 								zScaleFac = zScale["muons"]
 								if not plot.muon:
 									zScaleFac = zScale["electrons"]							          
-							signal = "CITo2%s_Lam%sTeV%s%s"%(antype[0],lval,intf,heli)  
+							signal = "%sTo2%s_Lam%sTeV%s%s"%(model,antype[0],lval,intf,heli)
+							if args.add:
+								signal = "ADDGravTo2%s_Lam%s"%(antype[0],str(int(float(lval)*1000)))
 							# ~ if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam100kTeVConLL" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR" or signal == "CITo2E_Lam100kTeVDesLR":
 							if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR":
 								# list for 2017
@@ -225,8 +240,10 @@ for etabin in etabins:
 							# ~ if signal == "CITo2Mu_Lam1TeVConLL" or signal == "CITo2Mu_Lam10TeVConLR":
 								# list for 2016
 								# ~ continue
-							if args.do2016:	
-								Signal = Process(getattr(Signals2016,signal),eventCounts,negWeights)                        
+							if args.do2016 and not args.add:	
+								Signal = Process(getattr(Signals2016,signal),eventCounts,negWeights) 
+							elif args.add:
+								Signal = Process(getattr(Signals2016ADD, signal),eventCounts,negWeights)
 							else:	
 								Signal = Process(getattr(Signals,signal),eventCounts,negWeights)                        
 							
@@ -255,17 +272,11 @@ for etabin in etabins:
 							# raw_input()
 							for ftype in ["png","C","pdf","eps"]:
 								if args.do2016:
-									can.SaveAs("fitPlots/cito2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}_2016.{0:s}".format(ftype,antype[1],
-																															  lval,intf,heli,
-																															  unc,etabin,csbin))									
+									can.SaveAs("fitPlots/{8:s}to2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}_2016.{0:s}".format(ftype,antype[1],lval,intf,heli,unc,etabin,csbin,model))									
 								elif args.do2018:
-									can.SaveAs("fitPlots/cito2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}_2018.{0:s}".format(ftype,antype[1],
-																															  lval,intf,heli,
-																															  unc,etabin,csbin))									
+									can.SaveAs("fitPlots/{8:s}to2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}_2018.{0:s}".format(ftype,antype[1],lval,intf,heli,unc,etabin,csbin,model))									
 								else:	
-									can.SaveAs("fitPlots/cito2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}.{0:s}".format(ftype,antype[1],
-																															  lval,intf,heli,
-																															  unc,etabin,csbin))
+									can.SaveAs("fitPlots/{8:s}to2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}.{0:s}".format(ftype,antype[1],lval,intf,heli,unc,etabin,csbin,model))
 							# raw_input("enter to continue")
 							for p,point in enumerate(supers[:-1]):
 								bval  = signalhist.FindBin(point)
@@ -280,7 +291,7 @@ for etabin in etabins:
 								pass
 
 							# Mass bin scan above 1 TeV
-							for point in [1000+x for x in range(0,2500,200)]:
+							for point in extrabins:
 								bval  = signalhist.FindBin(point)
 								upval = signalhist.FindBin(100000000)
 								val   = signalhist.Integral(bval,upval)

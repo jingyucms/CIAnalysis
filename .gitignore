@@ -2,3 +2,6 @@
 *.root
 *json
 *.txt
+*.pdf
+files/*.root
+fitPlots/*
