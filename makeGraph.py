@@ -18,6 +18,7 @@ parser.add_argument("-cs",   help="CS bin", type=str, default="inc")
 parser.add_argument("-d","--debug", dest="debug", help="debug", action='store_true')
 parser.add_argument("-do2016","--do2016", dest="do2016", help="do2016", action='store_true')
 parser.add_argument("-do2018","--do2018", dest="do2018", help="do2018", action='store_true')
+parser.add_argument("-add","--add",dest="add",help="ADD",action="store_true")
 ## need options and flags here :)
 # parser.add_argument('--constraint', help="constraint for paramter (par up down)", nargs=3, action='append', type=float)
 parser.add_argument('--constraint', help="constraint for paramter (par up down)", action='append', type=par_list)
@@ -62,6 +63,18 @@ supers      = [400,500,700,1100,1900,3500,10000]
 grbins      = [400,500,700,1100,1900,3500]
 grcols      = [r.kBlack,r.kRed,r.kBlue,r.kYellow,r.kViolet,r.kGreen]
 extragrbins = [1000+x for x in range(0,2500,200)]
+
+if args.add:
+	lvals = [3.5+i*0.5 for i in range(12)]
+	lvals.append(10)
+	lerrs = [0.1]*13
+	bvals = [i for i in range(len(lvals))]
+	helis = [""]
+	intfs = [""]
+	supers = [2000, 2200, 2600, 3000, 3400, 10000]
+	grbins = [2000, 2200, 2600, 3000, 3400]
+	grcols = [r.kBlack, r.kRed, r.kBlue, r.kYellow, r.kViolet, r.kOrange]
+	extragrbins = [1900+x for x in range(0, 1500, 200)]
 
 uncertainties = [
 	"nominal",
@@ -131,11 +144,12 @@ for etabin in etabins:
 			addLabel = "_2016"
 		elif args.do2018:
 			addLabel = "_2018"
-		with open("ciparametrization_2{0:s}_{1:s}_{2:s}_{3:s}{4:s}.json".format(emutype,unc,etabin,csbin,addLabel),"r") as js:
-			print("cito2{0:s}_{1:s}_{2:s}_{3:s}_parametrization{4:s}{5:s}.root".format(emutype,unc,etabin,csbin,modifier,addLabel))
+		model = "CI"
+		if args.add: model = "ADD"
+		with open("{0:s}parametrization_2{1:s}_{2:s}_{3:s}_{4:s}{5:s}.json".format(model,emutype,unc,etabin,csbin,addLabel),"r") as js:
+			print("{0:s}to2{1:s}_{2:s}_{3:s}_{4:s}_parametrization{5:s}{6:s}.root".format(model,emutype,unc,etabin,csbin,modifier,addLabel))
 			params = json.load(js)
-			outf = r.TFile("cito2{0:s}_{1:s}_{2:s}_{3:s}_parametrization{4:s}{5:s}.root".format(emutype,unc,etabin,csbin,modifier,addLabel),
-						   "recreate")
+			outf = r.TFile("{6:s}to2{0:s}_{1:s}_{2:s}_{3:s}_parametrization{4:s}{5:s}.root".format(emutype,unc,etabin,csbin,modifier,addLabel,model),"recreate")
 			for heli in helis:
 				conFitPar = []
 				for intf in intfs:
@@ -143,13 +157,13 @@ for etabin in etabins:
 					for i,point in enumerate(supers[:-1]):
 						doFitOnGraph(params, lvals, xvals, xerrs,
 									 intf, heli, i, point, outf, conFitPar,
-									 args.fixinf, args.fixdes, constraints, args.fitrange)
+									 args.fixinf, args.fixdes, constraints, args.fitrange, args.add)
 						pass
 					print("Fitting extra bins for the mass scan")
 					for i,point in enumerate(extragrbins):
 						doFitOnGraph(params, lvals, xvals, xerrs,
 									 intf, heli, 1, point, outf, conFitPar,
-									 args.fixinf, args.fixdes, constraints, args.fitrange)
+									 args.fixinf, args.fixdes, constraints, args.fitrange, args.add)
 						pass
 					# raw_input("continue")
 					pass
@@ -169,8 +183,9 @@ for etabin in etabins:
 						grMass[grbin] = outf.Get("gr_{0:s}{1:s}_m{2:d}".format(intf,heli,grbin))
 						#fMass[grbin]  = outf.Get("fn_m{2:d}_{0:s}{1:s}".format(intf,heli,grbin)).GetChisquare()
 						fMass[grbin]  = outf.Get("fitR_m{2:d}_{0:s}{1:s}".format(intf,heli,grbin)).Chi2()
+						ndf = outf.Get("fitR_m{2:d}_{0:s}{1:s}".format(intf,heli,grbin)).Ndf()
 
-						if grbin == 400:
+						if grbin == grbins[0]:
 							grMass[grbin].Draw("ap")
 							r.gStyle.SetOptStat(0)
 							r.gStyle.SetOptFit(0)
@@ -187,9 +202,7 @@ for etabin in etabins:
 							print("Finding {0:d} in supers".format(grbin),supers)
 							pass
 						suIdx = supers.index(grbin)
-						leg.AddEntry(grMass[grbin], "{0:d} < M_{{ll}} [GeV] < {1:d}, #chi^{{2}} = {2:2.2f}".format(supers[suIdx],
-																												   supers[suIdx+1],
-																												   fMass[grbin]), "p")
+						leg.AddEntry(grMass[grbin], "{0:d} < M_{{ll}} [GeV] < {1:d}, #chi^{{2}}/NDF = {2:2.2f}/{3:d}".format(supers[suIdx],supers[suIdx+1],fMass[grbin],ndf), "p")
 						r.gPad.Update()
 						pass
 					leg.Draw("")
@@ -198,9 +211,7 @@ for etabin in etabins:
 					r.gPad.Update()
 
 					for ftype in ["png","C","pdf","eps"]:
-						can.SaveAs("fitPlots/params_{1:s}.{0:s}".format(ftype,filefmt.format(emutype,intf,heli,
-																										   unc,etabin,csbin,
-																										   modifier)))
+						can.SaveAs("fitPlots/{2:s}params_{1:s}.{0:s}".format(model,ftype,filefmt.format(emutype,intf,heli,unc,etabin,csbin,modifier)))
 						pass
 					can.Clear()
 					can.Update()
@@ -209,7 +220,8 @@ for etabin in etabins:
 					for extrabin in extragrbins:
 						grMass[extrabin] = outf.Get("gr_{0:s}{1:s}_m{2:d}".format(intf,heli,extrabin))
 						# fMass[extrabin]  = outf.Get("fn_m{2:d}_{0:s}{1:s}".format(intf,heli,extrabin)).GetChisquare()
-						fMass[extrabin]  = outf.Get("fitR_m{2:d}_{0:s}{1:s}".format(intf,heli,grbin)).Chi2()
+						fMass[extrabin]  = outf.Get("fitR_m{2:d}_{0:s}{1:s}".format(intf,heli,extrabin)).Chi2()
+						ndf = outf.Get("fitR_m{2:d}_{0:s}{1:s}".format(intf,heli,extrabin)).Ndf()
 
 						if extragrbins.index(extrabin) == 0:
 							grMass[extrabin].Draw("ap")
@@ -224,8 +236,7 @@ for etabin in etabins:
 						grMass[extrabin].SetMinimum(0.001)
 						grMass[extrabin].SetMaximum(1e7)
 						grMass[extrabin].SetMarkerColor(r.kOrange+extragrbins.index(extrabin))
-						leg.AddEntry(grMass[extrabin], "{0:d} < M_{{ll}} [GeV], #chi^{{2}} = {1:2.2f}".format(extrabin,
-																											  fMass[extrabin]), "p")
+						leg.AddEntry(grMass[extrabin], "{0:d} < M_{{ll}} [GeV], #chi^{{2}}/NDF = {1:2.2f}/{2:d}".format(extrabin,fMass[extrabin],ndf), "p")
 						r.gPad.Update()
 						pass
 					leg.Draw("")
@@ -235,9 +246,7 @@ for etabin in etabins:
 
 					# raw_input("continue")
 					for ftype in ["png","C","pdf","eps"]:
-						can.SaveAs("fitPlots/scanmass_{1:s}.{0:s}".format(ftype,filefmt.format(emutype,intf,heli,
-																											 unc,etabin,csbin,
-																											 modifier)))
+						can.SaveAs("fitPlots/{2:s}scanmass_{1:s}.{0:s}".format(model,ftype,filefmt.format(emutype,intf,heli,unc,etabin,csbin,modifier)))
 						pass
 					pass
 				pass

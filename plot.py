@@ -235,6 +235,8 @@ def plotDataMC(args,plot):
 	#	xMin = 1700
 	#	xMax = 4000
 	#	yMax = 1.0
+	if "CosThetaStarBBM1800" in plot.fileName:
+		yMax = 3
 	plotPad.DrawFrame(xMin,yMin,xMax,yMax,"; %s ; %s" %(plot.xaxis,plot.yaxis))
 	
 	
@@ -255,7 +257,7 @@ def plotDataMC(args,plot):
 		signalhists = []
 		for Signal in signals:
 			if plot.plot2D: # plot collins-soper angle
-				signalhist = Signal.loadHistogramProjected(plot,lumi)
+				signalhist = Signal.loadHistogramProjected(plot,lumi, zScaleFac)
 				signalhist.SetLineWidth(2)
 				signalBackgrounds = deepcopy(backgrounds)
 				signalBackgrounds.remove("DrellYan")
@@ -265,7 +267,7 @@ def plotDataMC(args,plot):
 						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
 					else:	
 						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
-				signalStack = TheStack2D(signalProcesses,lumi,plot)
+				signalStack = TheStack2D(signalProcesses,lumi,plot, zScaleFac)
 				signalhist.Add(signalStack.theHistogram)
 				signalhist.SetMinimum(0.1)
 				signalhist.Draw("samehist")
@@ -329,14 +331,14 @@ def plotDataMC(args,plot):
 	if args.ratio:
 
 		ratioPad.RedrawAxis()
-	if not os.path.exists("test"):
-		os.makedirs("test")	
+	if not os.path.exists("plots"):
+		os.makedirs("plots")	
 	if args.use2016:
-		hCanvas.Print("test/"+plot.fileName+"_2016.pdf")
+		hCanvas.Print("plots/"+plot.fileName+"_2016.pdf")
 	elif args.use2018:
-		hCanvas.Print("test/"+plot.fileName+"_2018.pdf")
+		hCanvas.Print("plots/"+plot.fileName+"_2018.pdf")
 	else:	
-		hCanvas.Print("test/"+plot.fileName+"_2017.pdf")
+		hCanvas.Print("plots/"+plot.fileName+"_2017.pdf")
 
 					
 if __name__ == "__main__":

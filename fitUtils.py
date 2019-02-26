@@ -1,16 +1,20 @@
 def doFitOnGraph(params, lvals, xvals, xerrs,
                  intf, heli, i, point, outf, conFitPar,
                  fixinf=False, fixdes=False,
-                 limitPars=None, fitRange=(0.5,125000.)):
+                 limitPars=None, fitRange=(0.5,125000.), useADD=False):
     import ROOT as r
     import numpy as np
     import math
+
+    if useADD: fitRange = (3, 11)
 
     r.gErrorIgnoreLevel = r.kWarning
     keyname = "{0:s}{1:s} {2:d}".format(intf,heli,point)
     print("Keyname:",keyname)
     fn = r.TF1("fn_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
                "[0]+[1]/(x**2)+[2]/(x**4)",fitRange[0],fitRange[1])
+    if useADD: fn = r.TF1("fn_m{0:d}_{1:s}{2:s}".format(point, intf, heli),
+		"[0]+[1]/(x**2)+[2]/(x**4)+[3]/(x**8)", fitRange[0], fitRange[1])
     keyname = "{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)
     pvals = params["{0:s}".format(keyname)]
     perrs = params["{0:s}_err".format(keyname)]
@@ -117,6 +121,16 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
         # fn.SetParLimits(2,1e-5,1e10)
         pass
 
+    if useADD:
+        fn.SetParameter(0, 0)
+        fn.SetParameter(1, -3)
+        fn.SetParameter(2, 101)
+        fn.SetParameter(3, 200000)
+        fn.SetParLimits(0, -30, 30)
+        fn.SetParLimits(1, -300, 300)
+        fn.SetParLimits(2, -10000, 10000)
+        fn.SetParLimits(3, -30000000, 30000000)
+
     #### Run the fitting###############################
     while stepN < 500:
         stepN += 1
@@ -182,6 +196,13 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
     # Functional form for the uncertainty on the fit, taking only minimization uncertainties
     uncfn = r.TF1("fn_unc_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
                   "sqrt(([0])^2+([1]/(x**2))^2+([2]/(x**4))^2)",0.1,1e8)
+    if useADD:
+        resfn = r.TF1("fnFitted_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
+                  "[0]+[1]/(x**2)+[2]/(x**4)+[3]/(x**8)",0.1,1e8)
+    # Functional form for the uncertainty on the fit, taking only minimization uncertainties
+        uncfn = r.TF1("fn_unc_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
+                  "sqrt(([0])^2+([1]/(x**2))^2+([2]/(x**4))^2)+([3]/(x**8)^2)",0.1,1e8)
+
     for par in range(3):
         # sometimes the fn doesn't have good values?
         print("Setting function p{:d} to {:2.4f} {:2.4f}".format(par,fitPars[par],fitParErrs[par]))
