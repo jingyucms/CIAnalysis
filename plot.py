@@ -56,7 +56,7 @@ def plotDataMC(args,plot):
 	for background in backgrounds:
 		if args.use2016:
 			if background == "Jets":
-				processes.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
 			else:	
 				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
 		else:
