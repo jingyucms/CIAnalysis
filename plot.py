@@ -7,7 +7,7 @@ import ratios
 from setTDRStyle import setTDRStyle
 gROOT.SetBatch(True)
 from helpers import *
-from defs import getPlot, Backgrounds, Backgrounds2016, Signals, Signals2016, Signals2016ADD, Data, Data2016, Data2018, path, plotList, zScale, zScale2016, zScale2018
+from defs import getPlot, Backgrounds, Backgrounds2016, Signals, Signals2016, Signals2016ADD, SignalsADD, Signals2018ADD, Signals2018, Data, Data2016, Data2018, path, plotList, zScale, zScale2016, zScale2018
 import math
 import os
 from copy import copy
@@ -56,7 +56,7 @@ def plotDataMC(args,plot):
 	for background in backgrounds:
 		if args.use2016:
 			if background == "Jets":
-				processes.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
 			else:	
 				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
 		else:
@@ -80,7 +80,7 @@ def plotDataMC(args,plot):
 	legend.SetBorderSize(0)
 	legend.SetTextFont(42)
 	
-	legendEta = TLegend(0.35, 0.55, 0.9, 0.9)
+	legendEta = TLegend(0.45, 0.75, 0.925, 0.925)
 	legendEta.SetFillStyle(0)
 	legendEta.SetBorderSize(0)
 	legendEta.SetTextFont(42)
@@ -171,9 +171,9 @@ def plotDataMC(args,plot):
 		if plot.muon:
 			lumi = 36.3*1000
 	elif args.use2018:	
-		lumi = 59.97*1000
+		lumi = 59.4*1000
 		if plot.muon:
-			lumi = 61.608*1000
+			lumi = 61.3*1000
 	else:
 		lumi = 41.529*1000
 		if plot.muon:
@@ -304,9 +304,9 @@ def plotDataMC(args,plot):
 	
 	latex.DrawLatex(0.95, 0.96, "%.1f fb^{-1} (13 TeV)"%(float(lumi)/1000,))
 	yLabelPos = 0.85
-	cmsExtra = "Private Work"
+	cmsExtra = "Preliminary"
 	if not args.data:
-		cmsExtra = "#splitline{Private Work}{Simulation}"
+		cmsExtra = "#splitline{Preliminary}{Simulation}"
 		yLabelPos = 0.82	
 	latexCMS.DrawLatex(0.19,0.89,"CMS")
 	latexCMSExtra.DrawLatex(0.19,yLabelPos,"%s"%(cmsExtra))

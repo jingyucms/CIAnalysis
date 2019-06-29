@@ -172,6 +172,14 @@ def getFilePathsAndSampleNames(path,muon=True):
 						sampleName = sampleName.replace("LambdaT", "Lam")
 					else:	
 						sampleName = sampleName.replace("2016_","")+"_2016"
+				if "2018_" in sampleName:
+					if "CI" in sampleName:
+						sampleName = sampleName.replace("2018_","") + "_2018"
+					elif "ADD" in sampleName:
+						sampleName = sampleName.replace("2018_", "")
+						sampleName = sampleName.replace("LambdaT", "Lam")
+					else:	
+						sampleName = sampleName.replace("2016_","")+"_2016"
 				result[sampleName] = filePath
 		else:
 			if "dileptonAna_electrons" in filePath and not "DoubleElectron" in filePath:
@@ -184,6 +192,14 @@ def getFilePathsAndSampleNames(path,muon=True):
                                                 sampleName = sampleName.replace("LambdaT", "Lam")
 					else:	
 						sampleName = sampleName.replace("2016_","")+"_2016"
+				if "2018_" in sampleName:
+					if "CI" in sampleName:
+						sampleName = sampleName.replace("2018_","") + '_2018'
+					elif "ADD" in sampleName:
+                                                sampleName = sampleName.replace("2018_", "")
+                                                sampleName = sampleName.replace("LambdaT", "Lam")
+					else:	
+						sampleName = sampleName.replace("2018_","")+"_2018"
 				result[sampleName] = filePath
 	return result
 
@@ -252,7 +268,11 @@ class Process:
 		self.nEvents = []
 		for sample in self.samples:
 			if not "Data" in sample and not "Jets" in sample:
-				self.xsecs.append(crossSections[sample])
+				if "ConRL" in sample or "DesRL" in sample:
+					self.xsecs.append(crossSections[sample.replace('RL',"LR")])
+				else:	
+					self.xsecs.append(crossSections[sample])
+				
 				self.negWeightFraction.append(negWeights[sample])
 				self.nEvents.append(Counts[sample])	
 	def loadHistogram(self,plot,lumi,zScaleFac):

@@ -19,7 +19,7 @@ import numpy as np
 #~ from nesteddict import nesteddict as ndict
 import json
 
-from defs import getPlot, Backgrounds, Signals, Data, path, Signals2016, Signals2016ADD, zScale2016, zScale2018
+from defs import getPlot, Backgrounds, Signals, Data, path, Signals2016, Signals2016ADD, SignalsADD, Signals2018, Signals2018ADD, zScale2016, zScale2018
 from helpers import *
 
 from setTDRStyle import setTDRStyle
@@ -37,18 +37,26 @@ r.gROOT.SetBatch(True)
 lvals=["16", "24", "32", "40", "100k"]
 if args.do2016:
 	lvals=["1", "10", "16", "22", "28", "34", "100k"]
-helis=["LL","LR","RR"]
+helis=["LL","LR","RL","RR"]
 intfs=["Con","Des"]
 supers = [400,500,700,1100,1900,3500,10000]
 extrabins = [1000+i for i in range(0, 2500, 200)]
 
 if args.add:
-	lvals = ["%.1f"%(3.5+i*0.5) for i in range(12)]
-	lvals.append("10")
-	helis = [""]
-	intfs = [""]
-	supers = [2000, 2200, 2600, 3000, 3400, 10000]
-	extrabins = [1900+i for i in range(0, 1500, 200)]
+	if args.do2016:
+		lvals = ["%.1f"%(3.5+i*0.5) for i in range(12)]
+		lvals.append("10")
+		helis = [""]
+		intfs = [""]
+		supers = [2000, 2200, 2600, 3000, 3400, 10000]
+		extrabins = [1900+i for i in range(0, 1500, 200)]
+	else:
+		lvals = ["%.1f"%(4+i*1) for i in range(9)]
+		lvals.append("100")
+		helis = [""]
+		intfs = [""]
+		supers = [400, 700, 1500, 2500, 3500, 10000]
+		extrabins = [1900+i for i in range(0, 1500, 200)]
 
 uncertainties = [
 	"nominal",
@@ -205,15 +213,15 @@ for etabin in etabins:
 
 	 
 							eventCounts = totalNumberOfGeneratedEvents(path,plot.muon)  
-							negWeights = negWeightFractions(path,plot.muon)               
+							negWeights = negWeightFractions(path,plot.muon)     
 							if args.do2016:	
 								lumi = 35.9*1000
 								if plot.muon:
 									lumi = 36.3*1000
 							elif args.do2018:	
-								lumi = 59.97*1000
+								lumi = 59.4*1000
 								if plot.muon:
-									lumi = 61.608*1000
+									lumi = 61.3*1000
 							else:
 								lumi = 41.529*1000
 								if plot.muon:
@@ -233,17 +241,25 @@ for etabin in etabins:
 							signal = "%sTo2%s_Lam%sTeV%s%s"%(model,antype[0],lval,intf,heli)
 							if args.add:
 								signal = "ADDGravTo2%s_Lam%s"%(antype[0],str(int(float(lval)*1000)))
-							# ~ if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam100kTeVConLL" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR" or signal == "CITo2E_Lam100kTeVDesLR":
-							if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR":
+							if signal == "CITo2E_Lam40TeVDesRR" or signal == "CITo2Mu_Lam40TeVConRR":
+							# ~ if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR":
 								# list for 2017
 								continue
-							# ~ if signal == "CITo2Mu_Lam1TeVConLL" or signal == "CITo2Mu_Lam10TeVConLR":
+							if signal == 'CITo2E_Lam100kTeVDesRR':
+								signal = 'CITo2E_Lam100kTeVDesLL'	
+							if signal == "CITo2Mu_Lam10TeVConRL" or signal == "CITo2Mu_Lam10TeVConLR":
 								# list for 2016
-								# ~ continue
+								continue
 							if args.do2016 and not args.add:	
 								Signal = Process(getattr(Signals2016,signal),eventCounts,negWeights) 
-							elif args.add:
+							elif args.do2018 and not args.add:	
+								Signal = Process(getattr(Signals2018,signal),eventCounts,negWeights) 
+							elif args.add and args.do2016:
 								Signal = Process(getattr(Signals2016ADD, signal),eventCounts,negWeights)
+							elif args.add and args.do2018:
+								Signal = Process(getattr(Signals2018ADD, signal),eventCounts,negWeights)
+							elif args.add:
+								Signal = Process(getattr(SignalsADD, signal),eventCounts,negWeights)
 							else:	
 								Signal = Process(getattr(Signals,signal),eventCounts,negWeights)                        
 							

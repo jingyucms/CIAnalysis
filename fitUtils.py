@@ -6,7 +6,7 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
     import numpy as np
     import math
 
-    if useADD: fitRange = (3, 11)
+    # ~ if useADD: fitRange = (3, 11)
 
     r.gErrorIgnoreLevel = r.kWarning
     keyname = "{0:s}{1:s} {2:d}".format(intf,heli,point)
@@ -22,7 +22,7 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
     print("Errors:",perrs)
     yvals = np.array(pvals,dtype='float64')
     yerrs = np.array(perrs,dtype='float64')
-    if intf == "Con":
+    if intf == "Con" or useADD:
         conFitPar.append(0)
     print("Values (numpy):",xvals,yvals)
     print("Errors (numpy):",xerrs,yerrs)
@@ -76,7 +76,7 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
     fn.SetParameter(0,gr.Eval(100000))
     
     fn.SetParameter(2,1e4*randg)
-    if intf == "Con":
+    if intf == "Con" or useADD:
         fn.SetParameter(1,randu1*1e4*math.fabs(randg))
     elif not fixdes:
         fn.SetParameter(1,-(randu1)*1e4*math.fabs(randg))
@@ -105,7 +105,7 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
         pass
 
     if (limitPars['p1']):
-        if intf == "Con":
+        if intf == "Con" or useADD:
             print("Setting p1 limits to:",limitPars['p1'][0],limitPars['p1'][1])
             fn.SetParLimits(1,limitPars['p1'][0],limitPars['p1'][1])
         elif not fixdes:

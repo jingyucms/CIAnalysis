@@ -57,14 +57,14 @@ else:
 	lvals = [16, 24, 32, 40, 100000]
 lerrs = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 10.]
 bvals = [i for i in range(len(lvals))]
-helis = ["LL","LR","RR"]
+helis = ["LL","LR","RL","RR"]
 intfs = ["Con","Des"]
 supers      = [400,500,700,1100,1900,3500,10000]
 grbins      = [400,500,700,1100,1900,3500]
 grcols      = [r.kBlack,r.kRed,r.kBlue,r.kYellow,r.kViolet,r.kGreen]
 extragrbins = [1000+x for x in range(0,2500,200)]
 
-if args.add:
+if args.add and args.do2016:
 	lvals = [3.5+i*0.5 for i in range(12)]
 	lvals.append(10)
 	lerrs = [0.1]*13
@@ -74,6 +74,17 @@ if args.add:
 	supers = [2000, 2200, 2600, 3000, 3400, 10000]
 	grbins = [2000, 2200, 2600, 3000, 3400]
 	grcols = [r.kBlack, r.kRed, r.kBlue, r.kYellow, r.kViolet, r.kOrange]
+	extragrbins = [1900+x for x in range(0, 1500, 200)]
+elif args.add:
+	lvals = [4+i*1 for i in range(9)]
+	lvals.append(100)
+	lerrs = [0.1]*13
+	bvals = [i for i in range(len(lvals))]
+	helis = [""]
+	intfs = [""]
+	supers = [400, 700, 1500, 2500, 3500, 10000]
+	grbins = [400, 700, 1500, 2500, 3500]
+	grcols = [r.kBlack, r.kRed, r.kBlue, r.kYellow, r.kViolet, r.kGreen]
 	extragrbins = [1900+x for x in range(0, 1500, 200)]
 
 uncertainties = [
@@ -211,7 +222,7 @@ for etabin in etabins:
 					r.gPad.Update()
 
 					for ftype in ["png","C","pdf","eps"]:
-						can.SaveAs("fitPlots/{2:s}params_{1:s}.{0:s}".format(model,ftype,filefmt.format(emutype,intf,heli,unc,etabin,csbin,modifier)))
+						can.SaveAs("fitPlots/{2:s}params_{1:s}.{0:s}".format(ftype,model,filefmt.format(emutype,intf,heli,unc,etabin,csbin,modifier)))
 						pass
 					can.Clear()
 					can.Update()
@@ -246,7 +257,7 @@ for etabin in etabins:
 
 					# raw_input("continue")
 					for ftype in ["png","C","pdf","eps"]:
-						can.SaveAs("fitPlots/{2:s}scanmass_{1:s}.{0:s}".format(model,ftype,filefmt.format(emutype,intf,heli,unc,etabin,csbin,modifier)))
+						can.SaveAs("fitPlots/{2:s}scanmass_{1:s}.{0:s}".format(ftype,model,filefmt.format(emutype,intf,heli,unc,etabin,csbin,modifier)))
 						pass
 					pass
 				pass

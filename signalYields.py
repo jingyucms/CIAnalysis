@@ -1,14 +1,21 @@
 from ROOT import gROOT, TFile
 from numpy import array as ar
 from array import array
+import argparse
 from copy import deepcopy
 import pickle
 
-useADD = True
+
 
 def main():
 	gROOT.SetBatch(True)
-
+	
+	parser = argparse.ArgumentParser(description='Process some integers.')
+	
+	parser.add_argument("-add", "--add", action="store_true", dest="useADD", default=False,
+						  help="use ADD instead of CI.")
+	args.parser.parse_args().useADD					  
+	useADD = args.useADD					  
 	histos = ["BB","BE"]
 	labels = ["dielectron_2016","dimuon_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
 	suffixesMu = ["nominal","scaledown","smeared","muonid"]
@@ -45,14 +52,19 @@ def main():
 
 								name = "%sto2e"	%addci
 							if useADD:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
-								print fitFile
-							elif "2016" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
-							elif "2018" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								if "2016" in label:
+									fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+								elif "2016" in label:
+									fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								else:
+									fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:	
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
+								if "2016" in label:
+									fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+								elif "2018" in label:
+									fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								else:	
+									fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
 							for l in lambdas:
 								if "dimuon" in label:
 									name = "CITo2Mu_Lam%dTeV%s"%(l,model)
