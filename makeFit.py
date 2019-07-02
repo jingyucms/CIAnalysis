@@ -42,6 +42,9 @@ intfs=["Con","Des"]
 supers = [400,500,700,1100,1900,3500,10000]
 extrabins = [1000+i for i in range(0, 2500, 200)]
 
+if not os.path.exists('fitPlots'):
+	os.mkdir('fitPlots')
+
 if args.add:
 	if args.do2016:
 		lvals = ["%.1f"%(3.5+i*0.5) for i in range(12)]
