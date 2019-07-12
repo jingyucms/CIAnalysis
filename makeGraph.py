@@ -169,6 +169,7 @@ for etabin in etabins:
 						doFitOnGraph(params, lvals, xvals, xerrs,
 									 intf, heli, i, point, outf, conFitPar,
 									 args.fixinf, args.fixdes, constraints, args.fitrange, args.add)
+						#sys.exit()
 						pass
 					print("Fitting extra bins for the mass scan")
 					for i,point in enumerate(extragrbins):

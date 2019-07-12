@@ -122,14 +122,21 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
         pass
 
     if useADD:
+        if fixinf:
+            endpoint = pvals[len(pvals) - 1]
+            low = endpoint * .9
+            high = endpoint * 1.1
+            fn.SetParLimits(0,low,high)
+
         fn.SetParameter(0, 0)
-        fn.SetParameter(1, -3)
-        fn.SetParameter(2, 101)
-        fn.SetParameter(3, 200000)
-        fn.SetParLimits(0, -30, 30)
-        fn.SetParLimits(1, -300, 300)
-        fn.SetParLimits(2, -10000, 10000)
-        fn.SetParLimits(3, -30000000, 30000000)
+#        fn.SetParameter(1, -3)
+#        fn.SetParameter(2, 101)
+#        fn.SetParameter(3, 200000)
+#        fn.SetParLimits(0, -3000, 3000)
+#        fn.SetParLimits(1, -300, 300)
+#        fn.SetParLimits(2, -10000, 10000)
+#        fn.SetParLimits(3, -30000000, 30000000)
+
 
     #### Run the fitting###############################
     while stepN < 500:
@@ -162,7 +169,7 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
             else:
                 print("INFO: Step {0:d} has a good fit result, minChi2 is {1:2.2f}".format(stepN,MinChi2Temp))
                 pass
-            fitR.Print("V")
+#            fitR.Print("V")
             r.Math.MinimizerOptions.SetDefaultMinimizer("Minuit2","MIGRAD")
             pass
 
@@ -177,11 +184,11 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
         conFitPar[i] = fn.GetParameter(1)
 
     print("Fit result")
-    fitR.Print("V")
+#    fitR.Print("V")
 
     if bestFit:
         print("Best fit result")
-        bestFit.Print("V")
+#        bestFit.Print("V")
         bestFit.SetName("bestFit_m{0:d}_{1:s}{2:s}".format(point,intf,heli))
         bestFit.Write()
         pass
@@ -203,7 +210,7 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
         uncfn = r.TF1("fn_unc_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
                   "sqrt(([0])^2+([1]/(x**2))^2+([2]/(x**4))^2)+([3]/(x**8)^2)",0.1,1e8)
 
-    for par in range(3):
+    for par in range(fn.GetNpar()):
         # sometimes the fn doesn't have good values?
         print("Setting function p{:d} to {:2.4f} {:2.4f}".format(par,fitPars[par],fitParErrs[par]))
         resfn.SetParameter(par,fitPars[par])
@@ -221,6 +228,8 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
                                                                                         fn.GetParError(1),
                                                                                         fn.GetParameter(2),
                                                                                         fn.GetParError(2)))
+    if useADD:
+        print("\np3: {:2.4f}  {:2.4f}".format(fn.GetParameter(3), fn.GetParError(3)))
     
     print("fit\np0: {:2.4f}  {:2.4f}\np1: {:2.4f}  {:2.4f}\np2: {:2.4f}  {:2.4f}".format(fitPars[0],
                                                                                          fitParErrs[0],
@@ -236,9 +245,9 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
                                                                                            resfn.GetParameter(2),
                                                                                            resfn.GetParError(2)))
 
-    grs = [None,None,None]
-    parmap = {0:2,1:0,2:1}
-    for par in range(3):
+    grs = [None,None,None,None]
+    parmap = {0:2,1:0,2:1,3:3}
+    for par in range(fn.GetNpar()):
         # suspect for broken fits
         print("Scanning parameter scan {0:d} 500 {1:2.4f} {2:2.4f}".format(par,
                                                                            fn.GetParameter(parmap[par])-fn.GetParError(parmap[par]),
@@ -262,7 +271,9 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
                                                                                         fn.GetParError(1),
                                                                                         fn.GetParameter(2),
                                                                                         fn.GetParError(2)))
-    
+    if useADD:
+        print("\np3: {:2.4f}  {:2.4f}".format(fn.GetParameter(3), fn.GetParError(3)))
+
     print("fit\np0: {:2.4f}  {:2.4f}\np1: {:2.4f}  {:2.4f}\np2: {:2.4f}  {:2.4f}".format(fitPars[0],
                                                                                          fitParErrs[0],
                                                                                          fitPars[1],
@@ -292,4 +303,8 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
     uncfn.Write()
     gr.Write()
     outf.Write()
+
+    textfile = open("chi2.txt", "a+")
+    textfile.write(str(point) + " " + intf + " " + heli + "\tchi2:\t" + str(fn.GetChisquare()) + "\n")
+
     pass
