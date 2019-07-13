@@ -17,7 +17,7 @@ from messageLogger import messageLogger as log
 
 
 class Ratio:
-	def __init__(self, numerator, denominator, numeratorSquaredError, denominatorSquaredError, xPos, width):
+	def __init__(self, numerator, denominator, numeratorSquaredError, denominatorSquaredError, xPos, width,pull=False):
 		self.numerators = [numerator]
 		self.denominators = [denominator]
 		self.numeratorSquaredErrors = [numeratorSquaredError]
@@ -26,6 +26,7 @@ class Ratio:
 		self.width = width
 		self.chi2 = 0.
 		self.nDF = 0
+		self.pull = pull
 
 	@property
 	def isValid(self):
@@ -35,7 +36,10 @@ class Ratio:
 	def ratio(self):
 		value = -1.0
 		if (self.isValid):
-			value = self.sumNumerator / self.sumDenominator
+			if not self.pull:
+				value = self.sumNumerator / self.sumDenominator
+			else:	
+				value = (self.sumNumerator - self.sumDenominator) / self.sumDenominator
 		return value
 
 	@property
@@ -99,7 +103,7 @@ class Ratio:
 
 
 class RatioGraph:
-	def __init__(self, numerator, denominator, xMin, xMax,title, yMin, yMax,ndivisions,color,adaptiveBinning,labelSize=None):
+	def __init__(self, numerator, denominator, xMin, xMax,title, yMin, yMax,ndivisions,color,adaptiveBinning,labelSize=None,pull=False):
 		self.denominator = denominator
 		self.numerator = numerator
 		self.xMin = xMin
@@ -113,6 +117,7 @@ class RatioGraph:
 		self.adaptiveBinning = adaptiveBinning
 		self.labelSize=labelSize
 		self.binMerging = []
+		self.pull = pull
 		return
 
 	def addErrorBySize(self, name, size, color=None, fillStyle=None, add=True):
@@ -161,10 +166,10 @@ class RatioGraph:
 				#log.logDebug("den: %f +- %f" % (den, denError))
 
 				if (tempRatio != None):
-					ratio = Ratio(num, den, math.pow(numError, 2.0), math.pow(denError, 2.0), x, width)
+					ratio = Ratio(num, den, math.pow(numError, 2.0), math.pow(denError, 2.0), x, width,self.pull)
 					tempRatio.addRatio(ratio)
 				else:
-					tempRatio = Ratio(num, den, math.pow(numError, 2.0), math.pow(denError, 2.0), x, width)
+					tempRatio = Ratio(num, den, math.pow(numError, 2.0), math.pow(denError, 2.0), x, width,self.pull)
 					
 				#~ if (self.adaptiveBinning):
 					#~ print "test"
@@ -319,16 +324,27 @@ class RatioGraph:
 			self.hAxis.SetTitleSize(0.15, "Y")
 		else:
 			self.hAxis.SetTitleSize(self.labelSize, "Y")
+			self.hAxis.SetTitleOffset(0.55, "Y")
 		self.graph = self.getGraph()
 		self.binMerging.append(-1)
 		self.errorGraphs = self.getErrorGraphs()
 		self.errorGraphs.reverse()
 		for errorGraph in self.errorGraphs:
 			errorGraph.Draw("SAME02")
-
-		self.oneLine = ROOT.TLine(self.xMin, 1.0, self.xMax, 1.0)
-		self.oneLine.SetLineStyle(2)
-		self.oneLine.Draw()
+		if self.pull:
+			self.zLine = ROOT.TLine(self.xMin, 0.0, self.xMax, 0.0)
+			self.zLine.SetLineStyle(2)
+			self.zLine.Draw()
+			self.uLine = ROOT.TLine(self.xMin, 0.5, self.xMax, 0.5)
+			self.uLine.SetLineStyle(2)
+			self.uLine.Draw()
+			self.dLine = ROOT.TLine(self.xMin, -0.5, self.xMax, -0.5)
+			self.dLine.SetLineStyle(2)
+			self.dLine.Draw()
+		else:
+			self.oneLine = ROOT.TLine(self.xMin, 1.0, self.xMax, 1.0)
+			self.oneLine.SetLineStyle(2)
+			self.oneLine.Draw()
 		#~ self.oneLine2 = ROOT.TLine(self.xMin, 0.5, self.xMax, 0.5)
 		#~ self.oneLine2.SetLineStyle(2)
 		#~ self.oneLine2.Draw()

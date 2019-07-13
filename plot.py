@@ -7,7 +7,7 @@ import ratios
 from setTDRStyle import setTDRStyle
 gROOT.SetBatch(True)
 from helpers import *
-from defs import getPlot, Backgrounds, Backgrounds2016, Signals, Signals2016, Signals2016ADD, SignalsADD, Signals2018ADD, Signals2018, Data, Data2016, Data2018, path, plotList, zScale, zScale2016, zScale2018
+from defs import getPlot, Backgrounds, Backgrounds2016, Backgrounds2018, Signals, Signals2016, Signals2016ADD, SignalsADD, Signals2018ADD, Signals2018, Data, Data2016, Data2018, path, plotList, zScale, zScale2016, zScale2018
 import math
 import os
 from copy import copy
@@ -39,6 +39,10 @@ def plotDataMC(args,plot):
 		data = Process(Data2016, normalized=True)
 	elif args.use2018:
 		data = Process(Data2018, normalized=True)
+	elif args.useRun2:
+		data2016 = Process(Data2016, normalized=True)
+		data2017 = Process(Data, normalized=True)
+		data2018 = Process(Data2018, normalized=True)
 	else:	
 		data = Process(Data, normalized=True)
 
@@ -53,12 +57,32 @@ def plotDataMC(args,plot):
 			backgrounds.remove("Wjets")
 		backgrounds.insert(0,"Jets")
 	processes = []
+	processes2016 = []
+	processes2017 = []
+	processes2018 = []
 	for background in backgrounds:
 		if args.use2016:
 			if background == "Jets":
 				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
 			else:	
 				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
+		elif args.use2018:
+			if background == "Jets":
+				processes.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights,normalized=True))
+			else:	
+				processes.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights))
+		elif args.useRun2:
+
+			if background == "Jets":
+				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
+				processes2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
+				processes2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+				processes2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights,normalized=True))
+			else:	
+				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
+				processes2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
+				processes2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+				processes2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights))
 		else:
 			if background == "Jets":
 				processes.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
@@ -67,10 +91,27 @@ def plotDataMC(args,plot):
 	
 	# Signal load processes
 	signals = []
+	signals2016 = []
+	signals2017 = []
+	signals2018 = []	
 	for signal in args.signals:
 		if args.use2016:
 			if args.ADD: signals.append(Process(getattr(Signals2016ADD, signal), eventCounts, negWeights))
 			else: signals.append(Process(getattr(Signals2016,signal),eventCounts,negWeights))
+		elif args.use2018:
+			if args.ADD: signals.append(Process(getattr(Signals2018ADD, signal), eventCounts, negWeights))
+			else: signals.append(Process(getattr(Signals2018,signal),eventCounts,negWeights))
+		elif args.useRun2:
+			if args.ADD: 
+					signals.append(Process(getattr(Signals2016ADD, signal), eventCounts, negWeights))
+					signals2016.append(Process(getattr(Signals2016ADD, signal), eventCounts, negWeights))
+					signals2017.append(Process(getattr(SignalsADD, signal), eventCounts, negWeights))
+					signals2018.append(Process(getattr(Signals2018ADD, signal), eventCounts, negWeights))
+			else: 
+					signals.append(Process(getattr(Signals2016,signal),eventCounts,negWeights))
+					signals2016.append(Process(getattr(Signals2016,signal),eventCounts,negWeights))
+					signals2017.append(Process(getattr(Signals,signal),eventCounts,negWeights))
+					signals2018.append(Process(getattr(Signals2018,signal),eventCounts,negWeights))
 		else:	
 			if args.ADD: signals.append(Process(getattr(SignalsADD, signal), eventCounts, negWeights))
 			else: signals.append(Process(getattr(Signals,signal),eventCounts,negWeights))
@@ -110,7 +151,7 @@ def plotDataMC(args,plot):
 
 	for process in reversed(processes):
 		if not plot.muon and "#mu^{+}#mu^{-}" in process.label:
-			process.label = process.label.replace("#mu^{+}#mu^{-}","e^{+}e^{-}")
+			process.label = process.label.replace("#mu^{+}#mu^{-}","e^{+^{*}}e^{-}")
 		temphist = ROOT.TH1F()
 		temphist.SetFillColor(process.theColor)
 		legendHists.append(temphist.Clone)
@@ -174,6 +215,14 @@ def plotDataMC(args,plot):
 		lumi = 59.4*1000
 		if plot.muon:
 			lumi = 61.3*1000
+	elif args.useRun2:	
+		lumi2016 = 35.9*1000
+		lumi2017 = 41.529*1000
+		lumi2018 = 59.4*1000
+		if plot.muon:
+			lumi2016 = 36.3*1000
+			lumi2017 = 61.3*1000
+			lumi2018 = 42.135*1000
 	else:
 		lumi = 41.529*1000
 		if plot.muon:
@@ -186,6 +235,14 @@ def plotDataMC(args,plot):
 		zScaleFac = zScale2018["muons"]
 		if not plot.muon:
 			zScaleFac = zScale2018["electrons"]
+	elif args.useRun2:		
+		zScaleFac2016 = zScale2016["muons"]
+		zScaleFac2017 = zScale["muons"]
+		zScaleFac2018 = zScale2018["muons"]
+		if not plot.muon:
+			zScaleFac2016 = zScale2016["electrons"]
+			zScaleFac2017 = zScale["electrons"]
+			zScaleFac2018 = zScale2018["electrons"]
 	else:
 		zScaleFac = zScale["muons"]
 		if not plot.muon:
@@ -194,14 +251,29 @@ def plotDataMC(args,plot):
 			
 	# Data and background loading	
 	if plot.plot2D:	
-		datahist = data.loadHistogramProjected(plot,lumi,zScaleFac)	
-		
-		stack = TheStack2D(processes,lumi,plot,zScaleFac)
-	else:
-		datahist = data.loadHistogram(plot,lumi,zScaleFac)	
-		
-		stack = TheStack(processes,lumi,plot,zScaleFac)
+		if args.useRun2:
+			
+			datahist = data2016.loadHistogramProjected(plot,lumi2016,zScaleFac2016)	
+			datahist.Add(data2017.loadHistogramProjected(plot,lumi2017,zScaleFac2017))
+			datahist.Add(data2016.loadHistogramProjected(plot,lumi2018,zScaleFac2018))
+			
+			stack = TheStack2DRun2([processes2016,processes2017,processes2018],[lumi2016,lumi2017,lumi2018],plot,[zScaleFac2016,zScaleFac2017,zScaleFac2018])
 
+		else:
+			datahist = data.loadHistogramProjected(plot,lumi,zScaleFac)	
+
+			stack = TheStack2D(processes,lumi,plot,zScaleFac)
+	else:
+		
+		if args.useRun2:
+			datahist = data2016.loadHistogram(plot,lumi2016,zScaleFac2016)	
+			datahist.Add(data2017.loadHistogram(plot,lumi2017,zScaleFac2017))
+			datahist.Add(data2018.loadHistogram(plot,lumi2018,zScaleFac2018))	
+			stack = TheStackRun2([processes2016,processes2017,processes2018],[lumi2016,lumi2017,lumi2018],plot,[zScaleFac2016,zScaleFac2017,zScaleFac2018])
+		else:
+			datahist = data.loadHistogram(plot,lumi,zScaleFac)	
+			stack = TheStack(processes,lumi,plot,zScaleFac)
+			
 	if args.data:
 		yMax = datahist.GetBinContent(datahist.GetMaximumBin())
 		if "Mass" in plot.fileName:
@@ -254,40 +326,95 @@ def plotDataMC(args,plot):
 
 	# Draw signal information
 	if len(args.signals) != 0:
-		signalhists = []
-		for Signal in signals:
-			if plot.plot2D: # plot collins-soper angle
-				signalhist = Signal.loadHistogramProjected(plot,lumi, zScaleFac)
-				signalhist.SetLineWidth(2)
-				signalBackgrounds = deepcopy(backgrounds)
-				signalBackgrounds.remove("DrellYan")
-				signalProcesses = []
-				for background in signalBackgrounds:
-					if background == "Jets":
-						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
-					else:	
-						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
-				signalStack = TheStack2D(signalProcesses,lumi,plot, zScaleFac)
-				signalhist.Add(signalStack.theHistogram)
-				signalhist.SetMinimum(0.1)
-				signalhist.Draw("samehist")
-				signalhists.append(signalhist)	
-			else:
-				signalhist = Signal.loadHistogram(plot,lumi,zScaleFac)
-				signalhist.SetLineWidth(2)
-				signalBackgrounds = deepcopy(backgrounds)
-				signalBackgrounds.remove("DrellYan") # signalBackgrounds = ["Jets", "Other"]
-				signalProcesses = []
-				for background in signalBackgrounds:
-					if background == "Jets":
-						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
-					else:	
-						signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
-				signalStack = TheStack(signalProcesses,lumi,plot,zScaleFac)
-				signalhist.Add(signalStack.theHistogram)
-				signalhist.SetMinimum(0.0001)
-				signalhist.Draw("samehist")
-				signalhists.append(signalhist)	
+		if args.useRun2:
+			signalhists = []
+			for index, Signal in enumerate(signals2016):
+				if plot.plot2D: # plot collins-soper angle
+					signalhist = Signal.loadHistogramProjected(plot,lumi2016, zScaleFac2016)
+					signalhist.Add(signals2017[index].loadHistogramProjected(plot,lumi2017, zScaleFac2017))
+					signalhist.Add(signals2018[index].loadHistogramProjected(plot,lumi2018, zScaleFac2018))
+					signalhist.SetLineWidth(2)
+					signalBackgrounds = deepcopy(backgrounds)
+					signalBackgrounds.remove("DrellYan")
+					signalProcesses2016 = []
+					signalProcesses2017 = []
+					signalProcesses2018 = []
+					for background in signalBackgrounds:
+						if background == "Jets":
+							signalProcesses2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
+							signalProcesses2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+							signalProcesses2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights,normalized=True))
+						else:	
+							signalProcesses2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
+							signalProcesses2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+							signalProcesses2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights))
+					signalStack = TheStack2DRun2([signalProcesses2016,signalProcesses2017,signalProcesses2018],[lumi2016,lumi2017,lumi2018],plot, [zScaleFac2016,zScaleFac2017,zScaleFac2018])
+					signalhist.Add(signalStack.theHistogram)
+					signalhist.SetMinimum(0.1)
+					signalhist.Draw("samehist")
+					signalhists.append(signalhist)	
+				else:
+					signalhist = Signal.loadHistogram(plot,lumi2016, zScaleFac2016)
+					signalhist.Add(signals2017[index].loadHistogram(plot,lumi2017, zScaleFac2017))
+					signalhist.Add(signals2018[index].loadHistogram(plot,lumi2018, zScaleFac2018))
+					signalhist.SetLineWidth(2)
+					signalBackgrounds = deepcopy(backgrounds)
+					signalBackgrounds.remove("DrellYan") # signalBackgrounds = ["Jets", "Other"]
+					signalProcesses2016 = []
+					signalProcesses2017 = []
+					signalProcesses2018 = []
+					for background in signalBackgrounds:
+						if background == "Jets":
+							signalProcesses2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
+							signalProcesses2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+							if plot.muon:
+								signalProcesses2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights,normalized=True))
+							else:
+								signalProcesses2018.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+						else:	
+							signalProcesses2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
+							signalProcesses2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+							signalProcesses2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights))
+					signalStack = TheStackRun2([signalProcesses2016,signalProcesses2017,signalProcesses2018],[lumi2016,lumi2017,lumi2018],plot, [zScaleFac2016,zScaleFac2017,zScaleFac2018])
+					signalhist.Add(signalStack.theHistogram)
+					signalhist.SetMinimum(0.0001)
+					signalhist.Draw("samehist")
+					signalhists.append(signalhist)	
+		else:
+			signalhists = []
+			for Signal in signals:
+				if plot.plot2D: # plot collins-soper angle
+					signalhist = Signal.loadHistogramProjected(plot,lumi, zScaleFac)
+					signalhist.SetLineWidth(2)
+					signalBackgrounds = deepcopy(backgrounds)
+					signalBackgrounds.remove("DrellYan")
+					signalProcesses = []
+					for background in signalBackgrounds:
+						if background == "Jets":
+							signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+						else:	
+							signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+					signalStack = TheStack2D(signalProcesses,lumi,plot, zScaleFac)
+					signalhist.Add(signalStack.theHistogram)
+					signalhist.SetMinimum(0.1)
+					signalhist.Draw("samehist")
+					signalhists.append(signalhist)	
+				else:
+					signalhist = Signal.loadHistogram(plot,lumi,zScaleFac)
+					signalhist.SetLineWidth(2)
+					signalBackgrounds = deepcopy(backgrounds)
+					signalBackgrounds.remove("DrellYan") # signalBackgrounds = ["Jets", "Other"]
+					signalProcesses = []
+					for background in signalBackgrounds:
+						if background == "Jets":
+							signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+						else:	
+							signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+					signalStack = TheStack(signalProcesses,lumi,plot,zScaleFac)
+					signalhist.Add(signalStack.theHistogram)
+					signalhist.SetMinimum(0.0001)
+					signalhist.Draw("samehist")
+					signalhists.append(signalhist)	
 
 	# Draw data
 	datahist.SetMinimum(0.0001)
@@ -301,8 +428,13 @@ def plotDataMC(args,plot):
 		legend.Draw()
 
 	plotPad.SetLogx(plot.logX)
-	
-	latex.DrawLatex(0.95, 0.96, "%.1f fb^{-1} (13 TeV)"%(float(lumi)/1000,))
+	if args.useRun2:
+		if plot.muon:
+			latex.DrawLatex(0.95, 0.96, "139.7 fb^{-1} (13 TeV)")
+		else:	
+			latex.DrawLatex(0.95, 0.96, "136.8 fb^{-1} (13 TeV)")
+	else:	
+		latex.DrawLatex(0.95, 0.96, "%.1f fb^{-1} (13 TeV)"%(float(lumi)/1000,))
 	yLabelPos = 0.85
 	cmsExtra = "Preliminary"
 	if not args.data:
@@ -322,7 +454,7 @@ def plotDataMC(args,plot):
 			outFile.close()
 			plot.cuts=baseCut
 			return 1
-		ratioGraphs =  ratios.RatioGraph(datahist,drawStack.theHistogram, xMin=xMin, xMax=xMax,title="Data / MC",yMin=0.0,yMax=2,ndivisions=10,color=ROOT.kBlack,adaptiveBinning=10000)
+		ratioGraphs =  ratios.RatioGraph(datahist,drawStack.theHistogram, xMin=xMin, xMax=xMax,title="(Data - Bkg) / Bkg",yMin=-1.0,yMax=1.0,ndivisions=10,color=ROOT.kBlack,adaptiveBinning=10000000000,labelSize=0.125,pull=True)
 		ratioGraphs.draw(ROOT.gPad,True,False,True,chi2Pos=0.8)
 					
 
@@ -337,6 +469,8 @@ def plotDataMC(args,plot):
 		hCanvas.Print("plots/"+plot.fileName+"_2016.pdf")
 	elif args.use2018:
 		hCanvas.Print("plots/"+plot.fileName+"_2018.pdf")
+	elif args.useRun2:
+		hCanvas.Print("plots/"+plot.fileName+"_Run2.pdf")
 	else:	
 		hCanvas.Print("plots/"+plot.fileName+"_2017.pdf")
 
@@ -357,6 +491,8 @@ if __name__ == "__main__":
 	parser.add_argument("-2016", "--2016", action="store_true", dest="use2016", default=False,
 						  help="use 2016 data and MC.")
 	parser.add_argument("-2018", "--2018", action="store_true", dest="use2018", default=False,
+						  help="use 2018 data with 2017 MC.")
+	parser.add_argument("-Run2", "--Run2", action="store_true", dest="useRun2", default=False,
 						  help="use 2018 data with 2017 MC.")
 	parser.add_argument("-r", "--ratio", action="store_true", dest="ratio", default=False,
 						  help="plot ratio plot")
