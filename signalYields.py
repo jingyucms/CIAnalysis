@@ -14,7 +14,9 @@ def main():
 	
 	parser.add_argument("-add", "--add", action="store_true", dest="useADD", default=False,
 						  help="use ADD instead of CI.")
-	args.parser.parse_args().useADD					  
+	parser.add_argument("-s", "--suffix", dest="suffix", default='nominal',
+						  help="name of systematic to use")
+	args = parser.parse_args()					  
 	useADD = args.useADD					  
 	histos = ["BB","BE"]
 	labels = ["dielectron_2016","dimuon_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
@@ -26,7 +28,7 @@ def main():
 	hels = ["LL","LR","RR"]
 	massBins = [400,500,700,1100,1900,3500]
 	if useADD:
-		labels = ["dielectron_2016", "dimuon_2016"]
+		labels = ["dielectron_2016","dimuon_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
 		lambdas = [3500+i*500 for i in range(12)]; lambdas.append(10000)
 		interferences = [""]
 		hels = [""]
@@ -38,75 +40,81 @@ def main():
 			suffixes = suffixesMu
 		else:
 			suffixes = suffixesEle
-		for suffix in suffixes:
-			for cs in css:
-				for histo in histos:
-					for hel in hels:
-						for interference in interferences:			
-							model = interference+hel
-							addci = "CI"
-							if useADD: addci = "ADD"
-							if "dimuon" in label:
-								name = "%sto2mu"%addci
-							else:			#~ print signalYields
+		if not args.suffix in suffixes: continue	
+		suffix = args.suffix
+		for cs in css:
+			for histo in histos:
+				print(histo)
+				for hel in hels:
+					for interference in interferences:			
+						model = interference+hel
+						addci = "CI"
+						if useADD: addci = "ADD"
+						if "dimuon" in label:
+							name = "%sto2mu"%addci
+						else:			#~ print signalYields
 
-								name = "%sto2e"	%addci
-							if useADD:
-								if "2016" in label:
-									fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
-								elif "2016" in label:
-									fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2018.root"%(name,suffix,histo.lower(),cs),"READ")
-								else:
-									fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs),"READ")
+							name = "%sto2e"	%addci
+						if useADD:
+							if "2016" in label:
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+							elif "2016" in label:
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+							else:
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs),"READ")
+						else:	
+							if "2016" in label:
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+							elif "2018" in label:
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:	
-								if "2016" in label:
-									fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
-								elif "2018" in label:
-									fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
-								else:	
-									fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
-							for l in lambdas:
-								if "dimuon" in label:
-									name = "CITo2Mu_Lam%dTeV%s"%(l,model)
-								else:	
-									name = "CITo2E_Lam%dTeV%s"%(l,model)
-								if useADD:
-									name = "ADDGravTo2Mu_Lam%d"%l
-									if "dielectron" in label: name = "ADDGravTo2E_Lam%d"%l
-									l = l * 0.001
-								if not cs == "inc":
-									name += "_%s"%cs
-								signalYields["%s_%s_%s"%(name,label,histo)] = {}
-								for index, massBin in enumerate(massBins):
-									function = fitFile.Get("fn_m%d_%s"%(massBin,model))
-									fitR = fitFile.Get("fitR_m%d_%s"%(massBin,model))
-									pars = fitR.GetParams()
-									errs = fitR.Errors()
-									function.SetParameter(0,pars[0])
-									function.SetParameter(1,pars[1])
-									function.SetParameter(2,pars[2])
-									function.SetParError(0,errs[0])
-									function.SetParError(1,errs[1])
-									function.SetParError(2,errs[2])
-									if useADD:
-										function.SetParameter(3, pars[3])
-										function.SetParError(3, errs[3])
-									functionUnc = fitFile.Get("fn_unc_m%d_%s"%(massBin,model))
-									uncert = (abs((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000))))**0.5	
-									signalYields["%s_%s_%s"%(name,label,histo)][str(index)] = [(function.Eval(l)-function.Eval(100000)),uncert]
-						if useADD: continue
-						for l in lambdas:			
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
+						for l in lambdas:
 							if "dimuon" in label:
-								name = "CITo2Mu_Lam%dTeV%s"%(l,hel)
-								nameCon = "CITo2Mu_Lam%dTeV%s"%(l,"Con"+hel)
-								nameDes = "CITo2Mu_Lam%dTeV%s"%(l,"Des"+hel)
+								name = "CITo2Mu_Lam%dTeV%s"%(l,model)
 							else:	
-								name = "CITo2E_Lam%dTeV%s"%(l,hel)
-								nameCon = "CITo2E_Lam%dTeV%s"%(l,"Con"+hel)
-								nameDes = "CITo2E_Lam%dTeV%s"%(l,"Des"+hel)
-							signalYields["%s_%s_%s"%(name,label,histo)] = {}	
+								name = "CITo2E_Lam%dTeV%s"%(l,model)
+							if useADD:
+								name = "ADDGravTo2Mu_Lam%d"%l
+								if "dielectron" in label: name = "ADDGravTo2E_Lam%d"%l
+								l = l * 0.001
+							if not cs == "inc":
+								name += "_%s"%cs
+							signalYields["%s_%s_%s"%(name,label,histo)] = {}
 							for index, massBin in enumerate(massBins):
-								signalYields["%s_%s_%s"%(name,label,histo)][str(index)] = [(signalYields["%s_%s_%s"%(nameCon,label,histo)][str(index)][0] + signalYields["%s_%s_%s"%(nameDes,label,histo)][str(index)][0])/2,((signalYields["%s_%s_%s"%(nameCon,label,histo)][str(index)][1]**2 + signalYields["%s_%s_%s"%(nameDes,label,histo)][str(index)][1]**2))**0.5]
+								function = fitFile.Get("fn_m%d_%s"%(massBin,model))
+								fitR = fitFile.Get("fitR_m%d_%s"%(massBin,model))
+								pars = fitR.GetParams()
+								errs = fitR.Errors()
+								function.SetParameter(0,pars[0])
+								function.SetParameter(1,pars[1])
+								function.SetParameter(2,pars[2])
+								function.SetParError(0,errs[0])
+								function.SetParError(1,errs[1])
+								function.SetParError(2,errs[2])
+								if useADD:
+									function.SetParameter(3, pars[3])
+									function.SetParError(3, errs[3])
+								functionUnc = fitFile.Get("fn_unc_m%d_%s"%(massBin,model))
+								uncert = (abs((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000))))**0.5	
+								signalYields["%s_%s_%s"%(name,label,histo)][str(index)] = [(function.Eval(l)-function.Eval(100000)),uncert]
+					if useADD: continue
+					for l in lambdas:	
+						if "dimuon" in label:
+							name = "CITo2Mu_Lam%dTeV%s"%(l,hel)
+							nameCon = "CITo2Mu_Lam%dTeV%s"%(l,"Con"+hel)
+							nameDes = "CITo2Mu_Lam%dTeV%s"%(l,"Des"+hel)
+						else:	
+							name = "CITo2E_Lam%dTeV%s"%(l,hel)
+							nameCon = "CITo2E_Lam%dTeV%s"%(l,"Con"+hel)
+							nameDes = "CITo2E_Lam%dTeV%s"%(l,"Des"+hel)
+						if not cs == "inc":
+							name += "_%s"%cs							
+							nameCon += "_%s"%cs							
+							nameDes += "_%s"%cs							
+						signalYields["%s_%s_%s"%(name,label,histo)] = {}	
+						for index, massBin in enumerate(massBins):
+							signalYields["%s_%s_%s"%(name,label,histo)][str(index)] = [(signalYields["%s_%s_%s"%(nameCon,label,histo)][str(index)][0] + signalYields["%s_%s_%s"%(nameDes,label,histo)][str(index)][0])/2,((signalYields["%s_%s_%s"%(nameCon,label,histo)][str(index)][1]**2 + signalYields["%s_%s_%s"%(nameDes,label,histo)][str(index)][1]**2))**0.5]
 					
 
 			addci = "CI"
