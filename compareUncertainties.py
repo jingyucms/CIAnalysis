@@ -1,19 +1,19 @@
-from ROOT import *
+from ROOT import TH1F, TCanvas, TPad, TLegend, TLatex, kRed, kBlue, kBlack, kOrange, kGreen
 from setTDRStyle import setTDRStyle
 import pickle
-pkl = open("signalYields_default.pkl", "r")
+pkl = open("CIsignalYields_default.pkl", "rb")
 signalYields_default = pickle.load(pkl)
-pkl = open("signalYields_scale.pkl", "r")
+pkl = open("CIsignalYields_scaleDown.pkl", "rb")
 signalYields_scale = pickle.load(pkl)
 
-pkl = open("signalYields_resolution.pkl", "r")
+pkl = open("CIsignalYields_resolution.pkl", "rb")
 signalYields_resolution = pickle.load(pkl)
 
-pkl = open("signalYields_ID.pkl", "r")
+pkl = open("CIsignalYields_ID.pkl", "rb")
 signalYields_ID = pickle.load(pkl)
 
 histos = ["BB","BE"]
-labels = ["dimuon_Moriond2017_BB","dimuon_Moriond2017_BE"]
+labels = ["dimuon_2018_BB","dimuon_2018_BE"]
 lambdas = [10,16,22,28,34]
 models = ["ConLL","ConLR","ConRR","DesLL","DesLR","DesRR"]
 
@@ -40,7 +40,7 @@ for i, histo in enumerate(histos):
 		for l in lambdas:
 			name = "CITo2Mu_Lam%dTeV%s_%s"%(l,model,label)
 			
-			print signalYields_scale[name][str(0)][0]/signalYields_default[name][str(0)][0]
+			# ~ print signalYields_scale[name][str(0)][0]/signalYields_default[name][str(0)][0]
 			
 			scaleHist1.Fill(signalYields_scale[name][str(0)][0]/signalYields_default[name][str(0)][0])
 			scaleHist2.Fill(signalYields_scale[name][str(1)][0]/signalYields_default[name][str(1)][0])
@@ -53,7 +53,7 @@ for i, histo in enumerate(histos):
 			resolutionHist3.Fill(signalYields_resolution[name][str(2)][0]/signalYields_default[name][str(2)][0])
 			resolutionHist4.Fill(signalYields_resolution[name][str(3)][0]/signalYields_default[name][str(3)][0])
 			resolutionHist5.Fill(signalYields_resolution[name][str(4)][0]/signalYields_default[name][str(4)][0])
-
+			print (signalYields_ID[name][str(0)][0])
 			IDHist1.Fill(signalYields_ID[name][str(0)][0]/signalYields_default[name][str(0)][0])
 			IDHist2.Fill(signalYields_ID[name][str(1)][0]/signalYields_default[name][str(1)][0])
 			IDHist3.Fill(signalYields_ID[name][str(2)][0]/signalYields_default[name][str(2)][0])

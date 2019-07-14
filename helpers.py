@@ -178,6 +178,7 @@ def getFilePathsAndSampleNames(path,muon=True):
 	result = {}
 
 	for filePath in glob("%s/*.root"%(path)):
+		
 		if muon:
 			if "dileptonAna_muons" in filePath and not "SingleMuon" in filePath:
 				sampleName = filePath.split("/")[-1].split("dileptonAna_muons_")[-1].split(".root")[0]
@@ -218,6 +219,7 @@ def getFilePathsAndSampleNames(path,muon=True):
 					else:	
 						sampleName = sampleName.replace("2018_","")+"_2018"
 				result[sampleName] = filePath
+				
 	return result
 
 
@@ -317,7 +319,6 @@ class Process:
 				else:	
 					tempHist = loadHistoFromFile(fileNamesEle[sample],plot.histName,plot.rebin,plot.muon,plot.logX)
 				if not self.normalized:
-					print (zScaleFac)
 			
 					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])*zScaleFac)
 				if histo == None:

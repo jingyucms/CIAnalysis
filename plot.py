@@ -319,9 +319,7 @@ def plotDataMC(args,plot):
  	#~ print datahist.Integral(datahist.FindBin(low),datahist.FindBin(high))
  	#~ print drawStack.theHistogram.Integral(datahist.FindBin(low),datahist.FindBin(high))
 
-	
-	# Draw background from stack
-	drawStack.theStack.Draw("samehist")							
+					
 
 
 	# Draw signal information
@@ -415,6 +413,10 @@ def plotDataMC(args,plot):
 					signalhist.SetMinimum(0.0001)
 					signalhist.Draw("samehist")
 					signalhists.append(signalhist)	
+
+	
+	# Draw background from stack
+	drawStack.theStack.Draw("samehist")		
 
 	# Draw data
 	datahist.SetMinimum(0.0001)
