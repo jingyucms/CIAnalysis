@@ -2316,7 +2316,7 @@ class Signals:
 		label = "CITo2E_Lam16TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -2325,7 +2325,7 @@ class Signals:
 		label = "CITo2E_Lam16TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed-4
+		linecolor = ROOT.kGreen+2
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -2334,7 +2334,7 @@ class Signals:
 		label = "CITo2E_Lam16TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed
+		linecolor = ROOT.kOrange
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -2686,7 +2686,7 @@ class Signals:
 		label = "CITo2Mu_Lam16TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -2695,7 +2695,7 @@ class Signals:
 		label = "CITo2Mu_Lam16TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed-4
+		linecolor = ROOT.kGreen+2
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -2704,7 +2704,7 @@ class Signals:
 		label = "CITo2Mu_Lam16TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed
+		linecolor = ROOT.kOrange
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -3057,7 +3057,7 @@ class Signals2018:
 		label = "CITo2E_Lam16TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -3066,7 +3066,7 @@ class Signals2018:
 		label = "CITo2E_Lam16TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed-4
+		linecolor = ROOT.kGreen+2
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -3075,7 +3075,7 @@ class Signals2018:
 		label = "CITo2E_Lam16TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed
+		linecolor = ROOT.kOrange
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -3427,7 +3427,7 @@ class Signals2018:
 		label = "CITo2Mu_Lam16TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -3436,7 +3436,7 @@ class Signals2018:
 		label = "CITo2Mu_Lam16TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed-4
+		linecolor = ROOT.kGreen+2
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -3445,7 +3445,7 @@ class Signals2018:
 		label = "CITo2Mu_Lam16TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed
+		linecolor = ROOT.kOrange
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None

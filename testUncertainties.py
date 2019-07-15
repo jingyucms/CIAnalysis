@@ -235,7 +235,7 @@ for etabin in etabins:
 			dyHistWeighted.Add(deepcopy(other.loadHistogram(plotWeigthed,lumi,zScaleFac)))
 			dyHistSmear.Add(deepcopy(other.loadHistogram(plotSmeared,lumi,zScaleFac)))
 		
-		rebin = 20
+		rebin = 1
 		dyHist.Rebin(rebin)
 		
 		if antype[2] == 'Ele':
@@ -256,8 +256,10 @@ for etabin in etabins:
 		plotPad.Draw()	
 		ratioPad.Draw()	
 		plotPad.cd()
-		
-		plotPad.DrawFrame(0,0.000001,5000,500000,"; dimuon mass [GeV]; Events / 20 GeV")
+		if antype[2] == 'Ele':	
+			plotPad.DrawFrame(0,0.000001,5000,500000,"; dielectron mass [GeV]; Events / 20 GeV")
+		else:	
+			plotPad.DrawFrame(0,0.000001,5000,500000,"; dimuon mass [GeV]; Events / 20 GeV")
 		plotPad.SetLogy()
 		dyHist.Draw("samehist")
 		dyHist.SetFillColor(kWhite)
