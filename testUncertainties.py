@@ -235,7 +235,7 @@ for etabin in etabins:
 			dyHistWeighted.Add(deepcopy(other.loadHistogram(plotWeigthed,lumi,zScaleFac)))
 			dyHistSmear.Add(deepcopy(other.loadHistogram(plotSmeared,lumi,zScaleFac)))
 		
-		rebin = 1
+		rebin = 20
 		dyHist.Rebin(rebin)
 		
 		if antype[2] == 'Ele':
@@ -287,7 +287,10 @@ for etabin in etabins:
 		legend.AddEntry(dyHistScaleDown,"Scale Uncertainty","l")	
 		if antype[2] == 'Mu':
 			legend.AddEntry(dyHistSmear,"Resolution Uncertainty","l")	
-			legend.AddEntry(dyHistWeighted,"ID Uncertainty","l")	
+			if args.do2016:
+				legend.AddEntry(dyHistWeighted,"Reco + ID Uncertainty","l")	
+			else:	
+				legend.AddEntry(dyHistWeighted,"Reco Uncertainty","l")	
 		if antype[2] == 'Ele':
 			legend.AddEntry(dyHistPUUp,"PU Uncertainty","l")	
 		legend.Draw()
