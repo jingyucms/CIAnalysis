@@ -55,7 +55,12 @@ def plotDataMC(args,plot):
 	if plot.useJets:
 		if "Wjets" in backgrounds:
 			backgrounds.remove("Wjets")
-		backgrounds.insert(0,"Jets")
+		if not "Jets" in backgrounds:
+			backgrounds.insert(0,"Jets")
+	if args.use2016 and not plot.muon and "Other" in backgrounds:
+		backgrounds.remove("Other")
+		backgrounds.insert(1,"OtherEle")
+	print (backgrounds)		
 	processes = []
 	processes2016 = []
 	processes2017 = []
@@ -76,6 +81,11 @@ def plotDataMC(args,plot):
 			if background == "Jets":
 				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
 				processes2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
+				processes2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+				processes2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights,normalized=True))
+			elif background == "Other" and not plot.muon:
+				processes.append(Process(getattr(Backgrounds2016,"OtherEle"),eventCounts,negWeights,normalized=True))
+				processes2016.append(Process(getattr(Backgrounds2016,"OtherEle"),eventCounts,negWeights,normalized=True))
 				processes2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
 				processes2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights,normalized=True))
 			else:	
@@ -210,44 +220,79 @@ def plotDataMC(args,plot):
 	if args.use2016:	
 		lumi = 35.9*1000
 		if plot.muon:
-			lumi = 36.3*1000
+			lumi = 36294.6
 	elif args.use2018:	
 		lumi = 59.4*1000
 		if plot.muon:
-			lumi = 61.3*1000
+			lumi = 61298.775231718995
 	elif args.useRun2:	
 		lumi2016 = 35.9*1000
 		lumi2017 = 41.529*1000
 		lumi2018 = 59.4*1000
 		if plot.muon:
-			lumi2016 = 36.3*1000
-			lumi2017 = 61.3*1000
-			lumi2018 = 42.135*1000
+			lumi2016 = 36294.6
+			lumi2018 = 61298.775231718995
+			lumi2017 = 42079.880396
 	else:
 		lumi = 41.529*1000
 		if plot.muon:
-			lumi = 42.135*1000
+			lumi = 42079.880396
 	if args.use2016:		
 		zScaleFac = zScale2016["muons"]
 		if not plot.muon:
-			zScaleFac = zScale2016["electrons"]
+			if "bbbe" in plot.histName:
+				zScaleFac = zScale2016["electrons"][0]
+			elif "bb" in plot.histName:
+				zScaleFac = zScale2016["electrons"][1]
+			elif "be" in plot.histName:
+				zScaleFac = zScale2016["electrons"][2]
+			else:
+				zScaleFac = zScale2016["electrons"][0]
 	elif args.use2018:		
 		zScaleFac = zScale2018["muons"]
 		if not plot.muon:
-			zScaleFac = zScale2018["electrons"]
+			if "bbbe" in plot.histName:
+				zScaleFac = zScale2018["electrons"][0]
+			elif "bb" in plot.histName:
+				zScaleFac = zScale2018["electrons"][1]
+			elif "be" in plot.histName:
+				zScaleFac = zScale2018["electrons"][2]
+			else:
+				zScaleFac = zScale2018["electrons"][0]
+
 	elif args.useRun2:		
 		zScaleFac2016 = zScale2016["muons"]
 		zScaleFac2017 = zScale["muons"]
 		zScaleFac2018 = zScale2018["muons"]
 		if not plot.muon:
-			zScaleFac2016 = zScale2016["electrons"]
-			zScaleFac2017 = zScale["electrons"]
-			zScaleFac2018 = zScale2018["electrons"]
+			if "bbbe" in plot.histName:
+				zScaleFac2016 = zScale2016["electrons"][0]
+				zScaleFac2017 = zScale["electrons"][0]
+				zScaleFac2018 = zScale2018["electrons"][0]
+			elif "bb" in plot.histName:
+				zScaleFac2016 = zScale2016["electrons"][1]
+				zScaleFac2017 = zScale["electrons"][1]
+				zScaleFac2018 = zScale2018["electrons"][1]
+			elif "be" in plot.histName:
+				zScaleFac2016 = zScale2016["electrons"][2]
+				zScaleFac2017 = zScale["electrons"][2]
+				zScaleFac2018 = zScale2018["electrons"][2]
+			else:
+				zScaleFac2016 = zScale2016["electrons"][0]			
+				zScaleFac2017 = zScale["electrons"][0]			
+				zScaleFac2018 = zScale2018["electrons"][0]			
+
 	else:
 		zScaleFac = zScale["muons"]
 		if not plot.muon:
-			zScaleFac = zScale["electrons"]
-			
+			if "bbbe" in plot.histName:
+				zScaleFac = zScale["electrons"][0]
+			elif "bb" in plot.histName:
+				zScaleFac = zScale["electrons"][1]
+			elif "be" in plot.histName:
+				zScaleFac = zScale["electrons"][2]
+			else:
+				zScaleFac = zScale["electrons"][0]			
 			
 	# Data and background loading	
 	if plot.plot2D:	
@@ -273,7 +318,22 @@ def plotDataMC(args,plot):
 		else:
 			datahist = data.loadHistogram(plot,lumi,zScaleFac)	
 			stack = TheStack(processes,lumi,plot,zScaleFac)
-			
+	print (zScaleFac)
+	print (datahist.Integral(datahist.FindBin(60),datahist.FindBin(120-0.01)))		
+	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(60),stack.theHistogram.FindBin(120-0.01)))		
+	print (datahist.Integral(datahist.FindBin(120),datahist.FindBin(400-0.01)))		
+	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(120),stack.theHistogram.FindBin(400-0.01)))		
+	print (datahist.Integral(datahist.FindBin(400),datahist.FindBin(600-0.01)))		
+	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(400),stack.theHistogram.FindBin(600-0.01)))		
+	print (datahist.Integral(datahist.FindBin(600),datahist.FindBin(900-0.01)))		
+	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(600),stack.theHistogram.FindBin(900-0.01)))		
+	print (datahist.Integral(datahist.FindBin(900),datahist.FindBin(1300-0.01)))		
+	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(900),stack.theHistogram.FindBin(1300-0.01)))		
+	print (datahist.Integral(datahist.FindBin(1300),datahist.FindBin(1800-0.01)))		
+	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(1300),stack.theHistogram.FindBin(1800-0.01)))		
+	print (datahist.Integral(datahist.FindBin(1800),datahist.FindBin(18000-0.01)))		
+	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(1800),stack.theHistogram.FindBin(18000-0.01)))		
+	print (stack.theHistogram.GetEntries())		
 	if args.data:
 		yMax = datahist.GetBinContent(datahist.GetMaximumBin())
 		if "Mass" in plot.fileName:

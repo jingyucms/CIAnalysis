@@ -80,6 +80,14 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
 	"""
 	returns histogram from file
 	"""
+	
+	if "2016" in fileName and "Our2018" in histName:
+		histName = histName.replace("2018","2016")
+	if "2016" in fileName and "Our2017" in histName:
+		histName = histName.replace("2017","2016")
+	if "2018" in fileName and "Our2017" in histName:
+		histName = histName.replace("2017","2018")
+	print (fileName)
 	from ROOT import TFile, TH1F
 	rootFile = TFile(path+fileName, "read")
 	if "saved_hist_for_combine" in fileName or "jets_muons" in fileName or "hist_jets" in fileName or 'Result_' in fileName:
@@ -116,7 +124,7 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
 		else:	
 			result = rootFile.Get(histName)
 	# ~ if logBins and( "Mass" in histName or ("jets" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName))):	
-	if logBins and( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName)):	
+	if logBins and( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName)):	
 		if not muon:
 			bng = binning("electron")
 		else:
@@ -319,8 +327,10 @@ class Process:
 				else:	
 					tempHist = loadHistoFromFile(fileNamesEle[sample],plot.histName,plot.rebin,plot.muon,plot.logX)
 				if not self.normalized:
-			
 					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])*zScaleFac)
+					# ~ print (lumi, self.xsecs[index], self.nEvents[index] ,self.negWeightFraction[index], zScaleFac)
+					# ~ print (tempHist.GetEntries())
+					# ~ tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*zScaleFac)
 				if histo == None:
 					histo = tempHist.Clone()
 				else:	

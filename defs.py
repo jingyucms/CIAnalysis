@@ -6,17 +6,20 @@ import copy
 
 path = "../files/"
 
+
+
 zScale = {
-	"electrons":0.95,
-	"muons":1.0
+	"electrons":[0.895176,0.902374,0.874569],
+	"muons":1.0282
 }
 zScale2018 = {
-	"electrons":0.946,
-	"muons":1.03
+	"electrons":[0.946127,0.949371,0.938017],
+	"muons":1.0062
 }
 zScale2016 = {
-	"electrons":0.951,
-	"muons":0.9638
+	"electrons":[0.951472,0.950691,0.953648],
+	"muons":0.9727
+	# ~ "muons":1.0
 }
 
 crossSections = {
@@ -116,8 +119,22 @@ crossSections = {
 "dy4500to6000_2016":4.56E-7,
 "dy6000toInf_2016":2.06E-8,
 
-"tW_2016":35.6,
-"Wantitop_2016":35.6,
+# ~ "dy50to120_2016":2112.90,
+# ~ "dy120to200_2016":20.56,
+# ~ "dy200to400_2016":2.89,
+# ~ "dy400to800_2016": 0.252,
+# ~ "dy800to1400_2016":1.71E-2,
+# ~ "dy1400to2300_2016":1.37E-3,
+# ~ "dy2300to3500_2016":8.178E-5,
+# ~ "dy3500to4500_2016":3.191E-6,
+# ~ "dy4500to6000_2016":2.787E-7,
+# ~ "dy6000toInf_2016":9.56E-9,
+
+
+# ~ "tW_2016":35.6,
+# ~ "Wantitop_2016":35.6,
+"tW_2016":19.47,
+"Wantitop_2016":19.47,
 "Wjets_2016":61526.7,
 "WW200to600_2016":1.385,
 "WW600to1200_2016":0.0566,
@@ -1058,13 +1075,13 @@ fileNames = {
 "Data_RunE":"dileptonAna_muons_SingleMuonRun2017E-31Mar2018-v1.root",
 "Data_RunF":"dileptonAna_muons_SingleMuonRun2017F-31Mar2018-v1.root",
 
-"Data2016_RunB":"dileptonAna_muons_2016_SingleMuonRun2016B-17Jul2018_ver2-v1.root",
-"Data2016_RunC":"dileptonAna_muons_2016_SingleMuonRun2016C-17Jul2017-v1.root",
-"Data2016_RunD":"dileptonAna_muons_2016_SingleMuonRun2016D-17Jul2017-v1.root",
-"Data2016_RunE":"dileptonAna_muons_2016_SingleMuonRun2016E-17Jul2017-v1.root",
-"Data2016_RunF":"dileptonAna_muons_2016_SingleMuonRun2016F-17Jul2017-v1.root",
-"Data2016_RunG":"dileptonAna_muons_2016_SingleMuonRun2016G-17Jul2017-v1.root",
-"Data2016_RunH":"dileptonAna_muons_2016_SingleMuonRun2016H-17Jul2017-v1.root",
+"Data2016_RunB":"dileptonAna_muons_2016_SingleMuonRun2016B-23Sep2016_v3.root",
+"Data2016_RunC":"dileptonAna_muons_2016_SingleMuonRun2016C-23Sep2016-v1.root",
+"Data2016_RunD":"dileptonAna_muons_2016_SingleMuonRun2016D-23Sep2016-v1.root",
+"Data2016_RunE":"dileptonAna_muons_2016_SingleMuonRun2016E-23Sep2016-v1.root",
+"Data2016_RunF":"dileptonAna_muons_2016_SingleMuonRun2016F-23Sep2016-v1.root",
+"Data2016_RunG":"dileptonAna_muons_2016_SingleMuonRun2016G-23Sep2016-v1.root",
+"Data2016_RunH":"dileptonAna_muons_2016_SingleMuonRun2016H-PromptReco-v1.root",
 
 "Data2018_RunA":"dileptonAna_muons_2018_SingleMuonRun2018A-17Sep2018-v2.root",
 "Data2018_RunB":"dileptonAna_muons_2018_SingleMuonRun2018B-17Sep2018-v1.root",
@@ -1870,12 +1887,12 @@ fileNamesEle = {
 "Data2016_RunE":"dileptonAna_electrons_2016_DoubleEG2016E-17Jul2018-v1.root",
 "Data2016_RunF":"dileptonAna_electrons_2016_DoubleEG2016F-17Jul2018-v1.root",
 "Data2016_RunG":"dileptonAna_electrons_2016_DoubleEG2016G-17Jul2018-v1.root",
-"Data2016_RunH":"dileptonAna_electrons_2016_DoubleEG2016G-17Jul2018-v1.root",
+"Data2016_RunH":"dileptonAna_electrons_2016_DoubleEG2016H-17Jul2018-v1.root",
 
 "Data2018_RunA":"dileptonAna_electrons_2018_DoubleEGRun2018A-17Sep2018-v2.root",
 "Data2018_RunB":"dileptonAna_electrons_2018_DoubleEGRun2018B-17Sep2018-v1.root",
 "Data2018_RunC":"dileptonAna_electrons_2018_DoubleEGRun2018C-17Sep2018-v1.root",
-"Data2018_RunD":"dileptonAna_electrons_2018_DoubleEGRun2018D-PromptReco-v2.root",
+"Data2018_RunD":"dileptonAna_electrons_2018_DoubleEGRun2018D-22Jan2019-v2.root",
 
 "Wantitop":"dileptonAna_electrons_Wantitop.root",
 "tW":"dileptonAna_electrons_tW.root",
@@ -5521,7 +5538,18 @@ class Backgrounds2016:
 
 	class Other:
 		# ~ subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep1800toInf_2016","ZZ_2016","WZ_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50_2016"]
-		subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016","ZZ_2016","WZ_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50_2016"]
+		subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016","ZZ_2016","WZ_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50_2016"]
+		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
+		fillcolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.	
+		additionalSelection = None
+	class OtherEle:
+		# ~ subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016","ZZ_2016","WZ_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50_2016"]
+		subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016","WZ2L2Q_2016","WZ3LNu_2016","ZZ2L2Nu_2016","ZZ2L2Q_2016","ZZ4L_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50"]
 		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
@@ -5561,7 +5589,8 @@ class Backgrounds:
 		additionalSelection = None
 	class Top:
 		#~ subprocesses = ["ST_tW_antitop","ST_tW_top","TTTo2L2Nu","TTTo2L2Nu_M500To800","TTTo2L2Nu_M800To1200","TTTo2L2Nu_M1200To1800","TTTo2L2Nu_M1800ToInf"]
-		subprocesses = ["Wantitop","tW","ttbar_lep",'ttbar_lep_500to800','ttbar_lep_800to1200','ttbar_lep_1200to1800','ttbar_lep_1800toInf']
+		# ~ subprocesses = ["Wantitop","tW","ttbar_lep",'ttbar_lep_500to800','ttbar_lep_800to1200','ttbar_lep_1200to1800','ttbar_lep_1800toInf']
+		subprocesses = ["ttbar_lep",'ttbar_lep_500to800','ttbar_lep_800to1200','ttbar_lep_1200to1800','ttbar_lep_1800toInf']
 		#~ subprocesses = ["ttbar_lep"]
 		label = "t#bar{t}, tW, #bar{t}W"
 		fillcolor = ROOT.kRed-4
@@ -5645,7 +5674,8 @@ class Backgrounds2018:
 	class Other:
 		#~ subprocesses = ["ST_tW_antitop","ST_tW_top","TTTo2L2Nu","TTTo2L2Nu_M500To800","TTTo2L2Nu_M800To1200","TTTo2L2Nu_M1200To1800","TTTo2L2Nu_M1800ToInf","ZZ","WZ","WWTo2L2Nu","WWTo2L2Nu_M600To1200","WWTo2L2Nu_M1200To2500","WWTo2L2Nu_M2500ToInf"]
 		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
-		subprocesses = ["Wantitop_2018","tW_2018","ttbar_lep_2018","ZZ_2018","WZ_2018","WWinclusive_2018","dyInclusive50_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018',"WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
+		# ~ subprocesses = ["Wantitop_2018","tW_2018","ttbar_lep_2018","ZZ_2018","WZ_2018","WWinclusive_2018","dyInclusive50_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018',"WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
+		subprocesses = ["Wantitop_2018","tW_2018","ttbar_lep_2018","ZZ4L_2018","ZZ2L2Q_2018","ZZ2L2Nu_2018","WZ3LNu_2018","WZ2L2Q_2018","WWinclusive_2018","dyInclusive50_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018',"WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
 		fillcolor = ROOT.kRed-4
 		linecolor = ROOT.kBlack	
@@ -5785,6 +5815,7 @@ class Plot:
 class plots:
 	
 	massPlotEle = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMass_bbbe","DielectronMass",xLabel="m(ee) [GeV]",log=True,logX=True,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
+	massPlotEleNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMass_bbbe","DielectronMass",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
 	cosThetaStarPlotEle = Plot("ElectronSelectionElectronsAllSignsHistos/CosThetaStarDilepton","CosThetaStar_Ele",xLabel="cos(#theta^{*})",log=True,logX=False,xRange=[-1,1],nBins = 20, rebin=5,yLabel="Events / 0.02",useJets=False,muon=False)
 	cosThetaStarPlotOppEle = Plot("ElectronSelectionElectronsOppSignHistos/CosThetaStarDilepton","CosThetaStarOpp_Ele",xLabel="cos(#theta^{*})",log=True,logX=False,xRange=[-1,1],nBins = 100, rebin=1,yLabel="Events / 0.02",useJets=False,muon=False)
 	cosThetaStarPlotSameEle = Plot("ElectronSelectionElectronsSameSignHistos/CosThetaStarDilepton","CosThetaStarSame_Ele",xLabel="cos(#theta^{*})",log=True,logX=False,xRange=[-1,1],nBins = 100, rebin=1,yLabel="Events / 0.02",useJets=False,muon=False)
@@ -5843,7 +5874,8 @@ class plots:
 	cosThetaStarVsMassMu = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedVsCS","CosThetaStarVsMass_Mu",xLabel = "m(#mu#mu) [GeV]" , yLabel="cos(#theta^{*})",log=False,logX=True,xRange=[300,2000],yRange=[-1,1],nBins = 20, rebin=4,useJets=False,muon=True,plot2D=True)
 
 
-	massPlotBBNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained_bb","DimuonMassBB",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
+	massPlotNoLog = Plot("Our2018MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained","DimuonMass",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
+	massPlotBBNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained_bb","DimuonMassBB",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
 	massPlotBENoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained_be","DimuonMassBE",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
 	massPlotBBScaleUpNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleUp_bb","DimuonMassScaleUpBB",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
 	massPlotBEScaleUpNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleUp_be","DimuonMassScaleUpBE",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=20,yLabel="Events / 20 GeV",useJets=True)
