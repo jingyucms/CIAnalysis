@@ -39,7 +39,10 @@ class Ratio:
 			if not self.pull:
 				value = self.sumNumerator / self.sumDenominator
 			else:	
-				value = (self.sumNumerator - self.sumDenominator) / self.sumDenominator
+				if self.sumNumerator == 0:
+					value = -999. 
+				else:
+					value = (self.sumNumerator - self.sumDenominator) / self.sumDenominator		
 		return value
 
 	@property
@@ -78,7 +81,7 @@ class Ratio:
 	def errorY(self):
 		value = 0.0
 		if (self.isValid and self.sumNumerator > 0):
-			value = self.ratio * math.sqrt(self.sumNumeratorSquaredErrors / math.pow(self.sumNumerator, 2.0) + self.sumDenominatorSquaredErrors / math.pow(self.sumDenominator, 2.0))
+			value = (self.sumNumerator / self.sumDenominator) * math.sqrt(self.sumNumeratorSquaredErrors / math.pow(self.sumNumerator, 2.0) + self.sumDenominatorSquaredErrors / math.pow(self.sumDenominator, 2.0))
 		return value
 
 	@property
@@ -91,7 +94,8 @@ class Ratio:
 	def isFullEnough(self, rebinErrorBoundary):
 		#if (self.sumNumerator > 0):
 		#	log.logDebug("Rel Eror: %f" % (math.sqrt(self.sumNumeratorSquaredErrors) / self.sumNumerator))
-		return (self.sumNumerator > 0 and math.sqrt(self.sumNumeratorSquaredErrors) / self.sumNumerator <= rebinErrorBoundary)
+		# ~ return (self.sumNumerator > 0 and math.sqrt(self.sumNumeratorSquaredErrors) / self.sumNumerator <= rebinErrorBoundary)
+		return True
 
 	def addRatio(self, ratio):
 		self.numerators.extend(ratio.numerators)
@@ -360,7 +364,7 @@ class RatioGraph:
 			self.graph.SetLineWidth(2)
 			self.graph.Draw("SAMEhist")
 		else:
-			self.graph.Draw("SAMEpZ")
+			self.graph.Draw("SAMEpZ0E")
 
 		
 		

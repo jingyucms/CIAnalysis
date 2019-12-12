@@ -55,8 +55,8 @@ def plotDataMC(args,plot):
 	if plot.useJets:
 		if "Wjets" in backgrounds:
 			backgrounds.remove("Wjets")
-		if not "Jets" in backgrounds:
-			backgrounds.insert(0,"Jets")
+		# ~ if not "Jets" in backgrounds:
+			# ~ backgrounds.insert(0,"Jets")
 	if args.use2016 and not plot.muon and "Other" in backgrounds:
 		backgrounds.remove("Other")
 		backgrounds.insert(1,"OtherEle")
@@ -84,10 +84,10 @@ def plotDataMC(args,plot):
 				processes2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
 				processes2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights,normalized=True))
 			elif background == "Other" and not plot.muon:
-				processes.append(Process(getattr(Backgrounds2016,"OtherEle"),eventCounts,negWeights,normalized=True))
-				processes2016.append(Process(getattr(Backgrounds2016,"OtherEle"),eventCounts,negWeights,normalized=True))
-				processes2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
-				processes2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights,normalized=True))
+				processes.append(Process(getattr(Backgrounds2016,"OtherEle"),eventCounts,negWeights))
+				processes2016.append(Process(getattr(Backgrounds2016,"OtherEle"),eventCounts,negWeights))
+				processes2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+				processes2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights))
 			else:	
 				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
 				processes2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
@@ -222,13 +222,13 @@ def plotDataMC(args,plot):
 		if plot.muon:
 			lumi = 36294.6
 	elif args.use2018:	
-		lumi = 59.4*1000
+		lumi = 59401
 		if plot.muon:
 			lumi = 61298.775231718995
 	elif args.useRun2:	
 		lumi2016 = 35.9*1000
 		lumi2017 = 41.529*1000
-		lumi2018 = 59.4*1000
+		lumi2018 = 59401
 		if plot.muon:
 			lumi2016 = 36294.6
 			lumi2018 = 61298.775231718995
@@ -318,7 +318,7 @@ def plotDataMC(args,plot):
 		else:
 			datahist = data.loadHistogram(plot,lumi,zScaleFac)	
 			stack = TheStack(processes,lumi,plot,zScaleFac)
-	print (zScaleFac)
+	# ~ print (zScaleFac)
 	print (datahist.Integral(datahist.FindBin(60),datahist.FindBin(120-0.01)))		
 	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(60),stack.theHistogram.FindBin(120-0.01)))		
 	print (datahist.Integral(datahist.FindBin(120),datahist.FindBin(400-0.01)))		
@@ -516,7 +516,7 @@ def plotDataMC(args,plot):
 			outFile.close()
 			plot.cuts=baseCut
 			return 1
-		ratioGraphs =  ratios.RatioGraph(datahist,drawStack.theHistogram, xMin=xMin, xMax=xMax,title="(Data - Bkg) / Bkg",yMin=-1.0,yMax=1.0,ndivisions=10,color=ROOT.kBlack,adaptiveBinning=10000000000,labelSize=0.125,pull=True)
+		ratioGraphs =  ratios.RatioGraph(datahist,drawStack.theHistogram, xMin=xMin, xMax=xMax,title="(Data - Bkg) / Bkg",yMin=-1.0,yMax=1.0,ndivisions=10,color=ROOT.kBlack,adaptiveBinning=10000000000000,labelSize=0.125,pull=True)
 		ratioGraphs.draw(ROOT.gPad,True,False,True,chi2Pos=0.8)
 					
 

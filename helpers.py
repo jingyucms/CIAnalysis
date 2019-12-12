@@ -329,8 +329,6 @@ class Process:
 				if not self.normalized:
 					print (lumi, self.xsecs[index], self.nEvents[index] ,self.negWeightFraction[index], zScaleFac)
 					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])*zScaleFac)
-					# ~ print (tempHist.GetEntries())
-					# ~ tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*zScaleFac)
 				if histo == None:
 					histo = tempHist.Clone()
 				else:	
