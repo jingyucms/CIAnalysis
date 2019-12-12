@@ -4,7 +4,7 @@ from ROOT import TMath
 import sys
 import copy
 
-path = "../files/"
+path = "/depot/cms/users/schul105/files/"
 
 
 

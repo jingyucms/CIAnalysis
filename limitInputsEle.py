@@ -5,7 +5,7 @@ from setTDRStyle import setTDRStyle
 from copy import deepcopy
 
 from helpers import *
-from defs import getPlot, Backgrounds, Signals, Data, Data2016, Data2018, zScale, zScale2018, zScale2016, Backgrounds2016
+from defs import getPlot, Backgrounds, Signals, Data, Data2016, Data2018, zScale, zScale2018, zScale2016, Backgrounds2016, Backgrounds2018
 
 def main():
 	### for data
@@ -44,14 +44,17 @@ def main():
 				data = Process(Data2016, normalized=True)
 				drellyan = Process(getattr(Backgrounds2016,"DrellYan"),eventCounts,negWeights)
 				other = Process(getattr(Backgrounds2016,"Other"),eventCounts,negWeights)				
+				jets = Process(getattr(Backgrounds2016,"Jets"),eventCounts,negWeights, normalized = True)				
 			elif "2018" in label:
 				data = Process(Data2018, normalized=True)
-				drellyan = Process(getattr(Backgrounds,"DrellYan"),eventCounts,negWeights)
-				other = Process(getattr(Backgrounds,"Other"),eventCounts,negWeights)				
+				drellyan = Process(getattr(Backgrounds2018,"DrellYan"),eventCounts,negWeights)
+				other = Process(getattr(Backgrounds2018,"Other"),eventCounts,negWeights)				
+				jets = Process(getattr(Backgrounds2018,"Jets"),eventCounts,negWeights, normalized = True)				
 			else:
 				data = Process(Data, normalized=True)
 				drellyan = Process(getattr(Backgrounds,"DrellYan"),eventCounts,negWeights)
 				other = Process(getattr(Backgrounds,"Other"),eventCounts,negWeights)	
+				jets = Process(getattr(Backgrounds,"Jets"),eventCounts,negWeights, normalized = True)	
 				
 			if cs == "inc":
 				fResult = TFile("inputsCI_%s.root"%(label),"RECREATE")	
@@ -61,15 +64,38 @@ def main():
 
 			if "2016" in label:	
 					lumi = 35.9*1000
-					zScaleFac = zScale2016["electrons"]
+					if "bbbe" in massPlot.histName:
+						zScaleFac = zScale2016["electrons"][0]
+					elif "bb" in massPlot.histName:
+						zScaleFac = zScale2016["electrons"][1]
+					elif "be" in massPlot.histName:
+						zScaleFac = zScale2016["electrons"][2]
+					else:
+						zScaleFac = zScale2016["electrons"][0]
+
 			elif "2018" in label:
 					lumi = 59.97*1000
-					zScaleFac = zScale2018["electrons"]
+					if "bbbe" in massPlot.histName:
+						zScaleFac = zScale2018["electrons"][0]
+					elif "bb" in massPlot.histName:
+						zScaleFac = zScale2018["electrons"][1]
+					elif "be" in massPlot.histName:
+						zScaleFac = zScale2018["electrons"][2]
+					else:
+						zScaleFac = zScale2018["electrons"][0]
 			else:
 					lumi = 41.529*1000
-					zScaleFac = zScale["electrons"]
+					if "bbbe" in massPlot.histName:
+						zScaleFac = zScale["electrons"][0]
+					elif "bb" in massPlot.histName:
+						zScaleFac = zScale["electrons"][1]
+					elif "be" in massPlot.histName:
+						zScaleFac = zScale["electrons"][2]
+					else:
+						zScaleFac = zScale["electrons"][0]
+		
 			
-			
+			jetHist = deepcopy(jets.loadHistogram(massPlot,lumi,zScaleFac))
 			hist = data.loadHistogram(massPlot, lumi, zScaleFac)
 			if cs == "inc":	
 				hist.SetName("dataHist_%s" %(label))
@@ -110,23 +136,6 @@ def main():
 				otherHistScaleDown.SetName("bkgHistOtherScaleDown_%s_%s"%(cs,label))				
 				otherHistPUUp.SetName("bkgHistOtherPUUp_%s_%s"%(cs,label))
 				otherHistPUDown.SetName("bkgHistOtherPUDown_%s_%s"%(cs,label))				
-
-			if "2016" in label:	
-					fJets = TFile("../files/hist_jets.root","OPEN")	
-
-					if "BB" in label:
-						jetHist = fJets.Get("h_mee_all_BB")
-					else:	
-						jetHist = fJets.Get("h_mee_all_BE")					
-			else:			
-					fJets = TFile("../files/saved_hist_for_combine.root","OPEN")	
-
-					if "BB" in label:
-						jetHist = fJets.Get("Jets_h_mee_all_BB")
-					else:	
-						jetHist = fJets.Get("Jets_h_mee_all_BE")
-					if "2018" in label:
-							jetHist.Scale(59.97/41.529)
 
 			if not cs == "inc":
 				jetHist.Scale(0.5)				

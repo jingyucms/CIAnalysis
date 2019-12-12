@@ -5,7 +5,7 @@ from setTDRStyle import setTDRStyle
 from copy import deepcopy
 
 from helpers import *
-from defs import getPlot, Backgrounds, Signals, Data, Data2016, Data2018, zScale, zScale2018, zScale2016, Backgrounds2016
+from defs import getPlot, Backgrounds, Signals, Data, Data2016, Data2018, zScale, zScale2018, zScale2016, Backgrounds2016, Backgrounds2018
 
 
 
@@ -46,14 +46,17 @@ def main():
 				data = Process(Data2016, normalized=True)
 				drellyan = Process(getattr(Backgrounds2016,"DrellYan"),eventCounts,negWeights)
 				other = Process(getattr(Backgrounds2016,"Other"),eventCounts,negWeights)				
+				jets = Process(getattr(Backgrounds2016,"Jets"),eventCounts,negWeights, normalized = True)	
 			elif "2018" in label:
 				data = Process(Data2018, normalized=True)
 				drellyan = Process(getattr(Backgrounds,"DrellYan"),eventCounts,negWeights)
 				other = Process(getattr(Backgrounds,"Other"),eventCounts,negWeights)				
+				jets = Process(getattr(Backgrounds,"Jets"),eventCounts,negWeights, normalized = True)
 			else:
 				data = Process(Data, normalized=True)
-				drellyan = Process(getattr(Backgrounds,"DrellYan"),eventCounts,negWeights)
-				other = Process(getattr(Backgrounds,"Other"),eventCounts,negWeights)				
+				drellyan = Process(getattr(Backgrounds2018,"DrellYan"),eventCounts,negWeights)
+				other = Process(getattr(Backgrounds2018,"Other"),eventCounts,negWeights)	
+				jets = Process(getattr(Backgrounds2018,"Jets"),eventCounts,negWeights, normalized = True)
 		
 			if cs == "inc":
 				fResult = TFile("inputsCI_%s.root"%(label),"RECREATE")	
@@ -89,6 +92,8 @@ def main():
 			otherHistScaleUp = deepcopy(other.loadHistogram(massPlotUp,lumi,zScaleFac))
 			otherHistScaleDown = deepcopy(other.loadHistogram(massPlotDown,lumi,zScaleFac))
 			otherHistWeighted = deepcopy(other.loadHistogram(massPlotWeighted,lumi,zScaleFac))
+			
+			jetHist = deepcopy(jets.loadHistogram(massPlot,lumi,zScaleFac))
 			if cs == "inc":				
 				dyHist.SetName("bkgHistDY_%s"%label)
 				dyHistSmear.SetName("bkgHistDYSmeared_%s"%label)
@@ -113,20 +118,7 @@ def main():
 				otherHistScaleUp.SetName("bkgHistOtherScaleUp_%s_%s"%(cs,label))
 				otherHistScaleDown.SetName("bkgHistOtherScaleDown_%s_%s"%(cs,label))				
 				otherHistWeighted.SetName("bkgHistOtherWeighted_%s_%s"%(cs,label))				
-			if "2016" in label:
-				if "_BB" in label:
-					fJets = TFile("../files/Data-total-jets-BB-pt53.root","OPEN")	
-				else:	
-					fJets = TFile("../files/Data-total-jets-BEEE-pt53.root","OPEN")	
-			else:
-				if "_BB" in label:
-					fJets = TFile("../files/Data-total-jets-BB-pt53.root","OPEN")	
-				else:	
-					fJets = TFile("../files/Data-total-jets-BEEE-pt53.root","OPEN")	
 				
-			jetHist = fJets.Get("TotalJets")
-			if "2018" in label:
-				jetHist.Scale(61.608/42.135)
 				
 			if not cs == "inc":
 				jetHist.Scale(0.5)	
