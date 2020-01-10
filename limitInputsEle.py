@@ -24,7 +24,7 @@ def main():
 				massPlotDown = getPlot("massPlotEle%sScaleDownCSPosNoLog"%histo)
 				massPlotPUUp = getPlot("massPlotEle%sPUScaleUpCSPosNoLog"%histo)
 				massPlotPUDown = getPlot("massPlotEle%sPUScaleDownCSPosNoLog"%histo)
-			if cs == "csneg":
+			elif cs == "csneg":
 				massPlot = getPlot("massPlotEle%sCSNegNoLog"%histo)
 				massPlotUp = getPlot("massPlotEle%sScaleUpCSNegNoLog"%histo)
 				massPlotDown = getPlot("massPlotEle%sScaleDownCSNegNoLog"%histo)
@@ -36,7 +36,6 @@ def main():
 				massPlotDown = getPlot("massPlotEle%sScaleDownNoLog"%histo)
 				massPlotPUUp = getPlot("massPlotEle%sPUScaleUpNoLog"%histo)
 				massPlotPUDown = getPlot("massPlotEle%sPUScaleDownNoLog"%histo)
-
 			eventCounts = totalNumberOfGeneratedEvents(path,massPlot.muon)	
 			negWeights = negWeightFractions(path,massPlot.muon)
 
@@ -138,7 +137,6 @@ def main():
 				otherHistPUDown.SetName("bkgHistOtherPUDown_%s_%s"%(cs,label))				
 
 			if not cs == "inc":
-				jetHist.Scale(0.5)				
 				jetHist.SetName("bkgHistJets_%s_%s"%(cs,label))				
 			else:	
 				jetHist.SetName("bkgHistJets_%s"%label)				

@@ -86,7 +86,7 @@ def main():
 			dyHistScaleUp = deepcopy(drellyan.loadHistogram(massPlotUp,lumi,zScaleFac))
 			dyHistScaleDown = deepcopy(drellyan.loadHistogram(massPlotDown,lumi,zScaleFac))
 			dyHistWeighted = deepcopy(drellyan.loadHistogram(massPlotWeighted,lumi,zScaleFac))
-
+			print dyHistScaleDown.Integral(), dyHistScaleUp.Integral()
 			otherHist = deepcopy(other.loadHistogram(massPlot,lumi,zScaleFac))
 			otherHistSmear = deepcopy(other.loadHistogram(massPlotSmeared,lumi,zScaleFac))
 			otherHistScaleUp = deepcopy(other.loadHistogram(massPlotUp,lumi,zScaleFac))
@@ -121,7 +121,6 @@ def main():
 				
 				
 			if not cs == "inc":
-				jetHist.Scale(0.5)	
 				jetHist.SetName("bkgHistJets_%s_%s"%(cs,label))				
 			else:	
 				jetHist.SetName("bkgHistJets_%s"%label)				

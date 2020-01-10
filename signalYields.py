@@ -25,7 +25,7 @@ def main():
 	css = ["inc","cspos","csneg"]
 	lambdas = [10,16,22,28,34,40,46]
 	interferences = ["Con","Des"]
-	hels = ["LL","LR","RR"]
+	hels = ["LL","RL","LR","RR"]
 	massBins = [400,500,700,1100,1900,3500]
 	if useADD:
 		labels = ["dielectron_2016","dimuon_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
@@ -44,7 +44,6 @@ def main():
 		suffix = args.suffix
 		for cs in css:
 			for histo in histos:
-				print(histo)
 				for hel in hels:
 					for interference in interferences:			
 						model = interference+hel

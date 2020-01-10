@@ -14,7 +14,8 @@ programs = ["makeGraph.py"]
 uncertainties = ["nominal","scaleup","scaledown","pileup","piledown","smeared","muonid"]
 
 for unc in uncertainties:
-	cmd = "python signalYields.py -s %s"%unc
+	#cmd = "python signalYields.py -s %s"%unc
+	cmd = "python signalYieldsSingleBin.py %s"%unc
 	
 	print (cmd)
 	os.system(cmd)
