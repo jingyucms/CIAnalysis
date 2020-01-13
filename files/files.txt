@@ -1499,3 +1499,7 @@ jets_muons_2017.root
 jets_muons_2018.root
 mumuEvent.root
 zp2mu_histos.root
+dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M1300to2000.root
+dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M2000toInf.root
+dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M300to800.root
+dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M800to1300.root

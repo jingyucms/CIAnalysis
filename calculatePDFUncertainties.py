@@ -221,7 +221,7 @@ def main():
 		nnn = len(files)
 		for index, fileName in enumerate(files):
 			
-			f = TFile(fileName,"OPEN")
+			f = TFile("files/"+fileName,"OPEN")
 			tree = f.Get("pdfTree")
 			xsec = xsecs[fileName.split("dileptonAna_pdf_")[-1].split(".root")[0]]
 			print ("processing sample %d / %d"%(index+1,nnn))
