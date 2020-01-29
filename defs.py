@@ -2328,7 +2328,7 @@ class Signals:
 		label = "CITo2E_Lam16TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed
+		linecolor = ROOT.kBlue
 		uncertainty = 0.
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -2474,7 +2474,7 @@ class Signals:
 		label = "CITo2E_Lam32TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kBlack
+		linecolor = ROOT.kGreen
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None

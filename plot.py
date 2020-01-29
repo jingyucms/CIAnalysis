@@ -55,8 +55,8 @@ def plotDataMC(args,plot):
 	if plot.useJets:
 		if "Wjets" in backgrounds:
 			backgrounds.remove("Wjets")
-		# ~ if not "Jets" in backgrounds:
-			# ~ backgrounds.insert(0,"Jets")
+		if not "Jets" in backgrounds:
+			backgrounds.insert(0,"Jets")
 	if args.use2016 and not plot.muon and "Other" in backgrounds:
 		backgrounds.remove("Other")
 		backgrounds.insert(1,"OtherEle")

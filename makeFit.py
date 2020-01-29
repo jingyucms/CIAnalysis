@@ -18,6 +18,7 @@ import ROOT as r
 import numpy as np
 #~ from nesteddict import nesteddict as ndict
 import json
+from copy import copy
 
 from defs import getPlot, Backgrounds, Signals, Data, path, Signals2016, Signals2016ADD, SignalsADD, Signals2018, Signals2018ADD, zScale2016, zScale2018
 from helpers import *
@@ -25,6 +26,15 @@ from helpers import *
 from setTDRStyle import setTDRStyle
 setTDRStyle()
 
+
+def applyPDFCorrection(hist):
+	
+	for i in range(0,hist.GetNbinsX()+1):
+		binCenter = hist.GetBinCenter(i)
+		scaleFac = 0.86 - 3.72e-05 * binCenter + 2.72e-08 * binCenter **2
+		hist.SetBinContent(i,hist.GetBinContent(i)*scaleFac)
+		
+	return copy(hist)
 antypes=[
 	# ["E","e","Ele","/store/user/sturdy/ZprimeAnalysis/histosHLTWeighted"],
 	# ["Mu","mu","Mu","/store/user/sturdy/ZprimeAnalysis/histosCutHLT"]
@@ -232,15 +242,37 @@ for etabin in etabins:
 							if args.do2016:		
 								zScaleFac = zScale2016["muons"]
 								if not plot.muon:
-									zScaleFac = zScale2016["electrons"]
+									if "bbbe" in plot.histName:
+										zScaleFac = zScale2016["electrons"][0]
+									elif "bb" in plot.histName:
+										zScaleFac = zScale2016["electrons"][1]
+									elif "be" in plot.histName:
+										zScaleFac = zScale2016["electrons"][2]
+									else:
+										zScaleFac = zScale2016["electrons"][0]
 							elif args.do2018:		
 								zScaleFac = zScale2018["muons"]
 								if not plot.muon:
-									zScaleFac = zScale2018["electrons"]
+									if "bbbe" in plot.histName:
+										zScaleFac = zScale2018["electrons"][0]
+									elif "bb" in plot.histName:
+										zScaleFac = zScale2018["electrons"][1]
+									elif "be" in plot.histName:
+										zScaleFac = zScale2018["electrons"][2]
+									else:
+										zScaleFac = zScale2018["electrons"][0]
+
 							else:
 								zScaleFac = zScale["muons"]
 								if not plot.muon:
-									zScaleFac = zScale["electrons"]							          
+									if "bbbe" in plot.histName:
+										zScaleFac = zScale["electrons"][0]
+									elif "bb" in plot.histName:
+										zScaleFac = zScale["electrons"][1]
+									elif "be" in plot.histName:
+										zScaleFac = zScale["electrons"][2]
+									else:
+										zScaleFac = zScale["electrons"][0]							          
 							signal = "%sTo2%s_Lam%sTeV%s%s"%(model,antype[0],lval,intf,heli)
 							if args.add:
 								signal = "ADDGravTo2%s_Lam%s"%(antype[0],str(int(float(lval)*1000)))
@@ -267,10 +299,15 @@ for etabin in etabins:
 								Signal = Process(getattr(Signals,signal),eventCounts,negWeights)                        
 							
 							signalhist = Signal.loadHistogram(plot,lumi,zScaleFac)
-							
+							signalHistBefore = signalhist.Clone()
+							if not args.do2016:
+								signalhist = applyPDFCorrection(signalhist)
 							signalhist.SetMinimum(0.8*signalhist.GetMinimum(0.001))
 							signalhist.SetMaximum(1.25*signalhist.GetMaximum())
 							signalhist.Draw("hist")
+							signalHistBefore.SetLineStyle(ROOT.kDashed)
+							signalHistBefore.SetLineColor(ROOT.kRed)
+							signalHistBefore.Draw("samehist")
 							signalhist.GetXaxis().SetRangeUser(0,5000)
 							signalhist.GetXaxis().SetNdivisions(505)
 							r.gPad.SetLogy(True)
