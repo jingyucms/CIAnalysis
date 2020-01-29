@@ -226,19 +226,19 @@ for etabin in etabins:
 
 	 
 							eventCounts = totalNumberOfGeneratedEvents(path,plot.muon)  
-							negWeights = negWeightFractions(path,plot.muon)     
+							negWeights = negWeightFractions(path,plot.muon)
 							if args.do2016:	
 								lumi = 35.9*1000
 								if plot.muon:
-									lumi = 36.3*1000
+									lumi = 36294.6
 							elif args.do2018:	
 								lumi = 59.4*1000
 								if plot.muon:
-									lumi = 61.3*1000
+									lumi = 61298.775231718995
 							else:
 								lumi = 41.529*1000
 								if plot.muon:
-									lumi = 42.135*1000
+									lumi = 42079.880396
 							if args.do2016:		
 								zScaleFac = zScale2016["muons"]
 								if not plot.muon:
@@ -261,7 +261,6 @@ for etabin in etabins:
 										zScaleFac = zScale2018["electrons"][2]
 									else:
 										zScaleFac = zScale2018["electrons"][0]
-
 							else:
 								zScaleFac = zScale["muons"]
 								if not plot.muon:
@@ -272,7 +271,7 @@ for etabin in etabins:
 									elif "be" in plot.histName:
 										zScaleFac = zScale["electrons"][2]
 									else:
-										zScaleFac = zScale["electrons"][0]							          
+										zScaleFac = zScale["electrons"][0]			
 							signal = "%sTo2%s_Lam%sTeV%s%s"%(model,antype[0],lval,intf,heli)
 							if args.add:
 								signal = "ADDGravTo2%s_Lam%s"%(antype[0],str(int(float(lval)*1000)))
@@ -299,6 +298,7 @@ for etabin in etabins:
 								Signal = Process(getattr(Signals,signal),eventCounts,negWeights)                        
 							
 							signalhist = Signal.loadHistogram(plot,lumi,zScaleFac)
+							signalhist.Rebin(20)
 							signalHistBefore = signalhist.Clone()
 							if not args.do2016:
 								signalhist = applyPDFCorrection(signalhist)

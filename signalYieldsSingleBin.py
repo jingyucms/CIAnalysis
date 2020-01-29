@@ -22,7 +22,7 @@ def main():
 	interferences = ["Con","Des"]
 	# ~ hels = ["LL","LR","RR"]
 	# ~ interferences = ["Con"]
-	hels = ["LL"]
+	hels = ["LL","LR","RL","RR"]
 
 	#~ massBins = [1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200,3400]
 	massBins = [1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200,3400]
@@ -47,9 +47,10 @@ def main():
 						for interference in interferences:			
 							model = interference+hel		
 							if "dimuon" in label:
-								name = "cito2mu"
+								name = "CIto2mu"
 							else:
-								name = "cito2e"	
+								name = "CIto2e"
+							print name	
 							if "2016" in label:	
 								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:	
@@ -92,12 +93,11 @@ def main():
 					
 			
 
-			print (signalYields)
 
 			if "dimuon" in label:
-				fileName = "signalYieldsSingleBin"
+				fileName = "CIsignalYieldsSingleBin"
 			else:
-				fileName = "signalYieldsSingleBinEle"
+				fileName = "CIsignalYieldsSingleBinEle"
 			
 			if suffix == "nominal":
 				otherSuffix = "default"
