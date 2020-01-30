@@ -5,7 +5,7 @@ import argparse
 parser = argparse.ArgumentParser()
 #parser.add_argument("-inFile", help="Input file", type=str)
 parser.add_argument("-flav", help="Lepton flavor", type=str)
-parser.add_argument("-unc",  help="Uncertainty: 'nominal'*, 'scaleup', 'scaledown', 'muonid', 'smeared'", type=str, default="nominal")
+parser.add_argument("-unc",  help="Uncertainty: 'nominal'*, 'scaleup', 'scaledown', 'muonid', 'smeared', 'pdfWeightsUp', 'pdfWeightsDown'", type=str, default="nominal")
 parser.add_argument("-cs",   help="CS bin: 'inc', 'cspos', 'csneg'", type=str, default="inc")
 parser.add_argument("-d",    help="debug", action='store_true')
 parser.add_argument("-do2016", help="do 2016", action='store_true')
@@ -75,6 +75,8 @@ uncertainties = [
 	"nominal",
 	"scaleup",
 	"scaledown",
+	"pdfWeightsUp",
+	"pdfWeightsDown",
 	## ele only
 	"pileup",
 	"piledown",
@@ -89,6 +91,14 @@ plots = {
 	"Mubenominal": "massPlotBENoLog",
 	"Elebbnominal": "massPlotEleBBNoLog",
 	"Elebenominal": "massPlotEleBENoLog",
+	"MubbpdfWeightsUp": "massPlotBBNoLog",
+	"MubepdfWeightsUp": "massPlotBENoLog",
+	"ElebbpdfWeightsUp": "massPlotEleBBNoLog",
+	"ElebepdfWeightsUp": "massPlotEleBENoLog",
+	"MubbpdfWeightsDown": "massPlotBBNoLog",
+	"MubepdfWeightsDown": "massPlotBENoLog",
+	"ElebbpdfWeightsDown": "massPlotEleBBNoLog",
+	"ElebepdfWeightsDown": "massPlotEleBENoLog",
 	"Mubbscaleup": "massPlotBBScaleUpNoLog",
 	"Mubescaleup": "massPlotBEScaleUpNoLog",
 	"Elebbscaleup": "massPlotEleBBScaleUpNoLog",
@@ -301,7 +311,14 @@ for etabin in etabins:
 							signalhist.Rebin(20)
 							signalHistBefore = signalhist.Clone()
 							if not args.do2016:
-								signalhist = applyPDFCorrection(signalhist)
+								if unc == "pdfWeightsUp":
+									signalhist = applyPDFCorrection(signalhist)
+									signalhist = applyPDFCorrection(signalhist)
+								elif unc == "pdfWeightsDown":
+									print ("not applying weights for down uncertainty")
+								else:
+									signalhist = applyPDFCorrection(signalhist)
+	 	
 							signalhist.SetMinimum(0.8*signalhist.GetMinimum(0.001))
 							signalhist.SetMaximum(1.25*signalhist.GetMaximum())
 							signalhist.Draw("hist")
