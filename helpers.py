@@ -87,7 +87,6 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
 		histName = histName.replace("2017","2016")
 	if "2018" in fileName and "Our2017" in histName:
 		histName = histName.replace("2017","2018")
-	print (fileName)
 	from ROOT import TFile, TH1F
 	rootFile = TFile(path+fileName, "read")
 	if "saved_hist_for_combine" in fileName or "jets_muons" in fileName or "hist_jets" in fileName or 'Result_' in fileName:
@@ -123,22 +122,24 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
 			result = rootFile.Get(histName2)
 		else:	
 			result = rootFile.Get(histName)
-	# ~ if logBins and( "Mass" in histName or ("jets" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName))):	
-	if logBins and( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName)):	
-		if not muon:
-			bng = binning("electron")
-		else:
-			bng = binning("muon")
-	
-		result = result.Rebin(len(bng) - 1, 'hist_' + uuid.uuid4().hex, array('d', bng))
-		
-		for i in range(0,result.GetNbinsX()):
-			result.SetBinContent(i,result.GetBinContent(i)/result.GetBinWidth(i))
-			result.SetBinError(i,result.GetBinError(i)/result.GetBinWidth(i))
-	else:	
-		result.Rebin(rebin)
+	if logBins:
+		if ( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName)):
+			print fileName
+			if not muon:
+				bng = binning("electron")
+			else:
+				bng = binning("muon")
 
-	result.SetDirectory(0)	
+			result = result.Rebin(len(bng) - 1, 'hist_' + uuid.uuid4().hex, array('d', bng))
+			
+			for i in range(0,result.GetNbinsX()):
+				result.SetBinContent(i,result.GetBinContent(i)/result.GetBinWidth(i))
+				result.SetBinError(i,result.GetBinError(i)/result.GetBinWidth(i))
+	else:
+		if not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName):
+			result.Rebin(rebin)
+
+	result.SetDirectory(0)
 	return deepcopy(result)
 	
 def loadHistoFromFile2D(fileName,histName,rebin):
@@ -328,7 +329,6 @@ class Process:
 					tempHist = loadHistoFromFile(fileNamesEle[sample],plot.histName,plot.rebin,plot.muon,plot.logX)
 				if not self.normalized:
 					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])*zScaleFac)
-					print (lumi, self.xsecs[index], self.nEvents[index] ,self.negWeightFraction[index], zScaleFac)
 				if histo == None:
 					histo = tempHist.Clone()
 				else:	
@@ -385,7 +385,6 @@ class TheStackRun2:
 	
 			
 		for index, process in enumerate(processes[0]):
-			print (index)
 			temphist = process.loadHistogram(plot,lumi[0],zScaleFac[0])
 			temphist.Add(processes[1][index].loadHistogram(plot,lumi[1],zScaleFac[1]))
 			temphist.Add(processes[2][index].loadHistogram(plot,lumi[2],zScaleFac[2]))
