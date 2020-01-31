@@ -296,10 +296,10 @@ class Process:
 		self.nEvents = []
 		for sample in self.samples:
 			if not "Data" in sample and not "Jets" in sample:
-				if "ConRL" in sample or "DesRL" in sample:
-					self.xsecs.append(crossSections[sample.replace('RL',"LR")])
-				else:	
-					self.xsecs.append(crossSections[sample])
+				# ~ if "ConRL" in sample or "DesRL" in sample:
+					# ~ self.xsecs.append(crossSections[sample.replace('RL',"LR")])
+				# ~ else:	
+				self.xsecs.append(crossSections[sample])
 				self.negWeightFraction.append(negWeights[sample])
 				self.nEvents.append(Counts[sample])	
 	def loadHistogram(self,plot,lumi,zScaleFac):
@@ -375,7 +375,10 @@ class TheStack:
 				self.theHistogram = temphist.Clone()
 			else:	
 				self.theHistogram.Add(temphist.Clone())
-				
+	def Add(self,addstack):
+		for h in addstack.theStack.GetHists():
+			self.theStack.Add(h.Clone())
+			self.theHistogram.Add(h.Clone())				
 class TheStackRun2:
 	from ROOT import THStack
 	theStack = THStack()	

@@ -55,12 +55,11 @@ def plotDataMC(args,plot):
 	if plot.useJets:
 		if "Wjets" in backgrounds:
 			backgrounds.remove("Wjets")
-		# ~ if not "Jets" in backgrounds:
-			# ~ backgrounds.insert(0,"Jets")
+		if not "Jets" in backgrounds:
+			backgrounds.insert(0,"Jets")
 	if args.use2016 and not plot.muon and "Other" in backgrounds:
 		backgrounds.remove("Other")
 		backgrounds.insert(1,"OtherEle")
-	print (backgrounds)		
 	processes = []
 	processes2016 = []
 	processes2017 = []
@@ -318,22 +317,6 @@ def plotDataMC(args,plot):
 		else:
 			datahist = data.loadHistogram(plot,lumi,zScaleFac)	
 			stack = TheStack(processes,lumi,plot,zScaleFac)
-	# ~ print (zScaleFac)
-	print (datahist.Integral(datahist.FindBin(60),datahist.FindBin(120-0.01)))		
-	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(60),stack.theHistogram.FindBin(120-0.01)))		
-	print (datahist.Integral(datahist.FindBin(120),datahist.FindBin(400-0.01)))		
-	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(120),stack.theHistogram.FindBin(400-0.01)))		
-	print (datahist.Integral(datahist.FindBin(400),datahist.FindBin(600-0.01)))		
-	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(400),stack.theHistogram.FindBin(600-0.01)))		
-	print (datahist.Integral(datahist.FindBin(600),datahist.FindBin(900-0.01)))		
-	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(600),stack.theHistogram.FindBin(900-0.01)))		
-	print (datahist.Integral(datahist.FindBin(900),datahist.FindBin(1300-0.01)))		
-	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(900),stack.theHistogram.FindBin(1300-0.01)))		
-	print (datahist.Integral(datahist.FindBin(1300),datahist.FindBin(1800-0.01)))		
-	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(1300),stack.theHistogram.FindBin(1800-0.01)))		
-	print (datahist.Integral(datahist.FindBin(1800),datahist.FindBin(18000-0.01)))		
-	print (stack.theHistogram.Integral(stack.theHistogram.FindBin(1800),stack.theHistogram.FindBin(18000-0.01)))		
-	print (stack.theHistogram.GetEntries())		
 	if args.data:
 		yMax = datahist.GetBinContent(datahist.GetMaximumBin())
 		if "Mass" in plot.fileName:
@@ -370,7 +353,8 @@ def plotDataMC(args,plot):
 	if "CosThetaStarBBM1800" in plot.fileName:
 		yMax = 3
 	plotPad.DrawFrame(xMin,yMin,xMax,yMax,"; %s ; %s" %(plot.xaxis,plot.yaxis))
-	
+	print (stack.theHistogram.Integral())
+
 	
 	drawStack = stack
  	#~ print datahist.Integral(datahist.FindBin(60),datahist.FindBin(120))/drawStack.theHistogram.Integral(drawStack.theHistogram.FindBin(60),drawStack.theHistogram.FindBin(120))

@@ -12,7 +12,8 @@ csbins = ["inc", "cspos", "csneg"]
 programs = ["makeFit.py", "makeGraph.py"]
 # ~ programs = ["makeGraph.py"]
 # ~ uncertainties = ["","scaleup","scaledown","pileup","piledown","smeared","muonid"]
-uncertainties = ["","scaleup","scaledown","pileup","piledown","smeared","muonid"]
+uncertainties = ["","scaleup","scaledown","pileup","piledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown"]
+# ~ uncertainties = ["pdfWeightsUp","pdfWeightsDown"]
 
 for cs in csbins:
 	for program in programs:
@@ -35,6 +36,6 @@ for cs in csbins:
 				else:	
 					cmd = cmd + " --fitrange 3.5 110" 
 			if not args.add and "Graph" in program:
-				cmd = cmd + " --fixinf --fixdes --constraint '0 0 1e4' --constraint '1 0 1e9' --constraint '2 0 1e9'"
+				cmd = cmd + " --fixinf --constraint '0 0 1e4' --constraint '1 0 1e9' --constraint '2 0 1e9'"
 			print (cmd)
 			os.system(cmd)

@@ -91,6 +91,8 @@ uncertainties = [
 	"nominal",
 	"scaleup",
 	"scaledown",
+	"pdfWeightsUp",
+	"pdfWeightsDown",
 	## ele only
 	"pileup",
 	"piledown",

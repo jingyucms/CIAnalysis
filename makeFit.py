@@ -5,7 +5,7 @@ import argparse
 parser = argparse.ArgumentParser()
 #parser.add_argument("-inFile", help="Input file", type=str)
 parser.add_argument("-flav", help="Lepton flavor", type=str)
-parser.add_argument("-unc",  help="Uncertainty: 'nominal'*, 'scaleup', 'scaledown', 'muonid', 'smeared'", type=str, default="nominal")
+parser.add_argument("-unc",  help="Uncertainty: 'nominal'*, 'scaleup', 'scaledown', 'muonid', 'smeared', 'pdfWeightsUp', 'pdfWeightsDown'", type=str, default="nominal")
 parser.add_argument("-cs",   help="CS bin: 'inc', 'cspos', 'csneg'", type=str, default="inc")
 parser.add_argument("-d",    help="debug", action='store_true')
 parser.add_argument("-do2016", help="do 2016", action='store_true')
@@ -18,6 +18,7 @@ import ROOT as r
 import numpy as np
 #~ from nesteddict import nesteddict as ndict
 import json
+from copy import copy
 
 from defs import getPlot, Backgrounds, Signals, Data, path, Signals2016, Signals2016ADD, SignalsADD, Signals2018, Signals2018ADD, zScale2016, zScale2018
 from helpers import *
@@ -25,6 +26,15 @@ from helpers import *
 from setTDRStyle import setTDRStyle
 setTDRStyle()
 
+
+def applyPDFCorrection(hist):
+	
+	for i in range(0,hist.GetNbinsX()+1):
+		binCenter = hist.GetBinCenter(i)
+		scaleFac = 0.86 - 3.72e-05 * binCenter + 2.72e-08 * binCenter **2
+		hist.SetBinContent(i,hist.GetBinContent(i)*scaleFac)
+		
+	return copy(hist)
 antypes=[
 	# ["E","e","Ele","/store/user/sturdy/ZprimeAnalysis/histosHLTWeighted"],
 	# ["Mu","mu","Mu","/store/user/sturdy/ZprimeAnalysis/histosCutHLT"]
@@ -65,6 +75,8 @@ uncertainties = [
 	"nominal",
 	"scaleup",
 	"scaledown",
+	"pdfWeightsUp",
+	"pdfWeightsDown",
 	## ele only
 	"pileup",
 	"piledown",
@@ -79,6 +91,14 @@ plots = {
 	"Mubenominal": "massPlotBENoLog",
 	"Elebbnominal": "massPlotEleBBNoLog",
 	"Elebenominal": "massPlotEleBENoLog",
+	"MubbpdfWeightsUp": "massPlotBBNoLog",
+	"MubepdfWeightsUp": "massPlotBENoLog",
+	"ElebbpdfWeightsUp": "massPlotEleBBNoLog",
+	"ElebepdfWeightsUp": "massPlotEleBENoLog",
+	"MubbpdfWeightsDown": "massPlotBBNoLog",
+	"MubepdfWeightsDown": "massPlotBENoLog",
+	"ElebbpdfWeightsDown": "massPlotEleBBNoLog",
+	"ElebepdfWeightsDown": "massPlotEleBENoLog",
 	"Mubbscaleup": "massPlotBBScaleUpNoLog",
 	"Mubescaleup": "massPlotBEScaleUpNoLog",
 	"Elebbscaleup": "massPlotEleBBScaleUpNoLog",
@@ -102,6 +122,17 @@ plots = {
 	"Mubenominalcspos": "massPlotBECSPosNoLog",
 	"Elebbnominalcspos": "massPlotEleBBCSPosNoLog",
 	"Elebenominalcspos": "massPlotEleBECSPosNoLog",
+
+	"MubbpdfWeightsUpcspos": "massPlotBBCSPosNoLog",
+	"MubepdfWeightsUpcspos": "massPlotBECSPosNoLog",
+	"ElebbpdfWeightsUpcspos": "massPlotEleBBCSPosNoLog",
+	"ElebepdfWeightsUpcspos": "massPlotEleBECSPosNoLog",
+
+	"MubbpdfWeightsDowncspos": "massPlotBBCSPosNoLog",
+	"MubepdfWeightsDowncspos": "massPlotBECSPosNoLog",
+	"ElebbpdfWeightsDowncspos": "massPlotEleBBCSPosNoLog",
+	"ElebepdfWeightsDowncspos": "massPlotEleBECSPosNoLog",
+	
 	"Mubbscaleupcspos": "massPlotBBScaleUpCSPosNoLog",
 	"Mubescaleupcspos": "massPlotBEScaleUpCSPosNoLog",
 	"Elebbscaleupcspos": "massPlotEleBBScaleUpCSPosNoLog",
@@ -125,6 +156,14 @@ plots = {
 	"Mubenominalcsneg": "massPlotBECSNegNoLog",
 	"Elebbnominalcsneg": "massPlotEleBBCSNegNoLog",
 	"Elebenominalcsneg": "massPlotEleBECSNegNoLog",
+	"MubbpdfWeightsUpcsneg": "massPlotBBCSNegNoLog",
+	"MubepdfWeightsUpcsneg": "massPlotBECSNegNoLog",
+	"ElebbpdfWeightsUpcsneg": "massPlotEleBBCSNegNoLog",
+	"ElebepdfWeightsUpcsneg": "massPlotEleBECSNegNoLog",
+	"MubbpdfWeightsDowncsneg": "massPlotBBCSNegNoLog",
+	"MubepdfWeightsDowncsneg": "massPlotBECSNegNoLog",
+	"ElebbpdfWeightsDowncsneg": "massPlotEleBBCSNegNoLog",
+	"ElebepdfWeightsDowncsneg": "massPlotEleBECSNegNoLog",
 	"Mubbscaleupcsneg": "massPlotBBScaleUpCSNegNoLog",
 	"Mubescaleupcsneg": "massPlotBEScaleUpCSNegNoLog",
 	"Elebbscaleupcsneg": "massPlotEleBBScaleUpCSNegNoLog",
@@ -262,7 +301,6 @@ for etabin in etabins:
 										zScaleFac = zScale["electrons"][2]
 									else:
 										zScaleFac = zScale["electrons"][0]			
-
 							signal = "%sTo2%s_Lam%sTeV%s%s"%(model,antype[0],lval,intf,heli)
 							if args.add:
 								signal = "ADDGravTo2%s_Lam%s"%(antype[0],str(int(float(lval)*1000)))
@@ -289,10 +327,23 @@ for etabin in etabins:
 								Signal = Process(getattr(Signals,signal),eventCounts,negWeights)                        
 							
 							signalhist = Signal.loadHistogram(plot,lumi,zScaleFac)
-							
+							signalhist.Rebin(20)
+							signalHistBefore = signalhist.Clone()
+							if not args.do2016:
+								if unc == "pdfWeightsUp":
+									signalhist = applyPDFCorrection(signalhist)
+									signalhist = applyPDFCorrection(signalhist)
+								elif unc == "pdfWeightsDown":
+									print ("not applying weights for down uncertainty")
+								else:
+									signalhist = applyPDFCorrection(signalhist)
+	 	
 							signalhist.SetMinimum(0.8*signalhist.GetMinimum(0.001))
 							signalhist.SetMaximum(1.25*signalhist.GetMaximum())
 							signalhist.Draw("hist")
+							signalHistBefore.SetLineStyle(ROOT.kDashed)
+							signalHistBefore.SetLineColor(ROOT.kRed)
+							signalHistBefore.Draw("samehist")
 							signalhist.GetXaxis().SetRangeUser(0,5000)
 							signalhist.GetXaxis().SetNdivisions(505)
 							r.gPad.SetLogy(True)
