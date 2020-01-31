@@ -14,8 +14,8 @@ def main():
 	histos = ["BB","BE"]
 	labels = ["dimuon_2016","dielectron_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
 	#~ channels = ["cito2mu","cito2e"]
-	suffixesMu = ["nominal","scaledown","smeared","muonid"]
-	suffixesEle = ["nominal","scaledown","scaleup","pileup","piledown"]
+	suffixesMu = ["nominal","scaledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown"]
+	suffixesEle = ["nominal","scaledown","scaleup","pileup","piledown","pdfWeightsUp","pdfWeightsDown"]
 	css = ["inc","cspos","csneg"]	
 	#~ suffixes = ["smeared"]
 	lambdas = [10,16,22,28,34,40,46]
@@ -50,13 +50,12 @@ def main():
 								name = "CIto2mu"
 							else:
 								name = "CIto2e"
-							print name	
 							if "2016" in label:	
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:	
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:	
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixdes_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
 							for l in lambdas:
 								if "dimuon" in label:
 									name = "CITo2Mu_Lam%dTeV%s"%(l,model)
@@ -113,6 +112,10 @@ def main():
 				otherSuffix = "pileup"
 			elif suffix == "piledown":
 				otherSuffix = "piledown"
+			elif suffix == "pdfWeightsUp":
+				otherSuffix = "pdfWeightsUp"
+			elif suffix == "pdfWeightsDown":
+				otherSuffix = "pdfWeightsDown"
 			else:
 				print (suffix)
 			outFilePkl = open("%s_%s.pkl"%(fileName,otherSuffix),"wb")

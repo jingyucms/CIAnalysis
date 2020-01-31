@@ -353,7 +353,8 @@ def plotDataMC(args,plot):
 	if "CosThetaStarBBM1800" in plot.fileName:
 		yMax = 3
 	plotPad.DrawFrame(xMin,yMin,xMax,yMax,"; %s ; %s" %(plot.xaxis,plot.yaxis))
-	
+	print (stack.theHistogram.Integral())
+
 	
 	drawStack = stack
  	#~ print datahist.Integral(datahist.FindBin(60),datahist.FindBin(120))/drawStack.theHistogram.Integral(drawStack.theHistogram.FindBin(60),drawStack.theHistogram.FindBin(120))

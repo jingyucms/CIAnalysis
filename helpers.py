@@ -373,7 +373,10 @@ class TheStack:
 				self.theHistogram = temphist.Clone()
 			else:	
 				self.theHistogram.Add(temphist.Clone())
-				
+	def Add(self,addstack):
+		for h in addstack.theStack.GetHists():
+			self.theStack.Add(h.Clone())
+			self.theHistogram.Add(h.Clone())				
 class TheStackRun2:
 	from ROOT import THStack
 	theStack = THStack()	
