@@ -11,14 +11,17 @@ args = parser.parse_args()
 # ~ csbins = ["inc", "cspos", "csneg"]
 # ~ programs = ["makeFit.py", "makeGraph.py"]
 programs = ["makeGraph.py"]
-uncertainties = ["nominal","scaleup","scaledown","pileup","piledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown"]
+uncertainties = ["nominal","scaleup","scaledown","pileup","piledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown",'prefireup','prefiredown']
 # ~ uncertainties = ["pdfWeightsUp","pdfWeightsDown"]
 
 for unc in uncertainties:
-
-	
-	cmd = "python signalYields.py -s %s"%unc
-	if args.add:
-		cmd += " -add"
+	#cmd = "python signalYields.py -s %s"%unc
+	cmd = "python signalYieldsSingleBin.py %s"%unc
+	# ~ if args.do2018:
+		# ~ cmd += " 2018"
+	# ~ elif args.do2016:
+		# ~ cmd += " 2016"
+	# ~ else:
+		# ~ cmd += " 2017"		
 	print (cmd)
 	os.system(cmd)

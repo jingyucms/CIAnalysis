@@ -15,7 +15,7 @@ def main():
 	labels = ["dimuon_2016","dielectron_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
 	#~ channels = ["cito2mu","cito2e"]
 	suffixesMu = ["nominal","scaledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown"]
-	suffixesEle = ["nominal","scaledown","scaleup","pileup","piledown","pdfWeightsUp","pdfWeightsDown"]
+	suffixesEle = ["nominal","scaledown","scaleup","pileup","piledown","pdfWeightsUp","pdfWeightsDown",'prefireup','prefiredown']
 	css = ["inc","cspos","csneg"]	
 	#~ suffixes = ["smeared"]
 	lambdas = [10,16,22,28,34,40,46]
@@ -25,7 +25,8 @@ def main():
 	hels = ["LL","LR","RL","RR"]
 
 	#~ massBins = [1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200,3400]
-	massBins = [1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200,3400]
+	# ~ massBins = [1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200,3400]
+	massBins = [2200]
 	signalYields = {}
 	
 	#~ names = ["default","resolution","scale","ID"]
@@ -112,6 +113,10 @@ def main():
 				otherSuffix = "pileup"
 			elif suffix == "piledown":
 				otherSuffix = "piledown"
+			elif suffix == "prefireup":
+				otherSuffix = "prefireup"
+			elif suffix == "prefiredown":
+				otherSuffix = "prefiredown"
 			elif suffix == "pdfWeightsUp":
 				otherSuffix = "pdfWeightsUp"
 			elif suffix == "pdfWeightsDown":

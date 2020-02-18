@@ -1,11 +1,11 @@
-from ROOT import TCanvas, TPad, TLegend, kWhite, kRed, kBlue, kGreen, kOrange, TGraph, kMagenta, kBlack
+from ROOT import TCanvas, TPad, TLegend, kWhite, kRed, kBlue, kGreen, kOrange, TGraph, kMagenta, kBlack, kYellow, kAzure
 from numpy import array as ar
 from array import array
 from setTDRStyle import setTDRStyle
-from copy import deepcopy
+from copy import deepcopy, copy
 import ratios
 from helpers import *
-from defs import getPlot, Backgrounds, Backgrounds2016, Backgrounds2018, Signals, Data, zScale2016, zScale2018
+from defs import getPlot, Backgrounds, Backgrounds2016, Backgrounds2018, Signals, Data, zScale2016, zScale2018, Signals2016, Signals2018
 
 import sys, os
 import argparse
@@ -21,6 +21,17 @@ parser.add_argument("-add", help="add", action="store_true")
 
 args = parser.parse_args()
 # ~ intfs=["Con","Des"]
+
+def applyPDFCorrection(hist):
+	
+	for i in range(0,hist.GetNbinsX()+1):
+		binCenter = hist.GetBinCenter(i)
+		scaleFac = 0.86 - 3.72e-05 * binCenter + 2.72e-08 * binCenter **2
+		hist.SetBinContent(i,hist.GetBinContent(i)*scaleFac)
+		
+	return copy(hist)
+
+
 print (path)
 uncertainties = [
 	"nominal",
@@ -210,18 +221,21 @@ for etabin in etabins:
 					zScaleFac = zScale["electrons"][0]						          
 		# list for 2016
 
-		if args.do2016:	
-			drellyan = Process(getattr(Backgrounds2016,"DrellYan"),eventCounts,negWeights)
+		if args.do2016:
 			if antype[2] == 'Ele':
-				other = Process(getattr(Backgrounds2016,"OtherEle"),eventCounts,negWeights)
-			else:
-				other = Process(getattr(Backgrounds2016,"Other"),eventCounts,negWeights)
+				drellyan = Process(getattr(Signals2016,"CITo2E_Lam16TeVConLL"),eventCounts,negWeights)
+			else:	
+				drellyan = Process(getattr(Signals2016,"CITo2Mu_Lam16TeVConLL"),eventCounts,negWeights)
 		elif args.do2018:
-			drellyan = Process(getattr(Backgrounds2018,"DrellYan"),eventCounts,negWeights)
-			other = Process(getattr(Backgrounds2018,"Other"),eventCounts,negWeights)
+			if antype[2] == 'Ele':
+				drellyan = Process(getattr(Signals2018,"CITo2E_Lam16TeVConLL"),eventCounts,negWeights)
+			else:	
+				drellyan = Process(getattr(Signals2018,"CITo2Mu_Lam16TeVConLL"),eventCounts,negWeights)
 		else:
-			drellyan = Process(getattr(Backgrounds,"DrellYan"),eventCounts,negWeights)
-			other = Process(getattr(Backgrounds,"Other"),eventCounts,negWeights)
+			if antype[2] == 'Ele':
+				drellyan = Process(getattr(Signals,"CITo2E_Lam16TeVConLL"),eventCounts,negWeights)
+			else:	
+				drellyan = Process(getattr(Signals,"CITo2Mu_Lam16TeVConLL"),eventCounts,negWeights)
 		
 
 		dyHist = deepcopy(drellyan.loadHistogram(plot,lumi,zScaleFac))
@@ -235,17 +249,8 @@ for etabin in etabins:
 			dyHistWeighted = deepcopy(drellyan.loadHistogram(plotWeigthed,lumi,zScaleFac))
 			dyHistSmear = deepcopy(drellyan.loadHistogram(plotSmeared,lumi,zScaleFac))
 		
-		otherHist = other.loadHistogram(plot,lumi,zScaleFac)
-		otherHistPDF = otherHist.Clone("otherPDF")
-		
-		otherHistXSec = otherHist.Clone("otherHistXSec")
-		dyHistXSec = dyHist.Clone("dyHistXSec")
-		otherHistXSec.Scale(1.07)	
-		dyHistXSec.Add(otherHistXSec)		
 
-		otherHistRest = otherHist.Clone("otherHistRest")
 		dyHistRest = dyHist.Clone("dyHistRest")
-		dyHistRest.Add(otherHistRest)
 		
 		if args.do2016:
 			if antype[2] == 'Ele':
@@ -280,23 +285,16 @@ for etabin in etabins:
 					dyHistRest.Scale(1+(0.01**2+0.05**2)**0.5)	
 				else:	
 					dyHistRest.Scale(1+(0.01**2+0.05**2)**0.5)	
-		
-		dyHist.Add(deepcopy(otherHist))
-		dyHistScaleUp.Add(deepcopy(other.loadHistogram(plotScaleUp,lumi,zScaleFac)))
-		dyHistScaleDown.Add(deepcopy(other.loadHistogram(plotScaleDown,lumi,zScaleFac)))
-		if antype[2] == 'Ele':	
-			dyHistPUUp.Add(deepcopy(other.loadHistogram(plotPUUp,lumi,zScaleFac)))
-			dyHistPUDown.Add(deepcopy(other.loadHistogram(plotPUDown,lumi,zScaleFac)))
-		if antype[2] == 'Mu':		
-			dyHistWeighted.Add(deepcopy(other.loadHistogram(plotWeigthed,lumi,zScaleFac)))
-			dyHistSmear.Add(deepcopy(other.loadHistogram(plotSmeared,lumi,zScaleFac)))
-		
+		if not args.do2016:			
+			dyHistXSec = applyPDFCorrection(dyHist.Clone("dyHistWeights"))
+			dyHistXSec.SetLineColor(kAzure+1)
+		else:
+			dyHistXSec = dyHist.Clone("dyHistWeights")
 		rebin = 500
 		dyHist.Rebin(rebin)
 		dyHistPDF.Rebin(rebin)
 		dyHistXSec.Rebin(rebin)
 		dyHistRest.Rebin(rebin)
-		otherHistPDF.Rebin(rebin)
 		if antype[2] == 'Ele':
 			dyHistPUUp.Rebin(rebin)
 			dyHistPUDown.Rebin(rebin)
@@ -306,8 +304,8 @@ for etabin in etabins:
 			dyHistWeighted.Rebin(rebin)
 			dyHistSmear.Rebin(rebin)
 			
-		dyPDF =	[1.011125791432876, 1.0156092963029786, 1.0221874339029045, 1.0287835670639482, 1.0392736849706539, 1.0457575177132892, 1.072849700783621, 1.1010550701940627, 1.129580255702246, 1.1941309540655907]
-		otherPDF = [1.0199628059050245, 1.0947822978713515, 1.1667059306633676, 1.2015510490544068, 1.1924439114319363, 1.2791537171741354, 1.3099638693824318, 1.3304365451747442, 1.3440462920421208, 1.4843342155218124]
+		dyPDF =	[1.026638637066333282, 1.03542341944907958, 1.06230304579192106, 1.084318682588237, 1.10578730995484589, 1.12818394192888766, 1.14505357481008657, 1.16416912701662842, 1.183989545351577, 1.19034979223279674]
+		# ~ otherPDF = [1.0199628059050245, 1.0947822978713515, 1.1667059306633676, 1.2015510490544068, 1.1924439114319363, 1.2791537171741354, 1.3099638693824318, 1.3304365451747442, 1.3440462920421208, 1.4843342155218124]
 		# ~ dyPDF = [1.0110591059033056, 1.0116390308490022, 1.0136110368833455, 1.0163549343410934, 1.0190161799320379, 1.0208608215032775, 1.0241056311080647, 1.0268799585966002, 1.0284194934661846, 1.0319438166063548, 1.0365003172410037, 1.0440534405776285, 1.0411516320347873, 1.0450996065156617, 1.0519395286390203, 1.0628252223431283, 1.079245559669309, 1.106583440995778, 1.0916382619739038, 1.105558793030756, 1.119207441948754, 1.13746974534373, 1.1660294230175545, 1.1660294230175545, 1.1660294230175545, 1.1660294230175545]
 		# ~ otherPDF = [1.0184530267699423, 1.0214964429984492, 1.0484287816310063, 1.1063530964912485, 1.132790305234357, 1.1632392501943913, 1.1758782432034307, 1.193556487636365, 1.2019645329535742, 1.1560453218324351, 1.1789670634151592, 1.266484301402874, 1.2774161730695819, 1.2415610963248342, 1.3226574340755608, 1.2652759905898592, 1.3846277401882812, 1.341585680160312, 1.3801239366049678, 1.3776280394993747, 1.3874437228143155, 1.1718685925006866, 1.4843342155218124, 1.4843342155218124, 1.4843342155218124, 1.4843342155218124]	
 		# ~ dyPDF = [1.0136110368833455, 1.0163549343410934, 1.0190161799320379, 1.0208608215032775, 1.0241056311080647, 1.0268799585966002, 1.0284194934661846, 1.0319438166063548, 1.0365003172410037, 1.0440534405776285, 1.0411516320347873, 1.0450996065156617, 1.0519395286390203, 1.0628252223431283, 1.079245559669309, 1.106583440995778, 1.0916382619739038, 1.105558793030756, 1.119207441948754, 1.13746974534373, 1.1660294230175545]
@@ -315,12 +313,10 @@ for etabin in etabins:
 			
 		for i in range(0,len(dyPDF)):
 			dyHistPDF.SetBinContent(i+1,dyHistPDF.GetBinContent(i+1)*dyPDF[i])
-			otherHistPDF.SetBinContent(i+1,otherHistPDF.GetBinContent(i+1)*otherPDF[i])
 		
 		
 
 		
-		dyHistPDF.Add(otherHistPDF)	
 		dyHistPDF.SetLineColor(kMagenta)
 		dyHistPDF.SetFillStyle(0)
 		hCanvas = TCanvas("hCanvas", "Distribution", 1200,800)
@@ -363,6 +359,8 @@ for etabin in etabins:
 		legend.SetTextFont(42)
 		# ~ legend.AddEntry(dyHist,"Default","l")	
 		legend.AddEntry(dyHistPDF,"PDF Uncertainty","l")	
+		if not args.do2016:
+			legend.AddEntry(dyHistXSec,"PDF Reweight Uncertainty","l")	
 		legend.AddEntry(dyHistScaleDown,"Scale Uncertainty","l")	
 		if antype[2] == 'Mu':
 			legend.AddEntry(dyHistSmear,"Resolution Uncertainty","l")	
@@ -436,6 +434,7 @@ for etabin in etabins:
 			if antype[2] == 'Mu':				
 				totalHist.SetBinContent(i,(dyHistPDF.GetBinContent(i)**2 + dyHistRest.GetBinContent(i)**2 + dyHistXSec.GetBinContent(i)**2 + dyHistScaleDown.GetBinContent(i)**2 + dyHistSmear.GetBinContent(i)**2 + dyHistWeighted.GetBinContent(i)**2)**0.5)	
 				
+		dyHistXSec.SetLineWidth(2)
 		dyHistPDF.SetLineWidth(2)
 		dyHistScaleDown.SetLineWidth(2)
 		totalHist.SetLineWidth(2)
@@ -456,6 +455,8 @@ for etabin in etabins:
 
 
 		dyHistPDF.Draw("samehist")
+		if not args.do2016:
+			dyHistXSec.Draw("samehist")
 		dyHistScaleDown.Draw("samehist")
 		if antype[2] == 'Ele':	
 			dyHistPUUp.Draw("samehist")
@@ -486,6 +487,6 @@ for etabin in etabins:
 		
 		legend.Draw("same")		
 		ratioPad.RedrawAxis()
-		hCanvas.Print("uncertainties_%s%s.pdf"%(plotName,addLabel))
+		hCanvas.Print("uncertaintiesSignal_%s%s.pdf"%(plotName,addLabel))
 
 

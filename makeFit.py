@@ -5,7 +5,7 @@ import argparse
 parser = argparse.ArgumentParser()
 #parser.add_argument("-inFile", help="Input file", type=str)
 parser.add_argument("-flav", help="Lepton flavor", type=str)
-parser.add_argument("-unc",  help="Uncertainty: 'nominal'*, 'scaleup', 'scaledown', 'muonid', 'smeared', 'pdfWeightsUp', 'pdfWeightsDown'", type=str, default="nominal")
+parser.add_argument("-unc",  help="Uncertainty: 'nominal'*, 'scaleup', 'scaledown', 'muonid', 'smeared', 'pdfWeightsUp', 'pdfWeightsDown', 'prefireUp', 'prefireDown'", type=str, default="nominal")
 parser.add_argument("-cs",   help="CS bin: 'inc', 'cspos', 'csneg'", type=str, default="inc")
 parser.add_argument("-d",    help="debug", action='store_true')
 parser.add_argument("-do2016", help="do 2016", action='store_true')
@@ -80,6 +80,8 @@ uncertainties = [
 	## ele only
 	"pileup",
 	"piledown",
+	"prefireup",
+	"prefiredown",
 	## muon only
 	"smeared",
 	"muonid",
@@ -112,6 +114,10 @@ plots = {
 	"Elebepileup": "massPlotEleBEPUScaleUpNoLog",
 	"Elebbpiledown": "massPlotEleBBPUScaleDownNoLog",
 	"Elebepiledown": "massPlotEleBEPUScaleDownNoLog",
+	"Elebbprefireup": "massPlotEleBBPrefireUpNoLog",
+	"Elebeprefireup": "massPlotEleBEPrefireUpNoLog",
+	"Elebbprefiredown": "massPlotEleBBPrefireDownNoLog",
+	"Elebeprefiredown": "massPlotEleBEPrefireDownNoLog",
 	
 	"Mubbsmeared": "massPlotBBSmearNoLog",
 	"Mubesmeared": "massPlotBESmearNoLog",	
@@ -146,6 +152,11 @@ plots = {
 	"Elebepileupcspos": "massPlotEleBEPUScaleUpCSPosNoLog",
 	"Elebbpiledowncspos": "massPlotEleBBPUScaleDownCSPosNoLog",
 	"Elebepiledowncspos": "massPlotEleBEPUScaleDownCSPosNoLog",
+
+	"Elebbprefireupcspos": "massPlotEleBBPrefireUpCSPosNoLog",
+	"Elebeprefireupcspos": "massPlotEleBEPrefireUpCSPosNoLog",
+	"Elebbprefiredowncspos": "massPlotEleBBPrefireDownCSPosNoLog",
+	"Elebeprefiredowncspos": "massPlotEleBEPrefireDownCSPosNoLog",
 	
 	"Mubbsmearedcspos": "massPlotBBSmearCSPosNoLog",
 	"Mubesmearedcspos": "massPlotBESmearCSPosNoLog",	
@@ -177,6 +188,10 @@ plots = {
 	"Elebepileupcsneg": "massPlotEleBEPUScaleUpCSNegNoLog",
 	"Elebbpiledowncsneg": "massPlotEleBBPUScaleDownCSNegNoLog",
 	"Elebepiledowncsneg": "massPlotEleBEPUScaleDownCSNegNoLog",
+	"Elebbprefireupcsneg": "massPlotEleBBPrefireUpCSNegNoLog",
+	"Elebeprefireupcsneg": "massPlotEleBEPrefireUpCSNegNoLog",
+	"Elebbprefiredowncsneg": "massPlotEleBBPrefireDownCSNegNoLog",
+	"Elebeprefiredowncsneg": "massPlotEleBEPrefireDownCSNegNoLog",
 	
 	"Mubbsmearedcsneg": "massPlotBBSmearCSNegNoLog",
 	"Mubesmearedcsneg": "massPlotBESmearCSNegNoLog",	
@@ -215,7 +230,7 @@ for etabin in etabins:
 
 	for antype in antypes:
 		muonlyuncs = ["muonid", "smeared"]
-		eleonlyuncs = ["piledown", "pileup"]
+		eleonlyuncs = ["piledown", "pileup",'prefireup','prefiredown']
 		if unc in muonlyuncs and antype[2] == "Ele":
 			print("Not processing uncertainty '{0:s}' for lepton flavour '{1:s}'".format(unc,antype[2]))
 			continue

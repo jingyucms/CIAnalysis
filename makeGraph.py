@@ -96,6 +96,8 @@ uncertainties = [
 	## ele only
 	"pileup",
 	"piledown",
+	"prefireup",
+	"prefiredown",
 	## muon only
 	"smeared",
 	"muonid",
@@ -141,7 +143,7 @@ if unc not in uncertainties:
 for etabin in etabins:
 	for emutype in ["e","mu"]:
 		muonlyuncs = ["muonid", "smeared"]
-		eleonlyuncs = ["pileup", "piledown"]
+		eleonlyuncs = ["pileup", "piledown",'prefireup','prefiredown']
 		if unc in muonlyuncs and emutype == "e":
 			print("Not processing uncertainty '{0:s}' for leptonn flavour '{1:s}'".format(unc,emutype))
 			continue
@@ -209,6 +211,8 @@ for etabin in etabins:
 							grMass[grbin].Draw("psame")
 							pass
 						grMass[grbin].GetYaxis().SetRangeUser(1,1e7)
+						grMass[grbin].GetYaxis().SetTitle("Events")
+						grMass[grbin].GetXaxis().SetTitle("#Lambda [TeV]")
 						grMass[grbin].SetMinimum(0.001)
 						grMass[grbin].SetMaximum(1e7)
 						grMass[grbin].SetMarkerColor(grcols[grbins.index(grbin)])

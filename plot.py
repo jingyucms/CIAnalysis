@@ -364,7 +364,9 @@ def plotDataMC(args,plot):
  	#~ print drawStack.theHistogram.Integral(datahist.FindBin(low),datahist.FindBin(high))
 
 					
-
+	
+	# Draw background from stack
+	drawStack.theStack.Draw("samehist")	
 
 	# Draw signal information
 	if len(args.signals) != 0:
@@ -386,6 +388,10 @@ def plotDataMC(args,plot):
 							signalProcesses2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
 							signalProcesses2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
 							signalProcesses2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights,normalized=True))
+						elif background == "Other" and not plot.muon:
+							signalProcesses2016.append(Process(getattr(Backgrounds2016,"OtherEle"),eventCounts,negWeights))
+							signalProcesses2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+							signalProcesses2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights))							
 						else:	
 							signalProcesses2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
 							signalProcesses2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
@@ -432,10 +438,22 @@ def plotDataMC(args,plot):
 					signalBackgrounds.remove("DrellYan")
 					signalProcesses = []
 					for background in signalBackgrounds:
-						if background == "Jets":
-							signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
-						else:	
-							signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+						if args.use2016:
+							if background == "Jets":
+								processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
+							else:	
+								processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
+						elif args.use2018:
+							if background == "Jets":
+								processes.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights,normalized=True))
+							else:	
+								processes.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights))						
+						else:		
+							if background == "Jets":
+								signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+							else:	
+								signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+							
 					signalStack = TheStack2D(signalProcesses,lumi,plot, zScaleFac)
 					signalhist.Add(signalStack.theHistogram)
 					signalhist.SetMinimum(0.1)
@@ -448,10 +466,21 @@ def plotDataMC(args,plot):
 					signalBackgrounds.remove("DrellYan") # signalBackgrounds = ["Jets", "Other"]
 					signalProcesses = []
 					for background in signalBackgrounds:
-						if background == "Jets":
-							signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
-						else:	
-							signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
+						if args.use2016:
+							if background == "Jets":
+								signalProcesses.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
+							else:	
+								signalProcesses.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
+						elif args.use2018:
+							if background == "Jets":
+								signalProcesses.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights,normalized=True))
+							else:	
+								signalProcesses.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights))	
+						else:							
+							if background == "Jets":
+								signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
+							else:	
+								signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
 					signalStack = TheStack(signalProcesses,lumi,plot,zScaleFac)
 					signalhist.Add(signalStack.theHistogram)
 					signalhist.SetMinimum(0.0001)
@@ -459,8 +488,6 @@ def plotDataMC(args,plot):
 					signalhists.append(signalhist)	
 
 	
-	# Draw background from stack
-	drawStack.theStack.Draw("samehist")		
 
 	# Draw data
 	datahist.SetMinimum(0.0001)

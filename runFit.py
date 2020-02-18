@@ -12,7 +12,7 @@ csbins = ["inc", "cspos", "csneg"]
 programs = ["makeFit.py", "makeGraph.py"]
 # ~ programs = ["makeGraph.py"]
 # ~ uncertainties = ["","scaleup","scaledown","pileup","piledown","smeared","muonid"]
-uncertainties = ["","scaleup","scaledown","pileup","piledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown"]
+uncertainties = ["","scaleup","scaledown","pileup","piledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown",'prefireup','prefiredown']
 # ~ uncertainties = ["pdfWeightsUp","pdfWeightsDown"]
 
 for cs in csbins:
