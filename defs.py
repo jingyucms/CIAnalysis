@@ -4,7 +4,7 @@ from ROOT import TMath
 import sys
 import copy
 
-path = "../files/"
+path = "/uscms_data/d3/jschulte/files/"
 
 
 

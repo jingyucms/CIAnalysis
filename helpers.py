@@ -122,22 +122,24 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
 			result = rootFile.Get(histName2)
 		else:	
 			result = rootFile.Get(histName)
-	# ~ if logBins and( "Mass" in histName or ("jets" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName))):	
-	if logBins and( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName)):	
-		if not muon:
-			bng = binning("electron")
-		else:
-			bng = binning("muon")
-	
-		result = result.Rebin(len(bng) - 1, 'hist_' + uuid.uuid4().hex, array('d', bng))
-		
-		for i in range(0,result.GetNbinsX()):
-			result.SetBinContent(i,result.GetBinContent(i)/result.GetBinWidth(i))
-			result.SetBinError(i,result.GetBinError(i)/result.GetBinWidth(i))
-	else:	
-		result.Rebin(rebin)
+	if logBins:
+		if ( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName)):
+			print fileName
+			if not muon:
+				bng = binning("electron")
+			else:
+				bng = binning("muon")
 
-	result.SetDirectory(0)	
+			result = result.Rebin(len(bng) - 1, 'hist_' + uuid.uuid4().hex, array('d', bng))
+			
+			for i in range(0,result.GetNbinsX()):
+				result.SetBinContent(i,result.GetBinContent(i)/result.GetBinWidth(i))
+				result.SetBinError(i,result.GetBinError(i)/result.GetBinWidth(i))
+	else:
+		if not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName):
+			result.Rebin(rebin)
+
+	result.SetDirectory(0)
 	return deepcopy(result)
 	
 def loadHistoFromFile2D(fileName,histName,rebin):
