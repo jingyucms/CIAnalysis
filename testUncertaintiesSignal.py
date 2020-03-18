@@ -1,4 +1,4 @@
-from ROOT import TCanvas, TPad, TLegend, kWhite, kRed, kBlue, kGreen, kOrange, TGraph, kMagenta, kBlack, kYellow, kAzure
+from ROOT import TCanvas, TPad, TLegend, kWhite, kRed, kBlue, kGreen, kOrange, TGraph, kMagenta, kBlack, kYellow, kAzure, kCyan
 from numpy import array as ar
 from array import array
 from setTDRStyle import setTDRStyle
@@ -65,6 +65,11 @@ plots = {
 	"Elebepileup": "massPlotEleBEPUScaleUpNoLog",
 	"Elebbpiledown": "massPlotEleBBPUScaleDownNoLog",
 	"Elebepiledown": "massPlotEleBEPUScaleDownNoLog",
+	
+	"Elebbprefireup": "massPlotEleBBPrefireUpNoLog",
+	"Elebeprefireup": "massPlotEleBEPrefireUpNoLog",
+	"Elebbprefiredown": "massPlotEleBBPrefireDownNoLog",
+	"Elebeprefiredown": "massPlotEleBEPrefireDownNoLog",	
 	
 	"Mubbsmeared": "massPlotBBSmearNoLog",
 	"Mubesmeared": "massPlotBESmearNoLog",	
@@ -170,6 +175,8 @@ for etabin in etabins:
 		if antype[2] == 'Ele':
 			plotNamePUUp = antype[2]+etabin+'pileup'
 			plotNamePUDown = antype[2]+etabin+'piledown'
+			plotNamePrefireUp = antype[2]+etabin+'prefireup'
+			plotNamePrefireDown = antype[2]+etabin+'prefiredown'			
 		if antype[2] == 'Mu':
 			plotNameSmear = antype[2]+etabin+'smeared'
 			plotNameWeighted = antype[2]+etabin+'muonid'
@@ -182,6 +189,8 @@ for etabin in etabins:
 		if antype[2] == 'Ele':
 			plotPUUp = getPlot(plots[plotNamePUUp])
 			plotPUDown = getPlot(plots[plotNamePUDown])
+			plotPrefireUp = getPlot(plots[plotNamePrefireUp])
+			plotPrefireDown = getPlot(plots[plotNamePrefireDown])			
 		if antype[2] == 'Mu':
 			plotWeigthed = getPlot(plots[plotNameWeighted])
 			plotSmeared = getPlot(plots[plotNameSmear])
@@ -245,6 +254,8 @@ for etabin in etabins:
 		if antype[2] == 'Ele':
 			dyHistPUUp = deepcopy(drellyan.loadHistogram(plotPUUp,lumi,zScaleFac))
 			dyHistPUDown = deepcopy(drellyan.loadHistogram(plotPUDown,lumi,zScaleFac))
+			dyHistPrefireUp = deepcopy(drellyan.loadHistogram(plotPrefireUp,lumi,zScaleFac))
+			dyHistPrefireDown = deepcopy(drellyan.loadHistogram(plotPrefireDown,lumi,zScaleFac))			
 		if antype[2] == 'Mu':
 			dyHistWeighted = deepcopy(drellyan.loadHistogram(plotWeigthed,lumi,zScaleFac))
 			dyHistSmear = deepcopy(drellyan.loadHistogram(plotSmeared,lumi,zScaleFac))
@@ -298,6 +309,8 @@ for etabin in etabins:
 		if antype[2] == 'Ele':
 			dyHistPUUp.Rebin(rebin)
 			dyHistPUDown.Rebin(rebin)
+			dyHistPrefireUp.Rebin(rebin)
+			dyHistPrefireDown.Rebin(rebin)
 		dyHistScaleUp.Rebin(rebin)
 		dyHistScaleDown.Rebin(rebin)
 		if antype[2] == 'Mu':
@@ -344,6 +357,8 @@ for etabin in etabins:
 			dyHistPUUp.SetFillColor(kWhite)
 			dyHistPUDown.SetFillColor(kWhite)
 			dyHistPUUp.SetLineColor(kOrange+2)		
+			dyHistPrefireUp.SetLineColor(kCyan)		
+			dyHistPrefireUp.SetFillColor(kWhite)		
 			# ~ dyHistPUUp.Draw("samehist")
 		if antype[2] == 'Mu':
 			dyHistSmear.SetFillColor(kWhite)
@@ -370,6 +385,7 @@ for etabin in etabins:
 				legend.AddEntry(dyHistWeighted,"Reco Uncertainty","l")	
 		if antype[2] == 'Ele':
 			legend.AddEntry(dyHistPUUp,"PU Uncertainty","l")	
+			legend.AddEntry(dyHistPrefireUp,"Prefire Uncertainty","l")	
 		# ~ legend.Draw()
 
 		latex = ROOT.TLatex()
@@ -394,6 +410,8 @@ for etabin in etabins:
 		if antype[2] == 'Ele':
 			dyHistPUUp.Divide(dyHist)
 			dyHistPUDown.Divide(dyHist)
+			dyHistPrefireUp.Divide(dyHist)
+			dyHistPrefireDown.Divide(dyHist)
 		if antype[2] == 'Mu':
 			dyHistSmear.Divide(dyHist)
 			dyHistWeighted.Divide(dyHist)
@@ -417,6 +435,10 @@ for etabin in etabins:
 				dyHistPUDown.SetBinContent(i,abs(dyHistPUDown.GetBinContent(i)-1))
 				dyHistPUUp.SetLineWidth(2)
 				dyHistPUDown.SetLineWidth(2)
+				dyHistPrefireUp.SetBinContent(i,abs(dyHistPrefireUp.GetBinContent(i)-1))
+				dyHistPrefireDown.SetBinContent(i,abs(dyHistPrefireDown.GetBinContent(i)-1))
+				dyHistPrefireUp.SetLineWidth(2)
+				dyHistPrefireDown.SetLineWidth(2)
 
 			if antype[2] == 'Mu':			
 				dyHistSmear.SetBinContent(i,abs(dyHistSmear.GetBinContent(i)-1))
@@ -428,7 +450,7 @@ for etabin in etabins:
 		for i in range(0,dyHist.GetNbinsX()):
 			
 			if antype[2] == 'Ele':	
-				totalHist.SetBinContent(i,(dyHistPDF.GetBinContent(i)**2 + dyHistRest.GetBinContent(i)**2 + dyHistXSec.GetBinContent(i)**2 + dyHistScaleDown.GetBinContent(i)**2 + dyHistPUUp.GetBinContent(i)**2)**0.5)	
+				totalHist.SetBinContent(i,(dyHistPDF.GetBinContent(i)**2 + dyHistRest.GetBinContent(i)**2 + dyHistXSec.GetBinContent(i)**2 + dyHistScaleDown.GetBinContent(i)**2 + dyHistPUUp.GetBinContent(i)**2 + dyHistPrefireUp.GetBinContent(i)**2)**0.5)	
 				print (dyHistPDF.GetBinContent(i),dyHistRest.GetBinContent(i),dyHistXSec.GetBinContent(i),dyHistScaleDown.GetBinContent(i),dyHistPUUp.GetBinContent(i), totalHist.GetBinContent(i))
 
 			if antype[2] == 'Mu':				
@@ -460,6 +482,7 @@ for etabin in etabins:
 		dyHistScaleDown.Draw("samehist")
 		if antype[2] == 'Ele':	
 			dyHistPUUp.Draw("samehist")
+			dyHistPrefireUp.Draw("samehist")
 		if antype[2] == 'Mu':
 			dyHistSmear.Draw("samehist")
 			dyHistWeighted.Draw("samehist")

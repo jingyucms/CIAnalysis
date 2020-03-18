@@ -23,7 +23,7 @@ def main():
 	suffixesMu = ["nominal","scaledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown"]
 	suffixesEle = ["nominal","scaledown","scaleup","pileup","piledown","pdfWeightsUp","pdfWeightsDown",'prefireup','prefiredown']
 	css = ["inc","cspos","csneg"]
-	lambdas = [10,16,22,28,34,40,46,52,58]
+	lambdas = [10,16,22,28,34,40,46]
 	interferences = ["Con","Des"]
 	hels = ["LL","RL","LR","RR"]
 	massBins = [400,500,700,1100,1900,3500]
@@ -56,9 +56,8 @@ def main():
 
 							name = "%sto2e"	%addci
 						if useADD:
-							# ~ if not "2016" in label: massBins = [400, 700, 1500, 2500, 3500]
-							# ~ else: massBins = [2000, 2200, 2600, 3000, 3400]
-							massBins = [2000, 2200, 2600, 3000, 3400]
+							if not "2016" in label: massBins = [400, 700, 1500, 2500, 3500]
+							else: massBins = [2000, 2200, 2600, 3000, 3400]
 							if "2016" in label:
 								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:

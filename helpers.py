@@ -9,7 +9,7 @@ import math, uuid
 
 	
 	
-def totalNumberOfGeneratedEvents(path,muon=True):
+def totalNumberOfGeneratedEvents(path,muon=True,genMass=False):
 	"""
 	path: path to directory containing all sample files
 
@@ -19,11 +19,15 @@ def totalNumberOfGeneratedEvents(path,muon=True):
 	result = {}
 
 	for sampleName, filePath in getFilePathsAndSampleNames(path,muon).items():
+			if genMass:
+				if "CI" in filePath or "ADD" in filePath or "2018" in filePath or "2016" in filePath: continue
+				filePath = filePath.replace("dileptonAna_muons","dileptonAna_genMassOther")
+				filePath = filePath.replace("dileptonAna_electrons","dileptonAna_genMassOther_electrons")
 			rootFile = TFile(filePath, "read")
 			result[sampleName] = rootFile.FindObjectAny("Events").GetBinContent(1)				
 	return result
 	
-def negWeightFractions(path,muon=True):
+def negWeightFractions(path,muon=True,genMass=False):
 	"""
 	path: path to directory containing all sample files
 
@@ -33,6 +37,11 @@ def negWeightFractions(path,muon=True):
 	result = {}
 
 	for sampleName, filePath in getFilePathsAndSampleNames(path,muon).items():
+			if genMass:
+				if "CI" in filePath or "ADD" in filePath or "2018" in filePath or "2016" in filePath: continue
+				
+				filePath = filePath.replace("dileptonAna_muons","dileptonAna_genMassOther")
+				filePath = filePath.replace("dileptonAna_electrons","dileptonAna_genMassOther_electrons")		
 			rootFile = TFile(filePath, "read")
 			result[sampleName] = rootFile.FindObjectAny("weights").GetBinContent(1)/(rootFile.FindObjectAny("weights").GetBinContent(1)+rootFile.FindObjectAny("weights").GetBinContent(2))				
 	return result
@@ -76,7 +85,7 @@ def binning(channel='muon'):
 
 	# ~ return logbins
 	
-def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
+def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=False):
 	"""
 	returns histogram from file
 	"""
@@ -87,6 +96,12 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
 		histName = histName.replace("2017","2016")
 	if "2018" in fileName and "Our2017" in histName:
 		histName = histName.replace("2017","2018")
+		
+	if genMass:
+		histName = "genMass/GenMass"
+		fileName = fileName.replace("dileptonAna_muons","dileptonAna_genMassOther")
+		fileName = fileName.replace("dileptonAna_electrons","dileptonAna_genMassOther_electrons")
+		
 	from ROOT import TFile, TH1F
 	rootFile = TFile(path+fileName, "read")
 	if "saved_hist_for_combine" in fileName or "jets_muons" in fileName or "hist_jets" in fileName or 'Result_' in fileName:
@@ -124,7 +139,6 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False):
 			result = rootFile.Get(histName)
 	if logBins:
 		if ( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName)):
-			print fileName
 			if not muon:
 				bng = binning("electron")
 			else:
@@ -302,7 +316,8 @@ class Process:
 					self.xsecs.append(crossSections[sample])
 				self.negWeightFraction.append(negWeights[sample])
 				self.nEvents.append(Counts[sample])	
-	def loadHistogram(self,plot,lumi,zScaleFac):
+	def loadHistogram(self,plot,lumi,zScaleFac,genMass=False):
+		# ~ print (genMass)
 		histo = None
 		if plot.plot2D:
 			for index, sample in enumerate(self.samples):
@@ -324,15 +339,17 @@ class Process:
 		else:
 			for index, sample in enumerate(self.samples):
 				if plot.muon:
-					tempHist = loadHistoFromFile(fileNames[sample],plot.histName,plot.rebin,plot.muon,plot.logX)
+					tempHist = loadHistoFromFile(fileNames[sample],plot.histName,plot.rebin,plot.muon,plot.logX,genMass=genMass)
 				else:	
-					tempHist = loadHistoFromFile(fileNamesEle[sample],plot.histName,plot.rebin,plot.muon,plot.logX)
+					tempHist = loadHistoFromFile(fileNamesEle[sample],plot.histName,plot.rebin,plot.muon,plot.logX,genMass=genMass)
 				if not self.normalized:
 					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])*zScaleFac)
+					# ~ print (lumi, self.xsecs[index] , self.nEvents[index] , self.negWeightFraction[index], zScaleFac)
 				if histo == None:
 					histo = tempHist.Clone()
 				else:	
 					histo.Add(tempHist.Clone())
+				# ~ print (tempHist.GetEntries())		
 			histo.SetFillColor(self.theColor)
 			histo.SetLineColor(self.theLineColor)
 			histo.GetXaxis().SetTitle(plot.xaxis) 
@@ -364,11 +381,11 @@ class TheStack:
 	from ROOT import THStack
 	theStack = THStack()	
 	theHistogram = None	
-	def  __init__(self,processes,lumi,plot,zScaleFac):
+	def  __init__(self,processes,lumi,plot,zScaleFac,genMass=False):
 		self.theStack = THStack()
 			
 		for process in processes:
-			temphist = process.loadHistogram(plot,lumi,zScaleFac)
+			temphist = process.loadHistogram(plot,lumi,zScaleFac,genMass=genMass)
 
 			self.theStack.Add(temphist.Clone())
 			if self.theHistogram == None:

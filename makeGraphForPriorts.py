@@ -38,7 +38,7 @@ if args.constraint:
 	constraints = {"p{0:d}".format(int(key)): (low,high) for [key,low,high] in args.constraint}
 print(constraints)
 
-from fitUtils import doFitOnGraph
+from fitUtilsForPriors import doFitOnGraph
 
 import ROOT as r
 import numpy as np
@@ -82,21 +82,10 @@ elif args.add:
 	bvals = [i for i in range(len(lvals))]
 	helis = [""]
 	intfs = [""]
-	supers = [2000, 2200, 2600, 3000, 3400, 10000]
-	grbins = [2000, 2200, 2600, 3000, 3400]
+	supers = [400, 700, 1500, 2500, 3500, 10000]
+	grbins = [400, 700, 1500, 2500, 3500]
 	grcols = [r.kBlack, r.kRed, r.kBlue, r.kYellow, r.kViolet, r.kGreen]
 	extragrbins = [1900+x for x in range(0, 1500, 200)]
-#elif args.add:
-#	lvals = [4+i*1 for i in range(9)]
-#	lvals.append(100)
-#	lerrs = [0.1]*13
-#	bvals = [i for i in range(len(lvals))]
-#	helis = [""]
-#	intfs = [""]
-#	supers = [400, 700, 1500, 2500, 3500, 10000]
-#	grbins = [400, 700, 1500, 2500, 3500]
-#	grcols = [r.kBlack, r.kRed, r.kBlue, r.kYellow, r.kViolet, r.kGreen]
-#	extragrbins = [1900+x for x in range(0, 1500, 200)]
 
 uncertainties = [
 	"nominal",
@@ -172,114 +161,88 @@ for etabin in etabins:
 			addLabel = "_2018"
 		model = "CI"
 		if args.add: model = "ADD"
-		with open("{0:s}parametrization_2{1:s}_{2:s}_{3:s}_{4:s}{5:s}.json".format(model,emutype,unc,etabin,csbin,addLabel),"r") as js:
-			print("{0:s}to2{1:s}_{2:s}_{3:s}_{4:s}_parametrization{5:s}{6:s}.root".format(model,emutype,unc,etabin,csbin,modifier,addLabel))
-			params = json.load(js)
-			print (params)
-			outf = r.TFile("{6:s}to2{0:s}_{1:s}_{2:s}_{3:s}_parametrization{4:s}{5:s}.root".format(emutype,unc,etabin,csbin,modifier,addLabel,model),"recreate")
-			for heli in helis:
-				conFitPar = []
-				for intf in intfs:
-					print("Fitting primary bins for the limits")
-					for i,point in enumerate(supers[:-1]):
-						doFitOnGraph(params, lvals, xvals, xerrs,
-									 intf, heli, i, point, outf, conFitPar,
-									 args.fixinf, args.fixdes, constraints, args.fitrange, args.add)
-						#sys.exit()
-						pass
-					print("Fitting extra bins for the mass scan")
-					for i,point in enumerate(extragrbins):
-						doFitOnGraph(params, lvals, xvals, xerrs,
-									 intf, heli, 1, point, outf, conFitPar,
-									 args.fixinf, args.fixdes, constraints, args.fitrange, args.add)
-						pass
-					# raw_input("continue")
-					pass
-				pass
-			outf.Write()
 
-			for heli in helis:
-				conFitPar = []
-				for intf in intfs:
-					can = r.TCanvas("can","",800,800)
-					r.gStyle.SetOptStat(0)
-					r.gStyle.SetOptFit(0)
-					grMass = {}
-					fMass  = {}
-					leg = r.TLegend(0.5,0.7,0.95,0.9)
-					for grbin in grbins:
-						grMass[grbin] = outf.Get("gr_{0:s}{1:s}_m{2:d}".format(intf,heli,grbin))
-						#fMass[grbin]  = outf.Get("fn_m{2:d}_{0:s}{1:s}".format(intf,heli,grbin)).GetChisquare()
-						fMass[grbin]  = outf.Get("fitR_m{2:d}_{0:s}{1:s}".format(intf,heli,grbin)).Chi2()
-						ndf = outf.Get("fitR_m{2:d}_{0:s}{1:s}".format(intf,heli,grbin)).Ndf()
-
-						if grbin == grbins[0]:
-							grMass[grbin].Draw("ap")
-							r.gStyle.SetOptStat(0)
-							r.gStyle.SetOptFit(0)
-							r.gPad.SetLogy(r.kTRUE)
-							r.gPad.SetLogx(r.kTRUE)
+		js =  r.TFile("graphsForPriors_%s.root"%unc,"OPEN")
+		outf = r.TFile("{6:s}to2{0:s}_{1:s}_{2:s}_{3:s}_parametrizationForPriors{4:s}{5:s}.root".format(emutype,unc,etabin,csbin,modifier,addLabel,model),"recreate")
+		for heli in helis:
+			conFitPar = []
+			for intf in intfs:
+				print("Fitting primary bins for the limits")
+				for i,point in enumerate(supers[:-1]):
+					if emutype == "e":
+						if args.do2016:
+							labelName = "dielectron_2016%s%s%s%s_M%d"%(etabin.upper(),csbin,intf,heli,point)
+						elif args.do2018:
+							labelName = "dielectron_2018%s%s%s%s_M%d"%(etabin.upper(),csbin,intf,heli,point)
 						else:
-							grMass[grbin].Draw("psame")
-							pass
-						grMass[grbin].GetYaxis().SetRangeUser(1,1e7)
-						grMass[grbin].GetYaxis().SetTitle("Events")
-						grMass[grbin].GetXaxis().SetTitle("#Lambda [TeV]")
-						grMass[grbin].SetMinimum(0.001)
-						grMass[grbin].SetMaximum(1e7)
-						grMass[grbin].SetMarkerColor(grcols[grbins.index(grbin)])
-						if debug:
-							print("Finding {0:d} in supers".format(grbin),supers)
-							pass
-						suIdx = supers.index(grbin)
-						leg.AddEntry(grMass[grbin], "{0:d} < M_{{ll}} [GeV] < {1:d}, #chi^{{2}}/NDF = {2:2.2f}/{3:d}".format(supers[suIdx],supers[suIdx+1],fMass[grbin],ndf), "p")
-						r.gPad.Update()
-						pass
-					leg.Draw("")
-					can.Modified()
-					can.Update()
-					r.gPad.Update()
-
-					for ftype in ["png","C","pdf","eps"]:
-						can.SaveAs("fitPlots/{2:s}params_{1:s}.{0:s}".format(ftype,model,filefmt.format(emutype,intf,heli,unc,etabin,csbin,modifier)))
-						pass
-					can.Clear()
-					can.Update()
-
-					leg = r.TLegend(0.5,0.7,0.95,0.9)
-					for extrabin in extragrbins:
-						grMass[extrabin] = outf.Get("gr_{0:s}{1:s}_m{2:d}".format(intf,heli,extrabin))
-						# fMass[extrabin]  = outf.Get("fn_m{2:d}_{0:s}{1:s}".format(intf,heli,extrabin)).GetChisquare()
-						fMass[extrabin]  = outf.Get("fitR_m{2:d}_{0:s}{1:s}".format(intf,heli,extrabin)).Chi2()
-						ndf = outf.Get("fitR_m{2:d}_{0:s}{1:s}".format(intf,heli,extrabin)).Ndf()
-
-						if extragrbins.index(extrabin) == 0:
-							grMass[extrabin].Draw("ap")
-							r.gStyle.SetOptStat(0)
-							r.gStyle.SetOptFit(0)
-							r.gPad.SetLogy(r.kTRUE)
-							r.gPad.SetLogx(r.kTRUE)
+							labelName = "dielectron_2017%s%s%s%s_M%d"%(etabin.upper(),csbin,intf,heli,point)
+					else:
+						if args.do2016:
+							labelName = "dimuon_2016%s%s%s%s_M%d"%(etabin.upper(),csbin,intf,heli,point)
+						elif args.do2018:
+							labelName = "dimuon_2018%s%s%s%s_M%d"%(etabin.upper(),csbin,intf,heli,point)
 						else:
-							grMass[extrabin].Draw("psame")
-							pass
-						grMass[extrabin].GetYaxis().SetRangeUser(1,1e7)
-						grMass[extrabin].SetMinimum(0.001)
-						grMass[extrabin].SetMaximum(1e7)
-						grMass[extrabin].SetMarkerColor(r.kOrange+extragrbins.index(extrabin))
-						leg.AddEntry(grMass[extrabin], "{0:d} < M_{{ll}} [GeV], #chi^{{2}}/NDF = {1:2.2f}/{2:d}".format(extrabin,fMass[extrabin],ndf), "p")
-						r.gPad.Update()
-						pass
-					leg.Draw("")
-					can.Modified()
-					can.Update()
-					r.gPad.Update()
-
-					# raw_input("continue")
-					for ftype in ["png","C","pdf","eps"]:
-						can.SaveAs("fitPlots/{2:s}scanmass_{1:s}.{0:s}".format(ftype,model,filefmt.format(emutype,intf,heli,unc,etabin,csbin,modifier)))
-						pass
+							labelName = "dimuon_2017%s%s%s%s_M%d"%(etabin.upper(),csbin,intf,heli,point)
+					params = js.Get(labelName)
+					print (labelName)
+					doFitOnGraph(params, lvals, xvals, xerrs,
+								 intf, heli, i, point, outf, conFitPar,
+								 args.fixinf, args.fixdes, constraints, args.fitrange, args.add)
+					#sys.exit()
 					pass
-				pass
-			outf.Close()
 			pass
+		outf.Write()
+
+		for heli in helis:
+			conFitPar = []
+			for intf in intfs:
+				can = r.TCanvas("can","",800,800)
+				r.gStyle.SetOptStat(0)
+				r.gStyle.SetOptFit(0)
+				grMass = {}
+				fMass  = {}
+				leg = r.TLegend(0.5,0.7,0.95,0.9)
+				for grbin in grbins:
+					grMass[grbin] = outf.Get("gr_{0:s}{1:s}_m{2:d}".format(intf,heli,grbin))
+					#fMass[grbin]  = outf.Get("fn_m{2:d}_{0:s}{1:s}".format(intf,heli,grbin)).GetChisquare()
+					fMass[grbin]  = outf.Get("fitR_m{2:d}_{0:s}{1:s}".format(intf,heli,grbin)).Chi2()
+					ndf = outf.Get("fitR_m{2:d}_{0:s}{1:s}".format(intf,heli,grbin)).Ndf()
+
+					if grbin == grbins[0]:
+						grMass[grbin].Draw("ap")
+						r.gStyle.SetOptStat(0)
+						r.gStyle.SetOptFit(0)
+						r.gPad.SetLogy(r.kTRUE)
+						r.gPad.SetLogx(r.kTRUE)
+					else:
+						grMass[grbin].Draw("psame")
+						pass
+					grMass[grbin].GetYaxis().SetRangeUser(1,1e7)
+					grMass[grbin].GetYaxis().SetTitle("Events")
+					grMass[grbin].GetXaxis().SetTitle("#Lambda [TeV]")
+					grMass[grbin].SetMinimum(0.001)
+					grMass[grbin].SetMaximum(1e7)
+					grMass[grbin].SetMarkerColor(grcols[grbins.index(grbin)])
+					if debug:
+						print("Finding {0:d} in supers".format(grbin),supers)
+						pass
+					suIdx = supers.index(grbin)
+					leg.AddEntry(grMass[grbin], "{0:d} < M_{{ll}} [GeV] < {1:d}, #chi^{{2}}/NDF = {2:2.2f}/{3:d}".format(supers[suIdx],supers[suIdx+1],fMass[grbin],ndf), "p")
+					r.gPad.Update()
+					pass
+				leg.Draw("")
+				can.Modified()
+				can.Update()
+				r.gPad.Update()
+
+				for ftype in ["png","C","pdf","eps"]:
+					can.SaveAs("fitPlotsForPriors/{2:s}params_{1:s}.{0:s}".format(ftype,model,filefmt.format(emutype,intf,heli,unc,etabin,csbin,modifier)))
+					pass
+				can.Clear()
+				can.Update()
+
+				pass
+			pass
+		outf.Close()
+		pass
 		pass
