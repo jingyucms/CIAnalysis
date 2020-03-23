@@ -11,7 +11,7 @@ args = parser.parse_args()
 # ~ csbins = ["inc", "cspos", "csneg"]
 # ~ programs = ["makeFit.py", "makeGraph.py"]
 programs = ["makeGraph.py"]
-uncertainties = ["nominal","scaleup","scaledown","pileup","piledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown",'prefireup','prefiredown']
+uncertainties = ["nominal","scaleup","scaledown","pileup","piledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown",'prefireup','prefiredown',"pdfUncertainty"]
 # ~ uncertainties = ["pdfWeightsUp","pdfWeightsDown"]
 
 for unc in uncertainties:

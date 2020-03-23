@@ -101,6 +101,7 @@ def main():
 									function.SetParameter(3, pars[3])
 									function.SetParError(3, errs[3])
 								functionUnc = fitFile.Get("fn_unc_m%d_%s"%(massBin,model))
+								print function.Eval(l)-function.Eval(100000)
 								uncert = (abs((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000))))**0.5	
 								signalYields["%s_%s_%s"%(name,label,histo)][str(index)] = [(function.Eval(l)-function.Eval(100000)),uncert]
 					if useADD: continue

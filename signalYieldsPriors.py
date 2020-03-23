@@ -22,7 +22,6 @@ def main():
 	labels = ["dielectron_2016","dimuon_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
 	suffixesMu = ["nominal","scaledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown"]
 	suffixesEle = ["nominal","scaledown","scaleup","pileup","piledown","pdfWeightsUp","pdfWeightsDown",'prefireup','prefiredown']
-	css = ["inc","cspos","csneg"]
 	lambdas = [10,16,22,28,34,40,46]
 	interferences = ["Con","Des"]
 	hels = ["LL","RL","LR","RR"]
@@ -59,18 +58,18 @@ def main():
 							if not "2016" in label: massBins = [400, 700, 1500, 2500, 3500]
 							else: massBins = [2000, 2200, 2600, 3000, 3400]
 							if "2016" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrizationForPriors_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrizationForPriors_fixinf_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrizationForPriors_fixinf.root"%(name,suffix,histo.lower(),cs),"READ")
 						else:	
 							if "2016" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrizationForPriors_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrizationForPriors_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:	
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrizationForPriors_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
 						# ~ print (fitFile.ls())		
 						# ~ print ("%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs))
 						for l in lambdas:
@@ -124,9 +123,9 @@ def main():
 			addci = "CI"
 			if useADD: addci = "ADD"
 			if "dimuon" in label:
-				fileName = "%ssignalYields"%addci
+				fileName = "%ssignalYieldsPriors"%addci
 			else:
-				fileName = "%ssignalYieldsEle"%addci
+				fileName = "%ssignalYieldsPriorsEle"%addci
 			
 			if suffix == "nominal":
 				otherSuffix = "default"

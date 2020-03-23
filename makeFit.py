@@ -396,6 +396,7 @@ for etabin in etabins:
 								bval  = signalhist.FindBin(point)
 								upval = signalhist.FindBin(supers[p+1]-0.05)
 								val   = signalhist.Integral(bval,upval)
+								print (point, val)
 								err   = r.Double(0)
 								val   = signalhist.Integral(bval,upval)
 								val2  = signalhist.IntegralAndError(bval,upval,err)

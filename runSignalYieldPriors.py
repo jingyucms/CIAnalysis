@@ -17,7 +17,7 @@ uncertainties = ["nominal","scaleup","scaledown","pileup","piledown","smeared","
 for unc in uncertainties:
 
 	
-	cmd = "python produceSystematicsForPriors.py -s %s"%unc
+	cmd = "python signalYieldsPriors.py -s %s"%unc
 	if args.add:
 		cmd += " -add"
 	print (cmd)
