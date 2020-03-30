@@ -272,7 +272,7 @@ def main():
 						backgroundHist = DY.loadHistogram(plot,lumi,zScaleFac)	
 						backgroundHist = backgroundHist.Rebin(len(massBins), name, array('d', massBins+[10000]))
 						backgroundHistDefault = DY.loadHistogram(plotDefault,lumi,zScaleFac)	
-						backgroundHistDefault = backgroundHist.Rebin(len(massBins), name, array('d', massBins+[10000]))
+						backgroundHistDefault = backgroundHistDefault.Rebin(len(massBins), name, array('d', massBins+[10000]))
 
 
 						if "2016" in label:

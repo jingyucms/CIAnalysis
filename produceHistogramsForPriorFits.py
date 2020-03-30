@@ -258,7 +258,6 @@ def main():
 
 
 						for index, massBin in enumerate(massBins):
-							
 							function = fitFile.Get("fn_m%d_%s"%(massBin,model))
 							fitR = fitFile.Get("fitR_m%d_%s"%(massBin,model))
 							pars = fitR.GetParams()
