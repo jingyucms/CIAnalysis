@@ -194,9 +194,6 @@ def main():
 						else:			#~ print signalYields
 
 							name = "%sto2e"	%addci
-						if useADD:
-							if not "2016" in label: massBins = [400, 700, 1500, 2500, 3500]
-							else: massBins = [2000, 2200, 2600, 3000, 3400]
 						
 						if "dimuon" in label:
 							plotName = "Mu"+histo.lower()+suffix
@@ -276,203 +273,468 @@ def main():
 
 
 						if "2016" in label:
-							signal1TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"1",interference,hel)
-							signal10TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"10",interference,hel)							
-							signal16TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"16",interference,hel)
-							signal22TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"22",interference,hel)
-							signal28TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"28",interference,hel)
-							signal34TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"34",interference,hel)
-							signal100kTeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"100k",interference,hel)
-
-							Signal1TeV = Process(getattr(Signals2016,signal1TeV),eventCounts,negWeights) 
-							Signal16TeV = Process(getattr(Signals2016,signal16TeV),eventCounts,negWeights) 
-							Signal22TeV = Process(getattr(Signals2016,signal22TeV),eventCounts,negWeights) 
-							Signal28TeV = Process(getattr(Signals2016,signal28TeV),eventCounts,negWeights) 
-							Signal34TeV = Process(getattr(Signals2016,signal34TeV),eventCounts,negWeights) 
-							Signal100kTeV = Process(getattr(Signals2016,signal100kTeV),eventCounts,negWeights) 
-
-							signalhist1TeV = Signal1TeV.loadHistogram(plot,lumi,zScaleFac)
-							signalhist16TeV = Signal16TeV.loadHistogram(plot,lumi,zScaleFac)
-							signalhist22TeV = Signal22TeV.loadHistogram(plot,lumi,zScaleFac)
-							signalhist28TeV = Signal28TeV.loadHistogram(plot,lumi,zScaleFac)
-							signalhist34TeV = Signal34TeV.loadHistogram(plot,lumi,zScaleFac)
-							signalhist100kTeV = Signal100kTeV.loadHistogram(plot,lumi,zScaleFac)
-					
 							
-							signalhist1TeV.Add(signalhist100kTeV.Clone(),-1)
-							signalhist16TeV.Add(signalhist100kTeV.Clone(),-1)
-							signalhist22TeV.Add(signalhist100kTeV.Clone(),-1)
-							signalhist28TeV.Add(signalhist100kTeV.Clone(),-1)
-							signalhist34TeV.Add(signalhist100kTeV.Clone(),-1)
-
 							
-							signalhistDefault1TeV = Signal1TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-							signalhistDefault16TeV = Signal16TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-							signalhistDefault22TeV = Signal22TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-							signalhistDefault28TeV = Signal28TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-							signalhistDefault34TeV = Signal34TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-							signalhistDefault100kTeV = Signal100kTeV.loadHistogram(plotDefault,lumi,zScaleFac)
-					
+							if args.useADD:
 							
-							signalhistDefault1TeV.Add(signalhistDefault100kTeV.Clone(),-1)
-							signalhistDefault16TeV.Add(signalhistDefault100kTeV.Clone(),-1)
-							signalhistDefault22TeV.Add(signalhistDefault100kTeV.Clone(),-1)
-							signalhistDefault28TeV.Add(signalhistDefault100kTeV.Clone(),-1)
-							signalhistDefault34TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+								signal3500TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"3500")
+								signal4000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"4000")							
+								signal4500TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"4500")
+								signal5000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"5000")
+								signal5500TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"5500")
+								signal6000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"6000")
+								signal6500TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"6500")
+								signal7000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"7000")
+								signal7500TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"7500")
+								signal8000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"8000")
+								signal8500TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"8500")
+								signal9000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"9000")
+								signal10000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"10000")
 
+								Signal3500TeV = Process(getattr(Signals2016ADD,signal3500TeV),eventCounts,negWeights) 
+								Signal4000TeV = Process(getattr(Signals2016ADD,signal4000TeV),eventCounts,negWeights) 
+								Signal4500TeV = Process(getattr(Signals2016ADD,signal4500TeV),eventCounts,negWeights) 
+								Signal5000TeV = Process(getattr(Signals2016ADD,signal5000TeV),eventCounts,negWeights) 
+								Signal5500TeV = Process(getattr(Signals2016ADD,signal5500TeV),eventCounts,negWeights) 
+								Signal6000TeV = Process(getattr(Signals2016ADD,signal6000TeV),eventCounts,negWeights) 
+								Signal6500TeV = Process(getattr(Signals2016ADD,signal6500TeV),eventCounts,negWeights) 
+								Signal7000TeV = Process(getattr(Signals2016ADD,signal7000TeV),eventCounts,negWeights) 
+								Signal7500TeV = Process(getattr(Signals2016ADD,signal7500TeV),eventCounts,negWeights) 
+								Signal8000TeV = Process(getattr(Signals2016ADD,signal8000TeV),eventCounts,negWeights) 
+								Signal8500TeV = Process(getattr(Signals2016ADD,signal8500TeV),eventCounts,negWeights) 
+								Signal9000TeV = Process(getattr(Signals2016ADD,signal9000TeV),eventCounts,negWeights) 
+								Signal10000TeV = Process(getattr(Signals2016ADD,signal10000TeV),eventCounts,negWeights) 
 
-
-
-							if not "ConRL" in signal10TeV and not "ConLR" in signal10TeV:
-								Signal10TeV = Process(getattr(Signals2016,signal10TeV),eventCounts,negWeights) 
-								signalhist10TeV = Signal10TeV.loadHistogram(plot,lumi,zScaleFac)
-								signalhist10TeV.Add(signalhist100kTeV.Clone(),-1)
-								signalhist1TeV.Add(signalhist10TeV.Clone())
-		
-								signalhistDefault10TeV = Signal10TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-								signalhistDefault10TeV.Add(signalhistDefault100kTeV.Clone(),-1)
-								signalhistDefault1TeV.Add(signalhistDefault10TeV.Clone())
+								signalhist3500TeV = Signal3500TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist4000TeV = Signal4000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist4500TeV = Signal4500TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist5000TeV = Signal5000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist5500TeV = Signal5500TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist6000TeV = Signal6000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist6500TeV = Signal6500TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist7000TeV = Signal7000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist7500TeV = Signal7500TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist8000TeV = Signal8000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist8500TeV = Signal8500TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist9000TeV = Signal9000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist10000TeV = Signal10000TeV.loadHistogram(plot,lumi,zScaleFac)
+						
 								
-								for i in range(0,signalhist1TeV.GetNbinsX()+1):
-									signalhist1TeV.SetBinContent(i,(signalhist1TeV.GetBinContent(i) + signalhist10TeV.GetBinContent(i) + signalhist16TeV.GetBinContent(i) + signalhist22TeV.GetBinContent(i) + signalhist28TeV.GetBinContent(i) + signalhist34TeV.GetBinContent(i)) / 6)
-									signalhistDefault1TeV.SetBinContent(i,(signalhistDefault1TeV.GetBinContent(i) + signalhistDefault10TeV.GetBinContent(i) + signalhistDefault16TeV.GetBinContent(i) + signalhistDefault22TeV.GetBinContent(i) + signalhistDefault28TeV.GetBinContent(i) + signalhistDefault34TeV.GetBinContent(i)) / 6)
+								signalhist3500TeV.Add(signalhist10000TeV.Clone(),-1)
+								signalhist4000TeV.Add(signalhist10000TeV.Clone(),-1)
+								signalhist4500TeV.Add(signalhist10000TeV.Clone(),-1)
+								signalhist5000TeV.Add(signalhist10000TeV.Clone(),-1)
+								signalhist5500TeV.Add(signalhist10000TeV.Clone(),-1)
+								signalhist6000TeV.Add(signalhist10000TeV.Clone(),-1)
+								signalhist6500TeV.Add(signalhist10000TeV.Clone(),-1)
+								signalhist7000TeV.Add(signalhist10000TeV.Clone(),-1)
+								signalhist7500TeV.Add(signalhist10000TeV.Clone(),-1)
+								signalhist8000TeV.Add(signalhist10000TeV.Clone(),-1)
+								signalhist8500TeV.Add(signalhist10000TeV.Clone(),-1)
+								signalhist9000TeV.Add(signalhist10000TeV.Clone(),-1)
 
-							else:
+								
+								signalhistDefault3500TeV = Signal3500TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault4000TeV = Signal4000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault4500TeV = Signal4500TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault5000TeV = Signal5000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault5500TeV = Signal5500TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault6000TeV = Signal6000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault6500TeV = Signal6500TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault7000TeV = Signal7000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault7500TeV = Signal7500TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault8000TeV = Signal8000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault8500TeV = Signal8500TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault9000TeV = Signal9000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault10000TeV = Signal10000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+						
+								
+								signalhistDefault3500TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault4000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault4500TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault5000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault5500TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault6000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault6500TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault7000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault7500TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault8000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault8500TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault9000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
 
-								for i in range(0,signalhist1TeV.GetNbinsX()+1):
-									signalhist1TeV.SetBinContent(i,(signalhist1TeV.GetBinContent(i) + signalhist16TeV.GetBinContent(i) + signalhist22TeV.GetBinContent(i) + signalhist28TeV.GetBinContent(i) + signalhist34TeV.GetBinContent(i)) / 5)
-									signalhistDefault1TeV.SetBinContent(i,(signalhistDefault1TeV.GetBinContent(i) + signalhistDefault16TeV.GetBinContent(i) + signalhistDefault22TeV.GetBinContent(i) + signalhistDefault28TeV.GetBinContent(i) + signalhistDefault34TeV.GetBinContent(i)) / 5)
+
+								for i in range(0,signalhist3500TeV.GetNbinsX()+1):
+									signalhist3500TeV.SetBinContent(i,(signalhist3500TeV.GetBinContent(i) + signalhist4000TeV.GetBinContent(i) + signalhist4500TeV.GetBinContent(i) + signalhist5000TeV.GetBinContent(i) + signalhist5500TeV.GetBinContent(i) + signalhist6000TeV.GetBinContent(i) + signalhist6500TeV.GetBinContent(i) + signalhist7000TeV.GetBinContent(i) + signalhist7500TeV.GetBinContent(i) + signalhist8000TeV.GetBinContent(i) + signalhist8500TeV.GetBinContent(i) + signalhist9000TeV.GetBinContent(i))  / 12)
+									signalhistDefault3500TeV.SetBinContent(i,(signalhistDefault3500TeV.GetBinContent(i) + signalhistDefault4000TeV.GetBinContent(i) + signalhistDefault4500TeV.GetBinContent(i) + signalhistDefault5000TeV.GetBinContent(i) + signalhistDefault5500TeV.GetBinContent(i) + signalhistDefault6000TeV.GetBinContent(i) + signalhistDefault6500TeV.GetBinContent(i) + signalhistDefault7000TeV.GetBinContent(i) + signalhistDefault7500TeV.GetBinContent(i) + signalhistDefault8000TeV.GetBinContent(i) + signalhistDefault8500TeV.GetBinContent(i) + signalhistDefault9000TeV.GetBinContent(i)) / 12)
+										
 									
+									
+									
+								signalHist = signalhist3500TeV
+								signalHistDefault = signalhistDefault3500TeV
+							else:	
+								signal1TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"1",interference,hel)
+								signal10TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"10",interference,hel)							
+								signal16TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"16",interference,hel)
+								signal22TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"22",interference,hel)
+								signal28TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"28",interference,hel)
+								signal34TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"34",interference,hel)
+								signal100kTeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"100k",interference,hel)
+
+								Signal1TeV = Process(getattr(Signals2016,signal1TeV),eventCounts,negWeights) 
+								Signal16TeV = Process(getattr(Signals2016,signal16TeV),eventCounts,negWeights) 
+								Signal22TeV = Process(getattr(Signals2016,signal22TeV),eventCounts,negWeights) 
+								Signal28TeV = Process(getattr(Signals2016,signal28TeV),eventCounts,negWeights) 
+								Signal34TeV = Process(getattr(Signals2016,signal34TeV),eventCounts,negWeights) 
+								Signal100kTeV = Process(getattr(Signals2016,signal100kTeV),eventCounts,negWeights) 
+
+								signalhist1TeV = Signal1TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist16TeV = Signal16TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist22TeV = Signal22TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist28TeV = Signal28TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist34TeV = Signal34TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist100kTeV = Signal100kTeV.loadHistogram(plot,lumi,zScaleFac)
+						
 								
+								signalhist1TeV.Add(signalhist100kTeV.Clone(),-1)
+								signalhist16TeV.Add(signalhist100kTeV.Clone(),-1)
+								signalhist22TeV.Add(signalhist100kTeV.Clone(),-1)
+								signalhist28TeV.Add(signalhist100kTeV.Clone(),-1)
+								signalhist34TeV.Add(signalhist100kTeV.Clone(),-1)
+
 								
+								signalhistDefault1TeV = Signal1TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault16TeV = Signal16TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault22TeV = Signal22TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault28TeV = Signal28TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault34TeV = Signal34TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault100kTeV = Signal100kTeV.loadHistogram(plotDefault,lumi,zScaleFac)
+						
 								
-							signalHist = signalhist1TeV
-							signalHistDefault = signalhistDefault1TeV
+								signalhistDefault1TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+								signalhistDefault16TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+								signalhistDefault22TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+								signalhistDefault28TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+								signalhistDefault34TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+
+
+
+
+								if not "ConRL" in signal10TeV and not "ConLR" in signal10TeV:
+									Signal10TeV = Process(getattr(Signals2016,signal10TeV),eventCounts,negWeights) 
+									signalhist10TeV = Signal10TeV.loadHistogram(plot,lumi,zScaleFac)
+									signalhist10TeV.Add(signalhist100kTeV.Clone(),-1)
+									signalhist1TeV.Add(signalhist10TeV.Clone())
+			
+									signalhistDefault10TeV = Signal10TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+									signalhistDefault10TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+									signalhistDefault1TeV.Add(signalhistDefault10TeV.Clone())
+									
+									for i in range(0,signalhist1TeV.GetNbinsX()+1):
+										signalhist1TeV.SetBinContent(i,(signalhist1TeV.GetBinContent(i) + signalhist10TeV.GetBinContent(i) + signalhist16TeV.GetBinContent(i) + signalhist22TeV.GetBinContent(i) + signalhist28TeV.GetBinContent(i) + signalhist34TeV.GetBinContent(i)) / 6)
+										signalhistDefault1TeV.SetBinContent(i,(signalhistDefault1TeV.GetBinContent(i) + signalhistDefault10TeV.GetBinContent(i) + signalhistDefault16TeV.GetBinContent(i) + signalhistDefault22TeV.GetBinContent(i) + signalhistDefault28TeV.GetBinContent(i) + signalhistDefault34TeV.GetBinContent(i)) / 6)
+
+								else:
+
+									for i in range(0,signalhist1TeV.GetNbinsX()+1):
+										signalhist1TeV.SetBinContent(i,(signalhist1TeV.GetBinContent(i) + signalhist16TeV.GetBinContent(i) + signalhist22TeV.GetBinContent(i) + signalhist28TeV.GetBinContent(i) + signalhist34TeV.GetBinContent(i)) / 5)
+										signalhistDefault1TeV.SetBinContent(i,(signalhistDefault1TeV.GetBinContent(i) + signalhistDefault16TeV.GetBinContent(i) + signalhistDefault22TeV.GetBinContent(i) + signalhistDefault28TeV.GetBinContent(i) + signalhistDefault34TeV.GetBinContent(i)) / 5)
+										
+									
+									
+									
+								signalHist = signalhist1TeV
+								signalHistDefault = signalhistDefault1TeV
 
 						if "2017" in label:
-							signal16TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"16",interference,hel)
-							signal24TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"24",interference,hel)
-							signal32TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"32",interference,hel)
-							signal40TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"40",interference,hel)
-							signal100kTeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"100k",interference,hel)
-
-							if signal100kTeV == 'CITo2E_Lam100kTeVDesRR':
-								signal100kTeV = 'CITo2E_Lam100kTeVDesLL'	
-
-
-							Signal16TeV = Process(getattr(Signals,signal16TeV),eventCounts,negWeights) 
-							Signal24TeV = Process(getattr(Signals,signal24TeV),eventCounts,negWeights) 
-							Signal32TeV = Process(getattr(Signals,signal32TeV),eventCounts,negWeights) 
-							Signal100kTeV = Process(getattr(Signals,signal100kTeV),eventCounts,negWeights) 
-
-							signalhist16TeV = Signal16TeV.loadHistogram(plot,lumi,zScaleFac)
-							signalhist24TeV = Signal24TeV.loadHistogram(plot,lumi,zScaleFac)
-							signalhist32TeV = Signal32TeV.loadHistogram(plot,lumi,zScaleFac)
-							signalhist100kTeV = Signal100kTeV.loadHistogram(plot,lumi,zScaleFac)
-												
-							signalhist16TeV.Add(signalhist100kTeV.Clone(),-1)
-							signalhist24TeV.Add(signalhist100kTeV.Clone(),-1)
-							signalhist32TeV.Add(signalhist100kTeV.Clone(),-1)
 							
-							signalhistDefault16TeV = Signal16TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-							signalhistDefault24TeV = Signal24TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-							signalhistDefault32TeV = Signal32TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-							signalhistDefault100kTeV = Signal100kTeV.loadHistogram(plotDefault,lumi,zScaleFac)
-					
-							signalhistDefault16TeV.Add(signalhistDefault100kTeV.Clone(),-1)
-							signalhistDefault24TeV.Add(signalhistDefault100kTeV.Clone(),-1)
-							signalhistDefault32TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+							if args.useADD:
+							
+								signal4000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"4000")
+								signal5000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"5000")							
+								signal6000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"6000")
+								signal7000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"7000")
+								signal8000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"8000")
+								signal9000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"9000")
+								signal10000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"10000")
+								signal11000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"11000")
+								signal12000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"12000")
+								signal100000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"100000")
 
+								Signal4000TeV = Process(getattr(SignalsADD,signal4000TeV),eventCounts,negWeights) 
+								Signal5000TeV = Process(getattr(SignalsADD,signal5000TeV),eventCounts,negWeights) 
+								Signal6000TeV = Process(getattr(SignalsADD,signal6000TeV),eventCounts,negWeights) 
+								Signal7000TeV = Process(getattr(SignalsADD,signal7000TeV),eventCounts,negWeights) 
+								Signal8000TeV = Process(getattr(SignalsADD,signal8000TeV),eventCounts,negWeights) 
+								Signal9000TeV = Process(getattr(SignalsADD,signal9000TeV),eventCounts,negWeights) 
+								Signal10000TeV = Process(getattr(SignalsADD,signal10000TeV),eventCounts,negWeights) 
+								Signal11000TeV = Process(getattr(SignalsADD,signal11000TeV),eventCounts,negWeights) 
+								Signal12000TeV = Process(getattr(SignalsADD,signal12000TeV),eventCounts,negWeights) 
+								Signal100000TeV = Process(getattr(SignalsADD,signal100000TeV),eventCounts,negWeights) 
 
-
-							if not "DesRR" in signal40TeV and not "ConRR" in signal40TeV:
-								Signal40TeV = Process(getattr(Signals,signal40TeV),eventCounts,negWeights) 
-								signalhist40TeV = Signal40TeV.loadHistogram(plot,lumi,zScaleFac)
-								signalhist40TeV.Add(signalhist100kTeV.Clone(),-1)
-
-		
-								signalhistDefault40TeV = Signal40TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-								signalhistDefault40TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+								signalhist4000TeV = Signal4000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist5000TeV = Signal5000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist6000TeV = Signal6000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist7000TeV = Signal7000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist8000TeV = Signal8000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist9000TeV = Signal9000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist10000TeV = Signal10000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist11000TeV = Signal11000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist12000TeV = Signal12000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist100000TeV = Signal100000TeV.loadHistogram(plot,lumi,zScaleFac)
+						
+								
+								signalhist4000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist5000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist6000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist7000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist8000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist9000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist10000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist11000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist12000TeV.Add(signalhist100000TeV.Clone(),-1)
 
 								
+								signalhistDefault4000TeV = Signal4000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault5000TeV = Signal5000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault6000TeV = Signal6000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault7000TeV = Signal7000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault8000TeV = Signal8000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault9000TeV = Signal9000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault10000TeV = Signal10000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault11000TeV = Signal11000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault12000TeV = Signal12000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault100000TeV = Signal100000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+						
 								
-								for i in range(0,signalhist1TeV.GetNbinsX()+1):
-									signalhist16TeV.SetBinContent(i,(signalhist16TeV.GetBinContent(i) + signalhist24TeV.GetBinContent(i) + signalhist32TeV.GetBinContent(i) + signalhist40TeV.GetBinContent(i)) / 4)
-									signalhistDefault16TeV.SetBinContent(i,(signalhistDefault16TeV.GetBinContent(i) + signalhistDefault24TeV.GetBinContent(i) + signalhistDefault32TeV.GetBinContent(i) + signalhistDefault40TeV.GetBinContent(i)) / 4)
+								signalhistDefault4000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault5000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault6000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault7000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault8000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault9000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault10000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault11000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault12000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
 
-							else:
 
-								for i in range(0,signalhist1TeV.GetNbinsX()+1):
-									signalhist16TeV.SetBinContent(i,(signalhist16TeV.GetBinContent(i) + signalhist24TeV.GetBinContent(i) + signalhist32TeV.GetBinContent(i)) / 3)
-									signalhistDefault16TeV.SetBinContent(i,(signalhistDefault16TeV.GetBinContent(i) + signalhistDefault24TeV.GetBinContent(i) + signalhistDefault32TeV.GetBinContent(i)) / 3)
+								for i in range(0,signalhist4000TeV.GetNbinsX()+1):
+									signalhist4000TeV.SetBinContent(i,(signalhist4000TeV.GetBinContent(i) + signalhist5000TeV.GetBinContent(i) + signalhist6000TeV.GetBinContent(i) + signalhist7000TeV.GetBinContent(i) + signalhist8000TeV.GetBinContent(i) + signalhist9000TeV.GetBinContent(i) + signalhist10000TeV.GetBinContent(i) + signalhist11000TeV.GetBinContent(i) + signalhist12000TeV.GetBinContent(i) + signalhist100000TeV.GetBinContent(i)) / 9)
+									signalhistDefault4000TeV.SetBinContent(i,(signalhistDefault4000TeV.GetBinContent(i) + signalhistDefault5000TeV.GetBinContent(i) + signalhistDefault6000TeV.GetBinContent(i) + signalhistDefault7000TeV.GetBinContent(i) + signalhistDefault8000TeV.GetBinContent(i) + signalhistDefault9000TeV.GetBinContent(i) + signalhistDefault10000TeV.GetBinContent(i) + signalhistDefault11000TeV.GetBinContent(i) + signalhistDefault12000TeV.GetBinContent(i) + signalhistDefault100000TeV.GetBinContent(i)) / 9)
+										
 									
-								
-								
-							signalHist = signalhist16TeV
-							signalHistDefault = signalhistDefault16TeV								
-						if "2018" in label:
-							signal16TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"16",interference,hel)
-							signal24TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"24",interference,hel)
-							signal32TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"32",interference,hel)
-							signal40TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"40",interference,hel)
-							signal100kTeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"100k",interference,hel)
-
-							if signal100kTeV == 'CITo2E_Lam100kTeVDesRR':
-								signal100kTeV = 'CITo2E_Lam100kTeVDesLL'	
-
-
-							Signal16TeV = Process(getattr(Signals2018,signal16TeV),eventCounts,negWeights) 
-							Signal24TeV = Process(getattr(Signals2018,signal24TeV),eventCounts,negWeights) 
-							Signal32TeV = Process(getattr(Signals2018,signal32TeV),eventCounts,negWeights) 
-							Signal100kTeV = Process(getattr(Signals2018,signal100kTeV),eventCounts,negWeights) 
-
-							signalhist16TeV = Signal16TeV.loadHistogram(plot,lumi,zScaleFac)
-							signalhist24TeV = Signal24TeV.loadHistogram(plot,lumi,zScaleFac)
-							signalhist32TeV = Signal32TeV.loadHistogram(plot,lumi,zScaleFac)
-							signalhist100kTeV = Signal100kTeV.loadHistogram(plot,lumi,zScaleFac)
-					
+									
+									
+								signalHist = signalhist4000TeV
+								signalHistDefault = signalhistDefault4000TeV							
 							
-							signalhist16TeV.Add(signalhist100kTeV.Clone(),-1)
-							signalhist24TeV.Add(signalhist100kTeV.Clone(),-1)
-							signalhist32TeV.Add(signalhist100kTeV.Clone(),-1)
-
-
-
-							
-							signalhistDefault16TeV = Signal16TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-							signalhistDefault24TeV = Signal24TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-							signalhistDefault32TeV = Signal32TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-							signalhistDefault100kTeV = Signal100kTeV.loadHistogram(plotDefault,lumi,zScaleFac)
-					
-							signalhistDefault16TeV.Add(signalhistDefault100kTeV.Clone(),-1)
-							signalhistDefault24TeV.Add(signalhistDefault100kTeV.Clone(),-1)
-							signalhistDefault32TeV.Add(signalhistDefault100kTeV.Clone(),-1)
-
-
-
-
-							if not "DesRR" in signal40TeV and not "ConRR" in signal40TeV:
-								Signal40TeV = Process(getattr(Signals2018,signal40TeV),eventCounts,negWeights) 
-								signalhist40TeV = Signal40TeV.loadHistogram(plot,lumi,zScaleFac)
-								signalhist40TeV.Add(signalhist100kTeV.Clone(),-1)
-		
-								signalhistDefault40TeV = Signal40TeV.loadHistogram(plotDefault,lumi,zScaleFac)
-								signalhistDefault40TeV.Add(signalhistDefault100kTeV.Clone(),-1)
-
-								for i in range(0,signalhist1TeV.GetNbinsX()+1):
-									signalhist16TeV.SetBinContent(i,(signalhist16TeV.GetBinContent(i) + signalhist24TeV.GetBinContent(i) + signalhist32TeV.GetBinContent(i) + signalhist40TeV.GetBinContent(i)) / 4)
-									signalhistDefault16TeV.SetBinContent(i,(signalhistDefault16TeV.GetBinContent(i) + signalhistDefault24TeV.GetBinContent(i) + signalhistDefault32TeV.GetBinContent(i) + signalhistDefault40TeV.GetBinContent(i)) / 4)
-
 							else:
+								
+								signal16TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"16",interference,hel)
+								signal24TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"24",interference,hel)
+								signal32TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"32",interference,hel)
+								signal40TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"40",interference,hel)
+								signal100kTeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"100k",interference,hel)
 
-								for i in range(0,signalhist1TeV.GetNbinsX()+1):
-									signalhist16TeV.SetBinContent(i,(signalhist16TeV.GetBinContent(i) + signalhist24TeV.GetBinContent(i) + signalhist32TeV.GetBinContent(i)) / 3)
-									signalhistDefault16TeV.SetBinContent(i,(signalhistDefault16TeV.GetBinContent(i) + signalhistDefault24TeV.GetBinContent(i) + signalhistDefault32TeV.GetBinContent(i)) / 3)
+								if signal100kTeV == 'CITo2E_Lam100kTeVDesRR':
+									signal100kTeV = 'CITo2E_Lam100kTeVDesLL'	
+
+
+								Signal16TeV = Process(getattr(Signals,signal16TeV),eventCounts,negWeights) 
+								Signal24TeV = Process(getattr(Signals,signal24TeV),eventCounts,negWeights) 
+								Signal32TeV = Process(getattr(Signals,signal32TeV),eventCounts,negWeights) 
+								Signal100kTeV = Process(getattr(Signals,signal100kTeV),eventCounts,negWeights) 
+
+								signalhist16TeV = Signal16TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist24TeV = Signal24TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist32TeV = Signal32TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist100kTeV = Signal100kTeV.loadHistogram(plot,lumi,zScaleFac)
+													
+								signalhist16TeV.Add(signalhist100kTeV.Clone(),-1)
+								signalhist24TeV.Add(signalhist100kTeV.Clone(),-1)
+								signalhist32TeV.Add(signalhist100kTeV.Clone(),-1)
+								
+								signalhistDefault16TeV = Signal16TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault24TeV = Signal24TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault32TeV = Signal32TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault100kTeV = Signal100kTeV.loadHistogram(plotDefault,lumi,zScaleFac)
+						
+								signalhistDefault16TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+								signalhistDefault24TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+								signalhistDefault32TeV.Add(signalhistDefault100kTeV.Clone(),-1)
 
 
 
-							signalHist = signalhist16TeV
-							signalHistDefault = signalhistDefault16TeV	
+								if not "DesRR" in signal40TeV and not "ConRR" in signal40TeV:
+									Signal40TeV = Process(getattr(Signals,signal40TeV),eventCounts,negWeights) 
+									signalhist40TeV = Signal40TeV.loadHistogram(plot,lumi,zScaleFac)
+									signalhist40TeV.Add(signalhist100kTeV.Clone(),-1)
+
+			
+									signalhistDefault40TeV = Signal40TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+									signalhistDefault40TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+
+									
+									
+									for i in range(0,signalhist1TeV.GetNbinsX()+1):
+										signalhist16TeV.SetBinContent(i,(signalhist16TeV.GetBinContent(i) + signalhist24TeV.GetBinContent(i) + signalhist32TeV.GetBinContent(i) + signalhist40TeV.GetBinContent(i)) / 4)
+										signalhistDefault16TeV.SetBinContent(i,(signalhistDefault16TeV.GetBinContent(i) + signalhistDefault24TeV.GetBinContent(i) + signalhistDefault32TeV.GetBinContent(i) + signalhistDefault40TeV.GetBinContent(i)) / 4)
+
+								else:
+
+									for i in range(0,signalhist1TeV.GetNbinsX()+1):
+										signalhist16TeV.SetBinContent(i,(signalhist16TeV.GetBinContent(i) + signalhist24TeV.GetBinContent(i) + signalhist32TeV.GetBinContent(i)) / 3)
+										signalhistDefault16TeV.SetBinContent(i,(signalhistDefault16TeV.GetBinContent(i) + signalhistDefault24TeV.GetBinContent(i) + signalhistDefault32TeV.GetBinContent(i)) / 3)
+										
+									
+									
+								signalHist = signalhist16TeV
+								signalHistDefault = signalhistDefault16TeV								
+						if "2018" in label:
+							
+							
+							if args.useADD:
+							
+								signal4000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"4000")
+								signal5000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"5000")							
+								signal6000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"6000")
+								signal7000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"7000")
+								signal8000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"8000")
+								signal9000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"9000")
+								signal10000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"10000")
+								signal11000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"11000")
+								signal12000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"12000")
+								signal100000TeV = "%sGravTo2%s_Lam%s"%(addci,antype[0],"100000")
+
+								Signal4000TeV = Process(getattr(Signals2018ADD,signal4000TeV),eventCounts,negWeights) 
+								Signal5000TeV = Process(getattr(Signals2018ADD,signal5000TeV),eventCounts,negWeights) 
+								Signal6000TeV = Process(getattr(Signals2018ADD,signal6000TeV),eventCounts,negWeights) 
+								Signal7000TeV = Process(getattr(Signals2018ADD,signal7000TeV),eventCounts,negWeights) 
+								Signal8000TeV = Process(getattr(Signals2018ADD,signal8000TeV),eventCounts,negWeights) 
+								Signal9000TeV = Process(getattr(Signals2018ADD,signal9000TeV),eventCounts,negWeights) 
+								Signal10000TeV = Process(getattr(Signals2018ADD,signal10000TeV),eventCounts,negWeights) 
+								Signal11000TeV = Process(getattr(Signals2018ADD,signal11000TeV),eventCounts,negWeights) 
+								Signal12000TeV = Process(getattr(Signals2018ADD,signal12000TeV),eventCounts,negWeights) 
+								Signal100000TeV = Process(getattr(Signals2018ADD,signal100000TeV),eventCounts,negWeights) 
+
+								signalhist4000TeV = Signal4000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist5000TeV = Signal5000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist6000TeV = Signal6000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist7000TeV = Signal7000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist8000TeV = Signal8000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist9000TeV = Signal9000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist10000TeV = Signal10000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist11000TeV = Signal11000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist12000TeV = Signal12000TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist100000TeV = Signal100000TeV.loadHistogram(plot,lumi,zScaleFac)
+						
+								
+								signalhist4000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist5000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist6000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist7000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist8000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist9000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist10000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist11000TeV.Add(signalhist100000TeV.Clone(),-1)
+								signalhist12000TeV.Add(signalhist100000TeV.Clone(),-1)
+
+								
+								signalhistDefault4000TeV = Signal4000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault5000TeV = Signal5000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault6000TeV = Signal6000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault7000TeV = Signal7000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault8000TeV = Signal8000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault9000TeV = Signal9000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault10000TeV = Signal10000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault11000TeV = Signal11000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault12000TeV = Signal12000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault100000TeV = Signal100000TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+						
+								
+								signalhistDefault4000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault5000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault6000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault7000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault8000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault9000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault10000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault11000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+								signalhistDefault12000TeV.Add(signalhistDefault10000TeV.Clone(),-1)
+
+
+								for i in range(0,signalhist4000TeV.GetNbinsX()+1):
+									signalhist4000TeV.SetBinContent(i,(signalhist4000TeV.GetBinContent(i) + signalhist5000TeV.GetBinContent(i) + signalhist6000TeV.GetBinContent(i) + signalhist7000TeV.GetBinContent(i) + signalhist8000TeV.GetBinContent(i) + signalhist9000TeV.GetBinContent(i) + signalhist10000TeV.GetBinContent(i) + signalhist11000TeV.GetBinContent(i) + signalhist12000TeV.GetBinContent(i) + signalhist100000TeV.GetBinContent(i)) / 9)
+									signalhistDefault4000TeV.SetBinContent(i,(signalhistDefault4000TeV.GetBinContent(i) + signalhistDefault5000TeV.GetBinContent(i) + signalhistDefault6000TeV.GetBinContent(i) + signalhistDefault7000TeV.GetBinContent(i) + signalhistDefault8000TeV.GetBinContent(i) + signalhistDefault9000TeV.GetBinContent(i) + signalhistDefault10000TeV.GetBinContent(i) + signalhistDefault11000TeV.GetBinContent(i) + signalhistDefault12000TeV.GetBinContent(i) + signalhistDefault100000TeV.GetBinContent(i)) / 9)
+										
+									
+									
+									
+								signalHist = signalhist4000TeV
+								signalHistDefault = signalhistDefault4000TeV							
+							else:
+								signal16TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"16",interference,hel)
+								signal24TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"24",interference,hel)
+								signal32TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"32",interference,hel)
+								signal40TeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"40",interference,hel)
+								signal100kTeV = "%sTo2%s_Lam%sTeV%s%s"%(addci,antype[0],"100k",interference,hel)
+
+								if signal100kTeV == 'CITo2E_Lam100kTeVDesRR':
+									signal100kTeV = 'CITo2E_Lam100kTeVDesLL'	
+
+
+								Signal16TeV = Process(getattr(Signals2018,signal16TeV),eventCounts,negWeights) 
+								Signal24TeV = Process(getattr(Signals2018,signal24TeV),eventCounts,negWeights) 
+								Signal32TeV = Process(getattr(Signals2018,signal32TeV),eventCounts,negWeights) 
+								Signal100kTeV = Process(getattr(Signals2018,signal100kTeV),eventCounts,negWeights) 
+
+								signalhist16TeV = Signal16TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist24TeV = Signal24TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist32TeV = Signal32TeV.loadHistogram(plot,lumi,zScaleFac)
+								signalhist100kTeV = Signal100kTeV.loadHistogram(plot,lumi,zScaleFac)
+						
+								
+								signalhist16TeV.Add(signalhist100kTeV.Clone(),-1)
+								signalhist24TeV.Add(signalhist100kTeV.Clone(),-1)
+								signalhist32TeV.Add(signalhist100kTeV.Clone(),-1)
+
+
+
+								
+								signalhistDefault16TeV = Signal16TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault24TeV = Signal24TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault32TeV = Signal32TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+								signalhistDefault100kTeV = Signal100kTeV.loadHistogram(plotDefault,lumi,zScaleFac)
+						
+								signalhistDefault16TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+								signalhistDefault24TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+								signalhistDefault32TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+
+
+
+
+								if not "DesRR" in signal40TeV and not "ConRR" in signal40TeV:
+									Signal40TeV = Process(getattr(Signals2018,signal40TeV),eventCounts,negWeights) 
+									signalhist40TeV = Signal40TeV.loadHistogram(plot,lumi,zScaleFac)
+									signalhist40TeV.Add(signalhist100kTeV.Clone(),-1)
+			
+									signalhistDefault40TeV = Signal40TeV.loadHistogram(plotDefault,lumi,zScaleFac)
+									signalhistDefault40TeV.Add(signalhistDefault100kTeV.Clone(),-1)
+
+									for i in range(0,signalhist1TeV.GetNbinsX()+1):
+										signalhist16TeV.SetBinContent(i,(signalhist16TeV.GetBinContent(i) + signalhist24TeV.GetBinContent(i) + signalhist32TeV.GetBinContent(i) + signalhist40TeV.GetBinContent(i)) / 4)
+										signalhistDefault16TeV.SetBinContent(i,(signalhistDefault16TeV.GetBinContent(i) + signalhistDefault24TeV.GetBinContent(i) + signalhistDefault32TeV.GetBinContent(i) + signalhistDefault40TeV.GetBinContent(i)) / 4)
+
+								else:
+
+									for i in range(0,signalhist1TeV.GetNbinsX()+1):
+										signalhist16TeV.SetBinContent(i,(signalhist16TeV.GetBinContent(i) + signalhist24TeV.GetBinContent(i) + signalhist32TeV.GetBinContent(i)) / 3)
+										signalhistDefault16TeV.SetBinContent(i,(signalhistDefault16TeV.GetBinContent(i) + signalhistDefault24TeV.GetBinContent(i) + signalhistDefault32TeV.GetBinContent(i)) / 3)
+
+
+
+								signalHist = signalhist16TeV
+								signalHistDefault = signalhistDefault16TeV	
 
 			
 						signalHist = signalHist.Rebin(len(massBins), name, array('d', massBins+[10000]))
@@ -501,13 +763,19 @@ def main():
 						signalHist.Add(backgroundHist)
 						signalHistDefault.Add(backgroundHistDefault)
 						
-						uncertainties["%s_%s_%s"%(cs,label,histo)] = {}
+						if not cs == "inc":
+							uncertainties["%s_%s_%s"%(cs,label,histo)] = {}
+						else:	
+							uncertainties["%s_%s"%(label,histo)] = {}
 						
 						
 						
 						for index, massBin in enumerate(massBins):
 								# ~ print (abs(signalHist.GetBinContent(index+1) / signalHistDefault.GetBinContent(index+1) -1.))
-								uncertainties["%s_%s_%s"%(cs,label,histo)][str(index)] = 1. + abs(signalHist.GetBinContent(index+1) / signalHistDefault.GetBinContent(index+1) -1.)								
+								if not cs == "inc":
+									uncertainties["%s_%s_%s"%(cs,label,histo)][str(index)] = 1. + abs(signalHist.GetBinContent(index+1) / signalHistDefault.GetBinContent(index+1) -1.)								
+								else:
+									uncertainties["%s_%s"%(label,histo)][str(index)] = 1. + abs(signalHist.GetBinContent(index+1) / signalHistDefault.GetBinContent(index+1) -1.)								
 								
 
 	fileName = "%ssystematicsForPriors"%addci

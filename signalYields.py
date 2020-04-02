@@ -60,11 +60,11 @@ def main():
 							# ~ else: massBins = [2000, 2200, 2600, 3000, 3400]
 							massBins = [2000, 2200, 2600, 3000, 3400]
 							if "2016" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
 						else:	
 							if "2016" in label:
 								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
@@ -97,12 +97,13 @@ def main():
 								function.SetParError(0,errs[0])
 								function.SetParError(1,errs[1])
 								function.SetParError(2,errs[2])
-								if useADD:
-									function.SetParameter(3, pars[3])
-									function.SetParError(3, errs[3])
+								# ~ if useADD:
+									# ~ function.SetParameter(3, pars[3])
+									# ~ function.SetParError(3, errs[3])
 								functionUnc = fitFile.Get("fn_unc_m%d_%s"%(massBin,model))
-								print function.Eval(l)-function.Eval(100000)
+								# ~ print function.Eval(l)-function.Eval(100000)
 								uncert = (abs((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000))))**0.5	
+								# ~ print (label, histo, l, massBin, function.Eval(l), function.Eval(100000))
 								signalYields["%s_%s_%s"%(name,label,histo)][str(index)] = [(function.Eval(l)-function.Eval(100000)),uncert]
 					if useADD: continue
 					for l in lambdas:	

@@ -58,7 +58,7 @@ if not os.path.exists('fitPlots'):
 if args.add:
 	if args.do2016:
 		lvals = ["%.1f"%(3.5+i*0.5) for i in range(12)]
-		lvals.append("10")
+		lvals.append("100000")
 		helis = [""]
 		intfs = [""]
 		supers = [2000, 2200, 2600, 3000, 3400, 10000]
@@ -325,7 +325,13 @@ for etabin in etabins:
 										zScaleFac = zScale["electrons"][0]			
 							signal = "%sTo2%s_Lam%sTeV%s%s"%(model,antype[0],lval,intf,heli)
 							if args.add:
-								signal = "ADDGravTo2%s_Lam%s"%(antype[0],str(int(float(lval)*1000)))
+								if lval == "100000" and plot.muon:
+									signal = "CITo2Mu_Lam100kTeVConLL"
+								elif lval == "100000":
+									signal = "CITo2E_Lam100kTeVConLL"
+								else:
+									signal = "ADDGravTo2%s_Lam%s"%(antype[0],str(int(float(lval)*1000)))
+								
 							if signal == "CITo2E_Lam40TeVDesRR" or signal == "CITo2Mu_Lam40TeVConRR":
 							# ~ if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR":
 								# list for 2017
@@ -340,7 +346,10 @@ for etabin in etabins:
 							elif args.do2018 and not args.add:	
 								Signal = Process(getattr(Signals2018,signal),eventCounts,negWeights) 
 							elif args.add and args.do2016:
-								Signal = Process(getattr(Signals2016ADD, signal),eventCounts,negWeights)
+								if lval == "100000":
+									Signal = Process(getattr(Signals2016, signal),eventCounts,negWeights)
+								else:
+									Signal = Process(getattr(Signals2016ADD, signal),eventCounts,negWeights)
 							elif args.add and args.do2018:
 								Signal = Process(getattr(Signals2018ADD, signal),eventCounts,negWeights)
 							elif args.add:

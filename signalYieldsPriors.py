@@ -25,6 +25,8 @@ def main():
 	lambdas = [10,16,22,28,34,40,46]
 	interferences = ["Con","Des"]
 	hels = ["LL","RL","LR","RR"]
+	css = ["inc","cspos","csneg"]
+	
 	massBins = [400,500,700,1100,1900,3500]
 	if useADD:
 		labels = ["dielectron_2016","dimuon_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
@@ -55,8 +57,7 @@ def main():
 
 							name = "%sto2e"	%addci
 						if useADD:
-							if not "2016" in label: massBins = [400, 700, 1500, 2500, 3500]
-							else: massBins = [2000, 2200, 2600, 3000, 3400]
+
 							if "2016" in label:
 								fitFile = TFile("%s_%s_%s_%s_parametrizationForPriors_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:

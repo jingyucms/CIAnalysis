@@ -171,8 +171,8 @@ def main():
 
 							name = "%sto2e"	%addci
 						if useADD:
-							if not "2016" in label: massBins = [400, 700, 1500, 2500, 3500]
-							else: massBins = [2000, 2200, 2600, 3000, 3400]
+							# ~ if not "2016" in label: massBins = [400, 700, 1500, 2500, 3500]
+							# ~ else: massBins = [2000, 2200, 2600, 3000, 3400]
 							if "2016" in label:
 								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:
@@ -277,13 +277,22 @@ def main():
 							graph.SetTitle("%s%s%s%s_M%d"%(label,histo,cs,model,massBin))
 							graph.SetName("%s%s%s%s_M%d"%(label,histo,cs,model,massBin))
 						
-							for indel, l in enumerate(lambdas+[100000]):
-								uncert = (abs((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000))))**0.5
-								# ~ print (function.Eval(100000) , backgroundHist.GetBinContent(index+1))	
-								graph.SetPoint(indel,l,function.Eval(l)-function.Eval(100000) + backgroundHist.GetBinContent(index+1))
-								graph.SetPointError(indel,0,(uncert**2+backgroundHist.GetBinError(index+1)**2)**0.5)
+							if args.useADD:
+								for indel, l in enumerate(lambdas+[100000]):
+									uncert = (abs((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000))))**0.5
+									# ~ print (function.Eval(100000) , backgroundHist.GetBinContent(index+1))	
+									graph.SetPoint(indel,float(l)/1000,function.Eval(l)-function.Eval(100000) + backgroundHist.GetBinContent(index+1))
+									graph.SetPointError(indel,0,(uncert**2+backgroundHist.GetBinError(index+1)**2)**0.5)
+							else:		
+								for indel, l in enumerate(lambdas+[100000]):
+									uncert = (abs((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000))))**0.5
+									# ~ print (function.Eval(100000) , backgroundHist.GetBinContent(index+1))	
+									graph.SetPoint(indel,l,function.Eval(l)-function.Eval(100000) + backgroundHist.GetBinContent(index+1))
+									graph.SetPointError(indel,0,(uncert**2+backgroundHist.GetBinError(index+1)**2)**0.5)
 							
 							graphs.append(deepcopy(graph))
+	if args.useADD:
+		suffix += "_add"
 	outFile = TFile("graphsForPriors_%s.root"%suffix,"RECREATE")
 	
 	for graph in graphs:

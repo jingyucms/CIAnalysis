@@ -66,7 +66,7 @@ extragrbins = [1000+x for x in range(0,2500,200)]
 
 if args.add and args.do2016:
 	lvals = [3.5+i*0.5 for i in range(12)]
-	lvals.append(10)
+	lvals.append(100000)
 	lerrs = [0.1]*13
 	bvals = [i for i in range(len(lvals))]
 	helis = [""]

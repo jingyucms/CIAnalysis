@@ -12,12 +12,13 @@ args = parser.parse_args()
 # ~ programs = ["makeFit.py", "makeGraph.py"]
 programs = ["makeGraph.py"]
 uncertainties = ["nominal","scaleup","scaledown","pileup","piledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown",'prefireup','prefiredown']
+# ~ uncertainties = ["nominal"]
 # ~ uncertainties = ["pdfWeightsUp","pdfWeightsDown"]
 
 for unc in uncertainties:
 
 	
-	cmd = "python produceSystematicsForPriors.py -s %s"%unc
+	cmd = "python signalYields.py -s %s"%unc
 	if args.add:
 		cmd += " -add"
 	print (cmd)

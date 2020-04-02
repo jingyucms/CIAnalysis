@@ -13,10 +13,13 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
     print("Keyname:",keyname)
     fn = r.TF1("fn_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
                "[0]+[1]/(x**2)+[2]/(x**4)",fitRange[0],fitRange[1])
+    # ~ if useADD: fn = r.TF1("fn_m{0:d}_{1:s}{2:s}".format(point, intf, heli),
+		# ~ "[0]+[1]/(x**2)+[2]/(x**4)+[3]/(x**8)", fitRange[0], fitRange[1])
     if useADD: fn = r.TF1("fn_m{0:d}_{1:s}{2:s}".format(point, intf, heli),
-		"[0]+[1]/(x**2)+[2]/(x**4)+[3]/(x**8)", fitRange[0], fitRange[1])
+		"[0]+[1]/(x**4)+[2]/(x**8)", fitRange[0], fitRange[1])
     keyname = "{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)
     pvals = params["{0:s}".format(keyname)]
+    # ~ print (pvals)
     perrs = params["{0:s}_err".format(keyname)]
     print("Values:",pvals)
     print("Errors:",perrs)
@@ -124,8 +127,8 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
     if useADD:
         if fixinf:
             endpoint = pvals[len(pvals) - 1]
-            low = endpoint * .9
-            high = endpoint * 1.1
+            low = endpoint * .99
+            high = endpoint * 1.01
             fn.SetParLimits(0,low,high)
 
         fn.SetParameter(0, 0)
@@ -204,11 +207,15 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
     uncfn = r.TF1("fn_unc_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
                   "sqrt(([0])^2+([1]/(x**2))^2+([2]/(x**4))^2)",0.1,1e8)
     if useADD:
+        # ~ resfn = r.TF1("fnFitted_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
+                  # ~ "[0]+[1]/(x**2)+[2]/(x**4)+[3]/(x**8)",0.1,1e8)
         resfn = r.TF1("fnFitted_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
-                  "[0]+[1]/(x**2)+[2]/(x**4)+[3]/(x**8)",0.1,1e8)
+                  "[0]+[1]/(x**4)+[2]/(x**8)",0.1,1e8)
     # Functional form for the uncertainty on the fit, taking only minimization uncertainties
+        # ~ uncfn = r.TF1("fn_unc_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
+                  # ~ "sqrt(([0])^2+([1]/(x**2))^2+([2]/(x**4))^2)+([3]/(x**8)^2)",0.1,1e8)
         uncfn = r.TF1("fn_unc_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
-                  "sqrt(([0])^2+([1]/(x**2))^2+([2]/(x**4))^2)+([3]/(x**8)^2)",0.1,1e8)
+                  "sqrt(([0])^2+([1]/(x**4))^2)+([2]/(x**8)^2)",0.1,1e8)
 
     for par in range(fn.GetNpar()):
         # sometimes the fn doesn't have good values?
@@ -228,8 +235,8 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
                                                                                         fn.GetParError(1),
                                                                                         fn.GetParameter(2),
                                                                                         fn.GetParError(2)))
-    if useADD:
-        print("\np3: {:2.4f}  {:2.4f}".format(fn.GetParameter(3), fn.GetParError(3)))
+    # ~ if useADD:
+        # ~ print("\np3: {:2.4f}  {:2.4f}".format(fn.GetParameter(3), fn.GetParError(3)))
     
     print("fit\np0: {:2.4f}  {:2.4f}\np1: {:2.4f}  {:2.4f}\np2: {:2.4f}  {:2.4f}".format(fitPars[0],
                                                                                          fitParErrs[0],
@@ -271,8 +278,8 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
                                                                                         fn.GetParError(1),
                                                                                         fn.GetParameter(2),
                                                                                         fn.GetParError(2)))
-    if useADD:
-        print("\np3: {:2.4f}  {:2.4f}".format(fn.GetParameter(3), fn.GetParError(3)))
+    # ~ if useADD:
+        # ~ print("\np3: {:2.4f}  {:2.4f}".format(fn.GetParameter(3), fn.GetParError(3)))
 
     print("fit\np0: {:2.4f}  {:2.4f}\np1: {:2.4f}  {:2.4f}\np2: {:2.4f}  {:2.4f}".format(fitPars[0],
                                                                                          fitParErrs[0],

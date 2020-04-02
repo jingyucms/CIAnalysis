@@ -82,8 +82,8 @@ elif args.add:
 	bvals = [i for i in range(len(lvals))]
 	helis = [""]
 	intfs = [""]
-	supers = [400, 700, 1500, 2500, 3500, 10000]
-	grbins = [400, 700, 1500, 2500, 3500]
+	supers = [2000, 2200, 2600, 3000, 3400, 10000]
+	grbins = [2000, 2200, 2600, 3000, 3400]
 	grcols = [r.kBlack, r.kRed, r.kBlue, r.kYellow, r.kViolet, r.kGreen]
 	extragrbins = [1900+x for x in range(0, 1500, 200)]
 
@@ -161,8 +161,10 @@ for etabin in etabins:
 			addLabel = "_2018"
 		model = "CI"
 		if args.add: model = "ADD"
-
-		js =  r.TFile("graphsForPriors_%s.root"%unc,"OPEN")
+		if args.add:
+			js =  r.TFile("graphsForPriors_%s_add.root"%unc,"OPEN")
+		else:	
+			js =  r.TFile("graphsForPriors_%s.root"%unc,"OPEN")
 		outf = r.TFile("{6:s}to2{0:s}_{1:s}_{2:s}_{3:s}_parametrizationForPriors{4:s}{5:s}.root".format(emutype,unc,etabin,csbin,modifier,addLabel,model),"recreate")
 		for heli in helis:
 			conFitPar = []
