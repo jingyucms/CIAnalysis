@@ -1,4 +1,4 @@
-from ROOT import *
+from ROOT import TFile
 
 from setTDRStyle import setTDRStyle
 
@@ -22,7 +22,7 @@ pdfDY     =  dyHistPDF.Integral(dyHistPDF.FindBin(xMin),dyHistPDF.FindBin(xMax-0
 defaultOther =  otherHist.Integral(otherHist.FindBin(xMin),otherHist.FindBin(xMax-0.01))
 pdfOther     =  otherHistPDF.Integral(otherHistPDF.FindBin(xMin),otherHistPDF.FindBin(xMax-0.01))
 
-print "DY PDF: ", abs(1 - (pdfDY+pdfOther)/(defaultDY+defaultOther))
+print ("DY PDF: ", abs(1 - (pdfDY+pdfOther)/(defaultDY+defaultOther)))
 
 xMin = 4000
 xMax = 60000
@@ -33,26 +33,27 @@ pdfDY     =  dyHistPDF.Integral(dyHistPDF.FindBin(xMin),dyHistPDF.FindBin(xMax-0
 defaultOther =  otherHist.Integral(otherHist.FindBin(xMin),otherHist.FindBin(xMax-0.01))
 pdfOther     =  otherHistPDF.Integral(otherHistPDF.FindBin(xMin),otherHistPDF.FindBin(xMax-0.01))
 
-print "DY PDF: ", abs(1 - (pdfDY+pdfOther)/(defaultDY+defaultOther))
+print ("DY PDF: ", abs(1 - (pdfDY+pdfOther)/(defaultDY+defaultOther)))
 
-massBins = [400,500,700,1100,1900,3500,5000]
+# ~ massBins = [400,500,700,1100,1900,3500,5000]
+massBins = [1800,2200,2600,3000,3400,10000]
 pdfUncertDY = []
 pdfUncertOther = []
 for i in range(0,len(massBins)-1):
 	xMin = massBins[i]
 	xMax = massBins[i+1]
-	print xMin, xMax
+	print (xMin, xMax)
 	defaultDY =  dyHist.Integral(dyHist.FindBin(xMin),dyHist.FindBin(xMax-0.01))
 	pdfDY     =  dyHistPDF.Integral(dyHistPDF.FindBin(xMin),dyHistPDF.FindBin(xMax-0.01))
-	print defaultDY, pdfDY
+	print (defaultDY, pdfDY)
 	defaultOther =  otherHist.Integral(otherHist.FindBin(xMin),otherHist.FindBin(xMax-0.01))
 	pdfOther     =  otherHistPDF.Integral(otherHistPDF.FindBin(xMin),otherHistPDF.FindBin(xMax-0.01))
 
 	pdfUncertDY.append(1+abs(1 - pdfDY/defaultDY))
 	pdfUncertOther.append(1+abs(1 - pdfOther/defaultOther))
 	
-print 	pdfUncertDY
-print  pdfUncertOther
+print 	(pdfUncertDY)
+print  (pdfUncertOther)
 
 
 hCanvas = TCanvas("hCanvas", "Distribution", 800,400)

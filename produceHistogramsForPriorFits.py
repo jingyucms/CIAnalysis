@@ -147,7 +147,7 @@ def main():
 		lambdas = [3500+i*500 for i in range(12)]; lambdas.append(10000)
 		interferences = [""]
 		hels = [""]
-		massBins = [2000, 2200, 2600, 3000, 3400]
+		massBins = [1800, 2200, 2600, 3000, 3400]
 		
 	graphs = []	
 	for label in labels:
@@ -174,11 +174,11 @@ def main():
 							# ~ if not "2016" in label: massBins = [400, 700, 1500, 2500, 3500]
 							# ~ else: massBins = [2000, 2200, 2600, 3000, 3400]
 							if "2016" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
 						else:	
 							if "2016" in label:
 								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
@@ -268,9 +268,9 @@ def main():
 							function.SetParError(0,errs[0])
 							function.SetParError(1,errs[1])
 							function.SetParError(2,errs[2])
-							if useADD:
-								function.SetParameter(3, pars[3])
-								function.SetParError(3, errs[3])
+							# ~ if useADD:
+								# ~ function.SetParameter(3, pars[3])
+								# ~ function.SetParError(3, errs[3])
 							functionUnc = fitFile.Get("fn_unc_m%d_%s"%(massBin,model))
 							
 							graph = TGraphErrors()

@@ -171,7 +171,7 @@ def main():
 		lambdas = [3500+i*500 for i in range(12)]; lambdas.append(10000)
 		interferences = [""]
 		hels = [""]
-		massBins = [2000, 2200, 2600, 3000, 3400]
+		massBins = [1800, 2200, 2600, 3000, 3400]
 		
 	uncertainties = {}		
 	for label in labels:

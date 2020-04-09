@@ -61,14 +61,14 @@ if args.add:
 		lvals.append("100000")
 		helis = [""]
 		intfs = [""]
-		supers = [2000, 2200, 2600, 3000, 3400, 10000]
+		supers = [1800, 2200, 2600, 3000, 3400, 10000]
 		extrabins = [1900+i for i in range(0, 1500, 200)]
 	else:
 		lvals = ["%.1f"%(4+i*1) for i in range(9)]
 		lvals.append("100")
 		helis = [""]
 		intfs = [""]
-		supers = [2000, 2200, 2600, 3000, 3400, 10000]
+		supers = [1800, 2200, 2600, 3000, 3400, 10000]
 		extrabins = [1900+i for i in range(0, 1500, 200)]
 #	else:
 #		lvals = ["%.1f"%(4+i*1) for i in range(9)]

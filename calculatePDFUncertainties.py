@@ -180,8 +180,9 @@ def main():
 
 	# ~ pdfs = ["NNPDF30","NNPDF31","NNPDF23"]
 	pdfs = ["NNPDF23"]
-	
-	filesDefault = ["dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M300to800.root","dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M800to1300.root","dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M1300to2000.root","dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M2000toInf.root"]
+	path = "/run/media/jan/data/work/PDF/forReal/"
+	filesDefault = [path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M300to800.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M800to1300.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M1300to2000.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M2000toInf.root"]
+	files23v2 = [path+"dileptonAna_pdf_2016_CITo2Mu_Lam16TeVConRR_M300.root",path+"dileptonAna_pdf_2016_CITo2Mu_Lam16TeVConRR_M800.root",path+"dileptonAna_pdf_2016_CITo2Mu_Lam16TeVConRR_M1300.root"]
 
 
 	for pdf in pdfs:
@@ -210,18 +211,26 @@ def main():
 
 
 		
-		binning = [400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2400,2800,3200,3600,4000,4500,5000]
+		# ~ binning = [400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2400,2800,3200,3600,4000,4500,5000]
+		# ~ binning = [0,500,1000,1500,2000,2500,3000,3500,4000,4500,5000]
+		# ~ binning = [400,500,700,1100,1900,3500,13000]
+		binning = [1800, 2200, 2600, 3000, 3400, 10000]
+		# ~ binning =[400, 700, 1500, 2500, 3500,10000]
+		# ~ binning =[2200,10000]
 		hists = []
 		weightSums = []
 		for i in range(0,100):
 			weightSums.append(0)
 			hists.append(TH1F("hist_%s_%d"%(pdf,i),"hist_%s_%d"%(pdf,i),len(binning)-1,array('f',binning)))
 		
-		files = filesDefault
+		if pdf == "NNPDF23v2":
+			files = files23v2
+		else:
+			files = filesDefault
 		nnn = len(files)
 		for index, fileName in enumerate(files):
 			
-			f = TFile("files/"+fileName,"OPEN")
+			f = TFile(fileName,"OPEN")
 			tree = f.Get("pdfTree")
 			xsec = xsecs[fileName.split("dileptonAna_pdf_")[-1].split(".root")[0]]
 			print ("processing sample %d / %d"%(index+1,nnn))
@@ -232,9 +241,12 @@ def main():
 				central_value = getWeight(pdf, ev, 0, tree.GetLeaf("pdfInfo/scale").GetValue(), tree.GetLeaf("pdfInfo/x1").GetValue(), tree.GetLeaf("pdfInfo/x2").GetValue(), tree.GetLeaf("pdfInfo/pdf1").GetValue(), tree.GetLeaf("pdfInfo/pdf2").GetValue())
 				weightSums[0] += central_value
 				hists[0].Fill(genMass,sampleWeight)
-				#### Add loop over the 100 replicas here and fill the histograms with the ratio of the weight for a given replica to the default weight
-
-
+				# ~ print ( CalculateLHAPDFWeight(pdfReplicasRef[0], tree.GetLeaf("pdfInfo/scale").GetValue(), tree.GetLeaf("pdfInfo/x1").GetValue(), tree.GetLeaf("pdfInfo/x2").GetValue(), tree.GetLeaf("pdfInfo/pdf1").GetValue(), tree.GetLeaf("pdfInfo/pdf2").GetValue()), ev.pdfWeightsNNPDF31[0])
+				for i in range(1,100):
+					localValue = getWeight(pdf, ev, i, tree.GetLeaf("pdfInfo/scale").GetValue(), tree.GetLeaf("pdfInfo/x1").GetValue(), tree.GetLeaf("pdfInfo/x2").GetValue(), tree.GetLeaf("pdfInfo/pdf1").GetValue(), tree.GetLeaf("pdfInfo/pdf2").GetValue())
+					if  localValue/central_value > 10 or localValue/central_value < 0.1 : continue 
+					weightSums[i] += localValue
+					hists[i].Fill(genMass,localValue/central_value*sampleWeight)
 		hists[0].SetMarkerColor(ROOT.kRed)			
 		for i in range(0,100):
 			if i == 0: hists[0].Draw()
@@ -248,15 +260,32 @@ def main():
 		ROOT.gPad.SetLogy()
 		canv.Print("hists_%s.pdf"%pdf)			
 			
+		changeUp = []	
+		changeDown = []
 		change = []
+		changeNormUp = []	
+		changeNormDown = []
 		changeNorm = []
 		
 		for y in range(0,hists[0].GetNbinsX()):
+				changeUp.append([])
+				changeDown.append([])
 				change.append([])
+				changeNormUp.append([])
+				changeNormDown.append([])
 				changeNorm.append([])
 		for i in range(0,100):
-			print "doing nothing"
-			### Calcualte the difference between the weighted histograms to the default for each mass bin and append them to the listats
+			hists[i]
+			if i > 0:
+				for y in range(1,hists[0].GetNbinsX()+1):
+					changeNorm[y-1].append(abs((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y))*(weightSums[0]/weightSums[y]))
+					change[y-1].append(abs((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y)))
+					if (hists[i].GetBinContent(y) - hists[0].GetBinContent(y)) < 0:
+						changeDown[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y))
+						changeNormDown[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y)*(weightSums[0]/weightSums[y]))
+					if (hists[i].GetBinContent(y) - hists[0].GetBinContent(y)) > 0:
+						changeUp[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y))
+						changeNormUp[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y)*(weightSums[0]/weightSums[y]))
 
 		plotPad = TPad("plotPad","plotPad",0,0,1,1)			
 		plotPad.UseCurrentStyle()
@@ -268,12 +297,31 @@ def main():
 		for i in range(0,len(binning)-1):
 			masses.append((binning[i]+binning[i+1])/2)
 		
+		graphUp = TGraph()
+		graphDown = TGraph()
 		graph = TGraph()
+		graphNormUp = TGraph()
+		graphNormDown = TGraph()
+		graphNorm = TGraph()
 		print(len(masses),len(changeUp),len(changeDown))
-		### Add a loop to get the 68% envelope of the changes in each bin to compute the PDF uncertainty. Add it as a point to the graph. 	
+		for i in range(0,len(masses)):
+			print(i, len(changeUp[i]), len(changeDown[i]))
+			graphUp.SetPoint(i,masses[i],sorted(changeUp[i])[int(len(changeUp[i])*0.67)])
+			graphDown.SetPoint(i,masses[i],sorted(changeDown[i])[int(len(changeDown[i])*0.33)])
+			uncert = (sorted(change[i])[84]-sorted(change[i])[16])/2
+			print (uncert)
+			graph.SetPoint(i,masses[i],uncert)
+
+			graphNormUp.SetPoint(i,masses[i],sorted(changeNormUp[i])[int(len(changeNormUp[i])*0.67)])
+			graphNormDown.SetPoint(i,masses[i],sorted(changeNormDown[i])[int(len(changeNormDown[i])*0.33)])
+			uncertNorm = (sorted(changeNorm[i])[84]-sorted(changeNorm[i])[16])/2
+			graphNorm.SetPoint(i,masses[i],uncertNorm)
+			
 
 		
 		graph.Draw("lp")
+		graphNorm.SetMarkerColor(ROOT.kRed)
+		graphNorm.SetLineColor(ROOT.kRed)
 
 		func = ROOT.TF1("f1","pol4")
 		graph.Fit("f1")

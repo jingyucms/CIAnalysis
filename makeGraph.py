@@ -71,8 +71,8 @@ if args.add and args.do2016:
 	bvals = [i for i in range(len(lvals))]
 	helis = [""]
 	intfs = [""]
-	supers = [2000, 2200, 2600, 3000, 3400, 10000]
-	grbins = [2000, 2200, 2600, 3000, 3400]
+	supers = [1800, 2200, 2600, 3000, 3400, 10000]
+	grbins = [1800, 2200, 2600, 3000, 3400]
 	grcols = [r.kBlack, r.kRed, r.kBlue, r.kYellow, r.kViolet, r.kOrange]
 	extragrbins = [1900+x for x in range(0, 1500, 200)]
 elif args.add:
@@ -82,8 +82,8 @@ elif args.add:
 	bvals = [i for i in range(len(lvals))]
 	helis = [""]
 	intfs = [""]
-	supers = [2000, 2200, 2600, 3000, 3400, 10000]
-	grbins = [2000, 2200, 2600, 3000, 3400]
+	supers = [1800, 2200, 2600, 3000, 3400, 10000]
+	grbins = [1800, 2200, 2600, 3000, 3400]
 	grcols = [r.kBlack, r.kRed, r.kBlue, r.kYellow, r.kViolet, r.kGreen]
 	extragrbins = [1900+x for x in range(0, 1500, 200)]
 #elif args.add:
