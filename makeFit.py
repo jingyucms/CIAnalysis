@@ -58,6 +58,7 @@ if not os.path.exists('fitPlots'):
 if args.add:
 	if args.do2016:
 		lvals = ["%.1f"%(3.5+i*0.5) for i in range(12)]
+		lvals.append("10")
 		lvals.append("100000")
 		helis = [""]
 		intfs = [""]

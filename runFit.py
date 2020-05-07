@@ -32,7 +32,8 @@ for cs in csbins:
 			if args.add and "Graph" in program:
 				cmd = cmd + " --fixinf" 
 				if args.do2016:
-					cmd = cmd + " --fitrange 3 110000  --constraint '0 0 1e4' --constraint '1 0 1e9' --constraint '2 0 1e9'" 
+					# ~ cmd = cmd + " --fitrange 3 110000  --constraint '0 0 1e4' --constraint '1 0 1e9' --constraint '2 0 1e9'" 
+					cmd = cmd + " --fitrange 3 110000" 
 				else:	
 					cmd = cmd + " --fitrange 3.5 110  --constraint '0 0 1e4' --constraint '1 0 1e9' --constraint '2 0 1e9'" 
 			if not args.add and "Graph" in program:

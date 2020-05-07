@@ -36,10 +36,10 @@ crossSections = {
 "dy4500to6000":2.787E-7,
 "dy6000toInf":9.56E-9,
 
-# ~ "tW":35.6,
-# ~ "Wantitop":35.6,
-"tW":19.47,
-"Wantitop":19.47,
+"tW":35.6,
+"Wantitop":35.6,
+# ~ "tW":19.47,
+# ~ "Wantitop":19.47,
 "Wjets":61526.7,
 "WW200to600":1.385,
 "WW600to1200":0.0566,
@@ -79,10 +79,10 @@ crossSections = {
 "dy4500to6000_2018":2.787E-7,
 "dy6000toInf_2018":9.56E-9,
 
-# ~ "tW_2018":35.6,
-# ~ "Wantitop_2018":35.6,
-"tW_2018":19.47,
-"Wantitop_2018":19.47,
+"tW_2018":35.6,
+"Wantitop_2018":35.6,
+# ~ "tW_2018":19.47,
+# ~ "Wantitop_2018":19.47,
 "Wjets_2018":61526.7,
 "WW200to600_2018":1.385,
 "WW600to1200_2018":0.0566,
@@ -120,7 +120,7 @@ crossSections = {
 "dy800to1400_2016":0.01678,
 "dy1400to2300_2016":0.00139,
 "dy2300to3500_2016":0.00008948,
-"dy3500to4500_2016":0.0000041,
+"dy3500to4500_2016":0.000004135,
 "dy4500to6000_2016":4.56E-7,
 "dy6000toInf_2016":2.06E-8,
 
@@ -136,13 +136,13 @@ crossSections = {
 # ~ "dy6000toInf_2016":9.56E-9,
 
 
-# ~ "tW_2016":35.6,
-# ~ "Wantitop_2016":35.6,
-"tW_2016":19.47,
-"Wantitop_2016":19.47,
+"tW_2016":35.6,
+"Wantitop_2016":35.6,
+# ~ "tW_2016":19.47,
+# ~ "Wantitop_2016":19.47,
 "Wjets_2016":61526.7,
-"WW200to600_2016":1.385,
-"WW600to1200_2016":0.0566,
+"WW200to600_2016":1.386,
+"WW600to1200_2016":0.05665,
 "WW1200to2500_2016":0.003557,
 "WW2500_2016": 0.00005395,
 "WWinclusive_2016":12.178,
@@ -170,7 +170,7 @@ crossSections = {
 "ttbar_lep_500to800_2016":0.32611,
 "ttbar_lep_800to1200_2016":0.03265,
 "ttbar_lep_1200to1800_2016":0.00305,
-"ttbar_lep_1800toInf_2016":0.00017,
+"ttbar_lep_1800toInf_2016":0.000174,
 
 "qcd50to80_2016":0,
 "qcd80to120_2016":2762530,
@@ -5522,7 +5522,8 @@ class Backgrounds2016:
 		
 		
 	class Top:
-		subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016"]
+		# ~ subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016"]
+		subprocesses = ["ttbar_lep_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016"]
 		# ~ subprocesses = ["Wantitop","tW","ttbar_lep"]
 		#~ subprocesses = ["ttbar_lep"]
 		label = "t#bar{t}, tW, #bar{t}W"
@@ -5531,10 +5532,42 @@ class Backgrounds2016:
 		uncertainty = 0.04
 		scaleFac     = 1.	
 		additionalSelection = None
-		
+	class ST:
+		# ~ subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016"]
+		# ~ subprocesses = ["Wantitop_2016","tW_2016"]
+		subprocesses = ["Wantitop_2016"]
+		# ~ subprocesses = ["tW_2016"]
+		# ~ subprocesses = ["Wantitop","tW","ttbar_lep"]
+		#~ subprocesses = ["ttbar_lep"]
+		label = "t#bar{t}, tW, #bar{t}W"
+		fillcolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.	
+		additionalSelection = None
+	class HighTop:
+		# ~ #~ subprocesses = ["ST_tW_antitop","ST_tW_top","TTTo2L2Nu","TTTo2L2Nu_M500To800","TTTo2L2Nu_M800To1200","TTTo2L2Nu_M1200To1800","TTTo2L2Nu_M1800ToInf"]
+		subprocesses = ["ttbar_lep_1800toInf_2016"]
+		# ~ subprocesses = ["tW_2018"]
+		#~ subprocesses = ["ttbar_lep"]
+		label = "t#bar{t}, tW, #bar{t}W"
+		fillcolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.	
+		additionalSelection = None		
 	class Diboson:
 		#subprocesses = ["ZZ","WZ","WWinclusive"]
 		subprocesses = ["ZZ_2016","WZ_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016"]
+		label = "WW, WZ, ZZ"
+		fillcolor = ROOT.kGreen+3
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.	
+		additionalSelection = None
+	class WW:
+		#subprocesses = ["ZZ","WZ","WWinclusive"]
+		subprocesses = ["WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016"]
 		label = "WW, WZ, ZZ"
 		fillcolor = ROOT.kGreen+3
 		linecolor = ROOT.kBlack	
@@ -5553,9 +5586,57 @@ class Backgrounds2016:
 		uncertainty = 0.04
 		scaleFac     = 1.	
 		additionalSelection = None
+	class DYTauTau:
+		# ~ subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep1800toInf_2016","ZZ_2016","WZ_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50_2016"]
+		subprocesses = ["dyInclusive50_2016"]
+		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
+		fillcolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.	
+		additionalSelection = None
 	class OtherEle:
 		# ~ subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016","ZZ_2016","WZ_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50_2016"]
 		subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016","WZ2L2Q_2016","WZ3LNu_2016","ZZ2L2Nu_2016","ZZ2L2Q_2016","ZZ4L_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50"]
+		# ~ subprocesses = ["ttbar_lep_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016","WZ3LNu_2016","ZZ2L2Nu_2016","ZZ2L2Q_2016","ZZ4L_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50"]
+		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
+		fillcolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.	
+		additionalSelection = None
+	class DibosonEle:
+		# ~ subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016","ZZ_2016","WZ_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50_2016"]
+		subprocesses = ["WZ2L2Q_2016","WZ3LNu_2016","ZZ2L2Nu_2016","ZZ2L2Q_2016","ZZ4L_2016"]
+		# ~ subprocesses = ["WZ2L2Q_2016"]
+		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
+		fillcolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.	
+		additionalSelection = None
+	class WZ2L2Q:
+		# ~ subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016","ZZ_2016","WZ_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50_2016"]
+		# ~ subprocesses = ["WZ2L2Q_2016","WZ3LNu_2016","ZZ2L2Nu_2016","ZZ2L2Q_2016","ZZ4L_2016"]
+		subprocesses = ["WZ2L2Q_2016"]
+		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
+		fillcolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.	
+		additionalSelection = None
+	class DYTT:
+		# ~ subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016","ZZ_2016","WZ_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50_2016"]
+		subprocesses = ["dyInclusive50"]
+		# ~ subprocesses = ["WZ2L2Q_2016"]
 		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
@@ -5658,7 +5739,8 @@ class Backgrounds2018:
 		additionalSelection = None
 	class Top:
 		#~ subprocesses = ["ST_tW_antitop","ST_tW_top","TTTo2L2Nu","TTTo2L2Nu_M500To800","TTTo2L2Nu_M800To1200","TTTo2L2Nu_M1200To1800","TTTo2L2Nu_M1800ToInf"]
-		subprocesses = ["Wantitop_2018","tW_2018","ttbar_lep_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018']
+		# ~ subprocesses = ["Wantitop_2018","tW_2018","ttbar_lep_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018']
+		subprocesses = ["ttbar_lep_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018']
 		#~ subprocesses = ["ttbar_lep"]
 		label = "t#bar{t}, tW, #bar{t}W"
 		fillcolor = ROOT.kRed-4
@@ -5666,9 +5748,31 @@ class Backgrounds2018:
 		uncertainty = 0.04
 		scaleFac     = 1.	
 		additionalSelection = None
-	class Diboson:
+	class STop:
+		#~ subprocesses = ["ST_tW_antitop","ST_tW_top","TTTo2L2Nu","TTTo2L2Nu_M500To800","TTTo2L2Nu_M800To1200","TTTo2L2Nu_M1200To1800","TTTo2L2Nu_M1800ToInf"]
+		subprocesses = ["tW_2018"]
+		#~ subprocesses = ["ttbar_lep"]
+		label = "t#bar{t}, tW, #bar{t}W"
+		fillcolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.	
+		additionalSelection = None
+	class HighTop:
+		# ~ #~ subprocesses = ["ST_tW_antitop","ST_tW_top","TTTo2L2Nu","TTTo2L2Nu_M500To800","TTTo2L2Nu_M800To1200","TTTo2L2Nu_M1200To1800","TTTo2L2Nu_M1800ToInf"]
+		subprocesses = ["ttbar_lep_1800toInf_2018"]
+		# ~ subprocesses = ["tW_2018"]
+		#~ subprocesses = ["ttbar_lep"]
+		label = "t#bar{t}, tW, #bar{t}W"
+		fillcolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.	
+		additionalSelection = None
+	class DibosonEle:
 		# ~ subprocesses = ["ZZ_2018","WZ_2018","WWinclusive_2018","WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
-		subprocesses = ["ZZ4L_2018",'ZZ2L2Q_2018','ZZ2L2Nu_2018',"WZ3LNu_2018",'WZ2L2Q',"WWinclusive_2018","WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
+		# ~ subprocesses = ["ZZ4L_2018",'ZZ2L2Q_2018','ZZ2L2Nu_2018',"WZ3LNu_2018",'WZ2L2Q_2018']
+		subprocesses = ['WZ2L2Q_2018']
 		#~ subprocesses = ["ZZ","WZ","WWTo2L2Nu","WWTo2L2Nu_M600To1200","WWTo2L2Nu_M1200To2500","WWTo2L2Nu_M2500ToInf"]
 		label = "WW, WZ, ZZ"
 		fillcolor = ROOT.kGreen+3
@@ -5682,6 +5786,17 @@ class Backgrounds2018:
 		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		# ~ subprocesses = ["Wantitop_2018","tW_2018","ttbar_lep_2018","ZZ_2018","WZ_2018","WWinclusive_2018","dyInclusive50_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018',"WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
 		subprocesses = ["Wantitop_2018","tW_2018","ttbar_lep_2018","ZZ4L_2018","ZZ2L2Q_2018","ZZ2L2Nu_2018","WZ3LNu_2018","WZ2L2Q_2018","WWinclusive_2018","dyInclusive50_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018',"WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
+		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
+		fillcolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.	
+		additionalSelection = None
+	class WW:
+		#~ subprocesses = ["ST_tW_antitop","ST_tW_top","TTTo2L2Nu","TTTo2L2Nu_M500To800","TTTo2L2Nu_M800To1200","TTTo2L2Nu_M1200To1800","TTTo2L2Nu_M1800ToInf","ZZ","WZ","WWTo2L2Nu","WWTo2L2Nu_M600To1200","WWTo2L2Nu_M1200To2500","WWTo2L2Nu_M2500ToInf"]
+		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		# ~ subprocesses = ["Wantitop_2018","tW_2018","ttbar_lep_2018","ZZ_2018","WZ_2018","WWinclusive_2018","dyInclusive50_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018',"WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
+		subprocesses = ["WWinclusive_2018","WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
 		fillcolor = ROOT.kRed-4
 		linecolor = ROOT.kBlack	

@@ -68,7 +68,7 @@ def main():
 
 
 			if "2016" in label:	
-					lumi = 35.9*1000
+					lumi = 35922.0
 					if "bbbe" in massPlot.histName:
 						zScaleFac = zScale2016["electrons"][0]
 					elif "bb" in massPlot.histName:
@@ -79,7 +79,7 @@ def main():
 						zScaleFac = zScale2016["electrons"][0]
 
 			elif "2018" in label:
-					lumi = 59.97*1000
+					lumi = 59401.0
 					if "bbbe" in massPlot.histName:
 						zScaleFac = zScale2018["electrons"][0]
 					elif "bb" in massPlot.histName:
@@ -89,7 +89,7 @@ def main():
 					else:
 						zScaleFac = zScale2018["electrons"][0]
 			else:
-					lumi = 41.529*1000
+					lumi = 41500.0
 					if "bbbe" in massPlot.histName:
 						zScaleFac = zScale["electrons"][0]
 					elif "bb" in massPlot.histName:
@@ -160,8 +160,27 @@ def main():
 				jetHist.SetName("bkgHistJets_%s"%label)				
 			jetHist.SetDirectory(fResult)				
 
-			print (cs, label, hist.Integral(hist.FindBin(1800),hist.FindBin(6000-0.01)))
+			# ~ print (cs, label, hist.Integral(hist.FindBin(1800),hist.FindBin(6000-0.01)))
+			# ~ print (cs, label, dyHist.Integral(dyHist.FindBin(400),dyHist.FindBin(500-0.01)))
+			print (cs, label, dyHist.Integral(dyHist.FindBin(120),dyHist.FindBin(400-0.01)))
+			print (cs, label, dyHist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)))
+			print (cs, label, dyHist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)))
+			print (cs, label, dyHist.Integral(dyHist.FindBin(900),dyHist.FindBin(1300-0.01)))
+			print (cs, label, dyHist.Integral(dyHist.FindBin(1300),dyHist.FindBin(1800-0.01)))
 			print (cs, label, dyHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(6000-0.01)))
+			
+			print (cs, label, otherHist.Integral(dyHist.FindBin(120),dyHist.FindBin(400-0.01)))
+			print (cs, label, otherHist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)))
+			print (cs, label, otherHist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)))
+			print (cs, label, otherHist.Integral(dyHist.FindBin(900),dyHist.FindBin(1300-0.01)))
+			print (cs, label, otherHist.Integral(dyHist.FindBin(1300),dyHist.FindBin(1800-0.01)))
+			print (cs, label, otherHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(6000-0.01)))
+			print (cs, label, hist.Integral(dyHist.FindBin(120),dyHist.FindBin(400-0.01)))
+			print (cs, label, hist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)))
+			print (cs, label, hist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)))
+			print (cs, label, hist.Integral(dyHist.FindBin(900),dyHist.FindBin(1300-0.01)))
+			print (cs, label, hist.Integral(dyHist.FindBin(1300),dyHist.FindBin(1800-0.01)))
+			print (cs, label, hist.Integral(dyHist.FindBin(1800),dyHist.FindBin(6000-0.01)))
 
 			dyHist.SetDirectory(fResult)
 			dyHistScaleUp.SetDirectory(fResult)

@@ -137,6 +137,9 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=Fa
 			result = rootFile.Get(histName2)
 		else:	
 			result = rootFile.Get(histName)
+
+			
+			
 	if logBins:
 		if ( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName)):
 			if not muon:
@@ -153,6 +156,13 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=Fa
 		if not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName):
 			result.Rebin(rebin)
 
+	# ~ if not muon:		
+		# ~ for i in range(0, result.GetNbinsX()+1):
+			# ~ if result.GetBinContent(i)<0 : 
+						# ~ result.SetBinContent(i,0)
+						# ~ result.SetBinError(i,0)
+	
+	print (path, fileName, histName)
 	result.SetDirectory(0)
 	return deepcopy(result)
 	
@@ -343,7 +353,12 @@ class Process:
 				else:	
 					tempHist = loadHistoFromFile(fileNamesEle[sample],plot.histName,plot.rebin,plot.muon,plot.logX,genMass=genMass)
 				if not self.normalized:
-					tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])*zScaleFac)
+					if plot.muon:
+						tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])*zScaleFac)
+					else:	
+						# ~ tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*zScaleFac)
+						tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])*zScaleFac)
+						
 					# ~ print (lumi, self.xsecs[index] , self.nEvents[index] , self.negWeightFraction[index], zScaleFac)
 				if histo == None:
 					histo = tempHist.Clone()

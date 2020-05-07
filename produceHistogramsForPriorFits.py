@@ -201,15 +201,15 @@ def main():
 						eventCounts = totalNumberOfGeneratedEvents(path,plot.muon)  
 						negWeights = negWeightFractions(path,plot.muon)
 						if "2016" in label:	
-							lumi = 35.9*1000
+							lumi = 35922.0
 							if plot.muon:
 								lumi = 36294.6
 						elif "2018" in label:	
-							lumi = 59.4*1000
+							lumi = 59401.0
 							if plot.muon:
 								lumi = 61298.775231718995
 						else:
-							lumi = 41.529*1000
+							lumi = 41500.0
 							if plot.muon:
 								lumi = 42079.880396
 						if "2016" in label:		
@@ -258,6 +258,7 @@ def main():
 
 
 						for index, massBin in enumerate(massBins):
+							print (backgroundHist.GetBinContent(index))
 							function = fitFile.Get("fn_m%d_%s"%(massBin,model))
 							fitR = fitFile.Get("fitR_m%d_%s"%(massBin,model))
 							pars = fitR.GetParams()
