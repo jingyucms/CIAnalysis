@@ -127,6 +127,9 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=Fa
 					tmpResult = rootFile.Get("jets_h_mee_all_BB")
 				else:
 					tmpResult = rootFile.Get("jets_h_mee_all_BE")
+				for i in range(0,tmpResult.GetNbinsX()):
+					tmpResult.SetBinContent(i,tmpResult.GetBinContent(i)*tmpResult.GetBinWidth(i))
+					tmpResult.SetBinError(i,tmpResult.GetBinError(i)*tmpResult.GetBinWidth(i))
 		result = tmpResult.Clone("jets")
 		if '_CSPos' in histName or '_CSNeg' in histName:
 			result.Scale(0.5)
@@ -162,7 +165,7 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=Fa
 						# ~ result.SetBinContent(i,0)
 						# ~ result.SetBinError(i,0)
 	
-	print (path, fileName, histName)
+	# ~ print (path, fileName, histName)
 	result.SetDirectory(0)
 	return deepcopy(result)
 	

@@ -6,13 +6,14 @@ from copy import deepcopy
 import pickle
 
 
-
 def main():
 	gROOT.SetBatch(True)
 	
 	parser = argparse.ArgumentParser(description='Process some integers.')
 	
 	parser.add_argument("-add", "--add", action="store_true", dest="useADD", default=False,
+						  help="use ADD instead of CI.")
+	parser.add_argument("-truncation", "--truncatio", action="store_true", dest="truncation", default=False,
 						  help="use ADD instead of CI.")
 	parser.add_argument("-s", "--suffix", dest="suffix", default='nominal',
 						  help="name of systematic to use")
@@ -33,7 +34,10 @@ def main():
 		interferences = [""]
 		hels = [""]
 		massBins = [1800, 2200, 2600, 3000, 3400]
-		
+
+	outf = "parametrizations/"
+	if args.truncation:
+			outf = "parametrizationsTruncation/"
 	signalYields = {}	
 	for label in labels:
 		print (label)
@@ -56,23 +60,23 @@ def main():
 
 							name = "%sto2e"	%addci
 						if useADD:
-							# ~ if not "2016" in label: massBins = [400, 700, 1500, 2500, 3500]
-							# ~ else: massBins = [2000, 2200, 2600, 3000, 3400]
-							massBins = [1800, 2200, 2600, 3000, 3400]
+							if "2016" in label: massBins = [1800, 2200, 2600, 3000, 3400]
+							else: massBins = [1800, 2200, 2600, 3000, 3400]
+							# ~ massBins = [1800, 2200, 2600, 3000, 3400]
 							if "2016" in label:
 								# ~ fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs),"READ")
 						else:	
 							if "2016" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:	
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
 						# ~ print (fitFile.ls())		
 						# ~ print ("%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs))
 						for l in lambdas:
@@ -131,6 +135,9 @@ def main():
 				fileName = "%ssignalYields"%addci
 			else:
 				fileName = "%ssignalYieldsEle"%addci
+			
+			if args.truncation:
+				fileName+="Truncation"
 			
 			if suffix == "nominal":
 				otherSuffix = "default"

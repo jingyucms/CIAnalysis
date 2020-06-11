@@ -5,6 +5,7 @@ import sys
 import copy
 
 # ~ path = "/uscms_data/d3/jschulte/files/"
+# ~ path = "../files/eleBackup/"
 path = "../files/"
 
 
@@ -36,10 +37,10 @@ crossSections = {
 "dy4500to6000":2.787E-7,
 "dy6000toInf":9.56E-9,
 
-"tW":35.6,
-"Wantitop":35.6,
-# ~ "tW":19.47,
-# ~ "Wantitop":19.47,
+# ~ "tW":35.6,
+# ~ "Wantitop":35.6,
+"tW":19.47,
+"Wantitop":19.47,
 "Wjets":61526.7,
 "WW200to600":1.385,
 "WW600to1200":0.0566,
@@ -79,10 +80,10 @@ crossSections = {
 "dy4500to6000_2018":2.787E-7,
 "dy6000toInf_2018":9.56E-9,
 
-"tW_2018":35.6,
-"Wantitop_2018":35.6,
-# ~ "tW_2018":19.47,
-# ~ "Wantitop_2018":19.47,
+# ~ "tW_2018":35.6,
+# ~ "Wantitop_2018":35.6,
+"tW_2018":19.47,
+"Wantitop_2018":19.47,
 "Wjets_2018":61526.7,
 "WW200to600_2018":1.385,
 "WW600to1200_2018":0.0566,
@@ -136,10 +137,10 @@ crossSections = {
 # ~ "dy6000toInf_2016":9.56E-9,
 
 
-"tW_2016":35.6,
-"Wantitop_2016":35.6,
-# ~ "tW_2016":19.47,
-# ~ "Wantitop_2016":19.47,
+# ~ "tW_2016":35.6,
+# ~ "Wantitop_2016":35.6,
+"tW_2016":19.47,
+"Wantitop_2016":19.47,
 "Wjets_2016":61526.7,
 "WW200to600_2016":1.386,
 "WW600to1200_2016":0.05665,
@@ -553,6 +554,7 @@ crossSections = {
 'CITo2Mu_Lam100kTeVConLL_M2000':0.000158,
 'CITo2Mu_Lam100kTeVConLL_M800':0.013450,
 'CITo2Mu_Lam100kTeVConLL_M1300':0.001526,
+'CITo2Mu_Lam100kTeVConLL_M1700':0.001526,
 'CITo2Mu_Lam100kTeVConLR_M300':0.559400,
 'CITo2Mu_Lam100kTeVConLR_M800':0.013450,
 'CITo2Mu_Lam100kTeVConLR_M1300':0.001519,
@@ -814,6 +816,7 @@ crossSections = {
 # 0.051, 0.017, 0.0069, 0.0030, 0.0014, 0.00069
 # 0.00037, 0.00020, 0.00012, 0.000072, 0.000045
 # 0.000031, 0.000013 for signal only
+# ~ 'ADDGravToLL_Lam100k_M1700': 0.001524,
 # need to add on DY crosssec: 0.001171
 'ADDGravToLL_Lam3500_M1700':0.052171,
 'ADDGravToLL_Lam4000_M1700':0.018171,
@@ -828,7 +831,53 @@ crossSections = {
 'ADDGravToLL_Lam8500_M1700':0.001216,
 'ADDGravToLL_Lam9000_M1700':0.001202,
 'ADDGravToLL_Lam10000_M1700':0.001184,
-'ADDGravToLL_Lam100k_M1700': 0.001524,
+'ADDGravToLL_Lam15000_M1700':0.001174,
+'ADDGravToLL_Lam30000_M1700':0.001170,
+'ADDGravToLL_Lam50000_M1700':0.001167,
+'ADDGravToLL_Lam100000_M1700':0.001176,
+'ADDGravToLL_Lam1000000_M1700':0.001169,
+'ADDGravToLL_Lam100k_M1700': 1.168e-03,
+
+
+'ADDGravToLL_Lam3500_M2800':0.032260,
+'ADDGravToLL_Lam4000_M2800':0.011200,
+'ADDGravToLL_Lam4500_M2800':0.004384,
+'ADDGravToLL_Lam5000_M2800':0.001927,
+'ADDGravToLL_Lam5500_M2800':0.000927,
+'ADDGravToLL_Lam6000_M2800':0.000489,
+'ADDGravToLL_Lam6500_M2800':0.000284,
+'ADDGravToLL_Lam7000_M2800':0.000183,
+'ADDGravToLL_Lam7500_M2800':0.000129,
+'ADDGravToLL_Lam8000_M2800':0.000100,
+'ADDGravToLL_Lam8500_M2800':0.000083,
+'ADDGravToLL_Lam9000_M2800':0.000073,
+'ADDGravToLL_Lam10000_M2800':0.000064,
+'ADDGravToLL_Lam15000_M2800':0.000057,
+'ADDGravToLL_Lam30000_M2800':0.000057,
+'ADDGravToLL_Lam50000_M2800':0.000056,
+'ADDGravToLL_Lam100000_M2800':0.000056,
+'ADDGravToLL_Lam1000000_M2800':0.000057,
+'ADDGravToLL_Lam100k_M2800':0.000057,
+
+
+# ~ 'ADDGravToLL_Lam3000_M1700':0.176900,
+# ~ 'ADDGravToLL_Lam3500_M1700':0.052380,
+# ~ 'ADDGravToLL_Lam4000_M1700':0.018690,
+# ~ 'ADDGravToLL_Lam4500_M1700':0.008028,
+# ~ 'ADDGravToLL_Lam5000_M1700':0.008022,
+# ~ 'ADDGravToLL_Lam5500_M1700':0.004121,
+# ~ 'ADDGravToLL_Lam6000_M1700':0.002551,
+# ~ 'ADDGravToLL_Lam6500_M1700':0.001859,
+# ~ 'ADDGravToLL_Lam7000_M1700':0.001375,
+# ~ 'ADDGravToLL_Lam7500_M1700':0.001289,
+# ~ 'ADDGravToLL_Lam8000_M1700':0.001238,
+# ~ 'ADDGravToLL_Lam8500_M1700':0.001201,
+# ~ 'ADDGravToLL_Lam9000_M1700':0.001198,
+# ~ 'ADDGravToLL_Lam10000_M1700':0.001182,
+# ~ 'ADDGravToLL_Lam100k_M1700': 1.168e-03,
+
+
+
 
 # ~ 'ADDGravTo2E_Lam3500_M1700':0.052171,
 # ~ 'ADDGravTo2E_Lam4000_M1700':0.018171,
@@ -851,42 +900,52 @@ crossSections = {
 "ADDGravToLL_LambdaT-100000_M-2000ToInf": 0.00050670,
 "ADDGravToLL_LambdaT-100000_M-300To800": 1.90600000,
 "ADDGravToLL_LambdaT-100000_M-800To1300": 0.04225000,
+"ADDGravToLL_LambdaT-100000_M-2800ToInf": 5.183e-05,
 "ADDGravToLL_LambdaT-10000_M-1300To2000": 0.00479200,
 "ADDGravToLL_LambdaT-10000_M-2000ToInf": 0.00051600,
 "ADDGravToLL_LambdaT-10000_M-300To800": 1.90900000,
 "ADDGravToLL_LambdaT-10000_M-800To1300": 0.04227000,
+"ADDGravToLL_LambdaT-10000_M-2800ToInf": 5.707e-05,
 "ADDGravToLL_LambdaT-11000_M-1300To2000": 0.00480000,
 "ADDGravToLL_LambdaT-11000_M-2000ToInf": 0.00050960,
 "ADDGravToLL_LambdaT-11000_M-300To800": 1.90700000,
 "ADDGravToLL_LambdaT-11000_M-800To1300": 0.04222000,
+"ADDGravToLL_LambdaT-11000_M-2800ToInf": 5.421e-05,
 "ADDGravToLL_LambdaT-12000_M-1300To2000": 0.00480300,
 "ADDGravToLL_LambdaT-12000_M-2000ToInf": 0.00050900,
 "ADDGravToLL_LambdaT-12000_M-300To800": 1.90800000,
 "ADDGravToLL_LambdaT-12000_M-800To1300": 0.04222000,
+"ADDGravToLL_LambdaT-12000_M-2800ToInf": 5.319e-05,
 "ADDGravToLL_LambdaT-4000_M-1300To2000": 0.00736600,
 "ADDGravToLL_LambdaT-4000_M-2000ToInf": 0.01647000,
 "ADDGravToLL_LambdaT-4000_M-300To800": 1.64300000,
 "ADDGravToLL_LambdaT-4000_M-800To1300": 0.03701000,
+"ADDGravToLL_LambdaT-4000_M-2800ToInf": 8.363e-03,
 "ADDGravToLL_LambdaT-5000_M-1300To2000": 0.00531200,
 "ADDGravToLL_LambdaT-5000_M-2000ToInf": 0.00261800,
 "ADDGravToLL_LambdaT-5000_M-300To800": 1.90600000,
 "ADDGravToLL_LambdaT-5000_M-800To1300": 0.04249000,
+"ADDGravToLL_LambdaT-5000_M-2800ToInf": 1.450e-03,
 "ADDGravToLL_LambdaT-6000_M-1300To2000": 0.00491500,
 "ADDGravToLL_LambdaT-6000_M-2000ToInf": 0.00099480,
 "ADDGravToLL_LambdaT-6000_M-300To800": 1.90900000,
 "ADDGravToLL_LambdaT-6000_M-800To1300": 0.04226000,
+"ADDGravToLL_LambdaT-6000_M-2800ToInf": 3.782e-04,
 "ADDGravToLL_LambdaT-7000_M-1300To2000": 0.00484100,
 "ADDGravToLL_LambdaT-7000_M-2000ToInf": 0.00064960,
 "ADDGravToLL_LambdaT-7000_M-300To800": 1.90500000,
 "ADDGravToLL_LambdaT-7000_M-800To1300": 0.04232000,
+"ADDGravToLL_LambdaT-7000_M-2800ToInf": 1.456e-04,
 "ADDGravToLL_LambdaT-8000_M-1300To2000": 0.00481000,
 "ADDGravToLL_LambdaT-8000_M-2000ToInf": 0.00055670,
 "ADDGravToLL_LambdaT-8000_M-300To800": 1.90700000,
 "ADDGravToLL_LambdaT-8000_M-800To1300": 0.04222000,
+"ADDGravToLL_LambdaT-8000_M-2800ToInf": 8.414e-05,
 "ADDGravToLL_LambdaT-9000_M-1300To2000": 0.00481100,
 "ADDGravToLL_LambdaT-9000_M-2000ToInf": 0.00052680,
 "ADDGravToLL_LambdaT-9000_M-300To800": 1.90000000,
 "ADDGravToLL_LambdaT-9000_M-800To1300": 0.04228000,
+"ADDGravToLL_LambdaT-9000_M-2800ToInf": 6.396e-05,
 
 }
 
@@ -1140,6 +1199,7 @@ fileNames = {
 
 
 "CITo2Mu_Lam100kTeVConLL_M1300":"dileptonAna_muons_2016_CITo2Mu_Lam100kTeVConLL_M1300.root",
+"CITo2Mu_Lam100kTeVConLL_M1700":"dileptonAna_muons_2016_CITo2Mu_Lam100kTeVConLL_M1700.root",
 "CITo2Mu_Lam100kTeVConLL_M2000":"dileptonAna_muons_2016_CITo2Mu_Lam100kTeVConLL_M2000.root",
 "CITo2Mu_Lam100kTeVConLL_M300":"dileptonAna_muons_2016_CITo2Mu_Lam100kTeVConLL_M300.root",
 "CITo2Mu_Lam100kTeVConLL_M800":"dileptonAna_muons_2016_CITo2Mu_Lam100kTeVConLL_M800.root",
@@ -1420,9 +1480,9 @@ fileNames = {
 "ADDGravToLL_Lam3500_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT3500_M1700.root",
 "ADDGravToLL_Lam4000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT4000_M1700.root",
 "ADDGravToLL_Lam4500_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT4500_M1700.root",
-"ADDGravToLL_Lam5000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT5000_M1700.root",
-"ADDGravToLL_Lam5500_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT5500_M1700.root",
-"ADDGravToLL_Lam6000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT6000_M1700.root",
+"ADDGravToLL_Lam5000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT5500_M1700.root",
+"ADDGravToLL_Lam5500_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT6000_M1700.root",
+"ADDGravToLL_Lam6000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT6500_M1700.root",
 "ADDGravToLL_Lam6500_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT6500_M1700.root",
 "ADDGravToLL_Lam7000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT7000_M1700.root",
 "ADDGravToLL_Lam7500_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT7500_M1700.root",
@@ -1430,89 +1490,137 @@ fileNames = {
 "ADDGravToLL_Lam8500_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT8500_M1700.root",
 "ADDGravToLL_Lam9000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT9000_M1700.root",
 "ADDGravToLL_Lam10000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT10000_M1700.root",
+"ADDGravToLL_Lam15000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT15000_M1700.root",
+"ADDGravToLL_Lam30000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT30000_M1700.root",
+"ADDGravToLL_Lam50000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT50000_M1700.root",
+"ADDGravToLL_Lam100000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT100000_M1700.root",
+"ADDGravToLL_Lam1000000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT1000000_M1700.root",
+"ADDGravToLL_Lam100k_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT100k_M1700.root",
+
+
+"ADDGravToLL_Lam3000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT3000_M2800.root",
+"ADDGravToLL_Lam3500_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT3500_M2800.root",
+"ADDGravToLL_Lam4000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT4000_M2800.root",
+"ADDGravToLL_Lam4500_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT4500_M2800.root",
+"ADDGravToLL_Lam5000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT5000_M2800.root",
+"ADDGravToLL_Lam5500_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT5500_M2800.root",
+"ADDGravToLL_Lam6000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT6000_M2800.root",
+"ADDGravToLL_Lam6500_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT6500_M2800.root",
+"ADDGravToLL_Lam7000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT7000_M2800.root",
+"ADDGravToLL_Lam7500_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT7500_M2800.root",
+"ADDGravToLL_Lam8000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT8000_M2800.root",
+"ADDGravToLL_Lam8500_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT8500_M2800.root",
+"ADDGravToLL_Lam9000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT9000_M2800.root",
+"ADDGravToLL_Lam10000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT10000_M2800.root",
+"ADDGravToLL_Lam15000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT15000_M2800.root",
+"ADDGravToLL_Lam30000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT30000_M2800.root",
+"ADDGravToLL_Lam50000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT50000_M2800.root",
+"ADDGravToLL_Lam100000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT100000_M2800.root",
+"ADDGravToLL_Lam1000000_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT1000000_M2800.root",
+"ADDGravToLL_Lam100k_M2800": "dileptonAna_muons_2016_ADDGravToLL_LambdaT100k_M2800.root",
+
 
 'ADDGravToLL_LambdaT-100000_M-1300To2000':'dileptonAna_muons_ADDGravToLL_LambdaT-100000_M-1300To2000.root',
 'ADDGravToLL_LambdaT-100000_M-2000ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-100000_M-2000ToInf.root',                                                                                                                                                                             
 'ADDGravToLL_LambdaT-100000_M-300To800':'dileptonAna_muons_ADDGravToLL_LambdaT-100000_M-300To800.root',                                                                                                                                                                              
 'ADDGravToLL_LambdaT-100000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-100000_M-800To1300.root',                                                                                                                                                                               
+'ADDGravToLL_LambdaT-100000_M-2800ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-100000_M-2800ToInf.root',                                                                                                                                                                               
 'ADDGravToLL_LambdaT-10000_M-1300To2000':'dileptonAna_muons_ADDGravToLL_LambdaT-10000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-10000_M-2000ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-10000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-10000_M-300To800':'dileptonAna_muons_ADDGravToLL_LambdaT-10000_M-300To800.root',                                                                                                                                                                                  
-'ADDGravToLL_LambdaT-10000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-10000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-10000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-10000_M-800To1300.root',
+'ADDGravToLL_LambdaT-10000_M-2800ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-10000_M-2800ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-11000_M-1300To2000':'dileptonAna_muons_ADDGravToLL_LambdaT-11000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-11000_M-2000ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-11000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-11000_M-300To800':'dileptonAna_muons_ADDGravToLL_LambdaT-11000_M-300To800.root',                                                                                                                                                                                  
-'ADDGravToLL_LambdaT-11000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-11000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-11000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-11000_M-800To1300.root',
+'ADDGravToLL_LambdaT-11000_M-2800ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-11000_M-2800ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-12000_M-1300To2000':'dileptonAna_muons_ADDGravToLL_LambdaT-12000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-12000_M-2000ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-12000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-12000_M-300To800':'dileptonAna_muons_ADDGravToLL_LambdaT-12000_M-300To800.root',                                                                                                                                                                                  
-'ADDGravToLL_LambdaT-12000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-12000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-12000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-12000_M-800To1300.root',
+'ADDGravToLL_LambdaT-12000_M-2800ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-12000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-4000_M-1300To2000':'dileptonAna_muons_ADDGravToLL_LambdaT-4000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-4000_M-2000ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-4000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-4000_M-300To800':'dileptonAna_muons_ADDGravToLL_LambdaT-4000_M-300To800.root',                                                                                                                                                                                   
-'ADDGravToLL_LambdaT-4000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-4000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-4000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-4000_M-800To1300.root',
+'ADDGravToLL_LambdaT-4000_M-2800ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-4000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-5000_M-1300To2000':'dileptonAna_muons_ADDGravToLL_LambdaT-5000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-5000_M-2000ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-5000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-5000_M-300To800':'dileptonAna_muons_ADDGravToLL_LambdaT-5000_M-300To800.root',                                                                                                                                                                                   
-'ADDGravToLL_LambdaT-5000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-5000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-5000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-5000_M-800To1300.root',
+'ADDGravToLL_LambdaT-5000_M-2800ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-5000_M-2800ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-6000_M-1300To2000':'dileptonAna_muons_ADDGravToLL_LambdaT-6000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-6000_M-2000ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-6000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-6000_M-300To800':'dileptonAna_muons_ADDGravToLL_LambdaT-6000_M-300To800.root',                                                                                                                                                                                   
-'ADDGravToLL_LambdaT-6000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-6000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-6000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-6000_M-800To1300.root',
+'ADDGravToLL_LambdaT-6000_M-2800ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-6000_M-2800ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-7000_M-1300To2000':'dileptonAna_muons_ADDGravToLL_LambdaT-7000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-7000_M-2000ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-7000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-7000_M-300To800':'dileptonAna_muons_ADDGravToLL_LambdaT-7000_M-300To800.root',                                                                                                                                                                                   
-'ADDGravToLL_LambdaT-7000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-7000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-7000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-7000_M-800To1300.root',
+'ADDGravToLL_LambdaT-7000_M-2800ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-7000_M-2800ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-8000_M-1300To2000':'dileptonAna_muons_ADDGravToLL_LambdaT-8000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-8000_M-2000ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-8000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-8000_M-300To800':'dileptonAna_muons_ADDGravToLL_LambdaT-8000_M-300To800.root',                                                                                                                                                                                   
-'ADDGravToLL_LambdaT-8000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-8000_M-800To1300.root',                                                                                                                                                                              
+'ADDGravToLL_LambdaT-8000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-8000_M-800To1300.root',
+'ADDGravToLL_LambdaT-8000_M-2800ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-8000_M-2800ToInf.root',                                                                                                                                                                              
 'ADDGravToLL_LambdaT-9000_M-1300To2000':'dileptonAna_muons_ADDGravToLL_LambdaT-9000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-9000_M-2000ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-9000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-9000_M-300To800':'dileptonAna_muons_ADDGravToLL_LambdaT-9000_M-300To800.root',   
 'ADDGravToLL_LambdaT-9000_M-800To1300':'dileptonAna_muons_ADDGravToLL_LambdaT-9000_M-800To1300.root',   
+'ADDGravToLL_LambdaT-9000_M-2800ToInf':'dileptonAna_muons_ADDGravToLL_LambdaT-9000_M-2800ToInf.root',
 
 'ADDGravToLL_LambdaT-100000_M-1300To2000_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-100000_M-1300To2000.root',
 'ADDGravToLL_LambdaT-100000_M-2000ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-100000_M-2000ToInf.root',                                                                                                                                                                             
 'ADDGravToLL_LambdaT-100000_M-300To800_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-100000_M-300To800.root',
-'ADDGravToLL_LambdaT-100000_M-800To1300_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-100000_M-800To1300.root',                                                                                                                                                                               
+'ADDGravToLL_LambdaT-100000_M-800To1300_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-100000_M-800To1300.root',
+'ADDGravToLL_LambdaT-100000_M-2800ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-100000_M-2800ToInf.root',                                                                                                                                                                               
 'ADDGravToLL_LambdaT-10000_M-1300To2000_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-10000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-10000_M-2000ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-10000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-10000_M-300To800_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-10000_M-300To800.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-10000_M-800To1300_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-10000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-10000_M-2800ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-10000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-11000_M-1300To2000_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-11000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-11000_M-2000ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-11000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-11000_M-300To800_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-11000_M-300To800.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-11000_M-800To1300_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-11000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-11000_M-2800ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-11000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-12000_M-1300To2000_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-12000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-12000_M-2000ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-12000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-12000_M-300To800_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-12000_M-300To800.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-12000_M-800To1300_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-12000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-12000_M-2800ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-12000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-4000_M-1300To2000_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-4000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-4000_M-2000ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-4000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-4000_M-300To800_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-4000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-4000_M-800To1300_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-4000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-5000_M-2800ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-5000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-5000_M-1300To2000_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-5000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-5000_M-2000ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-5000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-5000_M-300To800_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-5000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-5000_M-800To1300_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-5000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-5000_M-2800ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-5000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-6000_M-1300To2000_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-6000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-6000_M-2000ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-6000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-6000_M-300To800_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-6000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-6000_M-800To1300_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-6000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-6000_M-2800ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-6000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-7000_M-1300To2000_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-7000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-7000_M-2000ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-7000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-7000_M-300To800_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-7000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-7000_M-800To1300_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-7000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-7000_M-2800ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-7000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-8000_M-1300To2000_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-8000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-8000_M-2000ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-8000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-8000_M-300To800_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-8000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-8000_M-800To1300_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-8000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-8000_M-2800ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-8000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-9000_M-1300To2000_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-9000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-9000_M-2000ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-9000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-9000_M-300To800_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-9000_M-300To800.root',   
 'ADDGravToLL_LambdaT-9000_M-800To1200_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-9000_M-800To1300.root',   
-
+'ADDGravToLL_LambdaT-9000_M-2800ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-9000_M-2800ToInf.root',
 
 }
 
@@ -1941,7 +2049,7 @@ fileNamesEle = {
 
 #~ "JetsFromDataBB":"Heep-FR-Data-total-jets-BarrelBarrel.root",
 #~ "JetsFromDataBE":"Heep-FR-Data-total-jets-BarrelEndCaps.root",
-"Jets":"Result_2016.root",
+"Jets":"Result_2017.root",
 
 
 "CITo2E_Lam100kTeVConLL_M1300":"dileptonAna_electrons_2016_CITo2E_Lam100kTeVConLL_M1300.root",
@@ -2220,9 +2328,9 @@ fileNamesEle = {
 "ADDGravToLL_Lam3500_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT3500_M1700.root",
 "ADDGravToLL_Lam4000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT4000_M1700.root",
 "ADDGravToLL_Lam4500_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT4500_M1700.root",
-"ADDGravToLL_Lam5000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT5000_M1700.root",
-"ADDGravToLL_Lam5500_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT5500_M1700.root",
-"ADDGravToLL_Lam6000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT6000_M1700.root",
+"ADDGravToLL_Lam5000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT5500_M1700.root",
+"ADDGravToLL_Lam5500_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT6000_M1700.root",
+"ADDGravToLL_Lam6000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT6500_M1700.root",
 "ADDGravToLL_Lam6500_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT6500_M1700.root",
 "ADDGravToLL_Lam7000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT7000_M1700.root",
 "ADDGravToLL_Lam7500_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT7500_M1700.root",
@@ -2230,90 +2338,135 @@ fileNamesEle = {
 "ADDGravToLL_Lam8500_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT8500_M1700.root",
 "ADDGravToLL_Lam9000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT9000_M1700.root",
 "ADDGravToLL_Lam10000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT10000_M1700.root",
-#"ADDGravTo2E_Lam100k_M1700": "dileptonAna_electrons_2016_ADDGravTo2E_Lam100k_M1700.root"
+"ADDGravToLL_Lam15000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT15000_M1700.root",
+"ADDGravToLL_Lam30000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT30000_M1700.root",
+"ADDGravToLL_Lam50000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT50000_M1700.root",
+"ADDGravToLL_Lam100000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT100000_M1700.root",
+"ADDGravToLL_Lam1000000_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT1000000_M1700.root",
+"ADDGravToLL_Lam100k_M1700": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT100k_M1700.root",
+
+"ADDGravToLL_Lam3000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT3000_M2800.root",
+"ADDGravToLL_Lam3500_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT3500_M2800.root",
+"ADDGravToLL_Lam4000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT4000_M2800.root",
+"ADDGravToLL_Lam4500_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT4500_M2800.root",
+"ADDGravToLL_Lam5000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT5000_M2800.root",
+"ADDGravToLL_Lam5500_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT5500_M2800.root",
+"ADDGravToLL_Lam6000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT6000_M2800.root",
+"ADDGravToLL_Lam6500_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT6500_M2800.root",
+"ADDGravToLL_Lam7000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT7000_M2800.root",
+"ADDGravToLL_Lam7500_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT7500_M2800.root",
+"ADDGravToLL_Lam8000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT8000_M2800.root",
+"ADDGravToLL_Lam8500_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT8500_M2800.root",
+"ADDGravToLL_Lam9000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT9000_M2800.root",
+"ADDGravToLL_Lam10000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT10000_M2800.root",
+"ADDGravToLL_Lam15000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT15000_M2800.root",
+"ADDGravToLL_Lam30000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT30000_M2800.root",
+"ADDGravToLL_Lam50000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT50000_M2800.root",
+"ADDGravToLL_Lam100000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT100000_M2800.root",
+"ADDGravToLL_Lam1000000_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT1000000_M2800.root",
+"ADDGravToLL_Lam100k_M2800": "dileptonAna_electrons_2016_ADDGravToLL_LambdaT100k_M2800.root",
 
 'ADDGravToLL_LambdaT-100000_M-1300To2000':'dileptonAna_electrons_ADDGravToLL_LambdaT-100000_M-1300To2000.root',
 'ADDGravToLL_LambdaT-100000_M-2000ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-100000_M-2000ToInf.root',                                                                                                                                                                             
 'ADDGravToLL_LambdaT-100000_M-300To800':'dileptonAna_electrons_ADDGravToLL_LambdaT-100000_M-300To800.root',                                                                                                                                                                              
-'ADDGravToLL_LambdaT-100000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-100000_M-800To1300.root',                                                                                                                                                                               
+'ADDGravToLL_LambdaT-100000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-100000_M-800To1300.root',
+'ADDGravToLL_LambdaT-100000_M-2800ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-100000_M-2800ToInf.root',                                                                                                                                                                               
 'ADDGravToLL_LambdaT-10000_M-1300To2000':'dileptonAna_electrons_ADDGravToLL_LambdaT-10000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-10000_M-2000ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-10000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-10000_M-300To800':'dileptonAna_electrons_ADDGravToLL_LambdaT-10000_M-300To800.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-10000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-10000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-10000_M-2800ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-10000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-11000_M-1300To2000':'dileptonAna_electrons_ADDGravToLL_LambdaT-11000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-11000_M-2000ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-11000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-11000_M-300To800':'dileptonAna_electrons_ADDGravToLL_LambdaT-11000_M-300To800.root',                                                                                                                                                                                  
-'ADDGravToLL_LambdaT-11000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-11000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-11000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-11000_M-800To1300.root',
+'ADDGravToLL_LambdaT-11000_M-2800ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-11000_M-2800ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-12000_M-1300To2000':'dileptonAna_electrons_ADDGravToLL_LambdaT-12000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-12000_M-2000ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-12000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-12000_M-300To800':'dileptonAna_electrons_ADDGravToLL_LambdaT-12000_M-300To800.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-12000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-12000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-12000_M-2800ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-12000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-4000_M-1300To2000':'dileptonAna_electrons_ADDGravToLL_LambdaT-4000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-4000_M-2000ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-4000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-4000_M-300To800':'dileptonAna_electrons_ADDGravToLL_LambdaT-4000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-4000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-4000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-4000_M-2800ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-4000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-5000_M-1300To2000':'dileptonAna_electrons_ADDGravToLL_LambdaT-5000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-5000_M-2000ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-5000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-5000_M-300To800':'dileptonAna_electrons_ADDGravToLL_LambdaT-5000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-5000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-5000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-5000_M-2800ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-5000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-6000_M-1300To2000':'dileptonAna_electrons_ADDGravToLL_LambdaT-6000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-6000_M-2000ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-6000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-6000_M-300To800':'dileptonAna_electrons_ADDGravToLL_LambdaT-6000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-6000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-6000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-6000_M-2800ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-6000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-7000_M-1300To2000':'dileptonAna_electrons_ADDGravToLL_LambdaT-7000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-7000_M-2000ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-7000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-7000_M-300To800':'dileptonAna_electrons_ADDGravToLL_LambdaT-7000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-7000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-7000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-7000_M-2800ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-7000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-8000_M-1300To2000':'dileptonAna_electrons_ADDGravToLL_LambdaT-8000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-8000_M-2000ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-8000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-8000_M-300To800':'dileptonAna_electrons_ADDGravToLL_LambdaT-8000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-8000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-8000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-8000_M-2800ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-8000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-9000_M-1300To2000':'dileptonAna_electrons_ADDGravToLL_LambdaT-9000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-9000_M-2000ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-9000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-9000_M-300To800':'dileptonAna_electrons_ADDGravToLL_LambdaT-9000_M-300To800.root',   
 'ADDGravToLL_LambdaT-9000_M-800To1300':'dileptonAna_electrons_ADDGravToLL_LambdaT-9000_M-800To1300.root',   
+'ADDGravToLL_LambdaT-9000_M-2800ToInf':'dileptonAna_electrons_ADDGravToLL_LambdaT-9000_M-2800ToInf.root',
 
 'ADDGravToLL_LambdaT-100000_M-1300To2000_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-100000_M-1300To2000.root',
 'ADDGravToLL_LambdaT-100000_M-2000ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-100000_M-2000ToInf.root',                                                                                                                                                                             
 'ADDGravToLL_LambdaT-100000_M-300To800_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-100000_M-300To800.root' ,                                                                                                                                                                             
 'ADDGravToLL_LambdaT-100000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-100000_M-800To1300.root',                                                                                                                                                                               
+'ADDGravToLL_LambdaT-100000_M-2800ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-100000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-10000_M-1300To2000_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-10000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-10000_M-2000ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-10000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-10000_M-300To800_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-10000_M-300To800.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-10000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-10000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-10000_M-2800ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-10000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-11000_M-1300To2000_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-11000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-11000_M-2000ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-11000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-11000_M-300To800_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-11000_M-300To800.root',                                                                                                                                                                                  
-'ADDGravToLL_LambdaT-11000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-11000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-11000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-11000_M-800To1300.root',
+'ADDGravToLL_LambdaT-11000_M-2800ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-11000_M-2800ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-12000_M-1300To2000_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-12000_M-1300To2000.root',                                                                                                                                                                                
 'ADDGravToLL_LambdaT-12000_M-2000ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-12000_M-2000ToInf.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-12000_M-300To800_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-12000_M-300To800.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-12000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-12000_M-800To1300.root',                                                                                                                                                                                 
+'ADDGravToLL_LambdaT-12000_M-2800ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-12000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-4000_M-1300To2000_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-4000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-4000_M-2000ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-4000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-4000_M-300To800_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-4000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-4000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-4000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-4000_M-2800ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-4000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-5000_M-1300To2000_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-5000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-5000_M-2000ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-5000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-5000_M-300To800_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-5000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-5000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-5000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-5000_M-2800ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-5000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-6000_M-1300To2000_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-6000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-6000_M-2000ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-6000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-6000_M-300To800_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-6000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-6000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-6000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-6000_M-2800ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-6000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-7000_M-1300To2000_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-7000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-7000_M-2000ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-7000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-7000_M-300To800_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-7000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-7000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-7000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-7000_M-2800ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-7000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-8000_M-1300To2000_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-8000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-8000_M-2000ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-8000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-8000_M-300To800_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-8000_M-300To800.root',                                                                                                                                                                                   
 'ADDGravToLL_LambdaT-8000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-8000_M-800To1300.root',                                                                                                                                                                                  
+'ADDGravToLL_LambdaT-8000_M-2800ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-8000_M-2800ToInf.root',
 'ADDGravToLL_LambdaT-9000_M-1300To2000_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-9000_M-1300To2000.root',                                                                                                                                                                                 
 'ADDGravToLL_LambdaT-9000_M-2000ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-9000_M-2000ToInf.root',                                                                                                                                                                                  
 'ADDGravToLL_LambdaT-9000_M-300To800_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-9000_M-300To800.root',   
 'ADDGravToLL_LambdaT-9000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-9000_M-800To1300.root',   
-
+'ADDGravToLL_LambdaT-9000_M-2800ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-9000_M-2800ToInf.root',
 
 }
 	
@@ -4829,655 +4982,766 @@ class Signals2016:
 
 class Signals2016ADD:
 			
-        class ADDGravTo2E_Lam3500:
-                subprocesses = ["ADDGravToLL_Lam3500_M1700"]
-                label = "ADD #Lambda_{T} = 3.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam3500:
+				subprocesses = ["ADDGravToLL_Lam3500_M1700","ADDGravToLL_Lam3500_M2800"]
+				label = "ADD #Lambda_{T} = 3.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam4000:
-                subprocesses = ["ADDGravToLL_Lam4000_M1700"]
-                label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 4 TeV"
-                fillcolor = ROOT.kWhite
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kOrange
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam4000:
+				subprocesses = ["ADDGravToLL_Lam4000_M1700","ADDGravToLL_Lam4000_M2800"]
+				label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 4 TeV"
+				fillcolor = ROOT.kWhite
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kOrange
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam4500:
-                subprocesses = ["ADDGravToLL_Lam4500_M1700"]
-                label = "ADD #Lambda_{T} = 4.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 4.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kYellow
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam4500:
+				subprocesses = ["ADDGravToLL_Lam4500_M1700","ADDGravToLL_Lam4500_M2800"]
+				label = "ADD #Lambda_{T} = 4.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 4.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kYellow
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam5000:
-                subprocesses = ["ADDGravToLL_Lam5000_M1700"]
-                label = "ADD #Lambda_{T} = 5.0 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kSpring+10
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam5000:
+				subprocesses = ["ADDGravToLL_Lam5000_M1700","ADDGravToLL_Lam5000_M2800"]
+				label = "ADD #Lambda_{T} = 5.0 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kSpring+10
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam5500:
-                subprocesses = ["ADDGravToLL_Lam5500_M1700"]
-                label = "ADD #Lambda_{T} = 5.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 5.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kGreen
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam5500:
+				subprocesses = ["ADDGravToLL_Lam5500_M1700","ADDGravToLL_Lam5500_M2800"]
+				label = "ADD #Lambda_{T} = 5.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 5.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kGreen
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam6000:
-                subprocesses = ["ADDGravToLL_Lam6000_M1700"]
-                label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 6 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kTeal
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam6000:
+				subprocesses = ["ADDGravToLL_Lam6000_M1700","ADDGravToLL_Lam6000_M2800"]
+				label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 6 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kTeal
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam6500:
-                subprocesses = ["ADDGravToLL_Lam6500_M1700"]
-                label = "ADD #Lambda_{T} = 6.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 6.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kCyan
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam6500:
+				subprocesses = ["ADDGravToLL_Lam6500_M1700","ADDGravToLL_Lam6500_M2800"]
+				label = "ADD #Lambda_{T} = 6.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 6.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kCyan
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam7000:
-                subprocesses = ["ADDGravToLL_Lam7000_M1700"]
-                label = "ADD #Lambda_{T} = 7 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 7 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kAzure +6
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam7000:
+				subprocesses = ["ADDGravToLL_Lam7000_M1700","ADDGravToLL_Lam7000_M2800"]
+				label = "ADD #Lambda_{T} = 7 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 7 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kAzure +6
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam7500:
-                subprocesses = ["ADDGravToLL_Lam7500_M1700"]
-                label = "ADD #Lambda_{T} = 7.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 7.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kBlue
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam7500:
+				subprocesses = ["ADDGravToLL_Lam7500_M1700","ADDGravToLL_Lam7500_M2800"]
+				label = "ADD #Lambda_{T} = 7.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 7.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlue
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam8000:
-                subprocesses = ["ADDGravToLL_Lam8000_M1700"]
-                label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 8 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kViolet-6
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam8000:
+				subprocesses = ["ADDGravToLL_Lam8000_M1700","ADDGravToLL_Lam8000_M2800"]
+				label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 8 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kViolet-6
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam8500:
-                subprocesses = ["ADDGravToLL_Lam8500_M1700"]
-                label = "ADD #Lambda_{T} = 8.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 8.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kMagenta+1
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam8500:
+				subprocesses = ["ADDGravToLL_Lam8500_M1700","ADDGravToLL_Lam8500_M2800"]
+				label = "ADD #Lambda_{T} = 8.5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 8.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kMagenta+1
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam9000:
-                subprocesses = ["ADDGravToLL_Lam9000_M1700"]
-                label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 9 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kPink-4
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam9000:
+				subprocesses = ["ADDGravToLL_Lam9000_M1700","ADDGravToLL_Lam9000_M2800"]
+				label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 9 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kPink-4
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2E_Lam10000:
-                subprocesses = ["ADDGravToLL_Lam10000_M1700"]
-                label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 10 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kBlack
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam10000:
+				subprocesses = ["ADDGravToLL_Lam10000_M1700","ADDGravToLL_Lam10000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+				
+		class ADDGravTo2E_Lam15000:
+				subprocesses = ["ADDGravToLL_Lam15000_M1700","ADDGravToLL_Lam15000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+				
+		class ADDGravTo2E_Lam30000:
+				subprocesses = ["ADDGravToLL_Lam30000_M1700","ADDGravToLL_Lam30000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+				
+		class ADDGravTo2E_Lam50000:
+				subprocesses = ["ADDGravToLL_Lam50000_M1700","ADDGravToLL_Lam50000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+				
+		class ADDGravTo2E_Lam100000:
+				subprocesses = ["ADDGravToLL_Lam100000_M1700","ADDGravToLL_Lam100000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+				
+		class ADDGravTo2E_Lam1000000:
+				subprocesses = ["ADDGravToLL_Lam1000000_M1700","ADDGravToLL_Lam1000000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        '''class ADDGravTo2E_Lam100k:
-                subprocesses = ["ADDGravTo2Mu_Lam100k_M1700"]
-                label = "ADDGravTo2Mu_Lam100k_M1700"               #"ADD #rightarrow e^{+}e^{-} #Lambda 100k TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kMagenta+1
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None'''
+		class ADDGravTo2E_Lam100k:
+				subprocesses = ["ADDGravToLL_Lam100k_M1700","ADDGravToLL_Lam100k_M2800"]
+				label = "ADD #Lambda_{T} = 100k TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 100k TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 	
-        class ADDGravTo2Mu_Lam3500:
-                subprocesses = ["ADDGravToLL_Lam3500_M1700"]
-                label = "ADD #Lambda_{T} = 3.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam3500:
+				subprocesses = ["ADDGravToLL_Lam3500_M1700","ADDGravToLL_Lam3500_M2800"]
+				label = "ADD #Lambda_{T} = 3.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam4000:
-                subprocesses = ["ADDGravToLL_Lam4000_M1700"]
-                label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 4 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kOrange
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam4000:
+				subprocesses = ["ADDGravToLL_Lam4000_M1700","ADDGravToLL_Lam4000_M2800"]
+				label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 4 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kOrange
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam4500:
-                subprocesses = ["ADDGravToLL_Lam4500_M1700"]
-                label = "ADD #Lambda_{T} = 4.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 4.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kYellow
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam4500:
+				subprocesses = ["ADDGravToLL_Lam4500_M1700","ADDGravToLL_Lam4500_M2800"]
+				label = "ADD #Lambda_{T} = 4.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 4.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kYellow
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam5000:
-                subprocesses = ["ADDGravToLL_Lam5000_M1700"]
-                label = "ADD #Lambda_{T} = 5TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kSpring+9
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam5000:
+				subprocesses = ["ADDGravToLL_Lam5000_M1700","ADDGravToLL_Lam5000_M2800"]
+				label = "ADD #Lambda_{T} = 5TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kSpring+9
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam5500:
-                subprocesses = ["ADDGravToLL_Lam5500_M1700"]
-                label = "ADD #Lambda_{T} = 5.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 5.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kGreen
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam5500:
+				subprocesses = ["ADDGravToLL_Lam5500_M1700","ADDGravToLL_Lam5500_M2800"]
+				label = "ADD #Lambda_{T} = 5.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 5.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kGreen
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam6000:
-                subprocesses = ["ADDGravToLL_Lam6000_M1700"]
-                label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 6 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kTeal
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam6000:
+				subprocesses = ["ADDGravToLL_Lam6000_M1700","ADDGravToLL_Lam6000_M2800"]
+				label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 6 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kTeal
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam6500:
-                subprocesses = ["ADDGravToLL_Lam6500_M1700"]
-                label = "ADD #Lambda_{T} = 6.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 6.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kCyan+1
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam6500:
+				subprocesses = ["ADDGravToLL_Lam6500_M1700","ADDGravToLL_Lam6500_M2800"]
+				label = "ADD #Lambda_{T} = 6.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 6.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kCyan+1
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam7000:
-                subprocesses = ["ADDGravToLL_Lam7000_M1700"]
-                label = "ADD #Lambda_{T} = 7 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 7 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kAzure+6
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam7000:
+				subprocesses = ["ADDGravToLL_Lam7000_M1700","ADDGravToLL_Lam7000_M2800"]
+				label = "ADD #Lambda_{T} = 7 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 7 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kAzure+6
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam7500:
-                subprocesses = ["ADDGravToLL_Lam7500_M1700"]
-                label = "ADD #Lambda_{T} = 7.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 7.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kBlue
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam7500:
+				subprocesses = ["ADDGravToLL_Lam7500_M1700","ADDGravToLL_Lam7500_M2800"]
+				label = "ADD #Lambda_{T} = 7.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 7.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlue
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam8000:
-                subprocesses = ["ADDGravToLL_Lam8000_M1700"]
-                label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 8 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kViolet-6
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam8000:
+				subprocesses = ["ADDGravToLL_Lam8000_M1700","ADDGravToLL_Lam8000_M2800"]
+				label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 8 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kViolet-6
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam8500:
-                subprocesses = ["ADDGravToLL_Lam8500_M1700"]
-                label = "ADD #Lambda_{T} = 8.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 8.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kMagenta+1
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam8500:
+				subprocesses = ["ADDGravToLL_Lam8500_M1700","ADDGravToLL_Lam8500_M2800"]
+				label = "ADD #Lambda_{T} = 8.5 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 8.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kMagenta+1
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam9000:
-                subprocesses = ["ADDGravToLL_Lam9000_M1700"]
-                label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 9 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kPink+6
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam9000:
+				subprocesses = ["ADDGravToLL_Lam9000_M1700","ADDGravToLL_Lam9000_M2800"]
+				label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 9 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kPink+6
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        class ADDGravTo2Mu_Lam10000:
-                subprocesses = ["ADDGravToLL_Lam10000_M1700"]
-                label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 10 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kBlack
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam10000:
+				subprocesses = ["ADDGravToLL_Lam10000_M1700","ADDGravToLL_Lam10000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
 
-        '''class ADDGravTo2Mu_Lam100k:
-                subprocesses = ["ADDGravTo2Mu_Lam100k_M1700"]
-                label = "ADDGravTo2Mu_Lam100k_M1700"               #"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kBlack
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None'''
-                
+		class ADDGravTo2Mu_Lam15000:
+				subprocesses = ["ADDGravToLL_Lam15000_M1700","ADDGravToLL_Lam15000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+
+		class ADDGravTo2Mu_Lam30000:
+				subprocesses = ["ADDGravToLL_Lam30000_M1700","ADDGravToLL_Lam30000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+				
+		class ADDGravTo2Mu_Lam50000:
+				subprocesses = ["ADDGravToLL_Lam50000_M1700","ADDGravToLL_Lam50000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+				
+		class ADDGravTo2Mu_Lam100000:
+				subprocesses = ["ADDGravToLL_Lam100000_M1700","ADDGravToLL_Lam100000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+				
+		class ADDGravTo2Mu_Lam1000000:
+				subprocesses = ["ADDGravToLL_Lam1000000_M1700","ADDGravToLL_Lam1000000_M2800"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow #mu^{+}#mu^{-} #Lambda 10 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kBlack
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+
+		class ADDGravTo2Mu_Lam100k:
+				subprocesses = ["ADDGravToLL_Lam100k_M1700","ADDGravToLL_Lam100k_M2800"]
+				label = "ADD #Lambda_{T} = 100k TeV"               #"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed+3
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+  
+	  
+		class CITo2Mu_Lam100kTeVConLL:
+			subprocesses = ["CITo2Mu_Lam100kTeVConLL_M1700","CITo2Mu_Lam100kTeVConLL_M2000"]
+			label = "CITo2Mu_Lam100kTeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+			fillcolor = ROOT.kWhite
+			fillstyle = 0
+			linecolor = ROOT.kRed
+			uncertainty = 0.0
+			scaleFac     = 1.	
+			additionalSelection = None             
+			  
 class SignalsADD:
 			
-        class ADDGravTo2E_Lam4000:
-                subprocesses = ["ADDGravToLL_LambdaT-4000_M-300To800","ADDGravToLL_LambdaT-4000_M-800To1300","ADDGravToLL_LambdaT-4000_M-1300To2000","ADDGravToLL_LambdaT-4000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam5000:
-                subprocesses = ["ADDGravToLL_LambdaT-5000_M-300To800","ADDGravToLL_LambdaT-5000_M-800To1300","ADDGravToLL_LambdaT-5000_M-1300To2000","ADDGravToLL_LambdaT-5000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam6000:
-                subprocesses = ["ADDGravToLL_LambdaT-6000_M-300To800","ADDGravToLL_LambdaT-6000_M-800To1300","ADDGravToLL_LambdaT-6000_M-1300To2000","ADDGravToLL_LambdaT-6000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam7000:
-                subprocesses = ["ADDGravToLL_LambdaT-7000_M-300To800","ADDGravToLL_LambdaT-7000_M-800To1300","ADDGravToLL_LambdaT-7000_M-1300To2000","ADDGravToLL_LambdaT-7000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 7 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam8000:
-                subprocesses = ["ADDGravToLL_LambdaT-8000_M-300To800","ADDGravToLL_LambdaT-8000_M-800To1300","ADDGravToLL_LambdaT-8000_M-1300To2000","ADDGravToLL_LambdaT-8000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam9000:
-                subprocesses = ["ADDGravToLL_LambdaT-9000_M-300To800","ADDGravToLL_LambdaT-9000_M-800To1300","ADDGravToLL_LambdaT-9000_M-1300To2000","ADDGravToLL_LambdaT-9000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam10000:
-                subprocesses = ["ADDGravToLL_LambdaT-10000_M-300To800","ADDGravToLL_LambdaT-10000_M-800To1300","ADDGravToLL_LambdaT-10000_M-1300To2000","ADDGravToLL_LambdaT-10000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam11000:
-                subprocesses = ["ADDGravToLL_LambdaT-11000_M-300To800","ADDGravToLL_LambdaT-11000_M-800To1300","ADDGravToLL_LambdaT-11000_M-1300To2000","ADDGravToLL_LambdaT-11000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 11 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam12000:
-                subprocesses = ["ADDGravToLL_LambdaT-12000_M-300To800","ADDGravToLL_LambdaT-12000_M-800To1300","ADDGravToLL_LambdaT-12000_M-1300To2000","ADDGravToLL_LambdaT-12000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 12 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam100000:
-                subprocesses = ["ADDGravToLL_LambdaT-100000_M-300To800","ADDGravToLL_LambdaT-100000_M-800To1300","ADDGravToLL_LambdaT-100000_M-1300To2000","ADDGravToLL_LambdaT-100000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 100 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam4000:
+				subprocesses = ["ADDGravToLL_LambdaT-4000_M-300To800","ADDGravToLL_LambdaT-4000_M-800To1300","ADDGravToLL_LambdaT-4000_M-1300To2000","ADDGravToLL_LambdaT-4000_M-2000ToInf","ADDGravToLL_LambdaT-4000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam5000:
+				subprocesses = ["ADDGravToLL_LambdaT-5000_M-300To800","ADDGravToLL_LambdaT-5000_M-800To1300","ADDGravToLL_LambdaT-5000_M-1300To2000","ADDGravToLL_LambdaT-5000_M-2000ToInf","ADDGravToLL_LambdaT-5000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam6000:
+				subprocesses = ["ADDGravToLL_LambdaT-6000_M-300To800","ADDGravToLL_LambdaT-6000_M-800To1300","ADDGravToLL_LambdaT-6000_M-1300To2000","ADDGravToLL_LambdaT-6000_M-2000ToInf","ADDGravToLL_LambdaT-6000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam7000:
+				subprocesses = ["ADDGravToLL_LambdaT-7000_M-300To800","ADDGravToLL_LambdaT-7000_M-800To1300","ADDGravToLL_LambdaT-7000_M-1300To2000","ADDGravToLL_LambdaT-7000_M-2000ToInf","ADDGravToLL_LambdaT-7000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 7 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam8000:
+				subprocesses = ["ADDGravToLL_LambdaT-8000_M-300To800","ADDGravToLL_LambdaT-8000_M-800To1300","ADDGravToLL_LambdaT-8000_M-1300To2000","ADDGravToLL_LambdaT-8000_M-2000ToInf","ADDGravToLL_LambdaT-8000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam9000:
+				subprocesses = ["ADDGravToLL_LambdaT-9000_M-300To800","ADDGravToLL_LambdaT-9000_M-800To1300","ADDGravToLL_LambdaT-9000_M-1300To2000","ADDGravToLL_LambdaT-9000_M-2000ToInf","ADDGravToLL_LambdaT-9000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam10000:
+				subprocesses = ["ADDGravToLL_LambdaT-10000_M-300To800","ADDGravToLL_LambdaT-10000_M-800To1300","ADDGravToLL_LambdaT-10000_M-1300To2000","ADDGravToLL_LambdaT-10000_M-2000ToInf","ADDGravToLL_LambdaT-10000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam11000:
+				subprocesses = ["ADDGravToLL_LambdaT-11000_M-300To800","ADDGravToLL_LambdaT-11000_M-800To1300","ADDGravToLL_LambdaT-11000_M-1300To2000","ADDGravToLL_LambdaT-11000_M-2000ToInf","ADDGravToLL_LambdaT-11000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 11 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam12000:
+				subprocesses = ["ADDGravToLL_LambdaT-12000_M-300To800","ADDGravToLL_LambdaT-12000_M-800To1300","ADDGravToLL_LambdaT-12000_M-1300To2000","ADDGravToLL_LambdaT-12000_M-2000ToInf","ADDGravToLL_LambdaT-12000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 12 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam100000:
+				subprocesses = ["ADDGravToLL_LambdaT-100000_M-300To800","ADDGravToLL_LambdaT-100000_M-800To1300","ADDGravToLL_LambdaT-100000_M-1300To2000","ADDGravToLL_LambdaT-100000_M-2000ToInf","ADDGravToLL_LambdaT-100000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 100 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
  
-        class ADDGravTo2Mu_Lam4000:
-                subprocesses = ["ADDGravToLL_LambdaT-4000_M-300To800","ADDGravToLL_LambdaT-4000_M-800To1300","ADDGravToLL_LambdaT-4000_M-1300To2000","ADDGravToLL_LambdaT-4000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam5000:
-                subprocesses = ["ADDGravToLL_LambdaT-5000_M-300To800","ADDGravToLL_LambdaT-5000_M-800To1300","ADDGravToLL_LambdaT-5000_M-1300To2000","ADDGravToLL_LambdaT-5000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam6000:
-                subprocesses = ["ADDGravToLL_LambdaT-6000_M-300To800","ADDGravToLL_LambdaT-6000_M-800To1300","ADDGravToLL_LambdaT-6000_M-1300To2000","ADDGravToLL_LambdaT-6000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam7000:
-                subprocesses = ["ADDGravToLL_LambdaT-7000_M-300To800","ADDGravToLL_LambdaT-7000_M-800To1300","ADDGravToLL_LambdaT-7000_M-1300To2000","ADDGravToLL_LambdaT-7000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 7 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam8000:
-                subprocesses = ["ADDGravToLL_LambdaT-8000_M-300To800","ADDGravToLL_LambdaT-8000_M-800To1300","ADDGravToLL_LambdaT-8000_M-1300To2000","ADDGravToLL_LambdaT-8000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam9000:
-                subprocesses = ["ADDGravToLL_LambdaT-9000_M-300To800","ADDGravToLL_LambdaT-9000_M-800To1300","ADDGravToLL_LambdaT-9000_M-1300To2000","ADDGravToLL_LambdaT-9000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam10000:
-                subprocesses = ["ADDGravToLL_LambdaT-10000_M-300To800","ADDGravToLL_LambdaT-10000_M-800To1300","ADDGravToLL_LambdaT-10000_M-1300To2000","ADDGravToLL_LambdaT-10000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam11000:
-                subprocesses = ["ADDGravToLL_LambdaT-11000_M-300To800","ADDGravToLL_LambdaT-11000_M-800To1300","ADDGravToLL_LambdaT-11000_M-1300To2000","ADDGravToLL_LambdaT-11000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 11 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam12000:
-                subprocesses = ["ADDGravToLL_LambdaT-12000_M-300To800","ADDGravToLL_LambdaT-12000_M-800To1300","ADDGravToLL_LambdaT-12000_M-1300To2000","ADDGravToLL_LambdaT-12000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 12 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam100000:
-                subprocesses = ["ADDGravToLL_LambdaT-100000_M-300To800","ADDGravToLL_LambdaT-100000_M-800To1300","ADDGravToLL_LambdaT-100000_M-1300To2000","ADDGravToLL_LambdaT-100000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 100 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam4000:
+				subprocesses = ["ADDGravToLL_LambdaT-4000_M-300To800","ADDGravToLL_LambdaT-4000_M-800To1300","ADDGravToLL_LambdaT-4000_M-1300To2000","ADDGravToLL_LambdaT-4000_M-2000ToInf","ADDGravToLL_LambdaT-4000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam5000:
+				subprocesses = ["ADDGravToLL_LambdaT-5000_M-300To800","ADDGravToLL_LambdaT-5000_M-800To1300","ADDGravToLL_LambdaT-5000_M-1300To2000","ADDGravToLL_LambdaT-5000_M-2000ToInf","ADDGravToLL_LambdaT-5000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam6000:
+				subprocesses = ["ADDGravToLL_LambdaT-6000_M-300To800","ADDGravToLL_LambdaT-6000_M-800To1300","ADDGravToLL_LambdaT-6000_M-1300To2000","ADDGravToLL_LambdaT-6000_M-2000ToInf","ADDGravToLL_LambdaT-6000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam7000:
+				subprocesses = ["ADDGravToLL_LambdaT-7000_M-300To800","ADDGravToLL_LambdaT-7000_M-800To1300","ADDGravToLL_LambdaT-7000_M-1300To2000","ADDGravToLL_LambdaT-7000_M-2000ToInf","ADDGravToLL_LambdaT-7000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 7 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam8000:
+				subprocesses = ["ADDGravToLL_LambdaT-8000_M-300To800","ADDGravToLL_LambdaT-8000_M-800To1300","ADDGravToLL_LambdaT-8000_M-1300To2000","ADDGravToLL_LambdaT-8000_M-2000ToInf","ADDGravToLL_LambdaT-8000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam9000:
+				subprocesses = ["ADDGravToLL_LambdaT-9000_M-300To800","ADDGravToLL_LambdaT-9000_M-800To1300","ADDGravToLL_LambdaT-9000_M-1300To2000","ADDGravToLL_LambdaT-9000_M-2000ToInf","ADDGravToLL_LambdaT-9000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam10000:
+				subprocesses = ["ADDGravToLL_LambdaT-10000_M-300To800","ADDGravToLL_LambdaT-10000_M-800To1300","ADDGravToLL_LambdaT-10000_M-1300To2000","ADDGravToLL_LambdaT-10000_M-2000ToInf","ADDGravToLL_LambdaT-10000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam11000:
+				subprocesses = ["ADDGravToLL_LambdaT-11000_M-300To800","ADDGravToLL_LambdaT-11000_M-800To1300","ADDGravToLL_LambdaT-11000_M-1300To2000","ADDGravToLL_LambdaT-11000_M-2000ToInf","ADDGravToLL_LambdaT-11000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 11 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam12000:
+				subprocesses = ["ADDGravToLL_LambdaT-12000_M-300To800","ADDGravToLL_LambdaT-12000_M-800To1300","ADDGravToLL_LambdaT-12000_M-1300To2000","ADDGravToLL_LambdaT-12000_M-2000ToInf","ADDGravToLL_LambdaT-12000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 12 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam100000:
+				subprocesses = ["ADDGravToLL_LambdaT-100000_M-300To800","ADDGravToLL_LambdaT-100000_M-800To1300","ADDGravToLL_LambdaT-100000_M-1300To2000","ADDGravToLL_LambdaT-100000_M-2000ToInf","ADDGravToLL_LambdaT-100000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 100 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
  
-                
+				
 class Signals2018ADD:
 			
-        class ADDGravTo2E_Lam4000:
-                subprocesses = ["ADDGravToLL_LambdaT-4000_M-300To800","ADDGravToLL_LambdaT-4000_M-800To1300","ADDGravToLL_LambdaT-4000_M-1300To2000","ADDGravToLL_LambdaT-4000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam5000:
-                subprocesses = ["ADDGravToLL_LambdaT-5000_M-300To800","ADDGravToLL_LambdaT-5000_M-800To1300","ADDGravToLL_LambdaT-5000_M-1300To2000","ADDGravToLL_LambdaT-5000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam6000:
-                subprocesses = ["ADDGravToLL_LambdaT-6000_M-300To800","ADDGravToLL_LambdaT-6000_M-800To1300","ADDGravToLL_LambdaT-6000_M-1300To2000","ADDGravToLL_LambdaT-6000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam7000:
-                subprocesses = ["ADDGravToLL_LambdaT-7000_M-300To800","ADDGravToLL_LambdaT-7000_M-800To1300","ADDGravToLL_LambdaT-7000_M-1300To2000","ADDGravToLL_LambdaT-7000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam8000:
-                subprocesses = ["ADDGravToLL_LambdaT-8000_M-300To800","ADDGravToLL_LambdaT-8000_M-800To1300","ADDGravToLL_LambdaT-8000_M-1300To2000","ADDGravToLL_LambdaT-8000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam9000:
-                subprocesses = ["ADDGravToLL_LambdaT-9000_M-300To800","ADDGravToLL_LambdaT-9000_M-800To1300","ADDGravToLL_LambdaT-9000_M-1300To2000","ADDGravToLL_LambdaT-9000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam10000:
-                subprocesses = ["ADDGravToLL_LambdaT-10000_M-300To800","ADDGravToLL_LambdaT-10000_M-800To1300","ADDGravToLL_LambdaT-10000_M-1300To2000","ADDGravToLL_LambdaT-10000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam11000:
-                subprocesses = ["ADDGravToLL_LambdaT-11000_M-300To800","ADDGravToLL_LambdaT-11000_M-800To1300","ADDGravToLL_LambdaT-11000_M-1300To2000","ADDGravToLL_LambdaT-11000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 11 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam12000:
-                subprocesses = ["ADDGravToLL_LambdaT-12000_M-300To800","ADDGravToLL_LambdaT-12000_M-800To1300","ADDGravToLL_LambdaT-12000_M-1300To2000","ADDGravToLL_LambdaT-12000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 12 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2E_Lam100000:
-                subprocesses = ["ADDGravToLL_LambdaT-100000_M-300To800","ADDGravToLL_LambdaT-100000_M-800To1300","ADDGravToLL_LambdaT-100000_M-1300To2000","ADDGravToLL_LambdaT-100000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 100 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2E_Lam4000:
+				subprocesses = ["ADDGravToLL_LambdaT-4000_M-300To800","ADDGravToLL_LambdaT-4000_M-800To1300","ADDGravToLL_LambdaT-4000_M-1300To2000","ADDGravToLL_LambdaT-4000_M-2000ToInf","ADDGravToLL_LambdaT-4000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam5000:
+				subprocesses = ["ADDGravToLL_LambdaT-5000_M-300To800","ADDGravToLL_LambdaT-5000_M-800To1300","ADDGravToLL_LambdaT-5000_M-1300To2000","ADDGravToLL_LambdaT-5000_M-2000ToInf","ADDGravToLL_LambdaT-5000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam6000:
+				subprocesses = ["ADDGravToLL_LambdaT-6000_M-300To800","ADDGravToLL_LambdaT-6000_M-800To1300","ADDGravToLL_LambdaT-6000_M-1300To2000","ADDGravToLL_LambdaT-6000_M-2000ToInf","ADDGravToLL_LambdaT-6000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam7000:
+				subprocesses = ["ADDGravToLL_LambdaT-7000_M-300To800","ADDGravToLL_LambdaT-7000_M-800To1300","ADDGravToLL_LambdaT-7000_M-1300To2000","ADDGravToLL_LambdaT-7000_M-2000ToInf","ADDGravToLL_LambdaT-7000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam8000:
+				subprocesses = ["ADDGravToLL_LambdaT-8000_M-300To800","ADDGravToLL_LambdaT-8000_M-800To1300","ADDGravToLL_LambdaT-8000_M-1300To2000","ADDGravToLL_LambdaT-8000_M-2000ToInf","ADDGravToLL_LambdaT-8000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam9000:
+				subprocesses = ["ADDGravToLL_LambdaT-9000_M-300To800","ADDGravToLL_LambdaT-9000_M-800To1300","ADDGravToLL_LambdaT-9000_M-1300To2000","ADDGravToLL_LambdaT-9000_M-2000ToInf","ADDGravToLL_LambdaT-9000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam10000:
+				subprocesses = ["ADDGravToLL_LambdaT-10000_M-300To800","ADDGravToLL_LambdaT-10000_M-800To1300","ADDGravToLL_LambdaT-10000_M-1300To2000","ADDGravToLL_LambdaT-10000_M-2000ToInf","ADDGravToLL_LambdaT-10000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam11000:
+				subprocesses = ["ADDGravToLL_LambdaT-11000_M-300To800","ADDGravToLL_LambdaT-11000_M-800To1300","ADDGravToLL_LambdaT-11000_M-1300To2000","ADDGravToLL_LambdaT-11000_M-2000ToInf","ADDGravToLL_LambdaT-11000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 11 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam12000:
+				subprocesses = ["ADDGravToLL_LambdaT-12000_M-300To800","ADDGravToLL_LambdaT-12000_M-800To1300","ADDGravToLL_LambdaT-12000_M-1300To2000","ADDGravToLL_LambdaT-12000_M-2000ToInf","ADDGravToLL_LambdaT-12000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 12 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2E_Lam100000:
+				subprocesses = ["ADDGravToLL_LambdaT-100000_M-300To800","ADDGravToLL_LambdaT-100000_M-800To1300","ADDGravToLL_LambdaT-100000_M-1300To2000","ADDGravToLL_LambdaT-100000_M-2000ToInf","ADDGravToLL_LambdaT-100000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 100 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
  
-        class ADDGravTo2Mu_Lam4000:
-                subprocesses = ["ADDGravToLL_LambdaT-4000_M-300To800","ADDGravToLL_LambdaT-4000_M-800To1300","ADDGravToLL_LambdaT-4000_M-1300To2000","ADDGravToLL_LambdaT-4000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam5000:
-                subprocesses = ["ADDGravToLL_LambdaT-5000_M-300To800","ADDGravToLL_LambdaT-5000_M-800To1300","ADDGravToLL_LambdaT-5000_M-1300To2000","ADDGravToLL_LambdaT-5000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam6000:
-                subprocesses = ["ADDGravToLL_LambdaT-6000_M-300To800","ADDGravToLL_LambdaT-6000_M-800To1300","ADDGravToLL_LambdaT-6000_M-1300To2000","ADDGravToLL_LambdaT-6000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam7000:
-                subprocesses = ["ADDGravToLL_LambdaT-7000_M-300To800","ADDGravToLL_LambdaT-7000_M-800To1300","ADDGravToLL_LambdaT-7000_M-1300To2000","ADDGravToLL_LambdaT-7000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 7 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam8000:
-                subprocesses = ["ADDGravToLL_LambdaT-8000_M-300To800","ADDGravToLL_LambdaT-8000_M-800To1300","ADDGravToLL_LambdaT-8000_M-1300To2000","ADDGravToLL_LambdaT-8000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam9000:
-                subprocesses = ["ADDGravToLL_LambdaT-9000_M-300To800","ADDGravToLL_LambdaT-9000_M-800To1300","ADDGravToLL_LambdaT-9000_M-1300To2000","ADDGravToLL_LambdaT-9000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam10000:
-                subprocesses = ["ADDGravToLL_LambdaT-10000_M-300To800","ADDGravToLL_LambdaT-10000_M-800To1300","ADDGravToLL_LambdaT-10000_M-1300To2000","ADDGravToLL_LambdaT-10000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam11000:
-                subprocesses = ["ADDGravToLL_LambdaT-11000_M-300To800","ADDGravToLL_LambdaT-11000_M-800To1300","ADDGravToLL_LambdaT-11000_M-1300To2000","ADDGravToLL_LambdaT-11000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 11 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam12000:
-                subprocesses = ["ADDGravToLL_LambdaT-12000_M-300To800","ADDGravToLL_LambdaT-12000_M-800To1300","ADDGravToLL_LambdaT-12000_M-1300To2000","ADDGravToLL_LambdaT-12000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 12 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
-        class ADDGravTo2Mu_Lam100000:
-                subprocesses = ["ADDGravToLL_LambdaT-100000_M-300To800","ADDGravToLL_LambdaT-100000_M-800To1300","ADDGravToLL_LambdaT-100000_M-1300To2000","ADDGravToLL_LambdaT-100000_M-2000ToInf"]
-                label = "ADD #Lambda_{T} = 100 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
-                fillcolor = ROOT.kWhite
-                fillstyle = 0
-                linecolor = ROOT.kRed
-                uncertainty = 0.0
-                scaleFac     = 1.
-                additionalSelection = None
+		class ADDGravTo2Mu_Lam4000:
+				subprocesses = ["ADDGravToLL_LambdaT-4000_M-300To800","ADDGravToLL_LambdaT-4000_M-800To1300","ADDGravToLL_LambdaT-4000_M-1300To2000","ADDGravToLL_LambdaT-4000_M-2000ToInf","ADDGravToLL_LambdaT-4000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 4 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam5000:
+				subprocesses = ["ADDGravToLL_LambdaT-5000_M-300To800","ADDGravToLL_LambdaT-5000_M-800To1300","ADDGravToLL_LambdaT-5000_M-1300To2000","ADDGravToLL_LambdaT-5000_M-2000ToInf","ADDGravToLL_LambdaT-5000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 5 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam6000:
+				subprocesses = ["ADDGravToLL_LambdaT-6000_M-300To800","ADDGravToLL_LambdaT-6000_M-800To1300","ADDGravToLL_LambdaT-6000_M-1300To2000","ADDGravToLL_LambdaT-6000_M-2000ToInf","ADDGravToLL_LambdaT-6000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 6 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam7000:
+				subprocesses = ["ADDGravToLL_LambdaT-7000_M-300To800","ADDGravToLL_LambdaT-7000_M-800To1300","ADDGravToLL_LambdaT-7000_M-1300To2000","ADDGravToLL_LambdaT-7000_M-2000ToInf","ADDGravToLL_LambdaT-7000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 7 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam8000:
+				subprocesses = ["ADDGravToLL_LambdaT-8000_M-300To800","ADDGravToLL_LambdaT-8000_M-800To1300","ADDGravToLL_LambdaT-8000_M-1300To2000","ADDGravToLL_LambdaT-8000_M-2000ToInf","ADDGravToLL_LambdaT-8000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 8 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam9000:
+				subprocesses = ["ADDGravToLL_LambdaT-9000_M-300To800","ADDGravToLL_LambdaT-9000_M-800To1300","ADDGravToLL_LambdaT-9000_M-1300To2000","ADDGravToLL_LambdaT-9000_M-2000ToInf","ADDGravToLL_LambdaT-9000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 9 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam10000:
+				subprocesses = ["ADDGravToLL_LambdaT-10000_M-300To800","ADDGravToLL_LambdaT-10000_M-800To1300","ADDGravToLL_LambdaT-10000_M-1300To2000","ADDGravToLL_LambdaT-10000_M-2000ToInf","ADDGravToLL_LambdaT-10000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 10 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam11000:
+				subprocesses = ["ADDGravToLL_LambdaT-11000_M-300To800","ADDGravToLL_LambdaT-11000_M-800To1300","ADDGravToLL_LambdaT-11000_M-1300To2000","ADDGravToLL_LambdaT-11000_M-2000ToInf","ADDGravToLL_LambdaT-11000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 11 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam12000:
+				subprocesses = ["ADDGravToLL_LambdaT-12000_M-300To800","ADDGravToLL_LambdaT-12000_M-800To1300","ADDGravToLL_LambdaT-12000_M-1300To2000","ADDGravToLL_LambdaT-12000_M-2000ToInf","ADDGravToLL_LambdaT-12000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 12 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
+		class ADDGravTo2Mu_Lam100000:
+				subprocesses = ["ADDGravToLL_LambdaT-100000_M-300To800","ADDGravToLL_LambdaT-100000_M-800To1300","ADDGravToLL_LambdaT-100000_M-1300To2000","ADDGravToLL_LambdaT-100000_M-2000ToInf","ADDGravToLL_LambdaT-100000_M-2800ToInf"]
+				label = "ADD #Lambda_{T} = 100 TeV"               #"ADD #rightarrow e^{+}e^{-} #Lambda 3.5 TeV"
+				fillcolor = ROOT.kWhite
+				fillstyle = 0
+				linecolor = ROOT.kRed
+				uncertainty = 0.0
+				scaleFac     = 1.
+				additionalSelection = None
  
 
 
@@ -5780,7 +6044,17 @@ class Backgrounds2018:
 		uncertainty = 0.04
 		scaleFac     = 1.	
 		additionalSelection = None
-	
+	class WZ2L2Q:
+		# ~ subprocesses = ["Wantitop_2016","tW_2016","ttbar_lep50to500_2016","ttbar_lep_500to800_2016","ttbar_lep_800to1200_2016","ttbar_lep_1200to1800_2016","ttbar_lep_1800toInf_2016","ZZ_2016","WZ_2016","WWinclusive_2016","WW200to600_2016","WW600to1200_2016","WW1200to2500_2016","WW2500_2016","dyInclusive50_2016"]
+		# ~ subprocesses = ["WZ2L2Q_2016","WZ3LNu_2016","ZZ2L2Nu_2016","ZZ2L2Q_2016","ZZ4L_2016"]
+		subprocesses = ["WZ2L2Q_2018"]
+		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
+		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
+		fillcolor = ROOT.kRed-4
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.04
+		scaleFac     = 1.		
 	class Other:
 		#~ subprocesses = ["ST_tW_antitop","ST_tW_top","TTTo2L2Nu","TTTo2L2Nu_M500To800","TTTo2L2Nu_M800To1200","TTTo2L2Nu_M1200To1800","TTTo2L2Nu_M1800ToInf","ZZ","WZ","WWTo2L2Nu","WWTo2L2Nu_M600To1200","WWTo2L2Nu_M1200To2500","WWTo2L2Nu_M2500ToInf"]
 		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
@@ -5826,42 +6100,42 @@ class Backgrounds2018:
 # Color definition
 #==================
 defineMyColors = {
-        'Black' : (0, 0, 0),
-        'White' : (255, 255, 255),
-        'Red' : (255, 0, 0),
-        'DarkRed' : (128, 0, 0),
-        'Green' : (0, 255, 0),
-        'Blue' : (0, 0, 255),
-        'Yellow' : (255, 255, 0),
-        'Orange' : (255, 128, 0),
-        'DarkOrange' : (255, 64, 0),
-        'Magenta' : (255, 0, 255),
-        'KDEBlue' : (64, 137, 210),
-        'Grey' : (128, 128, 128),
-        'DarkGreen' : (0, 128, 0),
-        'DarkSlateBlue' : (72, 61, 139),
-        'Brown' : (70, 35, 10),
+		'Black' : (0, 0, 0),
+		'White' : (255, 255, 255),
+		'Red' : (255, 0, 0),
+		'DarkRed' : (128, 0, 0),
+		'Green' : (0, 255, 0),
+		'Blue' : (0, 0, 255),
+		'Yellow' : (255, 255, 0),
+		'Orange' : (255, 128, 0),
+		'DarkOrange' : (255, 64, 0),
+		'Magenta' : (255, 0, 255),
+		'KDEBlue' : (64, 137, 210),
+		'Grey' : (128, 128, 128),
+		'DarkGreen' : (0, 128, 0),
+		'DarkSlateBlue' : (72, 61, 139),
+		'Brown' : (70, 35, 10),
 
-        'MyBlue' : (36, 72, 206),
-        'MyDarkBlue' : (18, 36, 103),
-        'MyGreen' : (70, 164, 60),
-        'AnnBlueTitle' : (29, 47, 126),
-        'AnnBlue' : (55, 100, 255),
+		'MyBlue' : (36, 72, 206),
+		'MyDarkBlue' : (18, 36, 103),
+		'MyGreen' : (70, 164, 60),
+		'AnnBlueTitle' : (29, 47, 126),
+		'AnnBlue' : (55, 100, 255),
 #        'W11AnnBlue' : (0, 68, 204),
 #        'W11AnnBlue' : (63, 122, 240),
-    }
+	}
 
 
 myColors = {
-            'W11ttbar':  855,
-            'W11singlet':  854,
-            'W11ZLightJets':  401,
-            'W11ZbJets':  400,
-            'W11WJets':  842,
-            'W11Diboson':  920,
-            'W11AnnBlue': 856,
-            'W11Rare':  630,
-            }
+			'W11ttbar':  855,
+			'W11singlet':  854,
+			'W11ZLightJets':  401,
+			'W11ZbJets':  400,
+			'W11WJets':  842,
+			'W11Diboson':  920,
+			'W11AnnBlue': 856,
+			'W11Rare':  630,
+			}
 
 
 def getPlot(name):

@@ -277,15 +277,16 @@ def main():
 		for i in range(0,100):
 			hists[i]
 			if i > 0:
+				print (weightSums[0]/weightSums[i])
 				for y in range(1,hists[0].GetNbinsX()+1):
-					changeNorm[y-1].append(abs((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y))*(weightSums[0]/weightSums[y]))
+					changeNorm[y-1].append(abs((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y))*(weightSums[0]/weightSums[i]))
 					change[y-1].append(abs((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y)))
 					if (hists[i].GetBinContent(y) - hists[0].GetBinContent(y)) < 0:
 						changeDown[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y))
-						changeNormDown[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y)*(weightSums[0]/weightSums[y]))
+						changeNormDown[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y)*(weightSums[0]/weightSums[i]))
 					if (hists[i].GetBinContent(y) - hists[0].GetBinContent(y)) > 0:
 						changeUp[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y))
-						changeNormUp[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y)*(weightSums[0]/weightSums[y]))
+						changeNormUp[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y)*(weightSums[0]/weightSums[i]))
 
 		plotPad = TPad("plotPad","plotPad",0,0,1,1)			
 		plotPad.UseCurrentStyle()
@@ -320,6 +321,7 @@ def main():
 
 		
 		graph.Draw("lp")
+		graphNorm.Draw("lpsame")
 		graphNorm.SetMarkerColor(ROOT.kRed)
 		graphNorm.SetLineColor(ROOT.kRed)
 

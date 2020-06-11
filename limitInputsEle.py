@@ -7,6 +7,22 @@ from copy import deepcopy
 from helpers import *
 from defs import getPlot, Backgrounds, Signals, Data, Data2016, Data2018, zScale, zScale2018, zScale2016, Backgrounds2016, Backgrounds2018
 
+table = '''
+\\begin{table}
+\\begin{tabular}{c|c|c|c|c|c}
+mass bin [GeV] & Data &  Total Background & Drell-Yan & Other & Jets \\\ \\hline
+%s
+%s
+%s
+%s
+%s
+\\end{tabular}
+\\end{table}
+'''
+
+
+line = '''%s & %d & %.2f & %.2f & %.2f & %.2f \\\\'''
+
 def main():
 	### for data
 
@@ -162,6 +178,20 @@ def main():
 
 			# ~ print (cs, label, hist.Integral(hist.FindBin(1800),hist.FindBin(6000-0.01)))
 			# ~ print (cs, label, dyHist.Integral(dyHist.FindBin(400),dyHist.FindBin(500-0.01)))
+
+			print ("Total Background")
+			
+			print (cs, label, dyHist.Integral(dyHist.FindBin(120),dyHist.FindBin(400-0.01)) + otherHist.Integral(dyHist.FindBin(120),dyHist.FindBin(400-0.01)) + jetHist.Integral(jetHist.FindBin(120),jetHist.FindBin(400-0.01)))
+			print (cs, label, dyHist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)) + otherHist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)) + jetHist.Integral(jetHist.FindBin(400),jetHist.FindBin(600-0.01)))
+			print (cs, label, dyHist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)) +  otherHist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)) + jetHist.Integral(jetHist.FindBin(600),jetHist.FindBin(900-0.01)))
+			print (cs, label, dyHist.Integral(dyHist.FindBin(900),dyHist.FindBin(1300-0.01)) + otherHist.Integral(dyHist.FindBin(900),dyHist.FindBin(1300-0.01)) + jetHist.Integral(jetHist.FindBin(900),jetHist.FindBin(1300-0.01)))
+			print (cs, label, dyHist.Integral(dyHist.FindBin(1300),dyHist.FindBin(1800-0.01)) +  otherHist.Integral(dyHist.FindBin(1300),dyHist.FindBin(1800-0.01)) + jetHist.Integral(jetHist.FindBin(1300),jetHist.FindBin(1800-0.01)))
+			print (cs, label, dyHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(6000-0.01)) + otherHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(6000-0.01)) + jetHist.Integral(jetHist.FindBin(1800),jetHist.FindBin(6000-0.01)))
+
+
+			
+			print ("Drell-Yan")
+			
 			print (cs, label, dyHist.Integral(dyHist.FindBin(120),dyHist.FindBin(400-0.01)))
 			print (cs, label, dyHist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)))
 			print (cs, label, dyHist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)))
@@ -169,19 +199,47 @@ def main():
 			print (cs, label, dyHist.Integral(dyHist.FindBin(1300),dyHist.FindBin(1800-0.01)))
 			print (cs, label, dyHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(6000-0.01)))
 			
+			print ("Other")
+			
 			print (cs, label, otherHist.Integral(dyHist.FindBin(120),dyHist.FindBin(400-0.01)))
 			print (cs, label, otherHist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)))
 			print (cs, label, otherHist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)))
 			print (cs, label, otherHist.Integral(dyHist.FindBin(900),dyHist.FindBin(1300-0.01)))
 			print (cs, label, otherHist.Integral(dyHist.FindBin(1300),dyHist.FindBin(1800-0.01)))
 			print (cs, label, otherHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(6000-0.01)))
+			print ("Jets")
+			
+			print (cs, label, jetHist.Integral(jetHist.FindBin(120),jetHist.FindBin(400-0.01)))
+			print (cs, label, jetHist.Integral(jetHist.FindBin(400),jetHist.FindBin(600-0.01)))
+			print (cs, label, jetHist.Integral(jetHist.FindBin(600),jetHist.FindBin(900-0.01)))
+			print (cs, label, jetHist.Integral(jetHist.FindBin(900),jetHist.FindBin(1300-0.01)))
+			print (cs, label, jetHist.Integral(jetHist.FindBin(1300),jetHist.FindBin(1800-0.01)))
+			print (cs, label, jetHist.Integral(jetHist.FindBin(1800),jetHist.FindBin(6000-0.01)))
+			
+			print ("Data")
+			
 			print (cs, label, hist.Integral(dyHist.FindBin(120),dyHist.FindBin(400-0.01)))
 			print (cs, label, hist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)))
 			print (cs, label, hist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)))
 			print (cs, label, hist.Integral(dyHist.FindBin(900),dyHist.FindBin(1300-0.01)))
 			print (cs, label, hist.Integral(dyHist.FindBin(1300),dyHist.FindBin(1800-0.01)))
 			print (cs, label, hist.Integral(dyHist.FindBin(1800),dyHist.FindBin(6000-0.01)))
-
+			
+			
+			
+			line400 = line%("400-600", hist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)),dyHist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)) + otherHist.Integral(otherHist.FindBin(400),otherHist.FindBin(600-0.01)) + jetHist.Integral(jetHist.FindBin(400),jetHist.FindBin(600-0.01)),dyHist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)), otherHist.Integral(dyHist.FindBin(400),dyHist.FindBin(600-0.01)) ,jetHist.Integral(jetHist.FindBin(400),jetHist.FindBin(600-0.01)))
+			line600 = line%("600-900", hist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)),dyHist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)) + otherHist.Integral(otherHist.FindBin(600),otherHist.FindBin(900-0.01)) + jetHist.Integral(jetHist.FindBin(600),jetHist.FindBin(900-0.01)),dyHist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)), otherHist.Integral(dyHist.FindBin(600),dyHist.FindBin(900-0.01)) ,jetHist.Integral(jetHist.FindBin(600),jetHist.FindBin(900-0.01)))
+			line900 = line%("900-1300", hist.Integral(dyHist.FindBin(900),dyHist.FindBin(1300-0.01)),dyHist.Integral(dyHist.FindBin(900),dyHist.FindBin(1300-0.01)) + otherHist.Integral(dyHist.FindBin(900),otherHist.FindBin(1300-0.01)) + jetHist.Integral(jetHist.FindBin(900),jetHist.FindBin(1300-0.01)),dyHist.Integral(dyHist.FindBin(900),dyHist.FindBin(1300-0.01)), otherHist.Integral(dyHist.FindBin(900),dyHist.FindBin(1300-0.01)) ,jetHist.Integral(jetHist.FindBin(900),jetHist.FindBin(1300-0.01)))
+			line1300 = line%("1300-1800", hist.Integral(dyHist.FindBin(1300),dyHist.FindBin(1800-0.01)),dyHist.Integral(dyHist.FindBin(1300),dyHist.FindBin(1800-0.01)) + otherHist.Integral(otherHist.FindBin(1300),otherHist.FindBin(1800-0.01)) + jetHist.Integral(jetHist.FindBin(1300),jetHist.FindBin(1800-0.01)),dyHist.Integral(dyHist.FindBin(1300),dyHist.FindBin(1800-0.01)), otherHist.Integral(dyHist.FindBin(1300),dyHist.FindBin(18000-0.01)) ,jetHist.Integral(jetHist.FindBin(1300),jetHist.FindBin(1800-0.01)))
+			line1800 = line%("1800-6000", hist.Integral(dyHist.FindBin(1800),dyHist.FindBin(600-0.01)),dyHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(6000-0.01)) + otherHist.Integral(otherHist.FindBin(1800),otherHist.FindBin(6000-0.01)) + jetHist.Integral(jetHist.FindBin(1800),jetHist.FindBin(6000-0.01)),dyHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(6000-0.01)), otherHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(6000-0.01)) ,jetHist.Integral(jetHist.FindBin(1800),jetHist.FindBin(6000-0.01)))
+			print (table%(line400,line600,line900,line1300,line1800))
+	
+			line1800 = line%("1800-2200", hist.Integral(dyHist.FindBin(1800),dyHist.FindBin(2200-0.01)),dyHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(2200-0.01)) + otherHist.Integral(otherHist.FindBin(2200),otherHist.FindBin(2200-0.01)) + jetHist.Integral(jetHist.FindBin(1800),jetHist.FindBin(2200-0.01)),dyHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(2200-0.01)), otherHist.Integral(dyHist.FindBin(1800),dyHist.FindBin(2200-0.01)) ,jetHist.Integral(jetHist.FindBin(1800),jetHist.FindBin(2200-0.01)))
+			line2200 = line%("2200-2600", hist.Integral(dyHist.FindBin(2200),dyHist.FindBin(2600-0.01)),dyHist.Integral(dyHist.FindBin(2200),dyHist.FindBin(2600-0.01)) + otherHist.Integral(otherHist.FindBin(2600),otherHist.FindBin(2600-0.01)) + jetHist.Integral(jetHist.FindBin(2200),jetHist.FindBin(2600-0.01)),dyHist.Integral(dyHist.FindBin(2200),dyHist.FindBin(2600-0.01)), otherHist.Integral(dyHist.FindBin(2200),dyHist.FindBin(2600-0.01)) ,jetHist.Integral(jetHist.FindBin(2200),jetHist.FindBin(2600-0.01)))
+			line2600 = line%("2600-3000", hist.Integral(dyHist.FindBin(2600),dyHist.FindBin(3000-0.01)),dyHist.Integral(dyHist.FindBin(2600),dyHist.FindBin(3000-0.01)) + otherHist.Integral(dyHist.FindBin(3000),otherHist.FindBin(3000-0.01)) + jetHist.Integral(jetHist.FindBin(2600),jetHist.FindBin(3000-0.01)),dyHist.Integral(dyHist.FindBin(2600),dyHist.FindBin(3000-0.01)), otherHist.Integral(dyHist.FindBin(2600),dyHist.FindBin(3000-0.01)) ,jetHist.Integral(jetHist.FindBin(2600),jetHist.FindBin(3000-0.01)))
+			line3000 = line%("3000-3400", hist.Integral(dyHist.FindBin(3000),dyHist.FindBin(3400-0.01)),dyHist.Integral(dyHist.FindBin(3000),dyHist.FindBin(3400-0.01)) + otherHist.Integral(otherHist.FindBin(3400),otherHist.FindBin(3400-0.01)) + jetHist.Integral(jetHist.FindBin(3000),jetHist.FindBin(3400-0.01)),dyHist.Integral(dyHist.FindBin(3000),dyHist.FindBin(3400-0.01)), otherHist.Integral(dyHist.FindBin(3000),dyHist.FindBin(3400-0.01)) ,jetHist.Integral(jetHist.FindBin(3000),jetHist.FindBin(3400-0.01)))
+			line3400 = line%("3400-10000", hist.Integral(dyHist.FindBin(3400),dyHist.FindBin(10000-0.01)),dyHist.Integral(dyHist.FindBin(3400),dyHist.FindBin(10000-0.01)) + otherHist.Integral(otherHist.FindBin(10000),otherHist.FindBin(10000-0.01)) + jetHist.Integral(jetHist.FindBin(3400),jetHist.FindBin(10000-0.01)),dyHist.Integral(dyHist.FindBin(3400),dyHist.FindBin(10000-0.01)), otherHist.Integral(dyHist.FindBin(3400),dyHist.FindBin(10000-0.01)) ,jetHist.Integral(jetHist.FindBin(3400),jetHist.FindBin(10000-0.01)))
+			print (table%(line1800,line2200,line2600,line3000,line3400))
 			dyHist.SetDirectory(fResult)
 			dyHistScaleUp.SetDirectory(fResult)
 			dyHistScaleDown.SetDirectory(fResult)

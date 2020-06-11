@@ -11,8 +11,15 @@ parser.add_argument("-d",    help="debug", action='store_true')
 parser.add_argument("-do2016", help="do 2016", action='store_true')
 parser.add_argument("-do2018", help="do 2018", action='store_true')
 parser.add_argument("-add", help="add", action="store_true")
+parser.add_argument("-truncation", help="truncation", action="store_true")
 
 args = parser.parse_args()
+
+
+outDir = "fitPlots/"
+if args.truncation: 
+	outDir = "fitPlotsTruncation/"
+
 
 import ROOT as r
 import numpy as np
@@ -35,6 +42,17 @@ def applyPDFCorrection(hist):
 		hist.SetBinContent(i,hist.GetBinContent(i)*scaleFac)
 		
 	return copy(hist)
+	
+	
+def truncateADD(signalhist, signalhist100,l):
+	
+	returnHist = copy(signalhist)
+	for i in range(0,returnHist.GetNbinsX()+1):
+		binCenter = returnHist.GetBinCenter(i)
+		if binCenter > l:
+			returnHist.SetBinContent(i,signalhist100.GetBinContent(i))
+		
+	return copy(returnHist)
 antypes=[
 	# ["E","e","Ele","/store/user/sturdy/ZprimeAnalysis/histosHLTWeighted"],
 	# ["Mu","mu","Mu","/store/user/sturdy/ZprimeAnalysis/histosCutHLT"]
@@ -52,14 +70,20 @@ intfs=["Con","Des"]
 supers = [400,500,700,1100,1900,3500,10000]
 extrabins = [1000+i for i in range(0, 2500, 200)]
 
-if not os.path.exists('fitPlots'):
-	os.mkdir('fitPlots')
+if not os.path.exists(outDir):
+	os.mkdir(outDir)
 
 if args.add:
 	if args.do2016:
-		lvals = ["%.1f"%(3.5+i*0.5) for i in range(12)]
+		lvals = ["%.1f"%(4.0+i*0.5) for i in range(11)]
+		lvals.remove("6.5")
 		lvals.append("10")
-		lvals.append("100000")
+		lvals.append("15")
+		lvals.append("30")
+		lvals.append("50")
+		lvals.append("100")
+		lvals.append("1000")
+		lvals.append("100k")
 		helis = [""]
 		intfs = [""]
 		supers = [1800, 2200, 2600, 3000, 3400, 10000]
@@ -234,6 +258,11 @@ if unc not in uncertainties:
 	exit(1)
 
 
+outf = "parametrizations/"
+if args.truncation:
+	outf = "parametrizationsTruncation/"
+if not os.path.exists(outf):
+    os.makedirs(outf)
 for etabin in etabins:
 
 	for antype in antypes:
@@ -253,8 +282,8 @@ for etabin in etabins:
 			addLabel="_2018"
 		model = "CI"
 		if args.add: model = "ADD"
-		with open("{0:s}parametrization_2{1:s}_{2:s}_{3:s}_{4:s}{5:s}.json".format(model,antype[1],unc,etabin,csbin,addLabel),"w") as js:
-			with open("{0:s}counts_2{1:s}_{2:s}_{3:s}_{4:s}{5:s}.txt".format(model,antype[1],unc,etabin,csbin,addLabel),"w") as out:
+		with open(outf+"{0:s}parametrization_2{1:s}_{2:s}_{3:s}_{4:s}{5:s}.json".format(model,antype[1],unc,etabin,csbin,addLabel),"w") as js:
+			with open(outf+"{0:s}counts_2{1:s}_{2:s}_{3:s}_{4:s}{5:s}.txt".format(model,antype[1],unc,etabin,csbin,addLabel),"w") as out:
 				for intf in intfs:
 					for heli in helis:
 						files=[]
@@ -326,15 +355,12 @@ for etabin in etabins:
 										zScaleFac = zScale["electrons"][0]			
 							signal = "%sTo2%s_Lam%sTeV%s%s"%(model,antype[0],lval,intf,heli)
 							if args.add:
-								if lval == "100000" and plot.muon:
-									signal = "CITo2Mu_Lam100kTeVConLL"
-								elif lval == "100000":
-									signal = "CITo2E_Lam100kTeVConLL"
-								else:
-									signal = "ADDGravTo2%s_Lam%s"%(antype[0],str(int(float(lval)*1000)))
+									if lval == "100k":
+										signal = "ADDGravTo2%s_Lam100k"%(antype[0])
+									else:	
+										signal = "ADDGravTo2%s_Lam%s"%(antype[0],str(int(float(lval)*1000)))
 								
 							if signal == "CITo2E_Lam40TeVDesRR" or signal == "CITo2Mu_Lam40TeVConRR":
-							# ~ if signal == "CITo2E_Lam40TeVConLR" or signal == "CITo2E_Lam32TeVConRR" or signal == "CITo2Mu_Lam40TeVConLR" or signal == "CITo2Mu_Lam24TeVDesRR" or signal == "CITo2Mu_Lam32TeVDesRR":
 								# list for 2017
 								continue
 							if signal == 'CITo2E_Lam100kTeVDesRR':
@@ -347,9 +373,6 @@ for etabin in etabins:
 							elif args.do2018 and not args.add:	
 								Signal = Process(getattr(Signals2018,signal),eventCounts,negWeights) 
 							elif args.add and args.do2016:
-								if lval == "100000":
-									Signal = Process(getattr(Signals2016, signal),eventCounts,negWeights)
-								else:
 									Signal = Process(getattr(Signals2016ADD, signal),eventCounts,negWeights)
 							elif args.add and args.do2018:
 								Signal = Process(getattr(Signals2018ADD, signal),eventCounts,negWeights)
@@ -369,17 +392,50 @@ for etabin in etabins:
 									print ("not applying weights for down uncertainty")
 								else:
 									signalhist = applyPDFCorrection(signalhist)
-	 	
+							
+
 							signalhist.SetMinimum(0.8*signalhist.GetMinimum(0.001))
 							signalhist.SetMaximum(1.25*signalhist.GetMaximum())
 							signalhist.Draw("hist")
 							signalHistBefore.SetLineStyle(ROOT.kDashed)
 							signalHistBefore.SetLineColor(ROOT.kRed)
 							signalHistBefore.Draw("samehist")
+
 							signalhist.GetXaxis().SetRangeUser(0,5000)
 							signalhist.GetXaxis().SetNdivisions(505)
 							r.gPad.SetLogy(True)
+
+							### truncate ADD samples
 							
+							if args.add:
+								if args.do2016:
+									if not lval == "100k":
+										signal100k = "ADDGravTo2%s_Lam100k"%(antype[0])
+										Signal100k = Process(getattr(Signals2016ADD, signal100k),eventCounts,negWeights)
+										signalhist100k = Signal100k.loadHistogram(plot,lumi,zScaleFac)
+										signalhist100k.Rebin(20)
+										signalhistTruncated = truncateADD(signalhist, signalhist100k,int(float(lval)*1000))
+								elif args.do2018:
+									if not lval == "100":
+										signal100 = "ADDGravTo2%s_Lam%s"%(antype[0],100000)
+										Signal100 = Process(getattr(Signals2018ADD, signal100),eventCounts,negWeights)
+										signalhist100 = Signal100.loadHistogram(plot,lumi,zScaleFac)
+										signalhist100.Rebin(20)
+										signalhistTruncated = truncateADD(signalhist, signalhist100,int(float(lval)*1000))
+								else:
+									if not lval == "100":
+										signal100 = "ADDGravTo2%s_Lam%s"%(antype[0],100000)
+										Signal100 = Process(getattr(SignalsADD, signal100),eventCounts,negWeights)
+										signalhist100 = Signal100.loadHistogram(plot,lumi,zScaleFac)
+										signalhist100.Rebin(20)
+										signalhistTruncated = truncateADD(signalhist, signalhist100,int(float(lval)*1000))
+	 	
+								signalhistTruncated.SetLineStyle(ROOT.kDotted)
+								signalhistTruncated.Draw("samehist")
+								if not lval == "100k":
+									signalhist.GetXaxis().SetRangeUser(0,max(5000,int(float(lval)*1000)+1000))
+									signalhist.SetMinimum(1e-5)
+								
 							latex = ROOT.TLatex()
 							latex.SetTextFont(42)
 							latex.SetTextAlign(31)
@@ -390,23 +446,27 @@ for etabin in etabins:
 							
 							
 							latex.DrawLatex(0.85, 0.8, "%s"%(signal))
-
 							
 							can.Update()
 							# raw_input()
 							for ftype in ["png","C","pdf","eps"]:
 								if args.do2016:
-									can.SaveAs("fitPlots/{8:s}to2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}_2016.{0:s}".format(ftype,antype[1],lval,intf,heli,unc,etabin,csbin,model))									
+									can.SaveAs(outDir+"/{8:s}to2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}_2016.{0:s}".format(ftype,antype[1],lval,intf,heli,unc,etabin,csbin,model))									
 								elif args.do2018:
-									can.SaveAs("fitPlots/{8:s}to2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}_2018.{0:s}".format(ftype,antype[1],lval,intf,heli,unc,etabin,csbin,model))									
+									can.SaveAs(outDir+"/{8:s}to2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}_2018.{0:s}".format(ftype,antype[1],lval,intf,heli,unc,etabin,csbin,model))									
 								else:	
-									can.SaveAs("fitPlots/{8:s}to2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}.{0:s}".format(ftype,antype[1],lval,intf,heli,unc,etabin,csbin,model))
+									can.SaveAs(outDir+"/{8:s}to2{1:s}_{2:s}{3:s}{4:s}_{5:s}_{6:s}_{7:s}.{0:s}".format(ftype,antype[1],lval,intf,heli,unc,etabin,csbin,model))
 							# raw_input("enter to continue")
+							
+							
+							if args.add and args.truncation:
+								signalhist = signalhistTruncated						
+							
+							
 							for p,point in enumerate(supers[:-1]):
 								bval  = signalhist.FindBin(point)
 								upval = signalhist.FindBin(supers[p+1]-0.05)
 								val   = signalhist.Integral(bval,upval)
-								print (point, val)
 								err   = r.Double(0)
 								val   = signalhist.Integral(bval,upval)
 								val2  = signalhist.IntegralAndError(bval,upval,err)

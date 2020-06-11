@@ -6,6 +6,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-do2016", help="do 2016", action='store_true')
 parser.add_argument("-do2018", help="do 2018", action='store_true')
 parser.add_argument("-add", help="add", action="store_true")
+parser.add_argument("-truncation", help="truncation", action="store_true")
 args = parser.parse_args()
 
 csbins = ["inc", "cspos", "csneg"]
@@ -21,6 +22,8 @@ for cs in csbins:
 			cmd = "python %s"%program
 			if args.add:
 				cmd = cmd + " -add"
+			if args.truncation:
+				cmd = cmd + " -truncation"	
 			if args.do2016:
 				cmd = cmd + " -do2016"
 			elif args.do2018:
@@ -33,9 +36,11 @@ for cs in csbins:
 				cmd = cmd + " --fixinf" 
 				if args.do2016:
 					# ~ cmd = cmd + " --fitrange 3 110000  --constraint '0 0 1e4' --constraint '1 0 1e9' --constraint '2 0 1e9'" 
-					cmd = cmd + " --fitrange 3 110000" 
+					cmd = cmd + " --fitrange 3.5 110000" 
 				else:	
-					cmd = cmd + " --fitrange 3.5 110  --constraint '0 0 1e4' --constraint '1 0 1e9' --constraint '2 0 1e9'" 
+					# ~ cmd = cmd + " --fitrange 3.5 110  --constraint '0 0 1e4' --constraint '1 0 1e9' --constraint '2 0 1e9'" 
+					cmd = cmd + " --fitrange 3.5 110" 
+					
 			if not args.add and "Graph" in program:
 				cmd = cmd + " --fixinf --constraint '0 0 1e4' --constraint '1 0 1e9' --constraint '2 0 1e9'"
 			print (cmd)

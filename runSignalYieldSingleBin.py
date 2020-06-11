@@ -6,6 +6,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-do2016", help="do 2016", action='store_true')
 parser.add_argument("-do2018", help="do 2018", action='store_true')
 parser.add_argument("-add", help="add", action="store_true")
+parser.add_argument("-truncation", help="truncate add", action="store_true")
 args = parser.parse_args()
 
 # ~ csbins = ["inc", "cspos", "csneg"]
@@ -16,12 +17,10 @@ uncertainties = ["nominal","scaleup","scaledown","pileup","piledown","smeared","
 
 for unc in uncertainties:
 	#cmd = "python signalYields.py -s %s"%unc
-	cmd = "python signalYieldsSingleBin.py %s"%unc
-	# ~ if args.do2018:
-		# ~ cmd += " 2018"
-	# ~ elif args.do2016:
-		# ~ cmd += " 2016"
-	# ~ else:
-		# ~ cmd += " 2017"		
+	cmd = "python signalYieldsSingleBin.py -s %s"%unc
+	if args.add:
+		cmd += " -add"
+		if args.truncation:
+			cmd += " -truncation"	
 	print (cmd)
 	os.system(cmd)
