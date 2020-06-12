@@ -84,8 +84,8 @@ if args.add and args.do2016:
 	bvals = [i for i in range(len(lvals))]
 	helis = [""]
 	intfs = [""]
-	supers = [1800, 2200, 2600, 3000, 3400, 10000]
-	grbins = [1800, 2200, 2600, 3000, 3400]
+	supers = [1900, 2200, 2600, 3000, 3400, 10000]
+	grbins = [1900, 2200, 2600, 3000, 3400]
 	grcols = [r.kBlack, r.kRed, r.kBlue, r.kYellow, r.kViolet, r.kOrange]
 	extragrbins = [1900+x for x in range(0, 1500, 200)]
 elif args.add:
@@ -203,13 +203,6 @@ for etabin in etabins:
 									 args.fixinf, args.fixdes, constraints, args.fitrange, args.add,args.truncation)
 						#sys.exit()
 						pass
-					print("Fitting extra bins for the mass scan")
-					for i,point in enumerate(extragrbins):
-						doFitOnGraph(params, lvals, xvals, xerrs,
-									 intf, heli, 1, point, outf, conFitPar,
-									 args.fixinf, args.fixdes, constraints, args.fitrange, args.add,args.truncation)
-						pass
-					# raw_input("continue")
 					pass
 				pass
 			outf.Write()
@@ -274,6 +267,34 @@ for etabin in etabins:
 					can.Clear()
 					can.Update()
 
+			outf.Close()
+			
+		with open(outfolder+"{0:s}parametrization_2{1:s}_{2:s}_{3:s}_{4:s}{5:s}.json".format(model,emutype,unc,etabin,csbin,addLabel),"r") as js:
+			params = json.load(js)
+			outf = r.TFile(outfolder+"{6:s}to2{0:s}_{1:s}_{2:s}_{3:s}_scanmass{4:s}{5:s}.root".format(emutype,unc,etabin,csbin,modifier,addLabel,model),"recreate")
+			for heli in helis:
+				conFitPar = []
+				for intf in intfs:
+					print("Fitting extra bins for the mass scan")
+					for i,point in enumerate(extragrbins):
+						doFitOnGraph(params, lvals, xvals, xerrs,
+									 intf, heli, 1, point, outf, conFitPar,
+									 args.fixinf, args.fixdes, constraints, args.fitrange, args.add,args.truncation,extra=True)
+						pass
+					# raw_input("continue")
+					pass
+				pass
+			outf.Write()
+
+			for heli in helis:
+				conFitPar = []
+				for intf in intfs:
+					can = r.TCanvas("can","",800,800)
+					r.gStyle.SetOptStat(0)
+					r.gStyle.SetOptFit(0)
+					grMass = {}
+					fMass  = {}
+					fitMass  = {}
 					leg = r.TLegend(0.5,0.7,0.95,0.9)
 					for extrabin in extragrbins:
 						grMass[extrabin] = outf.Get("gr_{0:s}{1:s}_m{2:d}".format(intf,heli,extrabin))
@@ -315,6 +336,7 @@ for etabin in etabins:
 						pass
 					pass
 				pass
-			outf.Close()
+			outf.Close()			
+			
 			pass
 		pass

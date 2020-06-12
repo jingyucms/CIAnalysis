@@ -6296,6 +6296,20 @@ class plots:
 	massPlotEleBBPrefireDownNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPrefireDown_bb","DielectronMassPrefireDownBB",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True,muon=False)
 	massPlotEleBEPrefireDownNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPrefireDown_be","DielectronMassPrefireDownBE",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True,muon=False)
 
+	massPlotNoLog = Plot("Our2018MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained","DimuonMass",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
+	massPlotScaleUpNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleUp","DimuonMassScaleUp",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 1, rebin=1,yLabel="Events / 20 GeV",useJets=True)
+	massPlotScaleDownNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedScaleDown","DimuonMassScaleDown",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 1, rebin=1,yLabel="Events / 20 GeV",useJets=True)
+	massPlotSmearNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedSmear","DimuonMassSmear",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
+	massPlotMuonIDNoLog = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrainedMuonID","DimuonMassMuonID",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True)
+
+	massPlotEleNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMass_bbbe","DielectronMass",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleScaleUpNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassScaleUp_bbbe","DielectronMassScaleUp",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotEleScaleDownNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassScaleDown_bbbe","DielectronMassScaleDown",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotElePUScaleUpNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleUp_bbbe","DielectronMassPUScaleUp",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotElePUScaleDownNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPUScaleDown_bbbe","DielectronMassPUScaleDown",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotElePrefireUpNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPrefireUp_bbbe","DielectronMassPUScaleUp",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True,muon=False)
+	massPlotElePrefireDownNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassPrefireDown_bbbe","DielectronMassPrefireDown",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,5000],nBins = 100, rebin=1,yLabel="Events / 20 GeV",useJets=True,muon=False)
+
 	massPlotCSPos = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained_CSPos","DimuonMass_CSPos",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=True,xRange=[60,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True)
 	massPlotCSNeg = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained_CSNeg","DimuonMass_CSNeg",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=True,xRange=[60,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True)
 

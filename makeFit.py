@@ -86,7 +86,7 @@ if args.add:
 		lvals.append("100k")
 		helis = [""]
 		intfs = [""]
-		supers = [1800, 2200, 2600, 3000, 3400, 10000]
+		supers = [1900, 2200, 2600, 3000, 3400, 10000]
 		extrabins = [1900+i for i in range(0, 1500, 200)]
 	else:
 		lvals = ["%.1f"%(4+i*1) for i in range(9)]
@@ -293,8 +293,8 @@ for etabin in etabins:
 							params["{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)] = [0. for j in range(len(lvals))]
 							pass
 						for point in extrabins:
-							params["{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)]     = [0. for j in range(len(lvals))]
-							params["{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)] = [0. for j in range(len(lvals))]
+							params["singleBin_{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)]     = [0. for j in range(len(lvals))]
+							params["singleBin_{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)] = [0. for j in range(len(lvals))]
 							pass
 						for i,lval in enumerate(lvals):
 							hist = None
@@ -483,9 +483,9 @@ for etabin in etabins:
 								err   = r.Double(0)
 								val   = signalhist.Integral(bval,upval)
 								val2  = signalhist.IntegralAndError(bval,upval,err)
-								out.write("{0:s} {1:d} {2:d} {3:d} {4:2.4f} {5:2.4f}\n".format(lval,point,bval,upval,val,err))
-								params["{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)][i]     = val
-								params["{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)][i] = err
+								out.write("SingleBin {0:s} {1:d} {2:d} {3:d} {4:2.4f} {5:2.4f}\n".format(lval,point,bval,upval,val,err))
+								params["singleBin_{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)][i]     = val
+								params["singleBin_{0:s}{1:s}_{2:d}GeV_err".format(intf,heli,point)][i] = err
 								pass
 							pass
 						pass

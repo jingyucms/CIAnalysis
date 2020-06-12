@@ -60,7 +60,7 @@ def main():
 
 							name = "%sto2e"	%addci
 						if useADD:
-							if "2016" in label: massBins = [1800, 2200, 2600, 3000, 3400]
+							if "2016" in label: massBins = [1900, 2200, 2600, 3000, 3400]
 							else: massBins = [1800, 2200, 2600, 3000, 3400]
 							# ~ massBins = [1800, 2200, 2600, 3000, 3400]
 							if "2016" in label:

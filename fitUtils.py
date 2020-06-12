@@ -1,11 +1,10 @@
 def doFitOnGraph(params, lvals, xvals, xerrs,
 				 intf, heli, i, point, outf, conFitPar,
 				 fixinf=False, fixdes=False,
-				 limitPars=None, fitRange=(0.5,125000.), useADD=False,truncation=False):
+				 limitPars=None, fitRange=(0.5,125000.), useADD=False,truncation=False,extra=False):
 	import ROOT as r
 	import numpy as np
 	import math
-	print (truncation)
 	# ~ if useADD: fitRange = (3, 11)
 	# ~ truncation = False
 	r.gErrorIgnoreLevel = r.kWarning
@@ -19,9 +18,12 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
 	elif useADD: fn = r.TF1("fn_m{0:d}_{1:s}{2:s}".format(point, intf, heli),
 		"[0]+[1]/(x**4)+[2]/(x**8)", fitRange[0], fitRange[1])
 	keyname = "{0:s}{1:s}_{2:d}GeV".format(intf,heli,point)
-	pvals = params["{0:s}".format(keyname)]
-	# ~ print (pvals)
-	perrs = params["{0:s}_err".format(keyname)]
+	if extra:
+		pvals = params["singleBin_{0:s}".format(keyname)]	
+		perrs = params["singleBin_{0:s}_err".format(keyname)]
+	else:	
+		pvals = params["{0:s}".format(keyname)]
+		perrs = params["{0:s}_err".format(keyname)]
 	print("Values:",pvals)
 	print("Errors:",perrs)
 	yvals = np.array(pvals,dtype='float64')
