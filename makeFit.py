@@ -62,11 +62,13 @@ antypes=[
 
 r.gROOT.SetBatch(True)
 
-lvals=["16", "24", "32", "40", "100k"]
+lvals=["1","10","16", "24", "32", "40", "100k"]
 if args.do2016:
 	lvals=["1", "10", "16", "22", "28", "34", "100k"]
 helis=["LL","LR","RL","RR"]
 intfs=["Con","Des"]
+# ~ helis=["LL"]
+# ~ intfs=["Con"]
 supers = [400,500,700,1100,1900,3500,10000]
 extrabins = [1000+i for i in range(0, 2500, 200)]
 
@@ -359,39 +361,112 @@ for etabin in etabins:
 										signal = "ADDGravTo2%s_Lam100k"%(antype[0])
 									else:	
 										signal = "ADDGravTo2%s_Lam%s"%(antype[0],str(int(float(lval)*1000)))
+
+
+							
 								
 							if signal == "CITo2E_Lam40TeVDesRR" or signal == "CITo2Mu_Lam40TeVConRR":
 								# list for 2017
 								continue
 							if signal == 'CITo2E_Lam100kTeVDesRR':
 								signal = 'CITo2E_Lam100kTeVDesLL'	
-							if signal == "CITo2Mu_Lam10TeVConRL" or signal == "CITo2Mu_Lam10TeVConLR":
+							if args.do2016 and (signal == "CITo2Mu_Lam10TeVConRL" or signal == "CITo2Mu_Lam10TeVConLR"):
 								# list for 2016
 								continue
-							if args.do2016 and not args.add:	
-								Signal = Process(getattr(Signals2016,signal),eventCounts,negWeights) 
-							elif args.do2018 and not args.add:	
-								Signal = Process(getattr(Signals2018,signal),eventCounts,negWeights) 
-							elif args.add and args.do2016:
-									Signal = Process(getattr(Signals2016ADD, signal),eventCounts,negWeights)
-							elif args.add and args.do2018:
-								Signal = Process(getattr(Signals2018ADD, signal),eventCounts,negWeights)
-							elif args.add:
-								Signal = Process(getattr(SignalsADD, signal),eventCounts,negWeights)
-							else:	
-								Signal = Process(getattr(Signals,signal),eventCounts,negWeights)                        
-							
-							signalhist = Signal.loadHistogram(plot,lumi,zScaleFac)
-							signalhist.Rebin(20)
-							signalHistBefore = signalhist.Clone()
-							if not args.do2016:
-								if unc == "pdfWeightsUp":
-									signalhist = applyPDFCorrection(signalhist)
-									signalhist = applyPDFCorrection(signalhist)
-								elif unc == "pdfWeightsDown":
-									print ("not applying weights for down uncertainty")
+								
+							if '100k' in signal and not args.add:			
+								if "E" in signal:	
+									signalConLL = "CITo2E_Lam100kTeVConLL"	
+									signalConLR = "CITo2E_Lam100kTeVConLR"	
+									signalConRL = "CITo2E_Lam100kTeVConRL"	
+									signalConRR = "CITo2E_Lam100kTeVConRR"	
+									signalDesLL = "CITo2E_Lam100kTeVDesLL"	
+									signalDesLR = "CITo2E_Lam100kTeVDesLR"	
+									signalDesRL = "CITo2E_Lam100kTeVDesRL"	
+									signalDesRR = "CITo2E_Lam100kTeVDesRR"	
+								else:	
+									signalConLL = "CITo2Mu_Lam100kTeVConLL"	
+									signalConLR = "CITo2Mu_Lam100kTeVConLR"	
+									signalConRL = "CITo2Mu_Lam100kTeVConRL"	
+									signalConRR = "CITo2Mu_Lam100kTeVConRR"	
+									signalDesLL = "CITo2Mu_Lam100kTeVDesLL"	
+									signalDesLR = "CITo2Mu_Lam100kTeVDesLR"	
+									signalDesRL = "CITo2Mu_Lam100kTeVDesRL"	
+									signalDesRR = "CITo2Mu_Lam100kTeVDesRR"	
+									
+								if args.do2016:	
+									SignalConLL = Process(getattr(Signals2016,signalConLL),eventCounts,negWeights) 
+									SignalConLR = Process(getattr(Signals2016,signalConLR),eventCounts,negWeights) 
+									SignalConRL = Process(getattr(Signals2016,signalConRL),eventCounts,negWeights) 
+									SignalConRR = Process(getattr(Signals2016,signalConRR),eventCounts,negWeights) 
+									SignalDesLL = Process(getattr(Signals2016,signalDesLL),eventCounts,negWeights) 
+									SignalDesLR = Process(getattr(Signals2016,signalDesLR),eventCounts,negWeights) 
+									SignalDesRL = Process(getattr(Signals2016,signalDesRL),eventCounts,negWeights) 
+									SignalDesRR = Process(getattr(Signals2016,signalDesRR),eventCounts,negWeights) 
+								elif args.do2018:	
+									SignalConLL = Process(getattr(Signals2018,signalConLL),eventCounts,negWeights) 
+									SignalConLR = Process(getattr(Signals2018,signalConLR),eventCounts,negWeights) 
+									SignalConRL = Process(getattr(Signals2018,signalConRL),eventCounts,negWeights) 
+									SignalConRR = Process(getattr(Signals2018,signalConRR),eventCounts,negWeights) 
+									SignalDesLL = Process(getattr(Signals2018,signalDesLL),eventCounts,negWeights) 
+									SignalDesLR = Process(getattr(Signals2018,signalDesLR),eventCounts,negWeights) 
+									SignalDesRL = Process(getattr(Signals2018,signalDesRL),eventCounts,negWeights) 
 								else:
-									signalhist = applyPDFCorrection(signalhist)
+									SignalConLL = Process(getattr(Signals,signalConLL),eventCounts,negWeights) 
+									SignalConLR = Process(getattr(Signals,signalConLR),eventCounts,negWeights) 
+									SignalConRL = Process(getattr(Signals,signalConRL),eventCounts,negWeights) 
+									SignalConRR = Process(getattr(Signals,signalConRR),eventCounts,negWeights) 
+									SignalDesLL = Process(getattr(Signals,signalDesLL),eventCounts,negWeights) 
+									SignalDesLR = Process(getattr(Signals,signalDesLR),eventCounts,negWeights) 
+									SignalDesRL = Process(getattr(Signals,signalDesRL),eventCounts,negWeights) 
+								
+								signalhist = SignalConLL.loadHistogram(plot,lumi,zScaleFac)
+								signalhist.Add(SignalConLR.loadHistogram(plot,lumi,zScaleFac))
+								signalhist.Add(SignalConRL.loadHistogram(plot,lumi,zScaleFac))
+								signalhist.Add(SignalConRR.loadHistogram(plot,lumi,zScaleFac))
+								signalhist.Add(SignalDesLL.loadHistogram(plot,lumi,zScaleFac))
+								signalhist.Add(SignalDesLR.loadHistogram(plot,lumi,zScaleFac))
+								signalhist.Add(SignalDesRL.loadHistogram(plot,lumi,zScaleFac))
+								if args.do2016:
+									signalhist.Add(SignalDesRR.loadHistogram(plot,lumi,zScaleFac))
+									signalhist.Scale(1./8)
+								else:	
+									signalhist.Scale(1./7)
+								signalhist.Rebin(20)
+								signalHistBefore = signalhist.Clone()
+								if not args.do2016:
+									if unc == "pdfWeightsUp":
+										signalhist = applyPDFCorrection(signalhist)
+										signalhist = applyPDFCorrection(signalhist)
+									elif unc == "pdfWeightsDown":
+										print ("not applying weights for down uncertainty")
+									else:
+										signalhist = applyPDFCorrection(signalhist)
+							else:		
+								if args.do2016 and not args.add:	
+									Signal = Process(getattr(Signals2016,signal),eventCounts,negWeights) 
+								elif args.do2018 and not args.add:	
+									Signal = Process(getattr(Signals2018,signal),eventCounts,negWeights) 
+								elif args.add and args.do2016:
+										Signal = Process(getattr(Signals2016ADD, signal),eventCounts,negWeights)
+								elif args.add and args.do2018:
+									Signal = Process(getattr(Signals2018ADD, signal),eventCounts,negWeights)
+								elif args.add:
+									Signal = Process(getattr(SignalsADD, signal),eventCounts,negWeights)
+								else:	
+									Signal = Process(getattr(Signals,signal),eventCounts,negWeights)                        
+								
+								signalhist = Signal.loadHistogram(plot,lumi,zScaleFac)
+								signalhist.Rebin(20)
+								signalHistBefore = signalhist.Clone()
+								if not args.do2016:
+									if unc == "pdfWeightsUp":
+										signalhist = applyPDFCorrection(signalhist)
+										signalhist = applyPDFCorrection(signalhist)
+									elif unc == "pdfWeightsDown":
+										print ("not applying weights for down uncertainty")
+									else:
+										signalhist = applyPDFCorrection(signalhist)
 							
 
 							signalhist.SetMinimum(0.8*signalhist.GetMinimum(0.001))

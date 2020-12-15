@@ -93,6 +93,10 @@ def main():
 			otherHistWeighted = deepcopy(other.loadHistogram(massPlotWeighted,lumi,zScaleFac))
 			
 			jetHist = deepcopy(jets.loadHistogram(massPlot,lumi,zScaleFac))
+			for i in range(0,jetHist.GetNbinsX()):
+				jetHist.SetBinContent(i,jetHist.GetBinContent(i)*jetHist.GetBinWidth(i))
+				jetHist.SetBinError(i,jetHist.GetBinError(i)*jetHist.GetBinWidth(i))			
+			
 			if cs == "inc":				
 				dyHist.SetName("bkgHistDY_%s"%label)
 				dyHistSmear.SetName("bkgHistDYSmeared_%s"%label)

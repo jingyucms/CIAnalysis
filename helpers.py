@@ -53,7 +53,7 @@ def binning(channel='muon'):
 		return [60., 65.43046396, 71.3524269, 77.81037328, 84.85281374, 92.53264952,  100.90756983,  110.04048518,  120., 129.95474058, 140.73528833, 152.41014904, 165.0535115, 178.74571891, 193.57377942, 209.63191906,  227.02218049,  245.85507143,  266.2502669,   288.3373697, 
 		312.25673399,  338.16035716,  366.21284574,  396.59246138,  429.49225362, 465.12128666,  503.70596789,  545.49148654,  590.74337185,  639.74918031, 692.82032303,  750.29404456,  812.53556599,  879.94040575,  952.93689296, 
 		1031.98888927, 1117.59873655, 1210.310449,   1310.71317017, 1419.4449167,
-		1537.19663264, 1664.71658012, 1802.81509423, 1952.36973236, 2114.3308507, 2289.72764334, 2479.6746824,  2685.37900061, 2908.14776151, 3149.39656595, 3410.65844758, 3693.59361467, 4000.        ]
+		1537.19663264, 1664.71658012, 1802.81509423, 1952.36973236, 2114.3308507, 2289.72764334, 2479.6746824,  2685.37900061, 2908.14776151, 3149.39656595, 3410.65844758, 3693.59361467, 4000.,4500,5200,6000,7000,8000]
 	if channel == 'electron':
 		# ~ return ([j for j in range(50, 120, 5)] +
 				# ~ [j for j in range(120, 150, 5)] +
@@ -85,7 +85,7 @@ def binning(channel='muon'):
 
 	# ~ return logbins
 	
-def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=False):
+def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=False,CIBins=False):
 	"""
 	returns histogram from file
 	"""
@@ -104,14 +104,46 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=Fa
 		
 	from ROOT import TFile, TH1F
 	rootFile = TFile(path+fileName, "read")
-	if "saved_hist_for_combine" in fileName or "jets_muons" in fileName or "hist_jets" in fileName or 'Result_' in fileName:
+	if "saved_hist_for_combine" in fileName or "jets_muons" in fileName or "hist_jets" in fileName or 'Result_' in fileName or "combined_jet" in fileName:
 		if muon:
-			if "be" in histName:
-				tmpResult = rootFile.Get("jetsBE")
-			elif "bb" in histName:
-				tmpResult = rootFile.Get("jetsBB")
-			else:
-				tmpResult = rootFile.Get("jets")
+			if 	"combined_jet" in fileName:
+				if "be" in histName:
+					if "2018" in fileName:
+						actualRootFile = TFile(path+"combined_jet_log_BE_2018_binWidth.root", "read")
+					else:	
+						actualRootFile = TFile(path+"combined_jet_log_BE_binWidth.root", "read")
+					tmpResult = actualRootFile.Get("DATA_mass_log_BE")
+				elif "bb" in histName:
+					tmpResult = rootFile.Get("DATA_mass_log_BB")
+				else:
+					if "2018" in fileName:
+						actualRootFile = TFile(path+"combined_jet_log_inclusive_2018_binWidth.root", "read")
+					else:	
+						actualRootFile = TFile(path+"combined_jet_log_inclusive_binWidth.root", "read")
+					tmpResult = actualRootFile.Get("DATA_mass_log_BB")
+				if "2018" in fileName:
+					tmpResult.Scale(0.5885366095313584)
+				else:	
+					tmpResult.Scale(0.4114633904686416)
+				bng = binning("muon")
+
+				tmpResult2 = TH1F("intermediate","intermediate",len(bng) - 1, array('d', bng))
+				for i in range(0,tmpResult.GetNbinsX()):
+					tmpResult2.SetBinContent(i,tmpResult.GetBinContent(i))
+				tmpResult = tmpResult2	
+			else:		
+				if "be" in histName:
+					tmpResult = rootFile.Get("jetsBE")
+				elif "bb" in histName:
+					tmpResult = rootFile.Get("jetsBB")
+				else:
+					tmpResult = rootFile.Get("jets")
+				
+				# ~ bng = binning("muon")
+				# ~ tmpResult2 = TH1F("intermediate","intermediate",len(bng) - 1, array('d', bng))
+				# ~ for i in range(0,tmpResult.GetNbinsX()):
+					# ~ tmpResult2.SetBinContent(i,tmpResult.GetBinContent(i))
+				# ~ tmpResult = tmpResult2						
 		else:
 			if fileName == "hist_jets.root":
 				if "bbbe" in histName:
@@ -127,9 +159,9 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=Fa
 					tmpResult = rootFile.Get("jets_h_mee_all_BB")
 				else:
 					tmpResult = rootFile.Get("jets_h_mee_all_BE")
-				for i in range(0,tmpResult.GetNbinsX()):
-					tmpResult.SetBinContent(i,tmpResult.GetBinContent(i)*tmpResult.GetBinWidth(i))
-					tmpResult.SetBinError(i,tmpResult.GetBinError(i)*tmpResult.GetBinWidth(i))
+				# ~ for i in range(0,tmpResult.GetNbinsX()):
+					# ~ tmpResult.SetBinContent(i,tmpResult.GetBinContent(i)*tmpResult.GetBinWidth(i))
+					# ~ tmpResult.SetBinError(i,tmpResult.GetBinError(i)*tmpResult.GetBinWidth(i))
 		result = tmpResult.Clone("jets")
 		if '_CSPos' in histName or '_CSNeg' in histName:
 			result.Scale(0.5)
@@ -142,9 +174,8 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=Fa
 			result = rootFile.Get(histName)
 
 			
-			
-	if logBins:
-		if ( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName)):
+	if logBins and not CIBins:
+		if ( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName or "combined_jet" in fileName)):
 			if not muon:
 				bng = binning("electron")
 			else:
@@ -155,17 +186,29 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=Fa
 			for i in range(0,result.GetNbinsX()):
 				result.SetBinContent(i,result.GetBinContent(i)/result.GetBinWidth(i))
 				result.SetBinError(i,result.GetBinError(i)/result.GetBinWidth(i))
+			result.SetBinContent(result.GetNbinsX()+1,0)
+	elif CIBins:
+		if ( "Mass" in histName ):
+			if not muon:
+				bng = [400,500,700,1100,1900,3500,6000,6500,7000,10000]
+			else:
+				bng = [400,500,700,1100,1900,3500,6000,6500,7000,10000]
+
+			if ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName or "combined_jet" in fileName):
+				for i in range(0,result.GetNbinsX()):
+					result.SetBinContent(i,result.GetBinContent(i)*result.GetBinWidth(i))
+					result.SetBinError(i,result.GetBinError(i)*result.GetBinWidth(i))
+					
+			result = result.Rebin(len(bng) - 1, 'hist_' + uuid.uuid4().hex, array('d', bng))
+			
+			for i in range(0,result.GetNbinsX()):
+				result.SetBinContent(i,result.GetBinContent(i)/result.GetBinWidth(i))
+				result.SetBinError(i,result.GetBinError(i)/result.GetBinWidth(i))
+			result.SetBinContent(result.GetNbinsX()+1,0)
 	else:
-		if not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName):
+		if not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName or "combined_jet" in fileName):
 			result.Rebin(rebin)
 
-	# ~ if not muon:		
-		# ~ for i in range(0, result.GetNbinsX()+1):
-			# ~ if result.GetBinContent(i)<0 : 
-						# ~ result.SetBinContent(i,0)
-						# ~ result.SetBinError(i,0)
-	
-	# ~ print (path, fileName, histName)
 	result.SetDirectory(0)
 	return deepcopy(result)
 	
@@ -329,8 +372,7 @@ class Process:
 					self.xsecs.append(crossSections[sample])
 				self.negWeightFraction.append(negWeights[sample])
 				self.nEvents.append(Counts[sample])	
-	def loadHistogram(self,plot,lumi,zScaleFac,genMass=False):
-		# ~ print (genMass)
+	def loadHistogram(self,plot,lumi,zScaleFac,genMass=False,CIBins=False):
 		histo = None
 		if plot.plot2D:
 			for index, sample in enumerate(self.samples):
@@ -352,22 +394,19 @@ class Process:
 		else:
 			for index, sample in enumerate(self.samples):
 				if plot.muon:
-					tempHist = loadHistoFromFile(fileNames[sample],plot.histName,plot.rebin,plot.muon,plot.logX,genMass=genMass)
+					tempHist = loadHistoFromFile(fileNames[sample],plot.histName,plot.rebin,plot.muon,plot.logX,genMass=genMass,CIBins=CIBins)
 				else:	
-					tempHist = loadHistoFromFile(fileNamesEle[sample],plot.histName,plot.rebin,plot.muon,plot.logX,genMass=genMass)
+					tempHist = loadHistoFromFile(fileNamesEle[sample],plot.histName,plot.rebin,plot.muon,plot.logX,genMass=genMass,CIBins=CIBins)
 				if not self.normalized:
 					if plot.muon:
 						tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])*zScaleFac)
 					else:	
-						# ~ tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*zScaleFac)
 						tempHist.Scale(lumi*self.xsecs[index]/self.nEvents[index]*(1-2*self.negWeightFraction[index])*zScaleFac)
 						
-					# ~ print (lumi, self.xsecs[index] , self.nEvents[index] , self.negWeightFraction[index], zScaleFac)
 				if histo == None:
 					histo = tempHist.Clone()
-				else:	
+				else:
 					histo.Add(tempHist.Clone())
-				# ~ print (tempHist.GetEntries())		
 			histo.SetFillColor(self.theColor)
 			histo.SetLineColor(self.theLineColor)
 			histo.GetXaxis().SetTitle(plot.xaxis) 
@@ -394,17 +433,27 @@ class Process:
 		histo.GetYaxis().SetTitle(plot.yaxis)	
 		return histo
 
+
+def makeHistoCumulative(histo):
+	from ROOT import Double
+	err = Double()
+	for i in range(0,histo.GetNbinsX()):
+		histo.SetBinContent(i+1,histo.IntegralAndError(i+1, histo.GetNbinsX()+1, err))
+		histo.SetBinError(i+1,err)
+
+	return histo
 	
 class TheStack:
 	from ROOT import THStack
 	theStack = THStack()	
 	theHistogram = None	
-	def  __init__(self,processes,lumi,plot,zScaleFac,genMass=False):
+	def  __init__(self,processes,lumi,plot,zScaleFac,genMass=False,CIBins=False,cumulative=False):
 		self.theStack = THStack()
 			
 		for process in processes:
-			temphist = process.loadHistogram(plot,lumi,zScaleFac,genMass=genMass)
-
+			temphist = process.loadHistogram(plot,lumi,zScaleFac,genMass=genMass,CIBins=CIBins)
+			if cumulative:
+				temphist = makeHistoCumulative(temphist)
 			self.theStack.Add(temphist.Clone())
 			if self.theHistogram == None:
 				self.theHistogram = temphist.Clone()
@@ -413,20 +462,21 @@ class TheStack:
 	def Add(self,addstack):
 		for h in addstack.theStack.GetHists():
 			self.theStack.Add(h.Clone())
-			self.theHistogram.Add(h.Clone())				
+			self.theHistogram.Add(h.Clone())
+							
 class TheStackRun2:
 	from ROOT import THStack
 	theStack = THStack()	
 	theHistogram = None	
-	def  __init__(self,processes,lumi,plot,zScaleFac):
+	def  __init__(self,processes,lumi,plot,zScaleFac,CIBins=False,cumulative=False):
 		self.theStack = THStack()
 	
-			
 		for index, process in enumerate(processes[0]):
-			temphist = process.loadHistogram(plot,lumi[0],zScaleFac[0])
-			temphist.Add(processes[1][index].loadHistogram(plot,lumi[1],zScaleFac[1]))
-			temphist.Add(processes[2][index].loadHistogram(plot,lumi[2],zScaleFac[2]))
-
+			temphist = process.loadHistogram(plot,lumi[0],zScaleFac[0],CIBins=CIBins)
+			temphist.Add(processes[1][index].loadHistogram(plot,lumi[1],zScaleFac[1],CIBins=CIBins))
+			temphist.Add(processes[2][index].loadHistogram(plot,lumi[2],zScaleFac[2],CIBins=CIBins))
+			if cumulative:
+				temphist = makeHistoCumulative(temphist)
 			self.theStack.Add(temphist.Clone())
 			if self.theHistogram == None:
 				self.theHistogram = temphist.Clone()
@@ -452,7 +502,7 @@ class TheStack2DRun2:
 	from ROOT import THStack
 	theStack = THStack()	
 	theHistogram = None	
-	def  __init__(self,processes,lumi,plot,zScale):
+	def  __init__(self,processes,lumi,plot,zScale,CIBins=False):
 		self.theStack = THStack()
 			
 		for index, process in enumerate(processes[0]):
@@ -466,11 +516,13 @@ class TheStack2DRun2:
 			else:	
 				self.theHistogram.Add(temphist.Clone())
 
-def getDataHist(plot,files,fromTree=False):
+def getDataHist(plot,files,fromTree=False,CIBins=False,cumulative=False):
 	if not fromTree:
-		histo = loadHistoFromFile(files["data"], plot.histName,plot.rebin,plot.muon)
+		histo = loadHistoFromFile(files["data"], plot.histName,plot.rebin,plot.muon,CIBins=CIBins)
 	else:
 		histo = getHistoFromTree(files["data"], plot)
+	if cumulative:
+		histo = makeHistoCumulative(histo)	
 	return histo	
 	
 def getDataHist2D(plot,files,binLow,binHigh,fromTree=False):

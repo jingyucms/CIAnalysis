@@ -129,6 +129,8 @@ def main():
 	
 	parser.add_argument("-add", "--add", action="store_true", dest="useADD", default=False,
 						  help="use ADD instead of CI.")
+	parser.add_argument("-truncation", "--truncation", action="store_true", dest="truncation", default=False,
+						  help="use ADD instead of CI.")
 	parser.add_argument("-s", "--suffix", dest="suffix", default='nominal',
 						  help="name of systematic to use")
 	args = parser.parse_args()					  
@@ -148,6 +150,11 @@ def main():
 		interferences = [""]
 		hels = [""]
 		massBins = [1800, 2200, 2600, 3000, 3400]
+
+	outDir = "parametrizations"
+	if args.truncation:
+		outDir = "parametrizationsTruncation"
+
 		
 	graphs = []	
 	for label in labels:
@@ -171,21 +178,21 @@ def main():
 
 							name = "%sto2e"	%addci
 						if useADD:
-							# ~ if not "2016" in label: massBins = [400, 700, 1500, 2500, 3500]
-							# ~ else: massBins = [2000, 2200, 2600, 3000, 3400]
+							if not "2016" in label: massBins = [1800, 2200, 2600, 3000, 3400]
+							else: massBins = [1900, 2200, 2600, 3000, 3400]
 							if "2016" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outDir+"/%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outDir+"/%s_%s_%s_%s_parametrization_fixinf_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outDir+"/%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs),"READ")
 						else:	
 							if "2016" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outDir+"/%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 							elif "2018" in label:
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outDir+"/%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:	
-								fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
+								fitFile = TFile(outDir+"/%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
 						# ~ print (fitFile.ls())		
 						# ~ print ("%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs))
 						
@@ -258,7 +265,7 @@ def main():
 
 
 						for index, massBin in enumerate(massBins):
-							print (backgroundHist.GetBinContent(index))
+							# ~ print (fitFile.ls())
 							function = fitFile.Get("fn_m%d_%s"%(massBin,model))
 							fitR = fitFile.Get("fitR_m%d_%s"%(massBin,model))
 							pars = fitR.GetParams()
@@ -280,9 +287,9 @@ def main():
 						
 							if args.useADD:
 								for indel, l in enumerate(lambdas+[100000]):
-									uncert = (abs((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000))))**0.5
+									uncert = (abs((functionUnc.Eval(l/1000)/function.Eval(l/1000))**2 + (functionUnc.Eval(100000)/function.Eval(100000))))**0.5
 									# ~ print (function.Eval(100000) , backgroundHist.GetBinContent(index+1))	
-									graph.SetPoint(indel,float(l)/1000,function.Eval(l)-function.Eval(100000) + backgroundHist.GetBinContent(index+1))
+									graph.SetPoint(indel,float(l/1000),function.Eval(l/1000)-function.Eval(100000) + backgroundHist.GetBinContent(index+1))
 									graph.SetPointError(indel,0,(uncert**2+backgroundHist.GetBinError(index+1)**2)**0.5)
 							else:		
 								for indel, l in enumerate(lambdas+[100000]):
@@ -294,7 +301,7 @@ def main():
 							graphs.append(deepcopy(graph))
 	if args.useADD:
 		suffix += "_add"
-	outFile = TFile("graphsForPriors_%s.root"%suffix,"RECREATE")
+	outFile = TFile(outDir+"/graphsForPriors_%s.root"%suffix,"RECREATE")
 	
 	for graph in graphs:
 		graph.Write()

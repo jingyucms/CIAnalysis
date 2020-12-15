@@ -13,7 +13,7 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
 	fn = r.TF1("fn_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
 			   "[0]+[1]/(x**2)+[2]/(x**4)",fitRange[0],fitRange[1])
 	if useADD: fn = r.TF1("fn_m{0:d}_{1:s}{2:s}".format(point, intf, heli),
-		"[0]+[1]/(x**2)+[2]/(x**4)+[3]/(x**8)", fitRange[0], fitRange[1])	
+		"[0]+[1]/(x**4)+[2]/(x**8)", fitRange[0], fitRange[1])	
 	print (fn)
 	gr = params
 	gr.SetName("gr_{0:s}{1:s}_m{2:d}".format(intf,heli,point))
@@ -196,13 +196,13 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
 				  "[0]+[1]/(x**2)+[2]/(x**4)",0.1,1e8)
 	# Functional form for the uncertainty on the fit, taking only minimization uncertainties
 	uncfn = r.TF1("fn_unc_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
-				  "sqrt(([0])^2+([1]/(x**2))^2+([2]/(x**4))^2)",0.1,1e8)
+				  "sqrt(([0])^2+([2]/(x**4))^2)",0.1,1e8)
 	if useADD:
 		resfn = r.TF1("fnFitted_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
-				  "[0]+[1]/(x**2)+[2]/(x**4)+[3]/(x**8)",0.1,1e8)
+				  "[0]+[1]/(x**4)+[2]/(x**8)",0.1,1e8)
 	# Functional form for the uncertainty on the fit, taking only minimization uncertainties
 		uncfn = r.TF1("fn_unc_m{0:d}_{1:s}{2:s}".format(point,intf,heli),
-				  "sqrt(([0])^2+([1]/(x**2))^2+([2]/(x**4))^2)+([3]/(x**8)^2)",0.1,1e8)
+				  "sqrt(([0])^2+([1]/(x**4))^2)+([2]/(x**8)^2)",0.1,1e8)
 
 	for par in range(fn.GetNpar()):
 		# sometimes the fn doesn't have good values?
@@ -222,8 +222,8 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
 																						fn.GetParError(1),
 																						fn.GetParameter(2),
 																						fn.GetParError(2)))
-	if useADD:
-		print("\np3: {:2.4f}  {:2.4f}".format(fn.GetParameter(3), fn.GetParError(3)))
+	# ~ if useADD:
+		# ~ print("\np3: {:2.4f}  {:2.4f}".format(fn.GetParameter(3), fn.GetParError(3)))
 	
 	print("fit\np0: {:2.4f}  {:2.4f}\np1: {:2.4f}  {:2.4f}\np2: {:2.4f}  {:2.4f}".format(fitPars[0],
 																						 fitParErrs[0],
@@ -265,8 +265,8 @@ def doFitOnGraph(params, lvals, xvals, xerrs,
 																						fn.GetParError(1),
 																						fn.GetParameter(2),
 																						fn.GetParError(2)))
-	if useADD:
-		print("\np3: {:2.4f}  {:2.4f}".format(fn.GetParameter(3), fn.GetParError(3)))
+	# ~ if useADD:
+		# ~ print("\np3: {:2.4f}  {:2.4f}".format(fn.GetParameter(3), fn.GetParError(3)))
 
 	print("fit\np0: {:2.4f}  {:2.4f}\np1: {:2.4f}  {:2.4f}\np2: {:2.4f}  {:2.4f}".format(fitPars[0],
 																						 fitParErrs[0],

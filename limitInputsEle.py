@@ -179,7 +179,9 @@ def main():
 				else:	
 					jetHist.SetName("bkgHistJets_%s"%label)				
 				jetHist.SetDirectory(fResult)				
-
+				for i in range(0,jetHist.GetNbinsX()):
+					jetHist.SetBinContent(i,jetHist.GetBinContent(i)*jetHist.GetBinWidth(i))
+					jetHist.SetBinError(i,jetHist.GetBinError(i)*jetHist.GetBinWidth(i))
 				# ~ print (cs, label, hist.Integral(hist.FindBin(1800),hist.FindBin(6000-0.01)))
 				# ~ print (cs, label, dyHist.Integral(dyHist.FindBin(400),dyHist.FindBin(500-0.01)))
 

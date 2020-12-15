@@ -30,7 +30,7 @@ def main():
 	suffixesEle = ["nominal","scaledown","scaleup","pileup","piledown","pdfWeightsUp","pdfWeightsDown",'prefireup','prefiredown']
 	css = ["inc","cspos","csneg"]	
 	#~ suffixes = ["smeared"]
-	lambdas = [10,16,22,28,34,40,46]
+	lambdas = [10,16,22,28,34,40,46,52,58]
 	interferences = ["Con","Des"]
 	# ~ hels = ["LL","LR","RR"]
 	# ~ interferences = ["Con"]
@@ -80,18 +80,19 @@ def main():
 							if useADD:
 								if "2016" in label:
 									# ~ fitFile = TFile("%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
-									fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+									fitFile = TFile(outf+"%s_%s_%s_%s_scanmass_fixinf_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 								elif "2018" in label:
-									fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+									fitFile = TFile(outf+"%s_%s_%s_%s_scanmass_fixinf_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 								else:
-									fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs),"READ")
+									fitFile = TFile(outf+"%s_%s_%s_%s_scanmass_fixinf.root"%(name,suffix,histo.lower(),cs),"READ")
 							else:																	
 								if "2016" in label:	
-									fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
+									fitFile = TFile(outf+"%s_%s_%s_%s_scanmass_fixinf_limitp0_limitp1_limitp2_2016.root"%(name,suffix,histo.lower(),cs),"READ")
 								elif "2018" in label:	
-									fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
+									fitFile = TFile(outf+"%s_%s_%s_%s_scanmass_fixinf_limitp0_limitp1_limitp2_2018.root"%(name,suffix,histo.lower(),cs),"READ")
 								else:	
-									fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
+									fitFile = TFile(outf+"%s_%s_%s_%s_scanmass_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
+							# ~ print (fitFile.ls())		
 							for l in lambdas:
 								if "dimuon" in label:
 									name = "CITo2Mu_Lam%dTeV%s"%(l,model)

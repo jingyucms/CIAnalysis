@@ -48,7 +48,6 @@ def plotDataMC(args,plot):
 
 	eventCounts = totalNumberOfGeneratedEvents(path,plot.muon)	
 	negWeights = negWeightFractions(path,plot.muon)
-	#print negWeights
 
 	# Background load processes	
 	backgrounds = copy(args.backgrounds)
@@ -68,6 +67,8 @@ def plotDataMC(args,plot):
 		if args.use2016:
 			if background == "Jets":
 				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights,normalized=True))
+			elif background == "Other" and not plot.muon:
+				processes.append(Process(getattr(Backgrounds2016,"OtherEle"),eventCounts,negWeights))				
 			else:	
 				processes.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
 		elif args.use2018:
@@ -292,14 +293,14 @@ def plotDataMC(args,plot):
 				zScaleFac = zScale["electrons"][2]
 			else:
 				zScaleFac = zScale["electrons"][0]			
-			
+	CIBins = args.CIBins		
 	# Data and background loading	
 	if plot.plot2D:	
 		if args.useRun2:
 			
 			datahist = data2016.loadHistogramProjected(plot,lumi2016,zScaleFac2016)	
 			datahist.Add(data2017.loadHistogramProjected(plot,lumi2017,zScaleFac2017))
-			datahist.Add(data2016.loadHistogramProjected(plot,lumi2018,zScaleFac2018))
+			datahist.Add(data2018.loadHistogramProjected(plot,lumi2018,zScaleFac2018))
 			
 			stack = TheStack2DRun2([processes2016,processes2017,processes2018],[lumi2016,lumi2017,lumi2018],plot,[zScaleFac2016,zScaleFac2017,zScaleFac2018])
 
@@ -310,13 +311,13 @@ def plotDataMC(args,plot):
 	else:
 		
 		if args.useRun2:
-			datahist = data2016.loadHistogram(plot,lumi2016,zScaleFac2016)	
-			datahist.Add(data2017.loadHistogram(plot,lumi2017,zScaleFac2017))
-			datahist.Add(data2018.loadHistogram(plot,lumi2018,zScaleFac2018))	
-			stack = TheStackRun2([processes2016,processes2017,processes2018],[lumi2016,lumi2017,lumi2018],plot,[zScaleFac2016,zScaleFac2017,zScaleFac2018])
+			datahist = data2016.loadHistogram(plot,lumi2016,zScaleFac2016,CIBins=args.CIBins)	
+			datahist.Add(data2017.loadHistogram(plot,lumi2017,zScaleFac2017,CIBins=args.CIBins))
+			datahist.Add(data2018.loadHistogram(plot,lumi2018,zScaleFac2018,CIBins=args.CIBins))	
+			stack = TheStackRun2([processes2016,processes2017,processes2018],[lumi2016,lumi2017,lumi2018],plot,[zScaleFac2016,zScaleFac2017,zScaleFac2018],CIBins=args.CIBins)
 		else:
-			datahist = data.loadHistogram(plot,lumi,zScaleFac)	
-			stack = TheStack(processes,lumi,plot,zScaleFac)
+			datahist = data.loadHistogram(plot,lumi,zScaleFac,CIBins=args.CIBins)	
+			stack = TheStack(processes,lumi,plot,zScaleFac,CIBins=CIBins)
 	if args.data:
 		yMax = datahist.GetBinContent(datahist.GetMaximumBin())
 		if "Mass" in plot.fileName:
@@ -329,7 +330,10 @@ def plotDataMC(args,plot):
 		yMax = stack.theHistogram.GetBinContent(datahist.GetMaximumBin())
 		yMin = 0.01
 		xMax = stack.theHistogram.GetXaxis().GetXmax()
-		xMin = stack.theHistogram.GetXaxis().GetXmin()	
+		xMin = stack.theHistogram.GetXaxis().GetXmin()
+		
+
+			
 	if plot.yMax == None:
 		if logScale:
 			yMax = yMax*10000
@@ -346,6 +350,11 @@ def plotDataMC(args,plot):
 		xMin = plot.xMin
 	if not plot.xMax == None:
 		xMax = plot.xMax
+		
+	if args.CIBins:
+		xMin = 400
+		xMax = 6000			
+		
 	#if args.ADD and args.use2016: 
 	#	xMin = 1700
 	#	xMax = 4000
@@ -353,20 +362,11 @@ def plotDataMC(args,plot):
 	if "CosThetaStarBBM1800" in plot.fileName:
 		yMax = 3
 	plotPad.DrawFrame(xMin,yMin,xMax,yMax,"; %s ; %s" %(plot.xaxis,plot.yaxis))
-	print (stack.theHistogram.Integral())
 
 	
 	drawStack = stack
- 	#~ print datahist.Integral(datahist.FindBin(60),datahist.FindBin(120))/drawStack.theHistogram.Integral(drawStack.theHistogram.FindBin(60),drawStack.theHistogram.FindBin(120))
- 	#~ low = 900
- 	#~ high = 1300
- 	#~ print datahist.Integral(datahist.FindBin(low),datahist.FindBin(high))
- 	#~ print drawStack.theHistogram.Integral(datahist.FindBin(low),datahist.FindBin(high))
 
 					
-	
-	# Draw background from stack
-	drawStack.theStack.Draw("samehist")	
 
 	# Draw signal information
 	if len(args.signals) != 0:
@@ -396,7 +396,7 @@ def plotDataMC(args,plot):
 							signalProcesses2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
 							signalProcesses2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
 							signalProcesses2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights))
-					signalStack = TheStack2DRun2([signalProcesses2016,signalProcesses2017,signalProcesses2018],[lumi2016,lumi2017,lumi2018],plot, [zScaleFac2016,zScaleFac2017,zScaleFac2018])
+					signalStack = TheStack2DRun2([signalProcesses2016,signalProcesses2017,signalProcesses2018],[lumi2016,lumi2017,lumi2018],plot, [zScaleFac2016,zScaleFac2017,zScaleFac2018],CIBins=args.CIBins)
 					signalhist.Add(signalStack.theHistogram)
 					signalhist.SetMinimum(0.1)
 					signalhist.Draw("samehist")
@@ -420,10 +420,13 @@ def plotDataMC(args,plot):
 							else:
 								signalProcesses2018.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
 						else:	
-							signalProcesses2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
+							if background == "Other" and not plot.muon:
+								signalProcesses2016.append(Process(getattr(Backgrounds2016,"OtherEle"),eventCounts,negWeights))
+							else:	
+								signalProcesses2016.append(Process(getattr(Backgrounds2016,background),eventCounts,negWeights))
 							signalProcesses2017.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
 							signalProcesses2018.append(Process(getattr(Backgrounds2018,background),eventCounts,negWeights))
-					signalStack = TheStackRun2([signalProcesses2016,signalProcesses2017,signalProcesses2018],[lumi2016,lumi2017,lumi2018],plot, [zScaleFac2016,zScaleFac2017,zScaleFac2018])
+					signalStack = TheStackRun2([signalProcesses2016,signalProcesses2017,signalProcesses2018],[lumi2016,lumi2017,lumi2018],plot, [zScaleFac2016,zScaleFac2017,zScaleFac2018],CIBins=args.CIBins)
 					signalhist.Add(signalStack.theHistogram)
 					signalhist.SetMinimum(0.0001)
 					signalhist.Draw("samehist")
@@ -454,7 +457,7 @@ def plotDataMC(args,plot):
 							else:	
 								signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
 							
-					signalStack = TheStack2D(signalProcesses,lumi,plot, zScaleFac)
+					signalStack = TheStack2D(signalProcesses,lumi,plot, zScaleFac,CIBins=args.CIBins)
 					signalhist.Add(signalStack.theHistogram)
 					signalhist.SetMinimum(0.1)
 					signalhist.Draw("samehist")
@@ -481,7 +484,7 @@ def plotDataMC(args,plot):
 								signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights,normalized=True))
 							else:	
 								signalProcesses.append(Process(getattr(Backgrounds,background),eventCounts,negWeights))
-					signalStack = TheStack(signalProcesses,lumi,plot,zScaleFac)
+					signalStack = TheStack(signalProcesses,lumi,plot,zScaleFac,CIBins=args.CIBins)
 					signalhist.Add(signalStack.theHistogram)
 					signalhist.SetMinimum(0.0001)
 					signalhist.Draw("samehist")
@@ -489,8 +492,19 @@ def plotDataMC(args,plot):
 
 	
 
+	# Draw background from stack
+	drawStack.theStack.Draw("samehist")	
+
 	# Draw data
 	datahist.SetMinimum(0.0001)
+
+	if "Mass" in plot.fileName:
+		histForIntegral = datahist.Clone("blubb")
+		histForIntegral2 = drawStack.theHistogram.Clone("blubb")
+		for i in range(0,histForIntegral.GetNbinsX()):
+			histForIntegral.SetBinContent(i,histForIntegral.GetBinContent(i)*histForIntegral.GetBinWidth(i))		
+			histForIntegral2.SetBinContent(i,histForIntegral2.GetBinContent(i)*histForIntegral2.GetBinWidth(i))		
+
 	if args.data:
 		datahist.Draw("samep")	
 
@@ -515,7 +529,6 @@ def plotDataMC(args,plot):
 		yLabelPos = 0.82	
 	latexCMS.DrawLatex(0.19,0.89,"CMS")
 	latexCMSExtra.DrawLatex(0.19,yLabelPos,"%s"%(cmsExtra))
-	#~ print datahist.Integral()
 	if args.ratio:
 		try:
 			ratioPad.cd()
@@ -527,7 +540,7 @@ def plotDataMC(args,plot):
 			outFile.close()
 			plot.cuts=baseCut
 			return 1
-		ratioGraphs =  ratios.RatioGraph(datahist,drawStack.theHistogram, xMin=xMin, xMax=xMax,title="(Data - Bkg) / Bkg",yMin=-1.0,yMax=1.0,ndivisions=10,color=ROOT.kBlack,adaptiveBinning=10000000000000,labelSize=0.125,pull=True)
+		ratioGraphs =  ratios.RatioGraph(datahist,drawStack.theHistogram, xMin=xMin, xMax=xMax,title="(Data - Bkg) / Bkg",titleX="",yMin=-1.0,yMax=1.0,ndivisions=10,color=ROOT.kBlack,adaptiveBinning=10000000000000,labelSize=0.125,pull=True)
 		ratioGraphs.draw(ROOT.gPad,True,False,True,chi2Pos=0.8)
 					
 
@@ -576,6 +589,7 @@ if __name__ == "__main__":
 	parser.add_argument("-b", "--backgrounds", dest="backgrounds", action="append", default=[],
 						  help="backgrounds to plot.")
 	parser.add_argument("-a", "--ADD", action="store_true", dest="ADD", default=False, help="plot add signals")
+	parser.add_argument("--CIBins", action="store_true", dest="CIBins", default=False, help="use CI limit binning for mass bins")
 
 
 	args = parser.parse_args()

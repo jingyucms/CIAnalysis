@@ -60,11 +60,12 @@ r.gErrorIgnoreLevel = r.kWarning
 if args.do2016:
 	lvals = [1, 10, 16, 22, 28, 34, 100000]
 else:
-	lvals = [16, 24, 32, 40, 100000]
+	lvals = [1,10,16, 24, 32, 40, 100000]
 lerrs = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 10.]
 bvals = [i for i in range(len(lvals))]
 helis = ["LL","LR","RL","RR"]
 intfs = ["Con","Des"]
+
 supers      = [400,500,700,1100,1900,3500,10000]
 grbins      = [400,500,700,1100,1900,3500]
 grcols      = [r.kBlack,r.kRed,r.kBlue,r.kYellow,r.kViolet,r.kGreen]
@@ -197,7 +198,7 @@ for etabin in etabins:
 				conFitPar = []
 				for intf in intfs:
 					print("Fitting primary bins for the limits")
-					for i,point in enumerate(supers[:-1]):
+					for i,point in enumerate(supers[:-1]):					
 						doFitOnGraph(params, lvals, xvals, xerrs,
 									 intf, heli, i, point, outf, conFitPar,
 									 args.fixinf, args.fixdes, constraints, args.fitrange, args.add,args.truncation)
@@ -278,7 +279,7 @@ for etabin in etabins:
 					print("Fitting extra bins for the mass scan")
 					for i,point in enumerate(extragrbins):
 						doFitOnGraph(params, lvals, xvals, xerrs,
-									 intf, heli, 1, point, outf, conFitPar,
+									 intf, heli, i, point, outf, conFitPar,
 									 args.fixinf, args.fixdes, constraints, args.fitrange, args.add,args.truncation,extra=True)
 						pass
 					# raw_input("continue")

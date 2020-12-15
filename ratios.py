@@ -107,13 +107,14 @@ class Ratio:
 
 
 class RatioGraph:
-	def __init__(self, numerator, denominator, xMin, xMax,title, yMin, yMax,ndivisions,color,adaptiveBinning,labelSize=None,pull=False):
+	def __init__(self, numerator, denominator, xMin, xMax,title,titleX, yMin, yMax,ndivisions,color,adaptiveBinning,labelSize=None,pull=False):
 		self.denominator = denominator
 		self.numerator = numerator
 		self.xMin = xMin
 		self.xMax = xMax
 		self.errors = []
 		self.title = title
+		self.titleX = titleX
 		self.yMin = yMin
 		self.yMax = yMax
 		self.ndivisions = ndivisions
@@ -122,6 +123,7 @@ class RatioGraph:
 		self.labelSize=labelSize
 		self.binMerging = []
 		self.pull = pull
+		self.errorGraphs = []
 		return
 
 	def addErrorBySize(self, name, size, color=None, fillStyle=None, add=True):
@@ -321,20 +323,46 @@ class RatioGraph:
 		self.hAxis.SetTitleOffset(0.4, "Y")
 		self.hAxis.SetTitleSize(0.15, "Y")
 		self.hAxis.SetYTitle(self.title)
+		self.hAxis.SetXTitle(self.titleX)
 		self.hAxis.GetXaxis().SetLabelSize(0.0)
 		self.hAxis.GetYaxis().SetLabelSize(0.15)
 
-		if self.labelSize is None:
-			self.hAxis.SetTitleSize(0.15, "Y")
-		else:
-			self.hAxis.SetTitleSize(self.labelSize, "Y")
-			self.hAxis.SetTitleOffset(0.55, "Y")
+
+		self.hAxis.GetXaxis().SetMoreLogLabels()
+		self.hAxis.GetXaxis().SetNoExponent()
+		self.hAxis.GetXaxis().SetTitle(self.titleX )
+		self.hAxis.GetXaxis().SetTitleFont(42)
+		self.hAxis.GetXaxis().SetTitleOffset( 0.85 )
+		self.hAxis.GetXaxis().SetTitleSize( 0.045 )
+		self.hAxis.GetXaxis().SetLabelColor(1)
+		self.hAxis.GetXaxis().SetLabelFont(42)
+		self.hAxis.GetXaxis().SetLabelOffset(0.002)
+		self.hAxis.GetXaxis().SetLabelSize(0.0)
+		self.hAxis.GetXaxis().SetTickLength(0.025)
+
+		self.hAxis.GetYaxis().SetTitle( self.title )
+		self.hAxis.GetYaxis().SetTitleOffset( 0.5 )
+		self.hAxis.GetYaxis().SetTitleSize( 0.12 )
+		self.hAxis.GetYaxis().SetTitleFont(42)
+		self.hAxis.GetYaxis().SetRangeUser( self.yMin, self.yMax )
+		self.hAxis.GetYaxis().SetLabelOffset( 0.01 )
+		self.hAxis.GetYaxis().SetLabelSize( 0.1 )
+		self.hAxis.GetYaxis().SetLabelFont(42)
+		self.hAxis.GetYaxis().SetNdivisions(405)
+		self.hAxis.GetYaxis().SetTickLength(0.12)
+
+
+		# ~ if self.labelSize is None:
+			# ~ self.hAxis.SetTitleSize(0.15, "Y")
+		# ~ else:
+			# ~ self.hAxis.SetTitleSize(self.labelSize, "Y")
+			# ~ self.hAxis.SetTitleOffset(0.55, "Y")
 		self.graph = self.getGraph()
 		self.binMerging.append(-1)
-		self.errorGraphs = self.getErrorGraphs()
-		self.errorGraphs.reverse()
+		# ~ self.errorGraphs = self.getErrorGraphs()
+		# ~ self.errorGraphs.reverse()
 		for errorGraph in self.errorGraphs:
-			errorGraph.Draw("SAME02")
+			errorGraph.Draw("SAMEE4")
 		if self.pull:
 			self.zLine = ROOT.TLine(self.xMin, 0.0, self.xMax, 0.0)
 			self.zLine.SetLineStyle(2)

@@ -25,14 +25,24 @@ parser.add_argument('--constraint', help="constraint for paramter (par up down)"
 parser.add_argument('--fitrange',   help="fit range (low, high)", nargs=2, type=float,default=(0.5,125000.))
 parser.add_argument("--fixdes",     help="fix destructive fit parameters based on constructive", action='store_true')
 parser.add_argument("--fixinf",     help="fix infinity fit parameter", action='store_true')
+parser.add_argument("--truncation",     help="use truncation for add", action='store_true')
 # fix 2nd parameter for destructive fits
 #   with and without constraint
 # fix constant term parameter with constraint
 # emutype
 
+
+
+
 args        = parser.parse_args()
 debug       = args.debug
 constraints = {"p{0:d}".format(int(key)): None for key in range(3)}
+
+
+outDir = "parametrizations"
+if args.truncation:
+	outDir = "parametrizationsTruncation"
+
 
 if args.constraint:
 	constraints = {"p{0:d}".format(int(key)): (low,high) for [key,low,high] in args.constraint}
@@ -71,8 +81,8 @@ if args.add and args.do2016:
 	bvals = [i for i in range(len(lvals))]
 	helis = [""]
 	intfs = [""]
-	supers = [1800, 2200, 2600, 3000, 3400, 10000]
-	grbins = [1800, 2200, 2600, 3000, 3400]
+	supers = [1900, 2200, 2600, 3000, 3400, 10000]
+	grbins = [1900, 2200, 2600, 3000, 3400]
 	grcols = [r.kBlack, r.kRed, r.kBlue, r.kYellow, r.kViolet, r.kOrange]
 	extragrbins = [1900+x for x in range(0, 1500, 200)]
 elif args.add:
@@ -162,10 +172,10 @@ for etabin in etabins:
 		model = "CI"
 		if args.add: model = "ADD"
 		if args.add:
-			js =  r.TFile("graphsForPriors_%s_add.root"%unc,"OPEN")
+			js =  r.TFile(outDir+"/graphsForPriors_%s_add.root"%unc,"OPEN")
 		else:	
-			js =  r.TFile("graphsForPriors_%s.root"%unc,"OPEN")
-		outf = r.TFile("{6:s}to2{0:s}_{1:s}_{2:s}_{3:s}_parametrizationForPriors{4:s}{5:s}.root".format(emutype,unc,etabin,csbin,modifier,addLabel,model),"recreate")
+			js =  r.TFile(outDir+"/graphsForPriors_%s.root"%unc,"OPEN")
+		outf = r.TFile(outDir+"/{6:s}to2{0:s}_{1:s}_{2:s}_{3:s}_parametrizationForPriors{4:s}{5:s}.root".format(emutype,unc,etabin,csbin,modifier,addLabel,model),"recreate")
 		for heli in helis:
 			conFitPar = []
 			for intf in intfs:

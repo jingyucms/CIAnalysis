@@ -20,13 +20,16 @@ def main():
 	args = parser.parse_args()					  
 	useADD = args.useADD					  
 	histos = ["BB","BE"]
-	labels = ["dielectron_2016","dimuon_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
+	labels = ["dielectron_2016","dimuon_2016","dielectron_2017","dimuon_2017","dimuon_2018","dielectron_2018"]
+	# ~ labels = ["dielectron_2017","dimuon_2017"]
 	suffixesMu = ["nominal","scaledown","smeared","muonid","pdfWeightsUp","pdfWeightsDown"]
 	suffixesEle = ["nominal","scaledown","scaleup","pileup","piledown","pdfWeightsUp","pdfWeightsDown",'prefireup','prefiredown']
 	css = ["inc","cspos","csneg"]
-	lambdas = [10,16,22,28,34,40,46,52,58]
+	lambdas = [10,13,16,19,22,25,28,31,34,40,46,52,58]
 	interferences = ["Con","Des"]
 	hels = ["LL","RL","LR","RR"]
+	# ~ interferences = ["Con"]
+	# ~ hels = ["LL"]
 	massBins = [400,500,700,1100,1900,3500]
 	if useADD:
 		labels = ["dielectron_2016","dimuon_2016","dimuon_2017","dielectron_2017","dimuon_2018","dielectron_2018"]
@@ -79,6 +82,7 @@ def main():
 								fitFile = TFile(outf+"%s_%s_%s_%s_parametrization_fixinf_limitp0_limitp1_limitp2.root"%(name,suffix,histo.lower(),cs),"READ")
 						# ~ print (fitFile.ls())		
 						# ~ print ("%s_%s_%s_%s_parametrization_fixinf.root"%(name,suffix,histo.lower(),cs))
+						# ~ print (fitFile.ls())
 						for l in lambdas:
 							if "dimuon" in label:
 								name = "CITo2Mu_Lam%dTeV%s"%(l,model)
@@ -92,7 +96,9 @@ def main():
 								name += "_%s"%cs
 							signalYields["%s_%s_%s"%(name,label,histo)] = {}
 							for index, massBin in enumerate(massBins):
+								# ~ print (name,label,histo, massBin)
 								function = fitFile.Get("fn_m%d_%s"%(massBin,model))
+								# ~ print ("fitR_m%d_%s"%(massBin,model))
 								fitR = fitFile.Get("fitR_m%d_%s"%(massBin,model))
 								pars = fitR.GetParams()
 								errs = fitR.Errors()
@@ -108,6 +114,9 @@ def main():
 								functionUnc = fitFile.Get("fn_unc_m%d_%s"%(massBin,model))
 								# ~ print function.Eval(l)-function.Eval(100000)
 								uncert = (abs((functionUnc.Eval(l)/function.Eval(l))**2 + (functionUnc.Eval(100000)/function.Eval(100000))))**0.5	
+								# ~ print ("anyway")
+								# ~ if uncert > 1.:
+									# ~ print (uncert,name,label,histo, massBin)
 								# ~ print (label, histo, l, massBin, function.Eval(l), function.Eval(100000))
 								signalYields["%s_%s_%s"%(name,label,histo)][str(index)] = [(function.Eval(l)-function.Eval(100000)),uncert]
 					if useADD: continue

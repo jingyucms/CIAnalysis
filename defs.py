@@ -6,6 +6,7 @@ import copy
 
 # ~ path = "/uscms_data/d3/jschulte/files/"
 # ~ path = "../files/eleBackup/"
+# ~ path = "../files/samesign/"
 path = "../files/"
 
 
@@ -304,6 +305,111 @@ crossSections = {
 "CITo2E_Lam40TeVDesLL_M800to1300_2018" : 0.013730,
 "CITo2E_Lam40TeVDesLR_M800to1300_2018" : 0.013760,
 
+
+### wrong:
+#"CITo2E_Lam1TeVConLL_M300to800" : 161.413437,
+#"CITo2E_Lam1TeVConLL_M800to1300" : 94.711380,
+#"CITo2E_Lam1TeVConLL_M1300to2000" : 65.669693,
+#"CITo2E_Lam1TeVConLL_M2000toInf" : 46.449619,
+#"CITo2E_Lam1TeVConRR_M300to800" : 161.413437,
+#"CITo2E_Lam1TeVConRR_M800to1300" : 94.711380,
+#"CITo2E_Lam1TeVConRR_M1300to2000" : 65.669693,
+#"CITo2E_Lam1TeVConRR_M2000toInf" : 46.449619,
+#"CITo2E_Lam10TeVConLL_M300to800" : 0.640062,
+#"CITo2E_Lam10TeVConLL_M800to1300" : 0.026888,
+#"CITo2E_Lam10TeVConLL_M1300to2000" : 0.009001,
+#"CITo2E_Lam10TeVConLL_M2000toInf" : 0.005341,
+#"CITo2E_Lam10TeVConRR_M300to800" : 0.640062,
+#"CITo2E_Lam10TeVConRR_M800to1300" : 0.026888,
+#"CITo2E_Lam10TeVConRR_M1300to2000" : 0.009001,
+#"CITo2E_Lam10TeVConRR_M2000toInf" : 0.005341,
+#"CITo2E_Lam1TeVConLR_M800to1300" : 171.164291,
+#"CITo2E_Lam10TeVConLR_M2000toInf" : 0.009416,
+#"CITo2E_Lam1TeVConLR_M1300to2000" : 123.995781,
+#"CITo2E_Lam10TeVDesLR_M2000toInf" : 0.008715,
+#"CITo2E_Lam1TeVDesRR_M300to800" : 171.251205,
+#"CITo2E_Lam10TeVConLR_M800to1300" : 0.032183,
+#"CITo2E_Lam10TeVDesRR_M800to1300" : 0.015649,
+#"CITo2E_Lam1TeVConLR_M300to800" : 322.895966,
+#"CITo2E_Lam1TeVDesLL_M1300to2000" : 66.349922,
+#"CITo2E_Lam10TeVDesRR_M300to800" : 0.473903,
+#"CITo2E_Lam1TeVDesLR_M800to1300" : 181.469360,
+#"CITo2E_Lam1TeVDesLL_M2000toInf" : 53.552567,
+#"CITo2E_Lam10TeVConLR_M300to800" : 7.225e-01,
+#"CITo2E_Lam10TeVConLR_M1300to2000" : 0.014479,
+#"CITo2E_Lam10TeVDesLR_M1300to2000" : 0.013519,
+#"CITo2E_Lam10TeVDesLL_M300to800" : 0.514547,
+#"CITo2E_Lam10TeVDesLL_M800to1300" : 0.014829,
+#"CITo2E_Lam10TeVDesLL_M1300to2000" : 0.005624,
+#"CITo2E_Lam1TeVDesRR_M800to1300" : 76.993668,
+#"CITo2E_Lam10TeVDesLR_M800to1300" : 0.023540,
+#"CITo2E_Lam1TeVConLR_M2000toInf" : 88.878014,
+#"CITo2E_Lam1TeVDesLR_M300to800" : 316.710205,
+#"CITo2E_Lam1TeVDesRR_M2000toInf" : 44.593884,
+#"CITo2E_Lam1TeVDesLL_M300to800" : 169.398697,
+#"CITo2E_Lam10TeVDesLR_M300to800" : 0.512083,
+#"CITo2E_Lam1TeVDesLR_M2000toInf" : 89.817612,
+#"CITo2E_Lam1TeVDesRR_M1300to2000" : 58.566853,
+#"CITo2E_Lam10TeVDesRR_M2000toInf" : 0.003955,
+#"CITo2E_Lam10TeVDesLL_M2000toInf" : 0.004255,
+#"CITo2E_Lam1TeVDesLL_M800to1300" : 89.009933,
+#"CITo2E_Lam10TeVDesRR_M1300to2000" : 0.007084,
+#"CITo2E_Lam1TeVDesLR_M1300to2000" : 110.839600,
+
+
+
+'CITo2E_Lam1TeVConRR_M1300to2000':141.600000,
+'CITo2E_Lam1TeVConLR_M2000toInf':92.400000,
+'CITo2E_Lam1TeVDesRR_M300to800':181.100000,
+'CITo2E_Lam1TeVConLR_M800to1300':204.700000,
+'CITo2E_Lam10TeVConRR_M1300to2000':0.017550,
+'CITo2E_Lam1TeVDesLL_M2000toInf':45.990000,
+'CITo2E_Lam1TeVConLR_M300to800':375.300000,
+'CITo2E_Lam10TeVConLR_M2000toInf':0.009829,
+'CITo2E_Lam1TeVConLL_M300to800':188.200000,
+'CITo2E_Lam10TeVDesRR_M1300to2000':0.006872,
+'CITo2E_Lam10TeVDesLL_M800to1300':0.018540,
+'CITo2E_Lam10TeVDesLR_M1300to2000':0.013920,
+'CITo2E_Lam10TeVDesRR_M300to800':0.612600,
+'CITo2E_Lam1TeVDesRR_M2000toInf':45.930000,
+'CITo2E_Lam10TeVConRR_M300to800':0.693600,
+'CITo2E_Lam10TeVConLL_M800to1300':0.030310,
+'CITo2E_Lam10TeVDesLR_M800to1300':0.028160,
+'CITo2E_Lam10TeVConLL_M300to800':0.690400,
+'CITo2E_Lam10TeVConLL_M1300to2000':0.010450,
+'CITo2E_Lam10TeVDesLR_M300to800':0.623900,
+'CITo2E_Lam10TeVConLR_M300to800':0.722500,
+'CITo2E_Lam10TeVDesRR_M800to1300':0.018320,
+'CITo2E_Lam10TeVConLL_M2000toInf':0.005269,
+'CITo2E_Lam1TeVConRR_M300to800':188.800000,
+'CITo2E_Lam1TeVDesRR_M1300to2000':71.130000,
+'CITo2E_Lam10TeVDesRR_M2000toInf':0.004268,
+'CITo2E_Lam1TeVDesLL_M800to1300':102.100000,
+'CITo2E_Lam1TeVDesRR_M800to1300':102.200000,
+'CITo2E_Lam1TeVConRR_M2000toInf':45.990000,
+'CITo2E_Lam1TeVConRR_M800to1300':102.600000,
+'CITo2E_Lam1TeVDesLR_M800to1300':203.500000,
+'CITo2E_Lam1TeVDesLR_M1300to2000':140.700000,
+'CITo2E_Lam1TeVConLL_M800to1300':103.000000,
+'CITo2E_Lam10TeVDesLL_M300to800':0.617700,
+'CITo2E_Lam10TeVConRR_M800to1300':0.030200,
+'CITo2E_Lam10TeVDesLL_M2000toInf':0.004221,
+'CITo2E_Lam10TeVDesLL_M1300to2000':0.006848,
+'CITo2E_Lam1TeVConLL_M2000toInf':45.900000,
+'CITo2E_Lam10TeVDesLR_M2000toInf':0.008851,
+'CITo2E_Lam1TeVDesLL_M300to800':181.000000,
+'CITo2E_Lam1TeVDesLR_M2000toInf':91.570000,
+'CITo2E_Lam10TeVConRR_M2000toInf':0.009875,
+'CITo2E_Lam1TeVConLL_M1300to2000':70.580000,
+'CITo2E_Lam1TeVDesLL_M1300to2000':70.620000,
+'CITo2E_Lam10TeVConLR_M800to1300':0.040850,
+'CITo2E_Lam1TeVDesLR_M300to800':363.300000,
+'CITo2E_Lam1TeVConLR_M1300to2000':142.000000,
+'CITo2E_Lam10TeVConLR_M1300to2000':0.017580,
+
+
+
+
 "CITo2E_Lam100kTeVConLL_M1300to2000" : 0.001602,
 "CITo2E_Lam100kTeVConLR_M1300to2000" : 0.001602,
 "CITo2E_Lam100kTeVConRR_M1300to2000" : 0.001601,
@@ -539,6 +645,111 @@ crossSections = {
 "CITo2Mu_Lam40TeVDesLL_M800to1300" : 0.013790,
 "CITo2Mu_Lam40TeVDesLR_M800to1300" : 0.013730,
 "CITo2Mu_Lam40TeVDesRR_M800to1300" : 0.013750,
+
+
+
+### wrong PDF set
+
+#"CITo2Mu_Lam1TeVConLL_M300to800" : 161.413437,
+#"CITo2Mu_Lam1TeVConLL_M800to1300" : 94.711380,
+#"CITo2Mu_Lam1TeVConLL_M1300to2000" : 65.669693,
+#"CITo2Mu_Lam1TeVConLL_M2000toInf" : 46.449619,
+#"CITo2Mu_Lam10TeVConLL_M300to800" : 0.640062,
+#"CITo2Mu_Lam10TeVConLL_M800to1300" : 0.026888,
+#"CITo2Mu_Lam10TeVConLL_M1300to2000" : 0.009001,
+#"CITo2Mu_Lam10TeVConLL_M2000toInf" : 0.005341,
+#"CITo2Mu_Lam1TeVConRR_M300to800" : 161.413437,
+#"CITo2Mu_Lam1TeVConRR_M800to1300" : 94.711380,
+#"CITo2Mu_Lam1TeVConRR_M1300to2000" : 65.669693,
+#"CITo2Mu_Lam1TeVConRR_M2000toInf" : 46.449619,
+#"CITo2Mu_Lam10TeVConRR_M300to800" : 0.640062,
+#"CITo2Mu_Lam10TeVConRR_M800to1300" : 0.026888,
+#"CITo2Mu_Lam10TeVConRR_M1300to2000" : 0.009001,
+#"CITo2Mu_Lam10TeVConRR_M2000toInf" : 0.005341,
+
+#"CITo2Mu_Lam1TeVConLR_M800to1300" : 171.164291,
+#"CITo2Mu_Lam10TeVConLR_M2000toInf" : 0.009416,
+#"CITo2Mu_Lam1TeVConLR_M1300to2000" : 123.995781,
+#"CITo2Mu_Lam10TeVDesLR_M2000toInf" : 0.008715,
+#"CITo2Mu_Lam1TeVDesRR_M300to800" : 171.251205,
+#"CITo2Mu_Lam10TeVConLR_M800to1300" : 0.032183,
+#"CITo2Mu_Lam10TeVDesRR_M800to1300" : 0.015649,
+#"CITo2Mu_Lam1TeVConLR_M300to800" : 322.895966,
+#"CITo2Mu_Lam1TeVDesLL_M1300to2000" : 66.349922,
+#"CITo2Mu_Lam10TeVDesRR_M300to800" : 0.473903,
+#"CITo2Mu_Lam1TeVDesLR_M800to1300" : 181.469360,
+#"CITo2Mu_Lam1TeVDesLL_M2000toInf" : 53.552567,
+#"CITo2Mu_Lam10TeVConLR_M300to800" : 0.583908,
+#"CITo2Mu_Lam10TeVConLR_M1300to2000" : 0.014479,
+#"CITo2Mu_Lam10TeVDesLR_M1300to2000" : 0.013519,
+#"CITo2Mu_Lam10TeVDesLL_M300to800" : 0.514547,
+#"CITo2Mu_Lam10TeVDesLL_M800to1300" : 0.014829,
+#"CITo2Mu_Lam10TeVDesLL_M1300to2000" : 0.005624,
+#"CITo2Mu_Lam1TeVDesRR_M800to1300" : 76.993668,
+#"CITo2Mu_Lam10TeVDesLR_M800to1300" : 0.023540,
+#"CITo2Mu_Lam1TeVConLR_M2000toInf" : 88.878014,
+#"CITo2Mu_Lam1TeVDesLR_M300to800" : 316.710205,
+#"CITo2Mu_Lam1TeVDesRR_M2000toInf" : 44.593884,
+#"CITo2Mu_Lam1TeVDesLL_M300to800" : 169.398697,
+#"CITo2Mu_Lam10TeVDesLR_M300to800" : 0.512083,
+#"CITo2Mu_Lam1TeVDesLR_M2000toInf" : 89.817612,
+#"CITo2Mu_Lam1TeVDesRR_M1300to2000" : 58.566853,
+#"CITo2Mu_Lam10TeVDesRR_M2000toInf" : 0.003955,
+#"CITo2Mu_Lam10TeVDesLL_M2000toInf" : 0.004255,
+#"CITo2Mu_Lam1TeVDesLL_M800to1300" : 89.009933,
+#"CITo2Mu_Lam10TeVDesRR_M1300to2000" : 0.007084,
+#"CITo2Mu_Lam1TeVDesLR_M1300to2000" : 110.839600,
+
+'CITo2Mu_Lam1TeVConRR_M1300to2000':141.600000,
+'CITo2Mu_Lam1TeVConLR_M2000toInf':92.400000,
+'CITo2Mu_Lam1TeVDesRR_M300to800':181.100000,
+'CITo2Mu_Lam1TeVConLR_M800to1300':204.700000,
+'CITo2Mu_Lam10TeVConRR_M1300to2000':0.017550,
+'CITo2Mu_Lam1TeVDesLL_M2000toInf':45.990000,
+'CITo2Mu_Lam1TeVConLR_M300to800':375.300000,
+'CITo2Mu_Lam10TeVConLR_M2000toInf':0.009829,
+'CITo2Mu_Lam1TeVConLL_M300to800':188.200000,
+'CITo2Mu_Lam10TeVDesRR_M1300to2000':0.006872,
+'CITo2Mu_Lam10TeVDesLL_M800to1300':0.018540,
+'CITo2Mu_Lam10TeVDesLR_M1300to2000':0.013920,
+'CITo2Mu_Lam10TeVDesRR_M300to800':0.612600,
+'CITo2Mu_Lam1TeVDesRR_M2000toInf':45.930000,
+'CITo2Mu_Lam10TeVConRR_M300to800':0.693600,
+'CITo2Mu_Lam10TeVConLL_M800to1300':0.030310,
+'CITo2Mu_Lam10TeVDesLR_M800to1300':0.028160,
+'CITo2Mu_Lam10TeVConLL_M300to800':0.690400,
+'CITo2Mu_Lam10TeVConLL_M1300to2000':0.010450,
+'CITo2Mu_Lam10TeVDesLR_M300to800':0.623900,
+'CITo2Mu_Lam10TeVConLR_M300to800':0.722500,
+'CITo2Mu_Lam10TeVDesRR_M800to1300':0.018320,
+'CITo2Mu_Lam10TeVConLL_M2000toInf':0.005269,
+'CITo2Mu_Lam1TeVConRR_M300to800':188.800000,
+'CITo2Mu_Lam1TeVDesRR_M1300to2000':71.130000,
+'CITo2Mu_Lam10TeVDesRR_M2000toInf':0.004268,
+'CITo2Mu_Lam1TeVDesLL_M800to1300':102.100000,
+'CITo2Mu_Lam1TeVDesRR_M800to1300':102.200000,
+'CITo2Mu_Lam1TeVConRR_M2000toInf':45.990000,
+'CITo2Mu_Lam1TeVConRR_M800to1300':102.600000,
+'CITo2Mu_Lam1TeVDesLR_M800to1300':203.500000,
+'CITo2Mu_Lam1TeVDesLR_M1300to2000':140.700000,
+'CITo2Mu_Lam1TeVConLL_M800to1300':103.000000,
+'CITo2Mu_Lam10TeVDesLL_M300to800':0.617700,
+'CITo2Mu_Lam10TeVConRR_M800to1300':0.030200,
+'CITo2Mu_Lam10TeVDesLL_M2000toInf':0.004221,
+'CITo2Mu_Lam10TeVDesLL_M1300to2000':0.006848,
+'CITo2Mu_Lam1TeVConLL_M2000toInf':45.900000,
+'CITo2Mu_Lam10TeVDesLR_M2000toInf':0.008851,
+'CITo2Mu_Lam1TeVDesLL_M300to800':181.000000,
+'CITo2Mu_Lam1TeVDesLR_M2000toInf':91.570000,
+'CITo2Mu_Lam10TeVConRR_M2000toInf':0.009875,
+'CITo2Mu_Lam1TeVConLL_M1300to2000':70.580000,
+'CITo2Mu_Lam1TeVDesLL_M1300to2000':70.620000,
+'CITo2Mu_Lam10TeVConLR_M800to1300':0.040850,
+'CITo2Mu_Lam1TeVDesLR_M300to800':363.300000,
+'CITo2Mu_Lam1TeVConLR_M1300to2000':142.000000,
+'CITo2Mu_Lam10TeVConLR_M1300to2000':0.017580,
+
+
 
 
 'CITo2Mu_Lam100kTeVDesLL_M300':0.557200,
@@ -947,6 +1158,28 @@ crossSections = {
 "ADDGravToLL_LambdaT-9000_M-800To1300": 0.04228000,
 "ADDGravToLL_LambdaT-9000_M-2800ToInf": 6.396e-05,
 
+
+'RSGrav_kMpl_001_M1000_2018':0.011210,
+'RSGrav_kMpl_001_M1500_2018':0.011210,
+'RSGrav_kMpl_001_M2000_2018':0.000218,
+'RSGrav_kMpl_001_M2500_2018':0.000050,
+'RSGrav_kMpl_001_M250_2018':6.841000,
+'RSGrav_kMpl_001_M3000_2018':0.000014,
+'RSGrav_kMpl_001_M3500_2018':0.000014,
+'RSGrav_kMpl_001_M4000_2018':0.000001,
+'RSGrav_kMpl_001_M4500_2018':0.000001,
+'RSGrav_kMpl_001_M5000_2018':0.000001,
+'RSGrav_kMpl_001_M500_2018':0.334800,
+'RSGrav_kMpl_001_M5500_2018':0.000000,
+'RSGrav_kMpl_001_M750_2018':0.048350,
+
+
+# ~ 'ZprimeToEE_SSM_M5000_2018':0.000018149207,
+# ~ 'ZprimeToMuMu_SSM_M5000_2018':0.000018149207,
+'ZprimeToEE_SSM_M5000_2018':5.530e-05,
+'ZprimeToMuMu_SSM_M5000_2018':5.530e-05,
+
+
 }
 
 
@@ -961,6 +1194,24 @@ fileNames = {
 "CITo2Mu_Lam100kTeVDesLR_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam100kTeVDesLR_M1300to2000.root",
 "CITo2Mu_Lam100kTeVDesRL_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam100kTeVDesRL_M1300to2000.root",
 "CITo2Mu_Lam100kTeVDesRR_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam100kTeVDesRR_M1300to2000.root",
+
+"CITo2Mu_Lam1TeVConLL_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam1TeVConLL_M1300to2000.root",
+"CITo2Mu_Lam1TeVConLR_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam1TeVConLR_M1300to2000.root",
+"CITo2Mu_Lam1TeVConRL_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam1TeVConRL_M1300to2000.root",
+"CITo2Mu_Lam1TeVConRR_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam1TeVConRR_M1300to2000.root",
+"CITo2Mu_Lam1TeVDesLL_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam1TeVDesLL_M1300to2000.root",
+"CITo2Mu_Lam1TeVDesLR_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam1TeVDesLR_M1300to2000.root",
+"CITo2Mu_Lam1TeVDesRL_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam1TeVDesRL_M1300to2000.root",
+"CITo2Mu_Lam1TeVDesRR_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam1TeVDesRR_M1300to2000.root",
+
+"CITo2Mu_Lam10TeVConLL_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam10TeVConLL_M1300to2000.root",
+"CITo2Mu_Lam10TeVConLR_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam10TeVConLR_M1300to2000.root",
+"CITo2Mu_Lam10TeVConRL_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam10TeVConRL_M1300to2000.root",
+"CITo2Mu_Lam10TeVConRR_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam10TeVConRR_M1300to2000.root",
+"CITo2Mu_Lam10TeVDesLL_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam10TeVDesLL_M1300to2000.root",
+"CITo2Mu_Lam10TeVDesLR_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam10TeVDesLR_M1300to2000.root",
+"CITo2Mu_Lam10TeVDesRL_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam10TeVDesRL_M1300to2000.root",
+"CITo2Mu_Lam10TeVDesRR_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam10TeVDesRR_M1300to2000.root",
 
 "CITo2Mu_Lam16TeVConLL_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam16TeVConLL_M1300to2000.root",
 "CITo2Mu_Lam16TeVConLR_M1300to2000":"dileptonAna_muons_CITo2Mu_Lam16TeVConLR_M1300to2000.root",
@@ -1007,6 +1258,24 @@ fileNames = {
 "CITo2Mu_Lam100kTeVDesRL_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam100kTeVDesRL_M2000toInf.root",
 "CITo2Mu_Lam100kTeVDesRR_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam100kTeVDesRR_M2000toInf.root",
 
+"CITo2Mu_Lam1TeVConLL_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam1TeVConLL_M2000toInf.root",
+"CITo2Mu_Lam1TeVConLR_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam1TeVConLR_M2000toInf.root",
+"CITo2Mu_Lam1TeVConRL_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam1TeVConRL_M2000toInf.root",
+"CITo2Mu_Lam1TeVConRR_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam1TeVConRR_M2000toInf.root",
+"CITo2Mu_Lam1TeVDesLL_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam1TeVDesLL_M2000toInf.root",
+"CITo2Mu_Lam1TeVDesLR_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam1TeVDesLR_M2000toInf.root",
+"CITo2Mu_Lam1TeVDesRL_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam1TeVDesRL_M2000toInf.root",
+"CITo2Mu_Lam1TeVDesRR_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam1TeVDesRR_M2000toInf.root",
+
+"CITo2Mu_Lam10TeVConLL_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam10TeVConLL_M2000toInf.root",
+"CITo2Mu_Lam10TeVConLR_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam10TeVConLR_M2000toInf.root",
+"CITo2Mu_Lam10TeVConRL_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam10TeVConRL_M2000toInf.root",
+"CITo2Mu_Lam10TeVConRR_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam10TeVConRR_M2000toInf.root",
+"CITo2Mu_Lam10TeVDesLL_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam10TeVDesLL_M2000toInf.root",
+"CITo2Mu_Lam10TeVDesLR_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam10TeVDesLR_M2000toInf.root",
+"CITo2Mu_Lam10TeVDesRL_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam10TeVDesRL_M2000toInf.root",
+"CITo2Mu_Lam10TeVDesRR_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam10TeVDesRR_M2000toInf.root",
+
 "CITo2Mu_Lam16TeVConLL_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam16TeVConLL_M2000toInf.root",
 "CITo2Mu_Lam16TeVConLR_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam16TeVConLR_M2000toInf.root",
 "CITo2Mu_Lam16TeVConRL_M2000toInf":"dileptonAna_muons_CITo2Mu_Lam16TeVConRL_M2000toInf.root",
@@ -1052,6 +1321,24 @@ fileNames = {
 "CITo2Mu_Lam100kTeVDesRL_M300to800":"dileptonAna_muons_CITo2Mu_Lam100kTeVDesRL_M300to800.root",
 "CITo2Mu_Lam100kTeVDesRR_M300to800":"dileptonAna_muons_CITo2Mu_Lam100kTeVDesRR_M300to800.root",
 
+"CITo2Mu_Lam1TeVConLL_M300to800":"dileptonAna_muons_CITo2Mu_Lam1TeVConLL_M300to800.root",
+"CITo2Mu_Lam1TeVConLR_M300to800":"dileptonAna_muons_CITo2Mu_Lam1TeVConLR_M300to800.root",
+"CITo2Mu_Lam1TeVConRL_M300to800":"dileptonAna_muons_CITo2Mu_Lam1TeVConRL_M300to800.root",
+"CITo2Mu_Lam1TeVConRR_M300to800":"dileptonAna_muons_CITo2Mu_Lam1TeVConRR_M300to800.root",
+"CITo2Mu_Lam1TeVDesLL_M300to800":"dileptonAna_muons_CITo2Mu_Lam1TeVDesLL_M300to800.root",
+"CITo2Mu_Lam1TeVDesLR_M300to800":"dileptonAna_muons_CITo2Mu_Lam1TeVDesLR_M300to800.root",
+"CITo2Mu_Lam1TeVDesRL_M300to800":"dileptonAna_muons_CITo2Mu_Lam1TeVDesRL_M300to800.root",
+"CITo2Mu_Lam1TeVDesRR_M300to800":"dileptonAna_muons_CITo2Mu_Lam1TeVDesRR_M300to800.root",
+
+"CITo2Mu_Lam10TeVConLL_M300to800":"dileptonAna_muons_CITo2Mu_Lam10TeVConLL_M300to800.root",
+"CITo2Mu_Lam10TeVConLR_M300to800":"dileptonAna_muons_CITo2Mu_Lam10TeVConLR_M300to800.root",
+"CITo2Mu_Lam10TeVConRL_M300to800":"dileptonAna_muons_CITo2Mu_Lam10TeVConRL_M300to800.root",
+"CITo2Mu_Lam10TeVConRR_M300to800":"dileptonAna_muons_CITo2Mu_Lam10TeVConRR_M300to800.root",
+"CITo2Mu_Lam10TeVDesLL_M300to800":"dileptonAna_muons_CITo2Mu_Lam10TeVDesLL_M300to800.root",
+"CITo2Mu_Lam10TeVDesLR_M300to800":"dileptonAna_muons_CITo2Mu_Lam10TeVDesLR_M300to800.root",
+"CITo2Mu_Lam10TeVDesRL_M300to800":"dileptonAna_muons_CITo2Mu_Lam10TeVDesRL_M300to800.root",
+"CITo2Mu_Lam10TeVDesRR_M300to800":"dileptonAna_muons_CITo2Mu_Lam10TeVDesRR_M300to800.root",
+
 "CITo2Mu_Lam16TeVConLL_M300to800":"dileptonAna_muons_CITo2Mu_Lam16TeVConLL_M300to800.root",
 "CITo2Mu_Lam16TeVConLR_M300to800":"dileptonAna_muons_CITo2Mu_Lam16TeVConLR_M300to800.root",
 "CITo2Mu_Lam16TeVConRL_M300to800":"dileptonAna_muons_CITo2Mu_Lam16TeVConRL_M300to800.root",
@@ -1096,6 +1383,24 @@ fileNames = {
 "CITo2Mu_Lam100kTeVDesLR_M800to1300":"dileptonAna_muons_CITo2Mu_Lam100kTeVDesLR_M800to1300.root",
 "CITo2Mu_Lam100kTeVDesRL_M800to1300":"dileptonAna_muons_CITo2Mu_Lam100kTeVDesRL_M800to1300.root",
 "CITo2Mu_Lam100kTeVDesRR_M800to1300":"dileptonAna_muons_CITo2Mu_Lam100kTeVDesRR_M800to1300.root",
+
+"CITo2Mu_Lam1TeVConLL_M800to1300":"dileptonAna_muons_CITo2Mu_Lam1TeVConLL_M800to1300.root",
+"CITo2Mu_Lam1TeVConLR_M800to1300":"dileptonAna_muons_CITo2Mu_Lam1TeVConLR_M800to1300.root",
+"CITo2Mu_Lam1TeVConRL_M800to1300":"dileptonAna_muons_CITo2Mu_Lam1TeVConRL_M800to1300.root",
+"CITo2Mu_Lam1TeVConRR_M800to1300":"dileptonAna_muons_CITo2Mu_Lam1TeVConRR_M800to1300.root",
+"CITo2Mu_Lam1TeVDesLL_M800to1300":"dileptonAna_muons_CITo2Mu_Lam1TeVDesLL_M800to1300.root",
+"CITo2Mu_Lam1TeVDesLR_M800to1300":"dileptonAna_muons_CITo2Mu_Lam1TeVDesLR_M800to1300.root",
+"CITo2Mu_Lam1TeVDesRL_M800to1300":"dileptonAna_muons_CITo2Mu_Lam1TeVDesRL_M800to1300.root",
+"CITo2Mu_Lam1TeVDesRR_M800to1300":"dileptonAna_muons_CITo2Mu_Lam1TeVDesRR_M800to1300.root",
+
+"CITo2Mu_Lam10TeVConLL_M800to1300":"dileptonAna_muons_CITo2Mu_Lam10TeVConLL_M800to1300.root",
+"CITo2Mu_Lam10TeVConLR_M800to1300":"dileptonAna_muons_CITo2Mu_Lam10TeVConLR_M800to1300.root",
+"CITo2Mu_Lam10TeVConRL_M800to1300":"dileptonAna_muons_CITo2Mu_Lam10TeVConRL_M800to1300.root",
+"CITo2Mu_Lam10TeVConRR_M800to1300":"dileptonAna_muons_CITo2Mu_Lam10TeVConRR_M800to1300.root",
+"CITo2Mu_Lam10TeVDesLL_M800to1300":"dileptonAna_muons_CITo2Mu_Lam10TeVDesLL_M800to1300.root",
+"CITo2Mu_Lam10TeVDesLR_M800to1300":"dileptonAna_muons_CITo2Mu_Lam10TeVDesLR_M800to1300.root",
+"CITo2Mu_Lam10TeVDesRL_M800to1300":"dileptonAna_muons_CITo2Mu_Lam10TeVDesRL_M800to1300.root",
+"CITo2Mu_Lam10TeVDesRR_M800to1300":"dileptonAna_muons_CITo2Mu_Lam10TeVDesRR_M800to1300.root",
 
 "CITo2Mu_Lam16TeVConLL_M800to1300":"dileptonAna_muons_CITo2Mu_Lam16TeVConLL_M800to1300.root",
 "CITo2Mu_Lam16TeVConLR_M800to1300":"dileptonAna_muons_CITo2Mu_Lam16TeVConLR_M800to1300.root",
@@ -1195,7 +1500,7 @@ fileNames = {
 
 #~ "JetsFromDataBB":"Heep-FR-Data-total-jets-BarrelBarrel.root",
 #~ "JetsFromDataBE":"Heep-FR-Data-total-jets-BarrelEndCaps.root",
-"Jets":"jets_muons_2017.root",
+
 
 
 "CITo2Mu_Lam100kTeVConLL_M1300":"dileptonAna_muons_2016_CITo2Mu_Lam100kTeVConLL_M1300.root",
@@ -1473,8 +1778,8 @@ fileNames = {
 #~ "JetsFromDataBB":"Heep-FR-Data-total-jets-BarrelBarrel.root",
 #~ "JetsFromDataBE":"Heep-FR-Data-total-jets-BarrelEndCaps.root",
 "Jets_2016":"jets_muons_2016.root",
-"Jets_2018":"jets_muons_2018.root",
-
+"Jets_2018":"combined_jet_log_BB_binWidth.root",
+"Jets":"combined_jet_log_BB_binWidth.root",
 # Here for ADD 2016 samples
 "ADDGravToLL_Lam3000_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT3000_M1700.root",
 "ADDGravToLL_Lam3500_M1700": "dileptonAna_muons_2016_ADDGravToLL_LambdaT3500_M1700.root",
@@ -1622,6 +1927,27 @@ fileNames = {
 'ADDGravToLL_LambdaT-9000_M-800To1200_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-9000_M-800To1300.root',   
 'ADDGravToLL_LambdaT-9000_M-2800ToInf_2018':'dileptonAna_muons_2018_ADDGravToLL_LambdaT-9000_M-2800ToInf.root',
 
+
+'RSGrav_kMpl_001_M250_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M250.root',
+'RSGrav_kMpl_001_M500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M500.root',
+'RSGrav_kMpl_001_M750_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M750.root',
+'RSGrav_kMpl_001_M1000_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M1000.root',
+'RSGrav_kMpl_001_M1500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M1500.root',
+'RSGrav_kMpl_001_M2000_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M2000.root',
+'RSGrav_kMpl_001_M2500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M2500.root',
+'RSGrav_kMpl_001_M3000_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M3000.root',
+'RSGrav_kMpl_001_M3500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M3500.root',
+'RSGrav_kMpl_001_M4000_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M4000.root',
+'RSGrav_kMpl_001_M4500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M4500.root',
+'RSGrav_kMpl_001_M5000_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M5000.root',
+'RSGrav_kMpl_001_M5500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M5500.root',
+
+
+'ZprimeToMuMu_SSM_M5000_2018':'dileptonAna_muons_2018_ZprimeToMuMu_SSM_M5000.root',
+
+
+
+
 }
 
 fileNamesEle = {
@@ -1634,6 +1960,24 @@ fileNamesEle = {
 "CITo2E_Lam100kTeVDesLR_M1300to2000":"dileptonAna_electrons_CITo2E_Lam100kTeVDesLR_M1300to2000.root",
 "CITo2E_Lam100kTeVDesRL_M1300to2000":"dileptonAna_electrons_CITo2E_Lam100kTeVDesRL_M1300to2000.root",
 "CITo2E_Lam100kTeVDesRR_M1300to2000":"dileptonAna_electrons_CITo2E_Lam100kTeVDesRR_M1300to2000.root",
+
+"CITo2E_Lam1TeVConLL_M1300to2000":"dileptonAna_electrons_CITo2E_Lam1TeVConLL_M1300to2000.root",
+"CITo2E_Lam1TeVConLR_M1300to2000":"dileptonAna_electrons_CITo2E_Lam1TeVConLR_M1300to2000.root",
+"CITo2E_Lam1TeVConRL_M1300to2000":"dileptonAna_electrons_CITo2E_Lam1TeVConRL_M1300to2000.root",
+"CITo2E_Lam1TeVConRR_M1300to2000":"dileptonAna_electrons_CITo2E_Lam1TeVConRR_M1300to2000.root",
+"CITo2E_Lam1TeVDesLL_M1300to2000":"dileptonAna_electrons_CITo2E_Lam1TeVDesLL_M1300to2000.root",
+"CITo2E_Lam1TeVDesLR_M1300to2000":"dileptonAna_electrons_CITo2E_Lam1TeVDesLR_M1300to2000.root",
+"CITo2E_Lam1TeVDesRL_M1300to2000":"dileptonAna_electrons_CITo2E_Lam1TeVDesRL_M1300to2000.root",
+"CITo2E_Lam1TeVDesRR_M1300to2000":"dileptonAna_electrons_CITo2E_Lam1TeVDesRR_M1300to2000.root",
+
+"CITo2E_Lam10TeVConLL_M1300to2000":"dileptonAna_electrons_CITo2E_Lam10TeVConLL_M1300to2000.root",
+"CITo2E_Lam10TeVConLR_M1300to2000":"dileptonAna_electrons_CITo2E_Lam10TeVConLR_M1300to2000.root",
+"CITo2E_Lam10TeVConRL_M1300to2000":"dileptonAna_electrons_CITo2E_Lam10TeVConRL_M1300to2000.root",
+"CITo2E_Lam10TeVConRR_M1300to2000":"dileptonAna_electrons_CITo2E_Lam10TeVConRR_M1300to2000.root",
+"CITo2E_Lam10TeVDesLL_M1300to2000":"dileptonAna_electrons_CITo2E_Lam10TeVDesLL_M1300to2000.root",
+"CITo2E_Lam10TeVDesLR_M1300to2000":"dileptonAna_electrons_CITo2E_Lam10TeVDesLR_M1300to2000.root",
+"CITo2E_Lam10TeVDesRL_M1300to2000":"dileptonAna_electrons_CITo2E_Lam10TeVDesRL_M1300to2000.root",
+"CITo2E_Lam10TeVDesRR_M1300to2000":"dileptonAna_electrons_CITo2E_Lam10TeVDesRR_M1300to2000.root",
 
 "CITo2E_Lam16TeVConLL_M1300to2000":"dileptonAna_electrons_CITo2E_Lam16TeVConLL_M1300to2000.root",
 "CITo2E_Lam16TeVConLR_M1300to2000":"dileptonAna_electrons_CITo2E_Lam16TeVConLR_M1300to2000.root",
@@ -1679,6 +2023,24 @@ fileNamesEle = {
 "CITo2E_Lam100kTeVDesLR_M2000toInf":"dileptonAna_electrons_CITo2E_Lam100kTeVDesLR_M2000toInf.root",
 "CITo2E_Lam100kTeVDesRL_M2000toInf":"dileptonAna_electrons_CITo2E_Lam100kTeVDesRL_M2000toInf.root",
 "CITo2E_Lam100kTeVDesRR_M2000toInf":"dileptonAna_electrons_CITo2E_Lam100kTeVDesRR_M2000toInf.root",
+
+"CITo2E_Lam1TeVConLL_M2000toInf":"dileptonAna_electrons_CITo2E_Lam1TeVConLL_M2000toInf.root",
+"CITo2E_Lam1TeVConLR_M2000toInf":"dileptonAna_electrons_CITo2E_Lam1TeVConLR_M2000toInf.root",
+"CITo2E_Lam1TeVConRL_M2000toInf":"dileptonAna_electrons_CITo2E_Lam1TeVConRL_M2000toInf.root",
+"CITo2E_Lam1TeVConRR_M2000toInf":"dileptonAna_electrons_CITo2E_Lam1TeVConRR_M2000toInf.root",
+"CITo2E_Lam1TeVDesLL_M2000toInf":"dileptonAna_electrons_CITo2E_Lam1TeVDesLL_M2000toInf.root",
+"CITo2E_Lam1TeVDesLR_M2000toInf":"dileptonAna_electrons_CITo2E_Lam1TeVDesLR_M2000toInf.root",
+"CITo2E_Lam1TeVDesRL_M2000toInf":"dileptonAna_electrons_CITo2E_Lam1TeVDesRL_M2000toInf.root",
+"CITo2E_Lam1TeVDesRR_M2000toInf":"dileptonAna_electrons_CITo2E_Lam1TeVDesRR_M2000toInf.root",
+
+"CITo2E_Lam10TeVConLL_M2000toInf":"dileptonAna_electrons_CITo2E_Lam10TeVConLL_M2000toInf.root",
+"CITo2E_Lam10TeVConLR_M2000toInf":"dileptonAna_electrons_CITo2E_Lam10TeVConLR_M2000toInf.root",
+"CITo2E_Lam10TeVConRL_M2000toInf":"dileptonAna_electrons_CITo2E_Lam10TeVConRL_M2000toInf.root",
+"CITo2E_Lam10TeVConRR_M2000toInf":"dileptonAna_electrons_CITo2E_Lam10TeVConRR_M2000toInf.root",
+"CITo2E_Lam10TeVDesLL_M2000toInf":"dileptonAna_electrons_CITo2E_Lam10TeVDesLL_M2000toInf.root",
+"CITo2E_Lam10TeVDesLR_M2000toInf":"dileptonAna_electrons_CITo2E_Lam10TeVDesLR_M2000toInf.root",
+"CITo2E_Lam10TeVDesRL_M2000toInf":"dileptonAna_electrons_CITo2E_Lam10TeVDesRL_M2000toInf.root",
+"CITo2E_Lam10TeVDesRR_M2000toInf":"dileptonAna_electrons_CITo2E_Lam10TeVDesRR_M2000toInf.root",
 
 "CITo2E_Lam16TeVConLL_M2000toInf":"dileptonAna_electrons_CITo2E_Lam16TeVConLL_M2000toInf.root",
 "CITo2E_Lam16TeVConLR_M2000toInf":"dileptonAna_electrons_CITo2E_Lam16TeVConLR_M2000toInf.root",
@@ -1734,6 +2096,24 @@ fileNamesEle = {
 "CITo2E_Lam16TeVDesRL_M300to800":"dileptonAna_electrons_CITo2E_Lam16TeVDesRL_M300to800.root",
 "CITo2E_Lam16TeVDesRR_M300to800":"dileptonAna_electrons_CITo2E_Lam16TeVDesRR_M300to800.root",
 
+"CITo2E_Lam1TeVConLL_M300to800":"dileptonAna_electrons_CITo2E_Lam1TeVConLL_M300to800.root",
+"CITo2E_Lam1TeVConLR_M300to800":"dileptonAna_electrons_CITo2E_Lam1TeVConLR_M300to800.root",
+"CITo2E_Lam1TeVConRL_M300to800":"dileptonAna_electrons_CITo2E_Lam1TeVConRL_M300to800.root",
+"CITo2E_Lam1TeVConRR_M300to800":"dileptonAna_electrons_CITo2E_Lam1TeVConRR_M300to800.root",
+"CITo2E_Lam1TeVDesLL_M300to800":"dileptonAna_electrons_CITo2E_Lam1TeVDesLL_M300to800.root",
+"CITo2E_Lam1TeVDesLR_M300to800":"dileptonAna_electrons_CITo2E_Lam1TeVDesLR_M300to800.root",
+"CITo2E_Lam1TeVDesRL_M300to800":"dileptonAna_electrons_CITo2E_Lam1TeVDesRL_M300to800.root",
+"CITo2E_Lam1TeVDesRR_M300to800":"dileptonAna_electrons_CITo2E_Lam1TeVDesRR_M300to800.root",
+
+"CITo2E_Lam10TeVConLL_M300to800":"dileptonAna_electrons_CITo2E_Lam10TeVConLL_M300to800.root",
+"CITo2E_Lam10TeVConLR_M300to800":"dileptonAna_electrons_CITo2E_Lam10TeVConLR_M300to800.root",
+"CITo2E_Lam10TeVConRL_M300to800":"dileptonAna_electrons_CITo2E_Lam10TeVConRL_M300to800.root",
+"CITo2E_Lam10TeVConRR_M300to800":"dileptonAna_electrons_CITo2E_Lam10TeVConRR_M300to800.root",
+"CITo2E_Lam10TeVDesLL_M300to800":"dileptonAna_electrons_CITo2E_Lam10TeVDesLL_M300to800.root",
+"CITo2E_Lam10TeVDesLR_M300to800":"dileptonAna_electrons_CITo2E_Lam10TeVDesLR_M300to800.root",
+"CITo2E_Lam10TeVDesRL_M300to800":"dileptonAna_electrons_CITo2E_Lam10TeVDesRL_M300to800.root",
+"CITo2E_Lam10TeVDesRR_M300to800":"dileptonAna_electrons_CITo2E_Lam10TeVDesRR_M300to800.root",
+
 "CITo2E_Lam24TeVConLL_M300to800":"dileptonAna_electrons_CITo2E_Lam24TeVConLL_M300to800.root",
 "CITo2E_Lam24TeVConLR_M300to800":"dileptonAna_electrons_CITo2E_Lam24TeVConLR_M300to800.root",
 "CITo2E_Lam24TeVConRL_M300to800":"dileptonAna_electrons_CITo2E_Lam24TeVConRL_M300to800.root",
@@ -1769,6 +2149,24 @@ fileNamesEle = {
 "CITo2E_Lam100kTeVDesLR_M800to1300":"dileptonAna_electrons_CITo2E_Lam100kTeVDesLR_M800to1300.root",
 "CITo2E_Lam100kTeVDesRL_M800to1300":"dileptonAna_electrons_CITo2E_Lam100kTeVDesRL_M800to1300.root",
 "CITo2E_Lam100kTeVDesRR_M800to1300":"dileptonAna_electrons_CITo2E_Lam100kTeVDesRR_M800to1300.root",
+
+"CITo2E_Lam1TeVConLL_M800to1300":"dileptonAna_electrons_CITo2E_Lam1TeVConLL_M800to1300.root",
+"CITo2E_Lam1TeVConLR_M800to1300":"dileptonAna_electrons_CITo2E_Lam1TeVConLR_M800to1300.root",
+"CITo2E_Lam1TeVConRL_M800to1300":"dileptonAna_electrons_CITo2E_Lam1TeVConRL_M800to1300.root",
+"CITo2E_Lam1TeVConRR_M800to1300":"dileptonAna_electrons_CITo2E_Lam1TeVConRR_M800to1300.root",
+"CITo2E_Lam1TeVDesLL_M800to1300":"dileptonAna_electrons_CITo2E_Lam1TeVDesLL_M800to1300.root",
+"CITo2E_Lam1TeVDesLR_M800to1300":"dileptonAna_electrons_CITo2E_Lam1TeVDesLR_M800to1300.root",
+"CITo2E_Lam1TeVDesRL_M800to1300":"dileptonAna_electrons_CITo2E_Lam1TeVDesRL_M800to1300.root",
+"CITo2E_Lam1TeVDesRR_M800to1300":"dileptonAna_electrons_CITo2E_Lam1TeVDesRR_M800to1300.root",
+
+"CITo2E_Lam10TeVConLL_M800to1300":"dileptonAna_electrons_CITo2E_Lam10TeVConLL_M800to1300.root",
+"CITo2E_Lam10TeVConLR_M800to1300":"dileptonAna_electrons_CITo2E_Lam10TeVConLR_M800to1300.root",
+"CITo2E_Lam10TeVConRL_M800to1300":"dileptonAna_electrons_CITo2E_Lam10TeVConRL_M800to1300.root",
+"CITo2E_Lam10TeVConRR_M800to1300":"dileptonAna_electrons_CITo2E_Lam10TeVConRR_M800to1300.root",
+"CITo2E_Lam10TeVDesLL_M800to1300":"dileptonAna_electrons_CITo2E_Lam10TeVDesLL_M800to1300.root",
+"CITo2E_Lam10TeVDesLR_M800to1300":"dileptonAna_electrons_CITo2E_Lam10TeVDesLR_M800to1300.root",
+"CITo2E_Lam10TeVDesRL_M800to1300":"dileptonAna_electrons_CITo2E_Lam10TeVDesRL_M800to1300.root",
+"CITo2E_Lam10TeVDesRR_M800to1300":"dileptonAna_electrons_CITo2E_Lam10TeVDesRR_M800to1300.root",
 
 "CITo2E_Lam16TeVConLL_M800to1300":"dileptonAna_electrons_CITo2E_Lam16TeVConLL_M800to1300.root",
 "CITo2E_Lam16TeVConLR_M800to1300":"dileptonAna_electrons_CITo2E_Lam16TeVConLR_M800to1300.root",
@@ -2007,6 +2405,11 @@ fileNamesEle = {
 "Data2018_RunB":"dileptonAna_electrons_2018_DoubleEGRun2018B-17Sep2018-v1.root",
 "Data2018_RunC":"dileptonAna_electrons_2018_DoubleEGRun2018C-17Sep2018-v1.root",
 "Data2018_RunD":"dileptonAna_electrons_2018_DoubleEGRun2018D-22Jan2019-v2.root",
+
+"Data2018_RunA_UL":"dileptonAna_electrons_2018_DoubleEGRun2018A-12Nov2019_UL2018-v2.root",
+"Data2018_RunB_UL":"dileptonAna_electrons_2018_DoubleEGRun2018B-12Nov2019_UL2018-v2.root",
+"Data2018_RunC_UL":"dileptonAna_electrons_2018_DoubleEGRun2018C-12Nov2019_UL2018-v2.root",
+"Data2018_RunD_UL":"dileptonAna_electrons_2018_DoubleEGRun2018D-12Nov2019_UL2018-v4.root",
 
 "Wantitop":"dileptonAna_electrons_Wantitop.root",
 "tW":"dileptonAna_electrons_tW.root",
@@ -2468,16 +2871,166 @@ fileNamesEle = {
 'ADDGravToLL_LambdaT-9000_M-800To1300_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-9000_M-800To1300.root',   
 'ADDGravToLL_LambdaT-9000_M-2800ToInf_2018':'dileptonAna_electrons_2018_ADDGravToLL_LambdaT-9000_M-2800ToInf.root',
 
+
+
+'RSGrav_kMpl_001_M250_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M250.root',
+'RSGrav_kMpl_001_M500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M500.root',
+'RSGrav_kMpl_001_M750_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M750.root',
+'RSGrav_kMpl_001_M1000_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M1000.root',
+'RSGrav_kMpl_001_M1500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M1500.root',
+'RSGrav_kMpl_001_M2000_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M2000.root',
+'RSGrav_kMpl_001_M2500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M2500.root',
+'RSGrav_kMpl_001_M3000_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M3000.root',
+'RSGrav_kMpl_001_M3500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M3500.root',
+'RSGrav_kMpl_001_M4000_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M4000.root',
+'RSGrav_kMpl_001_M4500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M4500.root',
+'RSGrav_kMpl_001_M5000_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M5000.root',
+'RSGrav_kMpl_001_M5500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M5500.root',
+
+'ZprimeToEE_SSM_M5000_2018':'dileptonAna_electrons_2018_ZprimeToEE_SSM_M5000.root',
+
+
 }
 	
 	
 class Signals:
-	
-
-
+			
+	class ZprimeToEE_SSM_M5000:
+		subprocesses = ["ZprimeToEE_SSM_M5000_2018"]
+		label = "ZprimeToEE_SSM_M5000_2018"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class ZprimeToMuMu_SSM_M5000:
+		subprocesses = ["ZprimeToMuMu_SSM_M5000_2018"]
+		label = "ZprimeToMuMu_SSM_M5000_2018"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M250:
+		subprocesses = ["RSGrav_kMpl_001_M250_2018"]
+		label = "RSGrav_kMpl_001_M250"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M500:
+		subprocesses = ["RSGrav_kMpl_001_M500_2018"]
+		label = "RSGrav_kMpl_001_M500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M1000:
+		subprocesses = ["RSGrav_kMpl_001_M1000_2018"]
+		label = "RSGrav_kMpl_001_M1000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M1500:
+		subprocesses = ["RSGrav_kMpl_001_M1500_2018"]
+		label = "RSGrav_kMpl_001_M1500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M2000:
+		subprocesses = ["RSGrav_kMpl_001_M2000_2018"]
+		label = "RSGrav_kMpl_001_M2000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M2500:
+		subprocesses = ["RSGrav_kMpl_001_M2500_2018"]
+		label = "RSGrav_kMpl_001_M2500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M3000:
+		subprocesses = ["RSGrav_kMpl_001_M3000_2018"]
+		label = "RSGrav_kMpl_001_M3000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M3500:
+		subprocesses = ["RSGrav_kMpl_001_M3500_2018"]
+		label = "RSGrav_kMpl_001_M3500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M4000:
+		subprocesses = ["RSGrav_kMpl_001_M4000_2018"]
+		label = "RSGrav_kMpl_001_M4000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M5000:
+		subprocesses = ["RSGrav_kMpl_001_M5000_2018"]
+		label = "RSGrav_kMpl_001_M5000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M5500:
+		subprocesses = ["RSGrav_kMpl_001_M5500_2018"]
+		label = "RSGrav_kMpl_001_M5500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
 		
-
-		
+	class CITo2E_Lam1TeVConLL:
+		subprocesses = ["CITo2E_Lam1TeVConLL_M300to800","CITo2E_Lam1TeVConLL_M800to1300","CITo2E_Lam1TeVConLL_M1300to2000","CITo2E_Lam1TeVConLL_M2000toInf"]
+		label = "CITo2E_Lam1TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVConLL:
+		subprocesses = ["CITo2E_Lam10TeVConLL_M300to800","CITo2E_Lam10TeVConLL_M800to1300","CITo2E_Lam10TeVConLL_M1300to2000","CITo2E_Lam10TeVConLL_M2000toInf"]
+		label = "CITo2E_Lam10TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2E_Lam16TeVConLL:
 		subprocesses = ["CITo2E_Lam16TeVConLL_M300to800","CITo2E_Lam16TeVConLL_M800to1300","CITo2E_Lam16TeVConLL_M1300to2000","CITo2E_Lam16TeVConLL_M2000toInf"]
 		label = "CITo2E_Lam16TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
@@ -2487,12 +3040,48 @@ class Signals:
 		uncertainty = 0.
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2E_Lam1TeVConLR:
+		subprocesses = ["CITo2E_Lam1TeVConLR_M300to800","CITo2E_Lam1TeVConLR_M800to1300","CITo2E_Lam1TeVConLR_M1300to2000","CITo2E_Lam1TeVConLR_M2000toInf"]
+		label = "CITo2E_Lam1TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlack
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVConLR:
+		subprocesses = ["CITo2E_Lam10TeVConLR_M300to800","CITo2E_Lam10TeVConLR_M800to1300","CITo2E_Lam10TeVConLR_M1300to2000","CITo2E_Lam10TeVConLR_M2000toInf"]
+		label = "CITo2E_Lam10TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlack
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2E_Lam16TeVConLR:
 		subprocesses = ["CITo2E_Lam16TeVConLR_M300to800","CITo2E_Lam16TeVConLR_M800to1300","CITo2E_Lam16TeVConLR_M1300to2000","CITo2E_Lam16TeVConLR_M2000toInf"]
 		label = "CITo2E_Lam16TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kBlack
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam1TeVConRL:
+		subprocesses = ["CITo2E_Lam1TeVConRL_M300to800","CITo2E_Lam1TeVConRL_M800to1300","CITo2E_Lam1TeVConRL_M1300to2000","CITo2E_Lam1TeVConRL_M2000toInf"]
+		label = "CITo2E_Lam1TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+2
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVConRL:
+		subprocesses = ["CITo2E_Lam10TeVConRL_M300to800","CITo2E_Lam10TeVConRL_M800to1300","CITo2E_Lam10TeVConRL_M1300to2000","CITo2E_Lam10TeVConRL_M2000toInf"]
+		label = "CITo2E_Lam10TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+2
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -2514,12 +3103,66 @@ class Signals:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2E_Lam1TeVConRR:
+		subprocesses = ["CITo2E_Lam1TeVConRR_M300to800","CITo2E_Lam1TeVConRR_M800to1300","CITo2E_Lam1TeVConRR_M1300to2000","CITo2E_Lam1TeVConRR_M2000toInf"]
+		label = "CITo2E_Lam1TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kOrange
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVConRR:
+		subprocesses = ["CITo2E_Lam10TeVConRR_M300to800","CITo2E_Lam10TeVConRR_M800to1300","CITo2E_Lam10TeVConRR_M1300to2000","CITo2E_Lam10TeVConRR_M2000toInf"]
+		label = "CITo2E_Lam10TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kOrange
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam1TeVDesLL:
+		subprocesses = ["CITo2E_Lam1TeVDesLL_M300to800","CITo2E_Lam1TeVDesLL_M800to1300","CITo2E_Lam1TeVDesLL_M1300to2000","CITo2E_Lam1TeVDesLL_M2000toInf"]
+		label = "CITo2E_Lam1TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVDesLL:
+		subprocesses = ["CITo2E_Lam10TeVDesLL_M300to800","CITo2E_Lam10TeVDesLL_M800to1300","CITo2E_Lam10TeVDesLL_M1300to2000","CITo2E_Lam10TeVDesLL_M2000toInf"]
+		label = "CITo2E_Lam10TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2E_Lam16TeVDesLL:
 		subprocesses = ["CITo2E_Lam16TeVDesLL_M300to800","CITo2E_Lam16TeVDesLL_M800to1300","CITo2E_Lam16TeVDesLL_M1300to2000","CITo2E_Lam16TeVDesLL_M2000toInf"]
 		label = "CITo2E_Lam16TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kBlue+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam1TeVDesLR:
+		subprocesses = ["CITo2E_Lam1TeVDesLR_M300to800","CITo2E_Lam1TeVDesLR_M800to1300","CITo2E_Lam1TeVDesLR_M1300to2000","CITo2E_Lam1TeVDesLR_M2000toInf"]
+		label = "CITo2E_Lam1TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVDesLR:
+		subprocesses = ["CITo2E_Lam10TeVDesLR_M300to800","CITo2E_Lam10TeVDesLR_M800to1300","CITo2E_Lam10TeVDesLR_M1300to2000","CITo2E_Lam10TeVDesLR_M2000toInf"]
+		label = "CITo2E_Lam10TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -2532,12 +3175,48 @@ class Signals:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2E_Lam1TeVDesRL:
+		subprocesses = ["CITo2E_Lam1TeVDesRL_M300to800","CITo2E_Lam1TeVDesRL_M800to1300","CITo2E_Lam1TeVDesRL_M1300to2000","CITo2E_Lam1TeVDesRL_M2000toInf"]
+		label = "CITo2E_Lam1TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVDesRL:
+		subprocesses = ["CITo2E_Lam10TeVDesRL_M300to800","CITo2E_Lam10TeVDesRL_M800to1300","CITo2E_Lam10TeVDesRL_M1300to2000","CITo2E_Lam10TeVDesRL_M2000toInf"]
+		label = "CITo2E_Lam10TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2E_Lam16TeVDesRL:
 		subprocesses = ["CITo2E_Lam16TeVDesRL_M300to800","CITo2E_Lam16TeVDesRL_M800to1300","CITo2E_Lam16TeVDesRL_M1300to2000","CITo2E_Lam16TeVDesRL_M2000toInf"]
 		label = "CITo2E_Lam16TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam1TeVDesRR:
+		subprocesses = ["CITo2E_Lam1TeVDesRR_M300to800","CITo2E_Lam1TeVDesRR_M800to1300","CITo2E_Lam1TeVDesRR_M1300to2000","CITo2E_Lam1TeVDesRR_M2000toInf"]
+		label = "CITo2E_Lam1TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kMagenta+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVDesRR:
+		subprocesses = ["CITo2E_Lam10TeVDesRR_M300to800","CITo2E_Lam10TeVDesRR_M800to1300","CITo2E_Lam10TeVDesRR_M1300to2000","CITo2E_Lam10TeVDesRR_M2000toInf"]
+		label = "CITo2E_Lam10TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kMagenta+1
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -2848,6 +3527,24 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 		
+	class CITo2Mu_Lam1TeVConLL:
+		subprocesses = ["CITo2Mu_Lam1TeVConLL_M300to800","CITo2Mu_Lam1TeVConLL_M800to1300","CITo2Mu_Lam1TeVConLL_M1300to2000","CITo2Mu_Lam1TeVConLL_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kRed
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVConLL:
+		subprocesses = ["CITo2Mu_Lam10TeVConLL_M300to800","CITo2Mu_Lam10TeVConLL_M800to1300","CITo2Mu_Lam10TeVConLL_M1300to2000","CITo2Mu_Lam10TeVConLL_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kRed
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2Mu_Lam16TeVConLL:
 		subprocesses = ["CITo2Mu_Lam16TeVConLL_M300to800","CITo2Mu_Lam16TeVConLL_M800to1300","CITo2Mu_Lam16TeVConLL_M1300to2000","CITo2Mu_Lam16TeVConLL_M2000toInf"]
 		label = "CITo2Mu_Lam16TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
@@ -2857,12 +3554,48 @@ class Signals:
 		uncertainty = 0.
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2Mu_Lam1TeVConLR:
+		subprocesses = ["CITo2Mu_Lam1TeVConLR_M300to800","CITo2Mu_Lam1TeVConLR_M800to1300","CITo2Mu_Lam1TeVConLR_M1300to2000","CITo2Mu_Lam1TeVConLR_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlack
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVConLR:
+		subprocesses = ["CITo2Mu_Lam10TeVConLR_M300to800","CITo2Mu_Lam10TeVConLR_M800to1300","CITo2Mu_Lam10TeVConLR_M1300to2000","CITo2Mu_Lam10TeVConLR_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlack
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2Mu_Lam16TeVConLR:
 		subprocesses = ["CITo2Mu_Lam16TeVConLR_M300to800","CITo2Mu_Lam16TeVConLR_M800to1300","CITo2Mu_Lam16TeVConLR_M1300to2000","CITo2Mu_Lam16TeVConLR_M2000toInf"]
 		label = "CITo2Mu_Lam16TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kBlack
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam1TeVConRL:
+		subprocesses = ["CITo2Mu_Lam1TeVConRL_M300to800","CITo2Mu_Lam1TeVConRL_M800to1300","CITo2Mu_Lam1TeVConRL_M1300to2000","CITo2Mu_Lam1TeVConRL_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+2
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVConRL:
+		subprocesses = ["CITo2Mu_Lam10TeVConRL_M300to800","CITo2Mu_Lam10TeVConRL_M800to1300","CITo2Mu_Lam10TeVConRL_M1300to2000","CITo2Mu_Lam10TeVConRL_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+2
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -2875,12 +3608,48 @@ class Signals:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2Mu_Lam1TeVConRR:
+		subprocesses = ["CITo2Mu_Lam1TeVConRR_M300to800","CITo2Mu_Lam1TeVConRR_M800to1300","CITo2Mu_Lam1TeVConRR_M1300to2000","CITo2Mu_Lam1TeVConRR_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kOrange
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVConRR:
+		subprocesses = ["CITo2Mu_Lam10TeVConRR_M300to800","CITo2Mu_Lam10TeVConRR_M800to1300","CITo2Mu_Lam10TeVConRR_M1300to2000","CITo2Mu_Lam10TeVConRR_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kOrange
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2Mu_Lam16TeVConRR:
 		subprocesses = ["CITo2Mu_Lam16TeVConRR_M300to800","CITo2Mu_Lam16TeVConRR_M800to1300","CITo2Mu_Lam16TeVConRR_M1300to2000","CITo2Mu_Lam16TeVConRR_M2000toInf"]
 		label = "CITo2Mu_Lam16TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kOrange
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam1TeVDesLL:
+		subprocesses = ["CITo2Mu_Lam1TeVDesLL_M300to800","CITo2Mu_Lam1TeVDesLL_M800to1300","CITo2Mu_Lam1TeVDesLL_M1300to2000","CITo2Mu_Lam1TeVDesLL_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVDesLL:
+		subprocesses = ["CITo2Mu_Lam10TeVDesLL_M300to800","CITo2Mu_Lam10TeVDesLL_M800to1300","CITo2Mu_Lam10TeVDesLL_M1300to2000","CITo2Mu_Lam10TeVDesLL_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue+1
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -2893,9 +3662,45 @@ class Signals:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2Mu_Lam1TeVDesLR:
+		subprocesses = ["CITo2Mu_Lam1TeVDesLR_M300to800","CITo2Mu_Lam1TeVDesLR_M800to1300","CITo2Mu_Lam1TeVDesLR_M1300to2000","CITo2Mu_Lam1TeVDesLR_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVDesLR:
+		subprocesses = ["CITo2Mu_Lam10TeVDesLR_M300to800","CITo2Mu_Lam10TeVDesLR_M800to1300","CITo2Mu_Lam10TeVDesLR_M1300to2000","CITo2Mu_Lam10TeVDesLR_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2Mu_Lam16TeVDesLR:
 		subprocesses = ["CITo2Mu_Lam16TeVDesLR_M300to800","CITo2Mu_Lam16TeVDesLR_M800to1300","CITo2Mu_Lam16TeVDesLR_M1300to2000","CITo2Mu_Lam16TeVDesLR_M2000toInf"]
 		label = "CITo2Mu_Lam16TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam1TeVDesRL:
+		subprocesses = ["CITo2Mu_Lam1TeVDesRL_M300to800","CITo2Mu_Lam1TeVDesRL_M800to1300","CITo2Mu_Lam1TeVDesRL_M1300to2000","CITo2Mu_Lam1TeVDesRL_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVDesRL:
+		subprocesses = ["CITo2Mu_Lam10TeVDesRL_M300to800","CITo2Mu_Lam10TeVDesRL_M800to1300","CITo2Mu_Lam10TeVDesRL_M1300to2000","CITo2Mu_Lam10TeVDesRL_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kGreen+1
@@ -2908,6 +3713,24 @@ class Signals:
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam1TeVDesRR:
+		subprocesses = ["CITo2Mu_Lam1TeVDesRR_M300to800","CITo2Mu_Lam1TeVDesRR_M800to1300","CITo2Mu_Lam1TeVDesRR_M1300to2000","CITo2Mu_Lam1TeVDesRR_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kMagenta+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVDesRR:
+		subprocesses = ["CITo2Mu_Lam10TeVDesRR_M300to800","CITo2Mu_Lam10TeVDesRR_M800to1300","CITo2Mu_Lam10TeVDesRR_M1300to2000","CITo2Mu_Lam10TeVDesRR_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kMagenta+1
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -3216,20 +4039,175 @@ class Signals:
 		additionalSelection = None
 
 class Signals2018:
-	
 
-		
-	class CITo2E_Lam16TeVConLL:
-		subprocesses = ["CITo2E_Lam16TeVConLL_M300to800_2018","CITo2E_Lam16TeVConLL_M800to1300_2018","CITo2E_Lam16TeVConLL_M1300to2000_2018","CITo2E_Lam16TeVConLL_M2000toInf_2018"]
-		label = "CITo2E_Lam16TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+
+	class ZprimeToEE_SSM_M5000:
+		subprocesses = ["ZprimeToEE_SSM_M5000_2018"]
+		label = "ZprimeToEE_SSM_M5000_2018"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kRed
+		linecolor = ROOT.kBlue
 		uncertainty = 0.
 		scaleFac     = 1.	
 		additionalSelection = None
+	class ZprimeToMuMu_SSM_M5000:
+		subprocesses = ["ZprimeToMuMu_SSM_M5000_2018"]
+		label = "ZprimeToMuMu_SSM_M5000_2018"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+
+	class RSGrav_kMpl_001_M250:
+		subprocesses = ["RSGrav_kMpl_001_M250_2018"]
+		label = "RSGrav_kMpl_001_M250"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M500:
+		subprocesses = ["RSGrav_kMpl_001_M500_2018"]
+		label = "RSGrav_kMpl_001_M500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M1000:
+		subprocesses = ["RSGrav_kMpl_001_M1000_2018"]
+		label = "RSGrav_kMpl_001_M1000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M1500:
+		subprocesses = ["RSGrav_kMpl_001_M1500_2018"]
+		label = "RSGrav_kMpl_001_M1500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M2000:
+		subprocesses = ["RSGrav_kMpl_001_M2000_2018"]
+		label = "RSGrav_kMpl_001_M2000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M2500:
+		subprocesses = ["RSGrav_kMpl_001_M2500_2018"]
+		label = "RSGrav_kMpl_001_M2500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M3000:
+		subprocesses = ["RSGrav_kMpl_001_M3000_2018"]
+		label = "RSGrav_kMpl_001_M3000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M3500:
+		subprocesses = ["RSGrav_kMpl_001_M3500_2018"]
+		label = "RSGrav_kMpl_001_M3500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M4000:
+		subprocesses = ["RSGrav_kMpl_001_M4000_2018"]
+		label = "RSGrav_kMpl_001_M4000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M5000:
+		subprocesses = ["RSGrav_kMpl_001_M5000_2018"]
+		label = "RSGrav_kMpl_001_M5000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M5500:
+		subprocesses = ["RSGrav_kMpl_001_M5500_2018"]
+		label = "RSGrav_kMpl_001_M5500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+			
+
+	class CITo2E_Lam1TeVConLL:
+		subprocesses = ["CITo2E_Lam1TeVConLL_M300to800","CITo2E_Lam1TeVConLL_M800to1300","CITo2E_Lam1TeVConLL_M1300to2000","CITo2E_Lam1TeVConLL_M2000toInf"]
+		label = "CITo2E_Lam1TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVConLL:
+		subprocesses = ["CITo2E_Lam10TeVConLL_M300to800","CITo2E_Lam10TeVConLL_M800to1300","CITo2E_Lam10TeVConLL_M1300to2000","CITo2E_Lam10TeVConLL_M2000toInf"]
+		label = "CITo2E_Lam10TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam16TeVConLL:
+		subprocesses = ["CITo2E_Lam16TeVConLL_M300to800","CITo2E_Lam16TeVConLL_M800to1300","CITo2E_Lam16TeVConLL_M1300to2000","CITo2E_Lam16TeVConLL_M2000toInf"]
+		label = "CITo2E_Lam16TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam1TeVConLR:
+		subprocesses = ["CITo2E_Lam1TeVConLR_M300to800","CITo2E_Lam1TeVConLR_M800to1300","CITo2E_Lam1TeVConLR_M1300to2000","CITo2E_Lam1TeVConLR_M2000toInf"]
+		label = "CITo2E_Lam1TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlack
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVConLR:
+		subprocesses = ["CITo2E_Lam10TeVConLR_M300to800","CITo2E_Lam10TeVConLR_M800to1300","CITo2E_Lam10TeVConLR_M1300to2000","CITo2E_Lam10TeVConLR_M2000toInf"]
+		label = "CITo2E_Lam10TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlack
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2E_Lam16TeVConLR:
-		subprocesses = ["CITo2E_Lam16TeVConLR_M300to800_2018","CITo2E_Lam16TeVConLR_M800to1300_2018","CITo2E_Lam16TeVConLR_M1300to2000_2018","CITo2E_Lam16TeVConLR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam16TeVConLR_M300to800","CITo2E_Lam16TeVConLR_M800to1300","CITo2E_Lam16TeVConLR_M1300to2000","CITo2E_Lam16TeVConLR_M2000toInf"]
 		label = "CITo2E_Lam16TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3237,8 +4215,26 @@ class Signals2018:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2E_Lam1TeVConRL:
+		subprocesses = ["CITo2E_Lam1TeVConRL_M300to800","CITo2E_Lam1TeVConRL_M800to1300","CITo2E_Lam1TeVConRL_M1300to2000","CITo2E_Lam1TeVConRL_M2000toInf"]
+		label = "CITo2E_Lam1TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+2
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVConRL:
+		subprocesses = ["CITo2E_Lam10TeVConRL_M300to800","CITo2E_Lam10TeVConRL_M800to1300","CITo2E_Lam10TeVConRL_M1300to2000","CITo2E_Lam10TeVConRL_M2000toInf"]
+		label = "CITo2E_Lam10TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+2
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2E_Lam16TeVConRL:
-		subprocesses = ["CITo2E_Lam16TeVConRL_M300to800_2018","CITo2E_Lam16TeVConRL_M800to1300_2018","CITo2E_Lam16TeVConRL_M1300to2000_2018","CITo2E_Lam16TeVConRL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam16TeVConRL_M300to800","CITo2E_Lam16TeVConRL_M800to1300","CITo2E_Lam16TeVConRL_M1300to2000","CITo2E_Lam16TeVConRL_M2000toInf"]
 		label = "CITo2E_Lam16TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3247,7 +4243,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam16TeVConRR:
-		subprocesses = ["CITo2E_Lam16TeVConRR_M300to800_2018","CITo2E_Lam16TeVConRR_M800to1300_2018","CITo2E_Lam16TeVConRR_M1300to2000_2018","CITo2E_Lam16TeVConRR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam16TeVConRR_M300to800","CITo2E_Lam16TeVConRR_M800to1300","CITo2E_Lam16TeVConRR_M1300to2000","CITo2E_Lam16TeVConRR_M2000toInf"]
 		label = "CITo2E_Lam16TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3255,8 +4251,44 @@ class Signals2018:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2E_Lam1TeVConRR:
+		subprocesses = ["CITo2E_Lam1TeVConRR_M300to800","CITo2E_Lam1TeVConRR_M800to1300","CITo2E_Lam1TeVConRR_M1300to2000","CITo2E_Lam1TeVConRR_M2000toInf"]
+		label = "CITo2E_Lam1TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kOrange
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVConRR:
+		subprocesses = ["CITo2E_Lam10TeVConRR_M300to800","CITo2E_Lam10TeVConRR_M800to1300","CITo2E_Lam10TeVConRR_M1300to2000","CITo2E_Lam10TeVConRR_M2000toInf"]
+		label = "CITo2E_Lam10TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kOrange
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam1TeVDesLL:
+		subprocesses = ["CITo2E_Lam1TeVDesLL_M300to800","CITo2E_Lam1TeVDesLL_M800to1300","CITo2E_Lam1TeVDesLL_M1300to2000","CITo2E_Lam1TeVDesLL_M2000toInf"]
+		label = "CITo2E_Lam1TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVDesLL:
+		subprocesses = ["CITo2E_Lam10TeVDesLL_M300to800","CITo2E_Lam10TeVDesLL_M800to1300","CITo2E_Lam10TeVDesLL_M1300to2000","CITo2E_Lam10TeVDesLL_M2000toInf"]
+		label = "CITo2E_Lam10TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2E_Lam16TeVDesLL:
-		subprocesses = ["CITo2E_Lam16TeVDesLL_M300to800_2018","CITo2E_Lam16TeVDesLL_M800to1300_2018","CITo2E_Lam16TeVDesLL_M1300to2000_2018","CITo2E_Lam16TeVDesLL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam16TeVDesLL_M300to800","CITo2E_Lam16TeVDesLL_M800to1300","CITo2E_Lam16TeVDesLL_M1300to2000","CITo2E_Lam16TeVDesLL_M2000toInf"]
 		label = "CITo2E_Lam16TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3264,8 +4296,26 @@ class Signals2018:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2E_Lam1TeVDesLR:
+		subprocesses = ["CITo2E_Lam1TeVDesLR_M300to800","CITo2E_Lam1TeVDesLR_M800to1300","CITo2E_Lam1TeVDesLR_M1300to2000","CITo2E_Lam1TeVDesLR_M2000toInf"]
+		label = "CITo2E_Lam1TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVDesLR:
+		subprocesses = ["CITo2E_Lam10TeVDesLR_M300to800","CITo2E_Lam10TeVDesLR_M800to1300","CITo2E_Lam10TeVDesLR_M1300to2000","CITo2E_Lam10TeVDesLR_M2000toInf"]
+		label = "CITo2E_Lam10TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2E_Lam16TeVDesLR:
-		subprocesses = ["CITo2E_Lam16TeVDesLR_M300to800_2018","CITo2E_Lam16TeVDesLR_M800to1300_2018","CITo2E_Lam16TeVDesLR_M1300to2000_2018","CITo2E_Lam16TeVDesLR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam16TeVDesLR_M300to800","CITo2E_Lam16TeVDesLR_M800to1300","CITo2E_Lam16TeVDesLR_M1300to2000","CITo2E_Lam16TeVDesLR_M2000toInf"]
 		label = "CITo2E_Lam16TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3273,8 +4323,26 @@ class Signals2018:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2E_Lam1TeVDesRL:
+		subprocesses = ["CITo2E_Lam1TeVDesRL_M300to800","CITo2E_Lam1TeVDesRL_M800to1300","CITo2E_Lam1TeVDesRL_M1300to2000","CITo2E_Lam1TeVDesRL_M2000toInf"]
+		label = "CITo2E_Lam1TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVDesRL:
+		subprocesses = ["CITo2E_Lam10TeVDesRL_M300to800","CITo2E_Lam10TeVDesRL_M800to1300","CITo2E_Lam10TeVDesRL_M1300to2000","CITo2E_Lam10TeVDesRL_M2000toInf"]
+		label = "CITo2E_Lam10TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2E_Lam16TeVDesRL:
-		subprocesses = ["CITo2E_Lam16TeVDesRL_M300to800_2018","CITo2E_Lam16TeVDesRL_M800to1300_2018","CITo2E_Lam16TeVDesRL_M1300to2000_2018","CITo2E_Lam16TeVDesRL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam16TeVDesRL_M300to800","CITo2E_Lam16TeVDesRL_M800to1300","CITo2E_Lam16TeVDesRL_M1300to2000","CITo2E_Lam16TeVDesRL_M2000toInf"]
 		label = "CITo2E_Lam16TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3282,8 +4350,26 @@ class Signals2018:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2E_Lam1TeVDesRR:
+		subprocesses = ["CITo2E_Lam1TeVDesRR_M300to800","CITo2E_Lam1TeVDesRR_M800to1300","CITo2E_Lam1TeVDesRR_M1300to2000","CITo2E_Lam1TeVDesRR_M2000toInf"]
+		label = "CITo2E_Lam1TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kMagenta+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2E_Lam10TeVDesRR:
+		subprocesses = ["CITo2E_Lam10TeVDesRR_M300to800","CITo2E_Lam10TeVDesRR_M800to1300","CITo2E_Lam10TeVDesRR_M1300to2000","CITo2E_Lam10TeVDesRR_M2000toInf"]
+		label = "CITo2E_Lam10TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kMagenta+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2E_Lam16TeVDesRR:
-		subprocesses = ["CITo2E_Lam16TeVDesRR_M300to800_2018","CITo2E_Lam16TeVDesRR_M800to1300_2018","CITo2E_Lam16TeVDesRR_M1300to2000_2018","CITo2E_Lam16TeVDesRR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam16TeVDesRR_M300to800","CITo2E_Lam16TeVDesRR_M800to1300","CITo2E_Lam16TeVDesRR_M1300to2000","CITo2E_Lam16TeVDesRR_M2000toInf"]
 		label = "CITo2E_Lam16TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3293,7 +4379,7 @@ class Signals2018:
 		additionalSelection = None
 
 	class CITo2E_Lam24TeVConLL:
-		subprocesses = ["CITo2E_Lam24TeVConLL_M300to800_2018","CITo2E_Lam24TeVConLL_M800to1300_2018","CITo2E_Lam24TeVConLL_M1300to2000_2018","CITo2E_Lam24TeVConLL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam24TeVConLL_M300to800","CITo2E_Lam24TeVConLL_M800to1300","CITo2E_Lam24TeVConLL_M1300to2000","CITo2E_Lam24TeVConLL_M2000toInf"]
 		label = "CITo2E_Lam24TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3302,7 +4388,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam24TeVConLR:
-		subprocesses = ["CITo2E_Lam24TeVConLR_M300to800_2018","CITo2E_Lam24TeVConLR_M800to1300_2018","CITo2E_Lam24TeVConLR_M1300to2000_2018","CITo2E_Lam24TeVConLR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam24TeVConLR_M300to800","CITo2E_Lam24TeVConLR_M800to1300","CITo2E_Lam24TeVConLR_M1300to2000","CITo2E_Lam24TeVConLR_M2000toInf"]
 		label = "CITo2E_Lam24TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3311,7 +4397,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam24TeVConRL:
-		subprocesses = ["CITo2E_Lam24TeVConRL_M300to800_2018","CITo2E_Lam24TeVConRL_M800to1300_2018","CITo2E_Lam24TeVConRL_M1300to2000_2018","CITo2E_Lam24TeVConRL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam24TeVConRL_M300to800","CITo2E_Lam24TeVConRL_M800to1300","CITo2E_Lam24TeVConRL_M1300to2000","CITo2E_Lam24TeVConRL_M2000toInf"]
 		label = "CITo2E_Lam24TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3320,7 +4406,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam24TeVConRR:
-		subprocesses = ["CITo2E_Lam24TeVConRR_M300to800_2018","CITo2E_Lam24TeVConRR_M800to1300_2018","CITo2E_Lam24TeVConRR_M1300to2000_2018","CITo2E_Lam24TeVConRR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam24TeVConRR_M300to800","CITo2E_Lam24TeVConRR_M800to1300","CITo2E_Lam24TeVConRR_M1300to2000","CITo2E_Lam24TeVConRR_M2000toInf"]
 		label = "CITo2E_Lam24TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3329,7 +4415,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam24TeVDesLL:
-		subprocesses = ["CITo2E_Lam24TeVDesLL_M300to800_2018","CITo2E_Lam24TeVDesLL_M800to1300_2018","CITo2E_Lam24TeVDesLL_M1300to2000_2018","CITo2E_Lam24TeVDesLL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam24TeVDesLL_M300to800","CITo2E_Lam24TeVDesLL_M800to1300","CITo2E_Lam24TeVDesLL_M1300to2000","CITo2E_Lam24TeVDesLL_M2000toInf"]
 		label = "CITo2E_Lam24TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3338,7 +4424,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam24TeVDesLR:
-		subprocesses = ["CITo2E_Lam24TeVDesLR_M300to800_2018","CITo2E_Lam24TeVDesLR_M800to1300_2018","CITo2E_Lam24TeVDesLR_M1300to2000_2018","CITo2E_Lam24TeVDesLR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam24TeVDesLR_M300to800","CITo2E_Lam24TeVDesLR_M800to1300","CITo2E_Lam24TeVDesLR_M1300to2000","CITo2E_Lam24TeVDesLR_M2000toInf"]
 		label = "CITo2E_Lam24TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3347,7 +4433,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam24TeVDesRL:
-		subprocesses = ["CITo2E_Lam24TeVDesRL_M300to800_2018","CITo2E_Lam24TeVDesRL_M800to1300_2018","CITo2E_Lam24TeVDesRL_M1300to2000_2018","CITo2E_Lam24TeVDesRL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam24TeVDesRL_M300to800","CITo2E_Lam24TeVDesRL_M800to1300","CITo2E_Lam24TeVDesRL_M1300to2000","CITo2E_Lam24TeVDesRL_M2000toInf"]
 		label = "CITo2E_Lam24TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3356,7 +4442,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam24TeVDesRR:
-		subprocesses = ["CITo2E_Lam24TeVDesRR_M300to800_2018","CITo2E_Lam24TeVDesRR_M800to1300_2018","CITo2E_Lam24TeVDesRR_M1300to2000_2018","CITo2E_Lam24TeVDesRR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam24TeVDesRR_M300to800","CITo2E_Lam24TeVDesRR_M800to1300","CITo2E_Lam24TeVDesRR_M1300to2000","CITo2E_Lam24TeVDesRR_M2000toInf"]
 		label = "CITo2E_Lam24TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3366,34 +4452,34 @@ class Signals2018:
 		additionalSelection = None
 		
 	class CITo2E_Lam32TeVConLL:
-		subprocesses = ["CITo2E_Lam32TeVConLL_M300to800_2018","CITo2E_Lam32TeVConLL_M800to1300_2018","CITo2E_Lam32TeVConLL_M1300to2000_2018","CITo2E_Lam32TeVConLL_M2000toInf_2018"]
-		label = "CITo2E_Lam40TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con LL"
+		subprocesses = ["CITo2E_Lam32TeVConLL_M300to800","CITo2E_Lam32TeVConLL_M800to1300","CITo2E_Lam32TeVConLL_M1300to2000","CITo2E_Lam32TeVConLL_M2000toInf"]
+		label = "CITo2E_Lam32TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kBlack
+		linecolor = ROOT.kGreen
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam32TeVConLR:
-		subprocesses = ["CITo2E_Lam32TeVConLR_M300to800_2018","CITo2E_Lam32TeVConLR_M800to1300_2018","CITo2E_Lam32TeVConLR_M1300to2000_2018","CITo2E_Lam32TeVConLR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam32TeVConLR_M300to800","CITo2E_Lam32TeVConLR_M800to1300","CITo2E_Lam32TeVConLR_M1300to2000","CITo2E_Lam32TeVConLR_M2000toInf"]
 		label = "CITo2E_Lam32TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kGreen+2
+		linecolor = ROOT.kRed-4
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam32TeVConRL:
-		subprocesses = ["CITo2E_Lam32TeVConRL_M300to800_2018","CITo2E_Lam32TeVConRL_M800to1300_2018","CITo2E_Lam32TeVConRL_M1300to2000_2018","CITo2E_Lam32TeVConRL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam32TeVConRL_M300to800","CITo2E_Lam32TeVConRL_M800to1300","CITo2E_Lam32TeVConRL_M1300to2000","CITo2E_Lam32TeVConRL_M2000toInf"]
 		label = "CITo2E_Lam32TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kGreen+2
+		linecolor = ROOT.kRed-4
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam32TeVConRR:
-		subprocesses = ["CITo2E_Lam32TeVConRR_M300to800_2018","CITo2E_Lam32TeVConRR_M800to1300_2018","CITo2E_Lam32TeVConRR_M1300to2000_2018","CITo2E_Lam32TeVConRR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam32TeVConRR_M300to800","CITo2E_Lam32TeVConRR_M800to1300","CITo2E_Lam32TeVConRR_M1300to2000","CITo2E_Lam32TeVConRR_M2000toInf"]
 		label = "CITo2E_Lam32TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3402,7 +4488,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam32TeVDesLL:
-		subprocesses = ["CITo2E_Lam32TeVDesLL_M300to800_2018","CITo2E_Lam32TeVDesLL_M800to1300_2018","CITo2E_Lam32TeVDesLL_M1300to2000_2018","CITo2E_Lam32TeVDesLL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam32TeVDesLL_M300to800","CITo2E_Lam32TeVDesLL_M800to1300","CITo2E_Lam32TeVDesLL_M1300to2000","CITo2E_Lam32TeVDesLL_M2000toInf"]
 		label = "CITo2E_Lam32TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Des LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3411,7 +4497,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam32TeVDesLR:
-		subprocesses = ["CITo2E_Lam32TeVDesLR_M300to800_2018","CITo2E_Lam32TeVDesLR_M800to1300_2018","CITo2E_Lam32TeVDesLR_M1300to2000_2018","CITo2E_Lam32TeVDesLR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam32TeVDesLR_M300to800","CITo2E_Lam32TeVDesLR_M800to1300","CITo2E_Lam32TeVDesLR_M1300to2000","CITo2E_Lam32TeVDesLR_M2000toInf"]
 		label = "CITo2E_Lam32TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3420,8 +4506,8 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam32TeVDesRL:
-		subprocesses = ["CITo2E_Lam32TeVDesRL_M300to800_2018","CITo2E_Lam32TeVDesRL_M800to1300_2018","CITo2E_Lam32TeVDesRL_M1300to2000_2018","CITo2E_Lam32TeVDesRL_M2000toInf_2018"]
-		label = "CITo2E_Lam32TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Des LR"
+		subprocesses = ["CITo2E_Lam32TeVDesRL_M300to800","CITo2E_Lam32TeVDesRL_M800to1300","CITo2E_Lam32TeVDesRL_M1300to2000","CITo2E_Lam32TeVDesRL_M2000toInf"]
+		label = "CITo2E_Lam40TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kGreen+1
@@ -3429,8 +4515,8 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam32TeVDesRR:
-		subprocesses = ["CITo2E_Lam32TeVDesRR_M300to800_2018","CITo2E_Lam32TeVDesRR_M800to1300_2018","CITo2E_Lam32TeVDesRR_M1300to2000_2018","CITo2E_Lam32TeVDesRR_M2000toInf_2018"]
-		label = "CITo2E_Lam32TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
+		subprocesses = ["CITo2E_Lam32TeVDesRR_M300to800","CITo2E_Lam32TeVDesRR_M800to1300","CITo2E_Lam32TeVDesRR_M1300to2000","CITo2E_Lam32TeVDesRR_M2000toInf"]
+		label = "CITo2E_Lam40TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kMagenta+1
@@ -3439,16 +4525,16 @@ class Signals2018:
 		additionalSelection = None
 		
 	class CITo2E_Lam40TeVConLL:
-		subprocesses = ["CITo2E_Lam40TeVConLL_M300to800_2018","CITo2E_Lam40TeVConLL_M800to1300_2018","CITo2E_Lam40TeVConLL_M1300to2000_2018","CITo2E_Lam40TeVConLL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam40TeVConLL_M300to800","CITo2E_Lam40TeVConLL_M800to1300","CITo2E_Lam40TeVConLL_M1300to2000","CITo2E_Lam40TeVConLL_M2000toInf"]
 		label = "CITo2E_Lam40TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 34 TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kBlack
+		linecolor = ROOT.kRed
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam40TeVConLR:
-		subprocesses = ["CITo2E_Lam40TeVConLR_M300to800_2018","CITo2E_Lam40TeVConLR_M800to1300_2018","CITo2E_Lam40TeVConLR_M1300to2000_2018","CITo2E_Lam40TeVConRL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam40TeVConLR_M300to800","CITo2E_Lam40TeVConLR_M800to1300","CITo2E_Lam40TeVConLR_M1300to2000","CITo2E_Lam40TeVConRL_M2000toInf"]
 		label = "CITo2E_Lam40TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 34 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3457,7 +4543,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam40TeVConRL:
-		subprocesses = ["CITo2E_Lam40TeVConRL_M300to800_2018","CITo2E_Lam40TeVConRL_M800to1300_2018","CITo2E_Lam40TeVConRL_M1300to2000_2018","CITo2E_Lam40TeVConLL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam40TeVConRL_M300to800","CITo2E_Lam40TeVConRL_M800to1300","CITo2E_Lam40TeVConRL_M1300to2000","CITo2E_Lam40TeVConLL_M2000toInf"]
 		label = "CITo2E_Lam40TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 34 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3466,7 +4552,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam40TeVConRR:
-		subprocesses = ["CITo2E_Lam40TeVConRR_M300to800_2018","CITo2E_Lam40TeVConRR_M800to1300_2018","CITo2E_Lam40TeVConRR_M1300to2000_2018","CITo2E_Lam40TeVConRR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam40TeVConRR_M300to800","CITo2E_Lam40TeVConRR_M800to1300","CITo2E_Lam40TeVConRR_M1300to2000","CITo2E_Lam40TeVConRR_M2000toInf"]
 		label = "CITo2E_Lam40TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 34 TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3475,7 +4561,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam40TeVDesLL:
-		subprocesses = ["CITo2E_Lam40TeVDesLL_M300to800_2018","CITo2E_Lam40TeVDesLL_M800to1300_2018","CITo2E_Lam40TeVDesLL_M1300to2000_2018","CITo2E_Lam40TeVDesLL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam40TeVDesLL_M300to800","CITo2E_Lam40TeVDesLL_M800to1300","CITo2E_Lam40TeVDesLL_M1300to2000","CITo2E_Lam40TeVDesLL_M2000toInf"]
 		label = "CITo2E_Lam40TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 34 TeV - Des LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3484,7 +4570,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam40TeVDesLR:
-		subprocesses = ["CITo2E_Lam40TeVDesLR_M300to800_2018","CITo2E_Lam40TeVDesLR_M800to1300_2018","CITo2E_Lam40TeVDesLR_M1300to2000_2018","CITo2E_Lam40TeVDesLR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam40TeVDesLR_M300to800","CITo2E_Lam40TeVDesLR_M800to1300","CITo2E_Lam40TeVDesLR_M1300to2000","CITo2E_Lam40TeVDesLR_M2000toInf"]
 		label = "CITo2E_Lam40TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 34 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3493,7 +4579,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam40TeVDesRL:
-		subprocesses = ["CITo2E_Lam40TeVDesRL_M300to800_2018","CITo2E_Lam40TeVDesRL_M800to1300_2018","CITo2E_Lam40TeVDesRL_M1300to2000_2018","CITo2E_Lam40TeVDesRL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam40TeVDesRL_M300to800","CITo2E_Lam40TeVDesRL_M800to1300","CITo2E_Lam40TeVDesRL_M1300to2000","CITo2E_Lam40TeVDesRL_M2000toInf"]
 		label = "CITo2E_Lam40TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 34 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3502,7 +4588,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam40TeVDesRR:
-		subprocesses = ["CITo2E_Lam40TeVDesRR_M300to800_2018","CITo2E_Lam40TeVDesRR_M800to1300_2018","CITo2E_Lam40TeVDesRR_M1300to2000_2018","CITo2E_Lam40TeVDesRR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam40TeVDesRR_M300to800","CITo2E_Lam40TeVDesRR_M800to1300","CITo2E_Lam40TeVDesRR_M1300to2000","CITo2E_Lam40TeVDesRR_M2000toInf"]
 		label = "CITo2E_Lam40TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3513,7 +4599,7 @@ class Signals2018:
 				
 		
 	class CITo2E_Lam100kTeVConLL:
-		subprocesses = ["CITo2E_Lam100kTeVConLL_M300to800_2018","CITo2E_Lam100kTeVConLL_M800to1300_2018","CITo2E_Lam100kTeVConLL_M1300to2000_2018","CITo2E_Lam100kTeVConLL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam100kTeVConLL_M300to800","CITo2E_Lam100kTeVConLL_M800to1300","CITo2E_Lam100kTeVConLL_M1300to2000","CITo2E_Lam100kTeVConLL_M2000toInf"]
 		label = "CITo2E_Lam100kTeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3522,7 +4608,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam100kTeVConLR:
-		subprocesses = ["CITo2E_Lam100kTeVConLR_M300to800_2018","CITo2E_Lam100kTeVConLR_M800to1300_2018","CITo2E_Lam100kTeVConLR_M1300to2000_2018","CITo2E_Lam100kTeVConLR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam100kTeVConLR_M300to800","CITo2E_Lam100kTeVConLR_M800to1300","CITo2E_Lam100kTeVConLR_M1300to2000","CITo2E_Lam100kTeVConLR_M2000toInf"]
 		# ~ subprocesses = ["CITo2E_Lam100kTeVConLL_M300to800","CITo2E_Lam100kTeVConLL_M800to1300","CITo2E_Lam100kTeVConLL_M1300to2000","CITo2E_Lam100kTeVConLL_M2000toInf"]
 		label = "CITo2E_Lam100kTeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Con LR"
 		fillcolor = ROOT.kWhite
@@ -3532,7 +4618,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam100kTeVConRL:
-		subprocesses = ["CITo2E_Lam100kTeVConRL_M300to800_2018","CITo2E_Lam100kTeVConRL_M800to1300_2018","CITo2E_Lam100kTeVConRL_M1300to2000_2018","CITo2E_Lam100kTeVConRL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam100kTeVConRL_M300to800","CITo2E_Lam100kTeVConRL_M800to1300","CITo2E_Lam100kTeVConRL_M1300to2000","CITo2E_Lam100kTeVConRL_M2000toInf"]
 		# ~ subprocesses = ["CITo2E_Lam100kTeVConLL_M300to800","CITo2E_Lam100kTeVConLL_M800to1300","CITo2E_Lam100kTeVConLL_M1300to2000","CITo2E_Lam100kTeVConLL_M2000toInf"]
 		label = "CITo2E_Lam100kTeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Con LR"
 		fillcolor = ROOT.kWhite
@@ -3542,7 +4628,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam100kTeVConRR:
-		subprocesses = ["CITo2E_Lam100kTeVConRR_M300to800_2018","CITo2E_Lam100kTeVConRR_M800to1300_2018","CITo2E_Lam100kTeVConRR_M1300to2000_2018","CITo2E_Lam100kTeVConRR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam100kTeVConRR_M300to800","CITo2E_Lam100kTeVConRR_M800to1300","CITo2E_Lam100kTeVConRR_M1300to2000","CITo2E_Lam100kTeVConRR_M2000toInf"]
 		label = "CITo2E_Lam100kTeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3551,7 +4637,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam100kTeVDesLL:
-		subprocesses = ["CITo2E_Lam100kTeVDesLL_M300to800_2018","CITo2E_Lam100kTeVDesLL_M800to1300_2018","CITo2E_Lam100kTeVDesLL_M1300to2000_2018","CITo2E_Lam100kTeVDesLL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam100kTeVDesLL_M300to800","CITo2E_Lam100kTeVDesLL_M800to1300","CITo2E_Lam100kTeVDesLL_M1300to2000","CITo2E_Lam100kTeVDesLL_M2000toInf"]
 		label = "CITo2E_Lam100kTeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Des LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3561,7 +4647,7 @@ class Signals2018:
 		additionalSelection = None
 	class CITo2E_Lam100kTeVDesLR:
 		# ~ subprocesses = ["CITo2E_Lam100kTeVDesLR_M300to800","CITo2E_Lam100kTeVDesLR_M800to1300","CITo2E_Lam100kTeVDesLR_M1300to2000","CITo2E_Lam100kTeVDesLR_M2000toInf"]
-		subprocesses = ["CITo2E_Lam100kTeVDesLL_M300to800_2018","CITo2E_Lam100kTeVDesLL_M800to1300_2018","CITo2E_Lam100kTeVDesLL_M1300to2000_2018","CITo2E_Lam100kTeVDesLL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam100kTeVDesLL_M300to800","CITo2E_Lam100kTeVDesLL_M800to1300","CITo2E_Lam100kTeVDesLL_M1300to2000","CITo2E_Lam100kTeVDesLL_M2000toInf"]
 		label = "CITo2E_Lam100kTeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3571,7 +4657,7 @@ class Signals2018:
 		additionalSelection = None
 	class CITo2E_Lam100kTeVDesRL:
 		# ~ subprocesses = ["CITo2E_Lam100kTeVDesLR_M300to800","CITo2E_Lam100kTeVDesLR_M800to1300","CITo2E_Lam100kTeVDesLR_M1300to2000","CITo2E_Lam100kTeVDesLR_M2000toInf"]
-		subprocesses = ["CITo2E_Lam100kTeVDesLL_M300to800_2018","CITo2E_Lam100kTeVDesLL_M800to1300_2018","CITo2E_Lam100kTeVDesLL_M1300to2000_2018","CITo2E_Lam100kTeVDesLL_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam100kTeVDesLL_M300to800","CITo2E_Lam100kTeVDesLL_M800to1300","CITo2E_Lam100kTeVDesLL_M1300to2000","CITo2E_Lam100kTeVDesLL_M2000toInf"]
 		label = "CITo2E_Lam100kTeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 100k TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3580,7 +4666,7 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2E_Lam100kTeVDesRR:
-		subprocesses = ["CITo2E_Lam100kTeVDesRR_M300to800_2018","CITo2E_Lam100kTeVDesRR_M800to1300_2018","CITo2E_Lam100kTeVDesRR_M1300to2000_2018","CITo2E_Lam100kTeVDesRR_M2000toInf_2018"]
+		subprocesses = ["CITo2E_Lam100kTeVDesRR_M300to800","CITo2E_Lam100kTeVDesRR_M800to1300","CITo2E_Lam100kTeVDesRR_M1300to2000","CITo2E_Lam100kTeVDesRR_M2000toInf"]
 		label = "CITo2E_Lam100kTeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
@@ -3589,6 +4675,24 @@ class Signals2018:
 		scaleFac     = 1.	
 		additionalSelection = None
 		
+	class CITo2Mu_Lam1TeVConLL:
+		subprocesses = ["CITo2Mu_Lam1TeVConLL_M300to800","CITo2Mu_Lam1TeVConLL_M800to1300","CITo2Mu_Lam1TeVConLL_M1300to2000","CITo2Mu_Lam1TeVConLL_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kRed
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVConLL:
+		subprocesses = ["CITo2Mu_Lam10TeVConLL_M300to800","CITo2Mu_Lam10TeVConLL_M800to1300","CITo2Mu_Lam10TeVConLL_M1300to2000","CITo2Mu_Lam10TeVConLL_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kRed
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2Mu_Lam16TeVConLL:
 		subprocesses = ["CITo2Mu_Lam16TeVConLL_M300to800","CITo2Mu_Lam16TeVConLL_M800to1300","CITo2Mu_Lam16TeVConLL_M1300to2000","CITo2Mu_Lam16TeVConLL_M2000toInf"]
 		label = "CITo2Mu_Lam16TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
@@ -3598,12 +4702,48 @@ class Signals2018:
 		uncertainty = 0.
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2Mu_Lam1TeVConLR:
+		subprocesses = ["CITo2Mu_Lam1TeVConLR_M300to800","CITo2Mu_Lam1TeVConLR_M800to1300","CITo2Mu_Lam1TeVConLR_M1300to2000","CITo2Mu_Lam1TeVConLR_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlack
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVConLR:
+		subprocesses = ["CITo2Mu_Lam10TeVConLR_M300to800","CITo2Mu_Lam10TeVConLR_M800to1300","CITo2Mu_Lam10TeVConLR_M1300to2000","CITo2Mu_Lam10TeVConLR_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlack
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2Mu_Lam16TeVConLR:
 		subprocesses = ["CITo2Mu_Lam16TeVConLR_M300to800","CITo2Mu_Lam16TeVConLR_M800to1300","CITo2Mu_Lam16TeVConLR_M1300to2000","CITo2Mu_Lam16TeVConLR_M2000toInf"]
 		label = "CITo2Mu_Lam16TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kBlack
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam1TeVConRL:
+		subprocesses = ["CITo2Mu_Lam1TeVConRL_M300to800","CITo2Mu_Lam1TeVConRL_M800to1300","CITo2Mu_Lam1TeVConRL_M1300to2000","CITo2Mu_Lam1TeVConRL_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+2
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVConRL:
+		subprocesses = ["CITo2Mu_Lam10TeVConRL_M300to800","CITo2Mu_Lam10TeVConRL_M800to1300","CITo2Mu_Lam10TeVConRL_M1300to2000","CITo2Mu_Lam10TeVConRL_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVConRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+2
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -3616,12 +4756,48 @@ class Signals2018:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2Mu_Lam1TeVConRR:
+		subprocesses = ["CITo2Mu_Lam1TeVConRR_M300to800","CITo2Mu_Lam1TeVConRR_M800to1300","CITo2Mu_Lam1TeVConRR_M1300to2000","CITo2Mu_Lam1TeVConRR_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kOrange
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVConRR:
+		subprocesses = ["CITo2Mu_Lam10TeVConRR_M300to800","CITo2Mu_Lam10TeVConRR_M800to1300","CITo2Mu_Lam10TeVConRR_M1300to2000","CITo2Mu_Lam10TeVConRR_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kOrange
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2Mu_Lam16TeVConRR:
 		subprocesses = ["CITo2Mu_Lam16TeVConRR_M300to800","CITo2Mu_Lam16TeVConRR_M800to1300","CITo2Mu_Lam16TeVConRR_M1300to2000","CITo2Mu_Lam16TeVConRR_M2000toInf"]
 		label = "CITo2Mu_Lam16TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kOrange
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam1TeVDesLL:
+		subprocesses = ["CITo2Mu_Lam1TeVDesLL_M300to800","CITo2Mu_Lam1TeVDesLL_M800to1300","CITo2Mu_Lam1TeVDesLL_M1300to2000","CITo2Mu_Lam1TeVDesLL_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVDesLL:
+		subprocesses = ["CITo2Mu_Lam10TeVDesLL_M300to800","CITo2Mu_Lam10TeVDesLL_M800to1300","CITo2Mu_Lam10TeVDesLL_M1300to2000","CITo2Mu_Lam10TeVDesLL_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue+1
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -3634,9 +4810,45 @@ class Signals2018:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+	class CITo2Mu_Lam1TeVDesLR:
+		subprocesses = ["CITo2Mu_Lam1TeVDesLR_M300to800","CITo2Mu_Lam1TeVDesLR_M800to1300","CITo2Mu_Lam1TeVDesLR_M1300to2000","CITo2Mu_Lam1TeVDesLR_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVDesLR:
+		subprocesses = ["CITo2Mu_Lam10TeVDesLR_M300to800","CITo2Mu_Lam10TeVDesLR_M800to1300","CITo2Mu_Lam10TeVDesLR_M1300to2000","CITo2Mu_Lam10TeVDesLR_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 	class CITo2Mu_Lam16TeVDesLR:
 		subprocesses = ["CITo2Mu_Lam16TeVDesLR_M300to800","CITo2Mu_Lam16TeVDesLR_M800to1300","CITo2Mu_Lam16TeVDesLR_M1300to2000","CITo2Mu_Lam16TeVDesLR_M2000toInf"]
 		label = "CITo2Mu_Lam16TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam1TeVDesRL:
+		subprocesses = ["CITo2Mu_Lam1TeVDesRL_M300to800","CITo2Mu_Lam1TeVDesRL_M800to1300","CITo2Mu_Lam1TeVDesRL_M1300to2000","CITo2Mu_Lam1TeVDesRL_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVDesRL:
+		subprocesses = ["CITo2Mu_Lam10TeVDesRL_M300to800","CITo2Mu_Lam10TeVDesRL_M800to1300","CITo2Mu_Lam10TeVDesRL_M1300to2000","CITo2Mu_Lam10TeVDesRL_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kGreen+1
@@ -3649,6 +4861,24 @@ class Signals2018:
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kGreen+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam1TeVDesRR:
+		subprocesses = ["CITo2Mu_Lam1TeVDesRR_M300to800","CITo2Mu_Lam1TeVDesRR_M800to1300","CITo2Mu_Lam1TeVDesRR_M1300to2000","CITo2Mu_Lam1TeVDesRR_M2000toInf"]
+		label = "CITo2Mu_Lam1TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kMagenta+1
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
+	class CITo2Mu_Lam10TeVDesRR:
+		subprocesses = ["CITo2Mu_Lam10TeVDesRR_M300to800","CITo2Mu_Lam10TeVDesRR_M800to1300","CITo2Mu_Lam10TeVDesRR_M1300to2000","CITo2Mu_Lam10TeVDesRR_M2000toInf"]
+		label = "CITo2Mu_Lam10TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 16 TeV - Des RR"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kMagenta+1
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -3737,7 +4967,7 @@ class Signals2018:
 		
 	class CITo2Mu_Lam32TeVConLL:
 		subprocesses = ["CITo2Mu_Lam32TeVConLL_M300to800","CITo2Mu_Lam32TeVConLL_M800to1300","CITo2Mu_Lam32TeVConLL_M1300to2000","CITo2Mu_Lam32TeVConLL_M2000toInf"]
-		label = "CITo2Mu_Lam32TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con LL"
+		label = "CITo2Mu_Lam40TeVConLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kBlack
@@ -3749,7 +4979,7 @@ class Signals2018:
 		label = "CITo2Mu_Lam32TeVConLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kGreen+2
+		linecolor = ROOT.kRed-4
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
@@ -3764,7 +4994,7 @@ class Signals2018:
 		additionalSelection = None
 	class CITo2Mu_Lam32TeVConRR:
 		subprocesses = ["CITo2Mu_Lam32TeVConRR_M300to800","CITo2Mu_Lam32TeVConRR_M800to1300","CITo2Mu_Lam32TeVConRR_M1300to2000","CITo2Mu_Lam32TeVConRR_M2000toInf"]
-		label = "CITo2Mu_Lam32TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con RR"
+		label = "CITo2Mu_Lam40TeVConRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Con RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kYellow
@@ -3773,16 +5003,16 @@ class Signals2018:
 		additionalSelection = None
 	class CITo2Mu_Lam32TeVDesLL:
 		subprocesses = ["CITo2Mu_Lam32TeVDesLL_M300to800","CITo2Mu_Lam32TeVDesLL_M800to1300","CITo2Mu_Lam32TeVDesLL_M1300to2000","CITo2Mu_Lam32TeVDesLL_M2000toInf"]
-		label = "CITo2Mu_Lam32TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Des LL"
+		label = "CITo2Mu_Lam40TeVDesLL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Des LL"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
-		linecolor = ROOT.kGreen+2
+		linecolor = ROOT.kBlue+1
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
 	class CITo2Mu_Lam32TeVDesLR:
 		subprocesses = ["CITo2Mu_Lam32TeVDesLR_M300to800","CITo2Mu_Lam32TeVDesLR_M800to1300","CITo2Mu_Lam32TeVDesLR_M1300to2000","CITo2Mu_Lam32TeVDesLR_M2000toInf"]
-		label = "CITo2Mu_Lam32TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Des LR"
+		label = "CITo2Mu_Lam40TeVDesLR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kGreen+1
@@ -3791,7 +5021,7 @@ class Signals2018:
 		additionalSelection = None
 	class CITo2Mu_Lam32TeVDesRL:
 		subprocesses = ["CITo2Mu_Lam32TeVDesRL_M300to800","CITo2Mu_Lam32TeVDesRL_M800to1300","CITo2Mu_Lam32TeVDesRL_M1300to2000","CITo2Mu_Lam32TeVDesRL_M2000toInf"]
-		label = "CITo2Mu_Lam32TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Des LR"
+		label = "CITo2Mu_Lam40TeVDesRL"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 28 TeV - Des LR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kGreen+1
@@ -3800,7 +5030,7 @@ class Signals2018:
 		additionalSelection = None
 	class CITo2Mu_Lam32TeVDesRR:
 		subprocesses = ["CITo2Mu_Lam32TeVDesRR_M300to800","CITo2Mu_Lam32TeVDesRR_M800to1300","CITo2Mu_Lam32TeVDesRR_M1300to2000","CITo2Mu_Lam32TeVDesRR_M2000toInf"]
-		label = "CITo2Mu_Lam32TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
+		label = "CITo2Mu_Lam40TeVDesRR"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Des RR"
 		fillcolor = ROOT.kWhite
 		fillstyle = 0
 		linecolor = ROOT.kMagenta+1
@@ -3955,8 +5185,129 @@ class Signals2018:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
-		
+
 class Signals2016:
+
+	class ZprimeToEE_SSM_M5000:
+		subprocesses = ["ZprimeToEE_SSM_M5000_2018"]
+		label = "ZprimeToEE_SSM_M5000_2018"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class ZprimeToMuMu_SSM_M5000:
+		subprocesses = ["ZprimeToMuMu_SSM_M5000_2018"]
+		label = "ZprimeToMuMu_SSM_M5000_2018"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+
+	class RSGrav_kMpl_001_M250:
+		subprocesses = ["RSGrav_kMpl_001_M250_2018"]
+		label = "RSGrav_kMpl_001_M250"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M500:
+		subprocesses = ["RSGrav_kMpl_001_M500_2018"]
+		label = "RSGrav_kMpl_001_M500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M1000:
+		subprocesses = ["RSGrav_kMpl_001_M1000_2018"]
+		label = "RSGrav_kMpl_001_M1000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M1500:
+		subprocesses = ["RSGrav_kMpl_001_M1500_2018"]
+		label = "RSGrav_kMpl_001_M1500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M2000:
+		subprocesses = ["RSGrav_kMpl_001_M2000_2018"]
+		label = "RSGrav_kMpl_001_M2000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M2500:
+		subprocesses = ["RSGrav_kMpl_001_M2500_2018"]
+		label = "RSGrav_kMpl_001_M2500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M3000:
+		subprocesses = ["RSGrav_kMpl_001_M3000_2018"]
+		label = "RSGrav_kMpl_001_M3000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M3500:
+		subprocesses = ["RSGrav_kMpl_001_M3500_2018"]
+		label = "RSGrav_kMpl_001_M3500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M4000:
+		subprocesses = ["RSGrav_kMpl_001_M4000_2018"]
+		label = "RSGrav_kMpl_001_M4000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M5000:
+		subprocesses = ["RSGrav_kMpl_001_M5000_2018"]
+		label = "RSGrav_kMpl_001_M5000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_001_M5500:
+		subprocesses = ["RSGrav_kMpl_001_M5500_2018"]
+		label = "RSGrav_kMpl_001_M5500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+		
+
 	
 	class CITo2E_Lam1TeVConLL:
 		subprocesses = ["CITo2E_Lam1TeVConLL_M300","CITo2E_Lam1TeVConLL_M800","CITo2E_Lam1TeVConLL_M1300","CITo2E_Lam1TeVConLL_M2000"]
@@ -4977,8 +6328,7 @@ class Signals2016:
 		linecolor = ROOT.kMagenta+1
 		uncertainty = 0.0
 		scaleFac     = 1.	
-		additionalSelection = None
-		
+		additionalSelection = None		
 
 class Signals2016ADD:
 			
@@ -5770,6 +7120,14 @@ class Data2018:
 		uncertainty = 0.0
 		scaleFac     = 1.	
 		additionalSelection = None
+class Data2018_UL:
+		subprocesses = ["Data2018_RunA_UL","Data2018_RunB_UL","Data2018_RunC_UL","Data2018_RunD_UL"]
+		label = "Data 2018 UL"
+		fillcolor = ROOT.kBlack
+		linecolor = ROOT.kBlack	
+		uncertainty = 0.0
+		scaleFac     = 1.	
+		additionalSelection = None
 
 class Backgrounds2016:
 	
@@ -5778,7 +7136,7 @@ class Backgrounds2016:
 		#~ subprocesses = ["ZToEE_M50To120","ZToEE_M120To200","ZToEE_M200To400","ZToEE_M400To800","ZToEE_M800To1400","ZToEE_M1400To2300","ZToEE_M2300To3500","ZToEE_M3500To4500","ZToEE_M4500To6000"]
 		subprocesses = ["dy50to120_2016","dy120to200_2016","dy200to400_2016","dy400to800_2016","dy800to1400_2016","dy1400to2300_2016","dy2300to3500_2016","dy3500to4500_2016","dy4500to6000_2016","dy6000toInf_2016"]
 		label = "#gamma*/Z #rightarrow #mu^{+}#mu^{-}"
-		fillcolor = ROOT.kAzure+1
+		fillcolor = ROOT.kAzure-9
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5791,7 +7149,7 @@ class Backgrounds2016:
 		# ~ subprocesses = ["Wantitop","tW","ttbar_lep"]
 		#~ subprocesses = ["ttbar_lep"]
 		label = "t#bar{t}, tW, #bar{t}W"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5804,7 +7162,7 @@ class Backgrounds2016:
 		# ~ subprocesses = ["Wantitop","tW","ttbar_lep"]
 		#~ subprocesses = ["ttbar_lep"]
 		label = "t#bar{t}, tW, #bar{t}W"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5815,7 +7173,7 @@ class Backgrounds2016:
 		# ~ subprocesses = ["tW_2018"]
 		#~ subprocesses = ["ttbar_lep"]
 		label = "t#bar{t}, tW, #bar{t}W"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5845,7 +7203,7 @@ class Backgrounds2016:
 		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5856,7 +7214,7 @@ class Backgrounds2016:
 		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5868,7 +7226,7 @@ class Backgrounds2016:
 		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5880,7 +7238,7 @@ class Backgrounds2016:
 		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5892,7 +7250,7 @@ class Backgrounds2016:
 		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5904,7 +7262,7 @@ class Backgrounds2016:
 		#~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		#subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5913,7 +7271,7 @@ class Backgrounds2016:
 	class Jets:
 		subprocesses = ["Jets_2016"]
 		label = "Jets"
-		fillcolor = ROOT.kYellow
+		fillcolor = ROOT.kYellow-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5933,7 +7291,7 @@ class Backgrounds:
 		#~ subprocesses = ["ZToEE_M50To120","ZToEE_M120To200","ZToEE_M200To400","ZToEE_M400To800","ZToEE_M800To1400","ZToEE_M1400To2300","ZToEE_M2300To3500","ZToEE_M3500To4500","ZToEE_M4500To6000"]
 		subprocesses = ["dy50to120","dy120to200","dy200to400","dy400to800","dy800to1400","dy1400to2300","dy2300to3500","dy3500to4500","dy4500to6000","dy6000toInf"]
 		label = "#gamma*/Z #rightarrow #mu^{+}#mu^{-}"
-		fillcolor = ROOT.kAzure+1
+		fillcolor = ROOT.kAzure-9
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5944,7 +7302,7 @@ class Backgrounds:
 		subprocesses = ["ttbar_lep",'ttbar_lep_500to800','ttbar_lep_800to1200','ttbar_lep_1200to1800','ttbar_lep_1800toInf']
 		#~ subprocesses = ["ttbar_lep"]
 		label = "t#bar{t}, tW, #bar{t}W"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5966,7 +7324,7 @@ class Backgrounds:
 		# ~ subprocesses = ["Wantitop","tW","ttbar_lep","ZZ","WZ","WWinclusive","dyInclusive50",'ttbar_lep_500to800','ttbar_lep_800to1200','ttbar_lep_1200to1800','ttbar_lep_1800toInf',"WW200to600","WW600to1200","WW1200to2500","WW2500"]
 		subprocesses = ["Wantitop","tW","ttbar_lep","ZZ4L","ZZ2L2Q","ZZ2L2Nu","WZ3LNu",'WZ2L2Q',"WWinclusive","dyInclusive50",'ttbar_lep_500to800','ttbar_lep_800to1200','ttbar_lep_1200to1800','ttbar_lep_1800toInf',"WW200to600","WW600to1200","WW1200to2500","WW2500"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5975,7 +7333,7 @@ class Backgrounds:
 	class Jets:
 		subprocesses = ["Jets"]
 		label = "Jets"
-		fillcolor = ROOT.kYellow
+		fillcolor = ROOT.kYellow-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -5996,7 +7354,7 @@ class Backgrounds2018:
 		#~ subprocesses = ["ZToEE_M50To120","ZToEE_M120To200","ZToEE_M200To400","ZToEE_M400To800","ZToEE_M800To1400","ZToEE_M1400To2300","ZToEE_M2300To3500","ZToEE_M3500To4500","ZToEE_M4500To6000"]
 		subprocesses = ["dy50to120_2018","dy120to200_2018","dy200to400_2018","dy400to800_2018","dy800to1400_2018","dy1400to2300_2018","dy2300to3500_2018","dy3500to4500_2018","dy4500to6000_2018","dy6000toInf_2018"]
 		label = "#gamma*/Z #rightarrow #mu^{+}#mu^{-}"
-		fillcolor = ROOT.kAzure+1
+		fillcolor = ROOT.kAzure-9
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -6007,7 +7365,7 @@ class Backgrounds2018:
 		subprocesses = ["ttbar_lep_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018']
 		#~ subprocesses = ["ttbar_lep"]
 		label = "t#bar{t}, tW, #bar{t}W"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -6017,7 +7375,7 @@ class Backgrounds2018:
 		subprocesses = ["tW_2018"]
 		#~ subprocesses = ["ttbar_lep"]
 		label = "t#bar{t}, tW, #bar{t}W"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -6028,7 +7386,7 @@ class Backgrounds2018:
 		# ~ subprocesses = ["tW_2018"]
 		#~ subprocesses = ["ttbar_lep"]
 		label = "t#bar{t}, tW, #bar{t}W"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -6061,7 +7419,7 @@ class Backgrounds2018:
 		# ~ subprocesses = ["Wantitop_2018","tW_2018","ttbar_lep_2018","ZZ_2018","WZ_2018","WWinclusive_2018","dyInclusive50_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018',"WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
 		subprocesses = ["Wantitop_2018","tW_2018","ttbar_lep_2018","ZZ4L_2018","ZZ2L2Q_2018","ZZ2L2Nu_2018","WZ3LNu_2018","WZ2L2Q_2018","WWinclusive_2018","dyInclusive50_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018',"WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -6072,7 +7430,7 @@ class Backgrounds2018:
 		# ~ subprocesses = ["Wantitop_2018","tW_2018","ttbar_lep_2018","ZZ_2018","WZ_2018","WWinclusive_2018","dyInclusive50_2018",'ttbar_lep_500to800_2018','ttbar_lep_800to1200_2018','ttbar_lep_1200to1800_2018','ttbar_lep_1800toInf_2018',"WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
 		subprocesses = ["WWinclusive_2018","WW200to600_2018","WW600to1200_2018","WW1200to2500_2018","WW2500_2018"]
 		label = "t#bar{t}, tW, WW, WZ, ZZ, #tau#tau"
-		fillcolor = ROOT.kRed-4
+		fillcolor = ROOT.kRed-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -6081,7 +7439,7 @@ class Backgrounds2018:
 	class Jets:
 		subprocesses = ["Jets_2018"]
 		label = "Jets"
-		fillcolor = ROOT.kYellow
+		fillcolor = ROOT.kYellow-7
 		linecolor = ROOT.kBlack	
 		uncertainty = 0.04
 		scaleFac     = 1.	
@@ -6210,12 +7568,18 @@ class Plot:
 class plots:
 	
 	massPlotEle = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMass_bbbe","DielectronMass",xLabel="m(ee) [GeV]",log=True,logX=True,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
+	massPlotEleSS = Plot("ElectronSelectionElectronsSameSignHistos/DielectronMass_bbbe","DielectronMass",xLabel="m(ee) [GeV]",log=True,logX=True,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
+	massPlotEleOS = Plot("ElectronSelectionElectronsOppSignHistos/DielectronMass_bbbe","DielectronMass",xLabel="m(ee) [GeV]",log=True,logX=True,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
 	massPlotEleNoLog = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMass_bbbe","DielectronMass",xLabel="m(ee) [GeV]",log=True,logX=False,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
 	cosThetaStarPlotEle = Plot("ElectronSelectionElectronsAllSignsHistos/CosThetaStarDilepton","CosThetaStar_Ele",xLabel="cos(#theta^{*})",log=True,logX=False,xRange=[-1,1],nBins = 20, rebin=5,yLabel="Events / 0.02",useJets=False,muon=False)
 	cosThetaStarPlotOppEle = Plot("ElectronSelectionElectronsOppSignHistos/CosThetaStarDilepton","CosThetaStarOpp_Ele",xLabel="cos(#theta^{*})",log=True,logX=False,xRange=[-1,1],nBins = 100, rebin=1,yLabel="Events / 0.02",useJets=False,muon=False)
 	cosThetaStarPlotSameEle = Plot("ElectronSelectionElectronsSameSignHistos/CosThetaStarDilepton","CosThetaStarSame_Ele",xLabel="cos(#theta^{*})",log=True,logX=False,xRange=[-1,1],nBins = 100, rebin=1,yLabel="Events / 0.02",useJets=False,muon=False)
 	massPlotEleBB = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMass_bb","DielectronMassBB",xLabel="m(ee) [GeV]",log=True,logX=True,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
 	massPlotEleBE = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMass_be","DielectronMassBE",xLabel="m(ee) [GeV]",log=True,logX=True,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
+	massPlotEleBBSS = Plot("ElectronSelectionElectronsSameSignHistos/DielectronMass_bb","DielectronMassBB",xLabel="m(ee) [GeV]",log=True,logX=True,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
+	massPlotEleBESS = Plot("ElectronSelectionElectronsSameSignHistos/DielectronMass_be","DielectronMassBE",xLabel="m(ee) [GeV]",log=True,logX=True,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
+	massPlotEleBBOS = Plot("ElectronSelectionElectronsOppSignHistos/DielectronMass_bb","DielectronMassBB",xLabel="m(ee) [GeV]",log=True,logX=True,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
+	massPlotEleBEOS = Plot("ElectronSelectionElectronsOppSignHistos/DielectronMass_be","DielectronMassBE",xLabel="m(ee) [GeV]",log=True,logX=True,xRange=[70,4000],nBins = 100, rebin=1,yLabel="Events / GeV",useJets=True,muon=False)
 
 	nVerticesEle = Plot("ElectronSelectionElectronsAllSignsHistos/NVertices","NVertices_Ele",xLabel="N_{Vtx}",log=True,logX=False,xRange=[0,120],nBins = 120, rebin=1,yLabel="Events",useJets=False,muon=False)
 	nVerticesUnweightedEle = Plot("ElectronSelectionElectronsAllSignsHistos/NVerticesUnweighted","NVerticesUnweighted_Ele",xLabel="N_{Vtx}",log=True,logX=False,xRange=[0,120],nBins = 120, rebin=1,yLabel="Events",useJets=False,muon=False)
@@ -6238,6 +7602,9 @@ class plots:
 	cosThetaStarBEM800Ele = Plot("ElectronSelectionElectronsAllSignsHistos/DielectronMassVsCS_be","CosThetaStarBEM800_Ele",xLabel="cos(#theta^{*})",log=False,logX=False,xRange=[-1,1],projRange=[800,-1],nBins = 20, rebin=4,yLabel="Events",useJets=False,muon=False,plot2D=True)
 
 	massPlot = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained","DimuonMass",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=True,xRange=[60,4000],nBins = 100, rebin=20,yLabel="Events / GeV",useJets=True)
+	massPlotSS = Plot("Our2017MuonsSameSignHistos/DimuonMassVertexConstrained","DimuonMass",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=True,xRange=[60,4000],nBins = 100, rebin=20,yLabel="Events / GeV",useJets=True)
+	massPlotBBSS = Plot("Our2017MuonsSameSignHistos/DimuonMassVertexConstrained_bb","DimuonMass",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=True,xRange=[60,4000],nBins = 100, rebin=20,yLabel="Events / GeV",useJets=True)
+	massPlotBESS = Plot("Our2017MuonsSameSignHistos/DimuonMassVertexConstrained_be","DimuonMass",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=True,xRange=[60,4000],nBins = 100, rebin=20,yLabel="Events / GeV",useJets=True)
 	massPlotBB = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained_bb","DimuonMassBB",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=True,xRange=[60,4000],nBins = 100, rebin=20,yLabel="Events / GeV",useJets=True)
 	massPlotBE = Plot("Our2017MuonsPlusMuonsMinusHistos/DimuonMassVertexConstrained_be","DimuonMassBE",xLabel="m(#mu^{+}#mu^{-}) [GeV]",log=True,logX=True,xRange=[60,4000],nBins = 100, rebin=20,yLabel="Events / GeV",useJets=True)
 	cosThetaStarPlotMu = Plot("Our2017MuonsPlusMuonsMinusHistos/CosThetaStarDilepton","CosThetaStar_Mu",xLabel="cos(#theta^{*})",log=True,logX=False,xRange=[-1,1],nBins = 100, rebin=1,yLabel="Events / 0.02",useJets=False,muon=True)
@@ -6370,8 +7737,5 @@ class plots:
 	
 	
 
-plotList = ["nVerticesEle","nVerticesUnweightedEle","nVerticesMu","massPlotEle","massPlotEleBB","massPlotEleBE","massPlot","massPlotBB","massPlotBE","cosThetaStarPlotEle","cosThetaStarPlotOppEle","cosThetaStarPlotSameEle","cosThetaStarPlotMu"]
-# ~ plotList = ['massPlotCSPos','massPlotCSNeg','massPlotEleCSPos','massPlotEleCSNeg']
-#plotList = ["cosThetaStarM1800Ele","cosThetaStarBBM1800Ele","cosThetaStarBEM1800Ele","cosThetaStarM1800Mu","cosThetaStarBBM1800Mu","cosThetaStarBEM1800Mu"]
-# ~ plotList = ["cosThetaStarM800Ele","cosThetaStarBBM800Ele","cosThetaStarBEM800Ele","cosThetaStarM800Mu","cosThetaStarBBM800Mu","cosThetaStarBEM800Mu","cosThetaStarM1000Ele","cosThetaStarBBM1000Ele","cosThetaStarBEM1000Ele","cosThetaStarM1000Mu","cosThetaStarBBM1000Mu","cosThetaStarBEM1000Mu","cosThetaStarM500Ele","cosThetaStarBBM500Ele","cosThetaStarBEM500Ele","cosThetaStarM200Ele","cosThetaStarM500Mu","cosThetaStarBBM500Mu","cosThetaStarBEM500Mu","cosThetaStarM1500Ele","cosThetaStarBBM1500Ele","cosThetaStarBEM1500Ele","cosThetaStarM1500Mu","cosThetaStarBBM1500Mu","cosThetaStarBEM1500Mu"]
-# ~ plotList = ["cosThetaStarM1000Ele","cosThetaStarBBM1000Ele","cosThetaStarBEM1000Ele","cosThetaStarM1000Mu","cosThetaStarBBM1000Mu","cosThetaStarBEM1000Mu","cosThetaStarM500Ele","cosThetaStarBBM500Ele","cosThetaStarBEM500Ele","cosThetaStarM200Ele","cosThetaStarM500Mu","cosThetaStarBBM500Mu","cosThetaStarBEM500Mu","cosThetaStarM1500Ele","cosThetaStarBBM1500Ele","cosThetaStarBEM1500Ele","cosThetaStarM1500Mu","cosThetaStarBBM1500Mu","cosThetaStarBEM1500Mu"]
+
+plotList = ["nVerticesEle","nVerticesUnweightedEle","nVerticesMu","massPlotEle","massPlotEleBB","massPlotEleBE","massPlot","massPlotBB","massPlotBE","cosThetaStarPlotEle","cosThetaStarPlotMu"]
