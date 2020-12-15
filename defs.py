@@ -4,10 +4,7 @@ from ROOT import TMath
 import sys
 import copy
 
-# ~ path = "/uscms_data/d3/jschulte/files/"
-# ~ path = "../files/eleBackup/"
-# ~ path = "../files/samesign/"
-path = "../files/"
+path = "files/"
 
 
 
