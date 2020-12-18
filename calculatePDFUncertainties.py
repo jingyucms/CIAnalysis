@@ -178,11 +178,9 @@ def getWeight(pdfName, event, index, scale = 0, x1 = 0, x2 = 0, pdf1 = 0, pdf2 =
 def main():
 
 
-	# ~ pdfs = ["NNPDF30","NNPDF31","NNPDF23"]
 	pdfs = ["NNPDF23"]
-	path = "/run/media/jan/data/work/PDF/forReal/"
-	filesDefault = [path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M300to800.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M800to1300.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M1300to2000.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M2000toInf.root"]
-	files23v2 = [path+"dileptonAna_pdf_2016_CITo2Mu_Lam16TeVConRR_M300.root",path+"dileptonAna_pdf_2016_CITo2Mu_Lam16TeVConRR_M800.root",path+"dileptonAna_pdf_2016_CITo2Mu_Lam16TeVConRR_M1300.root"]
+	path = "files/"
+	files = [path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M300to800.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M800to1300.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M1300to2000.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M2000toInf.root"]
 
 
 	for pdf in pdfs:
@@ -211,22 +209,13 @@ def main():
 
 
 		
-		# ~ binning = [400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2400,2800,3200,3600,4000,4500,5000]
-		# ~ binning = [0,500,1000,1500,2000,2500,3000,3500,4000,4500,5000]
-		# ~ binning = [400,500,700,1100,1900,3500,13000]
-		binning = [1800, 2200, 2600, 3000, 3400, 10000]
-		# ~ binning =[400, 700, 1500, 2500, 3500,10000]
-		# ~ binning =[2200,10000]
+		binning = [400,500,700,1100,1900,3500,13000]
 		hists = []
 		weightSums = []
 		for i in range(0,100):
 			weightSums.append(0)
 			hists.append(TH1F("hist_%s_%d"%(pdf,i),"hist_%s_%d"%(pdf,i),len(binning)-1,array('f',binning)))
 		
-		if pdf == "NNPDF23v2":
-			files = files23v2
-		else:
-			files = filesDefault
 		nnn = len(files)
 		for index, fileName in enumerate(files):
 			
@@ -241,7 +230,6 @@ def main():
 				central_value = getWeight(pdf, ev, 0, tree.GetLeaf("pdfInfo/scale").GetValue(), tree.GetLeaf("pdfInfo/x1").GetValue(), tree.GetLeaf("pdfInfo/x2").GetValue(), tree.GetLeaf("pdfInfo/pdf1").GetValue(), tree.GetLeaf("pdfInfo/pdf2").GetValue())
 				weightSums[0] += central_value
 				hists[0].Fill(genMass,sampleWeight)
-				# ~ print ( CalculateLHAPDFWeight(pdfReplicasRef[0], tree.GetLeaf("pdfInfo/scale").GetValue(), tree.GetLeaf("pdfInfo/x1").GetValue(), tree.GetLeaf("pdfInfo/x2").GetValue(), tree.GetLeaf("pdfInfo/pdf1").GetValue(), tree.GetLeaf("pdfInfo/pdf2").GetValue()), ev.pdfWeightsNNPDF31[0])
 				for i in range(1,100):
 					localValue = getWeight(pdf, ev, i, tree.GetLeaf("pdfInfo/scale").GetValue(), tree.GetLeaf("pdfInfo/x1").GetValue(), tree.GetLeaf("pdfInfo/x2").GetValue(), tree.GetLeaf("pdfInfo/pdf1").GetValue(), tree.GetLeaf("pdfInfo/pdf2").GetValue())
 					if  localValue/central_value > 10 or localValue/central_value < 0.1 : continue 
