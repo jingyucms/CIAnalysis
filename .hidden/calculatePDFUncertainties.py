@@ -218,6 +218,7 @@ def main():
 		# ~ binning =[400, 700, 1500, 2500, 3500,10000]
 		# ~ binning =[2200,10000]
 		hists = []
+		weightSums = []
 		for i in range(0,100):
 			weightSums.append(0)
 			hists.append(TH1F("hist_%s_%d"%(pdf,i),"hist_%s_%d"%(pdf,i),len(binning)-1,array('f',binning)))
@@ -238,11 +239,14 @@ def main():
 				if ev.recoMass < 0: continue
 				genMass = tree.GetLeaf("pdfInfo/scale").GetValue()
 				central_value = getWeight(pdf, ev, 0, tree.GetLeaf("pdfInfo/scale").GetValue(), tree.GetLeaf("pdfInfo/x1").GetValue(), tree.GetLeaf("pdfInfo/x2").GetValue(), tree.GetLeaf("pdfInfo/pdf1").GetValue(), tree.GetLeaf("pdfInfo/pdf2").GetValue())
+				weightSums[0] += central_value
 				hists[0].Fill(genMass,sampleWeight)
+				# ~ print ( CalculateLHAPDFWeight(pdfReplicasRef[0], tree.GetLeaf("pdfInfo/scale").GetValue(), tree.GetLeaf("pdfInfo/x1").GetValue(), tree.GetLeaf("pdfInfo/x2").GetValue(), tree.GetLeaf("pdfInfo/pdf1").GetValue(), tree.GetLeaf("pdfInfo/pdf2").GetValue()), ev.pdfWeightsNNPDF31[0])
 				for i in range(1,100):
-					localValue = 1. # replace this with the PDF weight calculation for the individial replicaes
+					localValue = getWeight(pdf, ev, i, tree.GetLeaf("pdfInfo/scale").GetValue(), tree.GetLeaf("pdfInfo/x1").GetValue(), tree.GetLeaf("pdfInfo/x2").GetValue(), tree.GetLeaf("pdfInfo/pdf1").GetValue(), tree.GetLeaf("pdfInfo/pdf2").GetValue())
 					if  localValue/central_value > 10 or localValue/central_value < 0.1 : continue 
-					hists[i].Fill(genMass,1)#replace the 1 with the event weight that you obtain by first removing the central value PDF weight and then applying the PDF weight for this replica
+					weightSums[i] += localValue
+					hists[i].Fill(genMass,localValue/central_value*sampleWeight)
 		hists[0].SetMarkerColor(ROOT.kRed)			
 		for i in range(0,100):
 			if i == 0: hists[0].Draw()
@@ -256,14 +260,33 @@ def main():
 		ROOT.gPad.SetLogy()
 		canv.Print("hists_%s.pdf"%pdf)			
 			
+		changeUp = []	
+		changeDown = []
 		change = []
+		changeNormUp = []	
+		changeNormDown = []
+		changeNorm = []
 		
 		for y in range(0,hists[0].GetNbinsX()):
+				changeUp.append([])
+				changeDown.append([])
 				change.append([])
+				changeNormUp.append([])
+				changeNormDown.append([])
+				changeNorm.append([])
 		for i in range(0,100):
+			hists[i]
 			if i > 0:
+				print (weightSums[0]/weightSums[i])
 				for y in range(1,hists[0].GetNbinsX()+1):
-					change[y-1].append(1) # in this loop over all the mass bins, replace the 1 with the relative change between the nominal bin content and the one for the PDF replica
+					changeNorm[y-1].append(abs((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y))*(weightSums[0]/weightSums[i]))
+					change[y-1].append(abs((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y)))
+					if (hists[i].GetBinContent(y) - hists[0].GetBinContent(y)) < 0:
+						changeDown[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y))
+						changeNormDown[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y)*(weightSums[0]/weightSums[i]))
+					if (hists[i].GetBinContent(y) - hists[0].GetBinContent(y)) > 0:
+						changeUp[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y))
+						changeNormUp[y-1].append((hists[i].GetBinContent(y) - hists[0].GetBinContent(y))/hists[0].GetBinContent(y)*(weightSums[0]/weightSums[i]))
 
 		plotPad = TPad("plotPad","plotPad",0,0,1,1)			
 		plotPad.UseCurrentStyle()
@@ -275,13 +298,30 @@ def main():
 		for i in range(0,len(binning)-1):
 			masses.append((binning[i]+binning[i+1])/2)
 		
+		graphUp = TGraph()
+		graphDown = TGraph()
 		graph = TGraph()
+		graphNormUp = TGraph()
+		graphNormDown = TGraph()
+		graphNorm = TGraph()
+		print(len(masses),len(changeUp),len(changeDown))
 		for i in range(0,len(masses)):
-			uncert = 0 # Calculate the relative PDF uncertainty as the 1 sigma envelope of the relative differences
+			print(i, len(changeUp[i]), len(changeDown[i]))
+			graphUp.SetPoint(i,masses[i],sorted(changeUp[i])[int(len(changeUp[i])*0.67)])
+			graphDown.SetPoint(i,masses[i],sorted(changeDown[i])[int(len(changeDown[i])*0.33)])
+			uncert = (sorted(change[i])[84]-sorted(change[i])[16])/2
+			print (uncert)
 			graph.SetPoint(i,masses[i],uncert)
+
+			graphNormUp.SetPoint(i,masses[i],sorted(changeNormUp[i])[int(len(changeNormUp[i])*0.67)])
+			graphNormDown.SetPoint(i,masses[i],sorted(changeNormDown[i])[int(len(changeNormDown[i])*0.33)])
+			uncertNorm = (sorted(changeNorm[i])[84]-sorted(changeNorm[i])[16])/2
+			graphNorm.SetPoint(i,masses[i],uncertNorm)
+			
 
 		
 		graph.Draw("lp")
+		graphNorm.Draw("lpsame")
 		graphNorm.SetMarkerColor(ROOT.kRed)
 		graphNorm.SetLineColor(ROOT.kRed)
 
