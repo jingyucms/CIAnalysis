@@ -180,7 +180,7 @@ def main():
 
 	# ~ pdfs = ["NNPDF30","NNPDF31","NNPDF23"]
 	pdfs = ["NNPDF23"]
-	path = "/run/media/jan/data/work/PDF/forReal/"
+	path = "../files/"
 	filesDefault = [path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M300to800.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M800to1300.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M1300to2000.root",path+"dileptonAna_pdf_CITo2Mu_Lam16TeVConLL_M2000toInf.root"]
 	files23v2 = [path+"dileptonAna_pdf_2016_CITo2Mu_Lam16TeVConRR_M300.root",path+"dileptonAna_pdf_2016_CITo2Mu_Lam16TeVConRR_M800.root",path+"dileptonAna_pdf_2016_CITo2Mu_Lam16TeVConRR_M1300.root"]
 
@@ -214,7 +214,8 @@ def main():
 		# ~ binning = [400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2400,2800,3200,3600,4000,4500,5000]
 		# ~ binning = [0,500,1000,1500,2000,2500,3000,3500,4000,4500,5000]
 		# ~ binning = [400,500,700,1100,1900,3500,13000]
-		binning = [1800, 2200, 2600, 3000, 3400, 10000]
+		#binning = [1800, 2200, 2600, 3000, 3400, 10000]
+		binning = [3200, 10000]
 		# ~ binning =[400, 700, 1500, 2500, 3500,10000]
 		# ~ binning =[2200,10000]
 		hists = []

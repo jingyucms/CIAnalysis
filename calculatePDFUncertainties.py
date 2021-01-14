@@ -212,7 +212,6 @@ def main():
 		binning = [400,500,700,1100,1900,3500,13000]
 		hists = []
 		for i in range(0,100):
-			weightSums.append(0)
 			hists.append(TH1F("hist_%s_%d"%(pdf,i),"hist_%s_%d"%(pdf,i),len(binning)-1,array('f',binning)))
 		
 		nnn = len(files)
@@ -271,8 +270,6 @@ def main():
 
 		
 		graph.Draw("lp")
-		graphNorm.SetMarkerColor(ROOT.kRed)
-		graphNorm.SetLineColor(ROOT.kRed)
 
 		func = ROOT.TF1("f1","pol4")
 		graph.Fit("f1")
