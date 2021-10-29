@@ -333,6 +333,8 @@ def plotDataMC(args,plot):
 		xMin = stack.theHistogram.GetXaxis().GetXmin()
 		
 
+	print (datahist.Integral(datahist.FindBin(60),datahist.FindBin(120-0.001)), datahist.Integral(datahist.FindBin(60),datahist.FindBin(120-0.001))**0.5, datahist.Integral(datahist.FindBin(60),datahist.FindBin(120-0.001))**0.5/datahist.Integral(datahist.FindBin(60),datahist.FindBin(120-0.001)))
+
 			
 	if plot.yMax == None:
 		if logScale:

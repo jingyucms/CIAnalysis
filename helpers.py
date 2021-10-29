@@ -173,7 +173,7 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=Fa
 		else:	
 			result = rootFile.Get(histName)
 
-			
+	print (fileName)		
 	if logBins and not CIBins:
 		if ( "Mass" in histName and not ("saved_hist_for_combine" in fileName or "hist_jets" in fileName or "Result_" in fileName or "combined_jet" in fileName)):
 			if not muon:
@@ -181,7 +181,7 @@ def loadHistoFromFile(fileName,histName,rebin,muon=True,logBins=False,genMass=Fa
 			else:
 				bng = binning("muon")
 
-			result = result.Rebin(len(bng) - 1, 'hist_' + uuid.uuid4().hex, array('d', bng))
+			# ~ result = result.Rebin(len(bng) - 1, 'hist_' + uuid.uuid4().hex, array('d', bng))
 			
 			for i in range(0,result.GetNbinsX()):
 				result.SetBinContent(i,result.GetBinContent(i)/result.GetBinWidth(i))

@@ -79,6 +79,9 @@ def main():
 				hist.SetName("dataHist_%s" %label)
 			else:	
 				hist.SetName("dataHist_%s_%s" %(cs,label))
+			
+			print ("dataHist_%s_%s" %(cs,label))
+			print (hist.Integral(hist.FindBin(400),hist.FindBin(500-0.001)))
 
 
 			dyHist = deepcopy(drellyan.loadHistogram(massPlot,lumi,zScaleFac))

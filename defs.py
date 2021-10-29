@@ -38,8 +38,7 @@ crossSections = {
 "dy4500to6000":2.787E-7,
 "dy6000toInf":9.56E-9,
 
-# ~ "tW":35.6,
-# ~ "Wantitop":35.6,
+
 "tW":19.47,
 "Wantitop":19.47,
 "Wjets":61526.7,
@@ -48,7 +47,6 @@ crossSections = {
 "WW1200to2500":0.003557,
 "WW2500": 0.00005395,
 "WWinclusive":12.178,
-# ~ "WWinclusive":118.7,
 
 "WZ":47.13,
 "WZ_ext":47.13,
@@ -81,8 +79,7 @@ crossSections = {
 "dy4500to6000_2018":2.787E-7,
 "dy6000toInf_2018":9.56E-9,
 
-# ~ "tW_2018":35.6,
-# ~ "Wantitop_2018":35.6,
+
 "tW_2018":19.47,
 "Wantitop_2018":19.47,
 "Wjets_2018":61526.7,
@@ -91,7 +88,6 @@ crossSections = {
 "WW1200to2500_2018":0.003557,
 "WW2500_2018": 0.00005395,
 "WWinclusive_2018":12.178,
-# ~ "WWinclusive":118.7,
 
 "WZ_2018":47.13,
 "WZ_ext_2018":47.13,
@@ -126,20 +122,7 @@ crossSections = {
 "dy4500to6000_2016":4.56E-7,
 "dy6000toInf_2016":2.06E-8,
 
-# ~ "dy50to120_2016":2112.90,
-# ~ "dy120to200_2016":20.56,
-# ~ "dy200to400_2016":2.89,
-# ~ "dy400to800_2016": 0.252,
-# ~ "dy800to1400_2016":1.71E-2,
-# ~ "dy1400to2300_2016":1.37E-3,
-# ~ "dy2300to3500_2016":8.178E-5,
-# ~ "dy3500to4500_2016":3.191E-6,
-# ~ "dy4500to6000_2016":2.787E-7,
-# ~ "dy6000toInf_2016":9.56E-9,
 
-
-# ~ "tW_2016":35.6,
-# ~ "Wantitop_2016":35.6,
 "tW_2016":19.47,
 "Wantitop_2016":19.47,
 "Wjets_2016":61526.7,
@@ -148,7 +131,6 @@ crossSections = {
 "WW1200to2500_2016":0.003557,
 "WW2500_2016": 0.00005395,
 "WWinclusive_2016":12.178,
-# ~ "WWinclusive_2016":118.7,
 
 "WZ_2016":47.13,
 "WZ_ext_2016":47.13,
@@ -304,57 +286,6 @@ crossSections = {
 "CITo2E_Lam40TeVConRR_M800to1300_2018" : 0.014460,
 "CITo2E_Lam40TeVDesLL_M800to1300_2018" : 0.013730,
 "CITo2E_Lam40TeVDesLR_M800to1300_2018" : 0.013760,
-
-
-### wrong:
-#"CITo2E_Lam1TeVConLL_M300to800" : 161.413437,
-#"CITo2E_Lam1TeVConLL_M800to1300" : 94.711380,
-#"CITo2E_Lam1TeVConLL_M1300to2000" : 65.669693,
-#"CITo2E_Lam1TeVConLL_M2000toInf" : 46.449619,
-#"CITo2E_Lam1TeVConRR_M300to800" : 161.413437,
-#"CITo2E_Lam1TeVConRR_M800to1300" : 94.711380,
-#"CITo2E_Lam1TeVConRR_M1300to2000" : 65.669693,
-#"CITo2E_Lam1TeVConRR_M2000toInf" : 46.449619,
-#"CITo2E_Lam10TeVConLL_M300to800" : 0.640062,
-#"CITo2E_Lam10TeVConLL_M800to1300" : 0.026888,
-#"CITo2E_Lam10TeVConLL_M1300to2000" : 0.009001,
-#"CITo2E_Lam10TeVConLL_M2000toInf" : 0.005341,
-#"CITo2E_Lam10TeVConRR_M300to800" : 0.640062,
-#"CITo2E_Lam10TeVConRR_M800to1300" : 0.026888,
-#"CITo2E_Lam10TeVConRR_M1300to2000" : 0.009001,
-#"CITo2E_Lam10TeVConRR_M2000toInf" : 0.005341,
-#"CITo2E_Lam1TeVConLR_M800to1300" : 171.164291,
-#"CITo2E_Lam10TeVConLR_M2000toInf" : 0.009416,
-#"CITo2E_Lam1TeVConLR_M1300to2000" : 123.995781,
-#"CITo2E_Lam10TeVDesLR_M2000toInf" : 0.008715,
-#"CITo2E_Lam1TeVDesRR_M300to800" : 171.251205,
-#"CITo2E_Lam10TeVConLR_M800to1300" : 0.032183,
-#"CITo2E_Lam10TeVDesRR_M800to1300" : 0.015649,
-#"CITo2E_Lam1TeVConLR_M300to800" : 322.895966,
-#"CITo2E_Lam1TeVDesLL_M1300to2000" : 66.349922,
-#"CITo2E_Lam10TeVDesRR_M300to800" : 0.473903,
-#"CITo2E_Lam1TeVDesLR_M800to1300" : 181.469360,
-#"CITo2E_Lam1TeVDesLL_M2000toInf" : 53.552567,
-#"CITo2E_Lam10TeVConLR_M300to800" : 7.225e-01,
-#"CITo2E_Lam10TeVConLR_M1300to2000" : 0.014479,
-#"CITo2E_Lam10TeVDesLR_M1300to2000" : 0.013519,
-#"CITo2E_Lam10TeVDesLL_M300to800" : 0.514547,
-#"CITo2E_Lam10TeVDesLL_M800to1300" : 0.014829,
-#"CITo2E_Lam10TeVDesLL_M1300to2000" : 0.005624,
-#"CITo2E_Lam1TeVDesRR_M800to1300" : 76.993668,
-#"CITo2E_Lam10TeVDesLR_M800to1300" : 0.023540,
-#"CITo2E_Lam1TeVConLR_M2000toInf" : 88.878014,
-#"CITo2E_Lam1TeVDesLR_M300to800" : 316.710205,
-#"CITo2E_Lam1TeVDesRR_M2000toInf" : 44.593884,
-#"CITo2E_Lam1TeVDesLL_M300to800" : 169.398697,
-#"CITo2E_Lam10TeVDesLR_M300to800" : 0.512083,
-#"CITo2E_Lam1TeVDesLR_M2000toInf" : 89.817612,
-#"CITo2E_Lam1TeVDesRR_M1300to2000" : 58.566853,
-#"CITo2E_Lam10TeVDesRR_M2000toInf" : 0.003955,
-#"CITo2E_Lam10TeVDesLL_M2000toInf" : 0.004255,
-#"CITo2E_Lam1TeVDesLL_M800to1300" : 89.009933,
-#"CITo2E_Lam10TeVDesRR_M1300to2000" : 0.007084,
-#"CITo2E_Lam1TeVDesLR_M1300to2000" : 110.839600,
 
 
 
@@ -648,57 +579,6 @@ crossSections = {
 
 
 
-### wrong PDF set
-
-#"CITo2Mu_Lam1TeVConLL_M300to800" : 161.413437,
-#"CITo2Mu_Lam1TeVConLL_M800to1300" : 94.711380,
-#"CITo2Mu_Lam1TeVConLL_M1300to2000" : 65.669693,
-#"CITo2Mu_Lam1TeVConLL_M2000toInf" : 46.449619,
-#"CITo2Mu_Lam10TeVConLL_M300to800" : 0.640062,
-#"CITo2Mu_Lam10TeVConLL_M800to1300" : 0.026888,
-#"CITo2Mu_Lam10TeVConLL_M1300to2000" : 0.009001,
-#"CITo2Mu_Lam10TeVConLL_M2000toInf" : 0.005341,
-#"CITo2Mu_Lam1TeVConRR_M300to800" : 161.413437,
-#"CITo2Mu_Lam1TeVConRR_M800to1300" : 94.711380,
-#"CITo2Mu_Lam1TeVConRR_M1300to2000" : 65.669693,
-#"CITo2Mu_Lam1TeVConRR_M2000toInf" : 46.449619,
-#"CITo2Mu_Lam10TeVConRR_M300to800" : 0.640062,
-#"CITo2Mu_Lam10TeVConRR_M800to1300" : 0.026888,
-#"CITo2Mu_Lam10TeVConRR_M1300to2000" : 0.009001,
-#"CITo2Mu_Lam10TeVConRR_M2000toInf" : 0.005341,
-
-#"CITo2Mu_Lam1TeVConLR_M800to1300" : 171.164291,
-#"CITo2Mu_Lam10TeVConLR_M2000toInf" : 0.009416,
-#"CITo2Mu_Lam1TeVConLR_M1300to2000" : 123.995781,
-#"CITo2Mu_Lam10TeVDesLR_M2000toInf" : 0.008715,
-#"CITo2Mu_Lam1TeVDesRR_M300to800" : 171.251205,
-#"CITo2Mu_Lam10TeVConLR_M800to1300" : 0.032183,
-#"CITo2Mu_Lam10TeVDesRR_M800to1300" : 0.015649,
-#"CITo2Mu_Lam1TeVConLR_M300to800" : 322.895966,
-#"CITo2Mu_Lam1TeVDesLL_M1300to2000" : 66.349922,
-#"CITo2Mu_Lam10TeVDesRR_M300to800" : 0.473903,
-#"CITo2Mu_Lam1TeVDesLR_M800to1300" : 181.469360,
-#"CITo2Mu_Lam1TeVDesLL_M2000toInf" : 53.552567,
-#"CITo2Mu_Lam10TeVConLR_M300to800" : 0.583908,
-#"CITo2Mu_Lam10TeVConLR_M1300to2000" : 0.014479,
-#"CITo2Mu_Lam10TeVDesLR_M1300to2000" : 0.013519,
-#"CITo2Mu_Lam10TeVDesLL_M300to800" : 0.514547,
-#"CITo2Mu_Lam10TeVDesLL_M800to1300" : 0.014829,
-#"CITo2Mu_Lam10TeVDesLL_M1300to2000" : 0.005624,
-#"CITo2Mu_Lam1TeVDesRR_M800to1300" : 76.993668,
-#"CITo2Mu_Lam10TeVDesLR_M800to1300" : 0.023540,
-#"CITo2Mu_Lam1TeVConLR_M2000toInf" : 88.878014,
-#"CITo2Mu_Lam1TeVDesLR_M300to800" : 316.710205,
-#"CITo2Mu_Lam1TeVDesRR_M2000toInf" : 44.593884,
-#"CITo2Mu_Lam1TeVDesLL_M300to800" : 169.398697,
-#"CITo2Mu_Lam10TeVDesLR_M300to800" : 0.512083,
-#"CITo2Mu_Lam1TeVDesLR_M2000toInf" : 89.817612,
-#"CITo2Mu_Lam1TeVDesRR_M1300to2000" : 58.566853,
-#"CITo2Mu_Lam10TeVDesRR_M2000toInf" : 0.003955,
-#"CITo2Mu_Lam10TeVDesLL_M2000toInf" : 0.004255,
-#"CITo2Mu_Lam1TeVDesLL_M800to1300" : 89.009933,
-#"CITo2Mu_Lam10TeVDesRR_M1300to2000" : 0.007084,
-#"CITo2Mu_Lam1TeVDesLR_M1300to2000" : 110.839600,
 
 'CITo2Mu_Lam1TeVConRR_M1300to2000':141.600000,
 'CITo2Mu_Lam1TeVConLR_M2000toInf':92.400000,
@@ -1172,6 +1052,16 @@ crossSections = {
 'RSGrav_kMpl_001_M500_2018':0.334800,
 'RSGrav_kMpl_001_M5500_2018':0.000000,
 'RSGrav_kMpl_001_M750_2018':0.048350,
+
+'RSGrav_kMpl_001_M1000_2018':0.1519844532,
+'RSGrav_kMpl_001_M1500_2018':0.0168025959,
+'RSGrav_kMpl_001_M2000_2018':0.0029801219,
+'RSGrav_kMpl_001_M2500_2018':0.0006982378,
+'RSGrav_kMpl_001_M3000_2018':0.0001873420,
+'RSGrav_kMpl_001_M3500_2018':0.0000550077,
+'RSGrav_kMpl_001_M4000_2018':0.0000171883,
+'RSGrav_kMpl_001_M4500_2018':0.0000054272,
+'RSGrav_kMpl_001_M500_2018':4.2520375252,
 
 
 # ~ 'ZprimeToEE_SSM_M5000_2018':0.000018149207,
@@ -1941,6 +1831,20 @@ fileNames = {
 'RSGrav_kMpl_001_M4500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M4500.root',
 'RSGrav_kMpl_001_M5000_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M5000.root',
 'RSGrav_kMpl_001_M5500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M5500.root',
+
+'RSGrav_kMpl_005_M250_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M250.root',
+'RSGrav_kMpl_005_M500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M500.root',
+'RSGrav_kMpl_005_M750_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M750.root',
+'RSGrav_kMpl_005_M1000_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M1000.root',
+'RSGrav_kMpl_005_M1500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M1500.root',
+'RSGrav_kMpl_005_M2000_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M2000.root',
+'RSGrav_kMpl_005_M2500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M2500.root',
+'RSGrav_kMpl_005_M3000_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M3000.root',
+'RSGrav_kMpl_005_M3500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M3500.root',
+'RSGrav_kMpl_005_M4000_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M4000.root',
+'RSGrav_kMpl_005_M4500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M4500.root',
+'RSGrav_kMpl_005_M5000_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M5000.root',
+'RSGrav_kMpl_005_M5500_2018':'dileptonAna_muons_2018_RSGrav_kMpl_001_M5500.root',
 
 
 'ZprimeToMuMu_SSM_M5000_2018':'dileptonAna_muons_2018_ZprimeToMuMu_SSM_M5000.root',
@@ -2887,6 +2791,20 @@ fileNamesEle = {
 'RSGrav_kMpl_001_M5000_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M5000.root',
 'RSGrav_kMpl_001_M5500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M5500.root',
 
+'RSGrav_kMpl_005_M250_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M250.root',
+'RSGrav_kMpl_005_M500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M500.root',
+'RSGrav_kMpl_005_M750_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M750.root',
+'RSGrav_kMpl_005_M1000_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M1000.root',
+'RSGrav_kMpl_005_M1500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M1500.root',
+'RSGrav_kMpl_005_M2000_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M2000.root',
+'RSGrav_kMpl_005_M2500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M2500.root',
+'RSGrav_kMpl_005_M3000_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M3000.root',
+'RSGrav_kMpl_005_M3500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M3500.root',
+'RSGrav_kMpl_005_M4000_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M4000.root',
+'RSGrav_kMpl_005_M4500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M4500.root',
+'RSGrav_kMpl_005_M5000_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M5000.root',
+'RSGrav_kMpl_005_M5500_2018':'dileptonAna_electrons_2018_RSGrav_kMpl_001_M5500.root',
+
 'ZprimeToEE_SSM_M5000_2018':'dileptonAna_electrons_2018_ZprimeToEE_SSM_M5000.root',
 
 
@@ -3004,6 +2922,98 @@ class Signals:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class RSGrav_kMpl_001_M5500:
+		subprocesses = ["RSGrav_kMpl_001_M5500_2018"]
+		label = "RSGrav_kMpl_001_M5500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+		
+
+	class RSGrav_kMpl_005_M500:
+		subprocesses = ["RSGrav_kMpl_001_M500_2018"]
+		label = "RSGrav_kMpl_001_M500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M1000:
+		subprocesses = ["RSGrav_kMpl_001_M1000_2018"]
+		label = "RSGrav_kMpl_001_M1000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M1500:
+		subprocesses = ["RSGrav_kMpl_001_M1500_2018"]
+		label = "RSGrav_kMpl_001_M1500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M2000:
+		subprocesses = ["RSGrav_kMpl_001_M2000_2018"]
+		label = "RSGrav_kMpl_001_M2000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M2500:
+		subprocesses = ["RSGrav_kMpl_001_M2500_2018"]
+		label = "RSGrav_kMpl_001_M2500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M3000:
+		subprocesses = ["RSGrav_kMpl_001_M3000_2018"]
+		label = "RSGrav_kMpl_001_M3000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M3500:
+		subprocesses = ["RSGrav_kMpl_001_M3500_2018"]
+		label = "RSGrav_kMpl_001_M3500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M4000:
+		subprocesses = ["RSGrav_kMpl_001_M4000_2018"]
+		label = "RSGrav_kMpl_001_M4000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M5000:
+		subprocesses = ["RSGrav_kMpl_001_M5000_2018"]
+		label = "RSGrav_kMpl_001_M5000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M5500:
 		subprocesses = ["RSGrav_kMpl_001_M5500_2018"]
 		label = "RSGrav_kMpl_001_M5500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
 		fillcolor = ROOT.kWhite
@@ -4159,6 +4169,98 @@ class Signals2018:
 		uncertainty = 0.
 		scaleFac     = 1.	
 		additionalSelection = None
+		
+
+	class RSGrav_kMpl_005_M500:
+		subprocesses = ["RSGrav_kMpl_001_M500_2018"]
+		label = "RSGrav_kMpl_001_M500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M1000:
+		subprocesses = ["RSGrav_kMpl_001_M1000_2018"]
+		label = "RSGrav_kMpl_001_M1000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M1500:
+		subprocesses = ["RSGrav_kMpl_001_M1500_2018"]
+		label = "RSGrav_kMpl_001_M1500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M2000:
+		subprocesses = ["RSGrav_kMpl_001_M2000_2018"]
+		label = "RSGrav_kMpl_001_M2000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M2500:
+		subprocesses = ["RSGrav_kMpl_001_M2500_2018"]
+		label = "RSGrav_kMpl_001_M2500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M3000:
+		subprocesses = ["RSGrav_kMpl_001_M3000_2018"]
+		label = "RSGrav_kMpl_001_M3000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M3500:
+		subprocesses = ["RSGrav_kMpl_001_M3500_2018"]
+		label = "RSGrav_kMpl_001_M3500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M4000:
+		subprocesses = ["RSGrav_kMpl_001_M4000_2018"]
+		label = "RSGrav_kMpl_001_M4000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M5000:
+		subprocesses = ["RSGrav_kMpl_001_M5000_2018"]
+		label = "RSGrav_kMpl_001_M5000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M5500:
+		subprocesses = ["RSGrav_kMpl_001_M5500_2018"]
+		label = "RSGrav_kMpl_001_M5500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
 			
 
 	class CITo2E_Lam1TeVConLL:
@@ -5298,6 +5400,97 @@ class Signals2016:
 		scaleFac     = 1.	
 		additionalSelection = None
 	class RSGrav_kMpl_001_M5500:
+		subprocesses = ["RSGrav_kMpl_001_M5500_2018"]
+		label = "RSGrav_kMpl_001_M5500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+
+	class RSGrav_kMpl_005_M500:
+		subprocesses = ["RSGrav_kMpl_001_M500_2018"]
+		label = "RSGrav_kMpl_001_M500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M1000:
+		subprocesses = ["RSGrav_kMpl_001_M1000_2018"]
+		label = "RSGrav_kMpl_001_M1000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M1500:
+		subprocesses = ["RSGrav_kMpl_001_M1500_2018"]
+		label = "RSGrav_kMpl_001_M1500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M2000:
+		subprocesses = ["RSGrav_kMpl_001_M2000_2018"]
+		label = "RSGrav_kMpl_001_M2000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M2500:
+		subprocesses = ["RSGrav_kMpl_001_M2500_2018"]
+		label = "RSGrav_kMpl_001_M2500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M3000:
+		subprocesses = ["RSGrav_kMpl_001_M3000_2018"]
+		label = "RSGrav_kMpl_001_M3000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M3500:
+		subprocesses = ["RSGrav_kMpl_001_M3500_2018"]
+		label = "RSGrav_kMpl_001_M3500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M4000:
+		subprocesses = ["RSGrav_kMpl_001_M4000_2018"]
+		label = "RSGrav_kMpl_001_M4000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M5000:
+		subprocesses = ["RSGrav_kMpl_001_M5000_2018"]
+		label = "RSGrav_kMpl_001_M5000"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
+		fillcolor = ROOT.kWhite
+		fillstyle = 0
+		linecolor = ROOT.kBlue
+		uncertainty = 0.
+		scaleFac     = 1.	
+		additionalSelection = None
+	class RSGrav_kMpl_005_M5500:
 		subprocesses = ["RSGrav_kMpl_001_M5500_2018"]
 		label = "RSGrav_kMpl_001_M5500"		#"CI #rightarrow #mu^{+}#mu^{-} #Lambda 22 TeV - Con LL"
 		fillcolor = ROOT.kWhite
